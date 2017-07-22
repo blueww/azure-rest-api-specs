@@ -1,0 +1,65 @@
+{
+  "parameters": {
+    "resourceGroupName": "demo_resource_group",
+    "jobName": "demo_job",
+    "subscriptionId": "SUBSCRIPTION_ID",
+    "api-version": "2017-09-01-preview",
+    "parameters": {
+      "location": "southcentralus",
+      "properties": {
+        "cluster": { "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/clusters/demo_cluster" },
+        "numberOfVMs": 1,
+        "containerSettings": { "imageSourceRegistry": { "images": ["batchaitraining/tensorflow:1.1.0-gpu"] } },
+        "customToolkitSettings": { "commandLine": "env" },
+        "stdOutErrPathPrefix": "$AZ_LEARNING_MOUNT_ROOT/myazfileshare",
+        "outputDirectories": [
+          {
+            "id": "modelOutput",
+            "pathPrefix": "$AZ_LEARNING_MOUNT_ROOT/myazfileshare",
+            "pathSuffix": "Models",
+            "type": "custom",
+            "createNew": true
+          }
+        ]
+      }
+    }
+  },
+
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/jobs/demo_job",
+        "name": "demo_job",
+        "type": "Microsoft.BatchAI/Job",
+        "properties": {
+          "priority": 0,
+          "cluster": { "id": "/subscriptions/65634139-3762-476b-946d-e221f4cdc2bf/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/clusters/demo_cluster" },
+          "numberOfVMs": 1,
+          "containerSettings": { "imageSourceRegistry": { "images": ["batchaitraining/tensorflow:1.1.0-gpu"] } },
+          "toolType": "Custom",
+          "customToolkitSettings": { "commandLine": "env" },
+          "stdOutErrPathPrefix": "$AZ_LEARNING_MOUNT_ROOT/myazfileshare",
+          "outputDirectories": [
+            {
+              "id": "modelOutput",
+              "pathPrefix": "$AZ_LEARNING_MOUNT_ROOT/myazfileshare",
+              "pathSuffix": "Models",
+              "type": "Custom",
+              "createNew": true
+            }
+          ],
+          "constraints": {
+            "maxWallClockTime": "P7D",
+            "maxRetryCount": 0,
+            "maxRetentionTime": "P1D"
+          },
+          "creationTime": "2017-07-19T18:21:27.9215528Z",
+          "provisioningState": "Succeeded",
+          "provisioningStateTransitionTime": "2017-07-19T18:21:27.9215528Z",
+          "executionState": "Queued",
+          "executionStateTransitionTime": "2017-07-19T18:21:27.9215528Z"
+        }
+      }
+    }
+  }
+}

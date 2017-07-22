@@ -1,0 +1,64 @@
+{
+
+  "parameters": {
+
+    "api-version": "2017-09-01-preview"
+
+  },
+
+  "responses": {
+
+    "200": {
+
+        "body": {
+
+            "value": [
+                {
+                    "name": "Microsoft.BatchAI/clusters/read",
+                    "display": {
+                        "provider": "Microsoft Batch AI",
+                        "resource": "Batch AI Clusters",
+                        "operation": "List or get Batch AI clusters",
+                        "description": "Lists Batch AI clusters or gets the properties of a Batch AI cluster"
+                    },
+                    "origin": "user,system"
+                },
+                {
+                    "name": "Microsoft.BatchAI/clusters/write",
+                    "display": {
+                        "provider": "Microsoft Batch AI",
+                        "resource": "Batch AI Clusters",
+                        "operation": "Create or update Batch AI cluster",
+                        "description": "Creates a new Batch AI cluster or updates an existing Batch AI cluster"
+                    },
+                    "origin": "user,system"
+                },
+                {
+                    "name": "Microsoft.BatchAI/clusters/delete",
+                    "display": {
+                        "provider": "Microsoft Batch AI",
+                        "resource": "Batch AI Clusters",
+                        "operation": "Delete Batch AI cluster",
+                        "description": "Deletes a Batch AI cluster"
+                    },
+                    "origin": "user,system"
+                },
+                {
+                    "name": "Microsoft.BatchAI/clusters/remoteLoginInformation/action",
+                    "display": {
+                        "provider": "Microsoft Batch AI",
+                        "resource": "Batch AI Clusters",
+                        "operation": "List Batch AI cluster remote-login information",
+                        "description": "Lists remote-login information for a Batch AI cluster"
+                    },
+                    "origin": "user,system"
+                }
+            ]
+
+        }
+
+    }
+
+  }
+
+}

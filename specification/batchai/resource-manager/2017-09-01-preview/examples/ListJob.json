@@ -1,0 +1,53 @@
+{
+  "parameters": {
+    "subscriptionId": "SUBSCRIPTION_ID",
+    "api-version": "2017-09-01-preview"
+  },
+
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/jobs/demo_job",
+            "name": "demo_job",
+            "type": "Microsoft.BatchAI/Job",
+            "properties": {
+              "priority": 0,
+              "cluster": { "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/clusters/demo_cluster" },
+              "numberOfVMs": 1,
+              "containerSettings": { "imageSourceRegistry": { "images": ["batchaitraining/tensorflow:1.1.0-gpu"] } },
+              "toolType": "Custom",
+              "customToolkitSettings": { "commandLine": "env" },
+              "stdOutErrPathPrefix": "$AZ_LEARNING_MOUNT_ROOT/myazfileshare",
+              "outputDirectories": [
+                {
+                  "id": "modelOutput",
+                  "pathPrefix": "$AZ_LEARNING_MOUNT_ROOT/myazfileshare",
+                  "pathSuffix": "Models",
+                  "type": "Custom",
+                  "createNew": true
+                }
+              ],
+              "constraints": {
+                "maxWallClockTime": "P7D",
+                "maxRetryCount": 0,
+                "maxRetentionTime": "P1D"
+              },
+              "creationTime": "2017-07-19T18:21:27.9215528Z",
+              "provisioningState": "Succeeded",
+              "provisioningStateTransitionTime": "2017-07-19T18:21:27.9215528Z",
+              "executionState": "Succeeded",
+              "executionStateTransitionTime": "2017-07-19T18:22:33.01782Z",
+              "executionInfo": {
+                "startTime": "2017-07-19T18:21:30.9648947Z",
+                "endTime": "2017-07-19T18:24:05.4429206Z",
+                "exitCode": 0
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
