@@ -1770,9 +1770,6 @@
           "$ref": "#/definitions/NodeSetup"
         }
       },
-      "required": [
-        "targetNumberOfVMs"
-      ],
       "description": "The resize properties of a Batch AI Cluster."
     },
     "DeallocationOption": {
