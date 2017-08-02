@@ -5938,10 +5938,6 @@
           "$ref": "#/definitions/UpgradePolicy",
           "description": "The upgrade policy."
         },
-        "recoveryPolicy": {
-          "$ref": "#/definitions/RecoveryPolicy",
-          "description": "The recovery policy."
-        },
         "virtualMachineProfile": {
           "$ref": "#/definitions/VirtualMachineScaleSetUpdateVMProfile",
           "description": "The virtual machine profile."
@@ -6493,10 +6489,6 @@
     "UpdateResource": {
       "description": "The Update Resource model definition.",
       "properties": {
-        "location": {
-          "type": "string",
-          "description": "Resource location"
-        },
         "tags": {
           "type": "object",
           "additionalProperties": {
