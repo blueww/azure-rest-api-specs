@@ -203,7 +203,7 @@
           "items": {
             "type": "string"
           },
-          "description": "The script to be executed."
+          "description": "Optional. The script to be executed.  When this value is given, the given script will override the default script of the command."
         },
         "parameters": {
           "type": "array",
