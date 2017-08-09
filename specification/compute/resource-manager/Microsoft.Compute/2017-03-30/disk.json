@@ -687,6 +687,13 @@
         "sku": {
           "$ref": "#/definitions/DiskSku"
         },
+        "zones": {
+            "type": "array",
+            "items": {
+                "type": "string"
+          },
+          "description": "The Logical zone list for Disk." 
+        },
         "properties": {
           "x-ms-client-flatten": true,
           "$ref": "#/definitions/DiskProperties"
@@ -998,11 +1005,6 @@
     },
     "Snapshot": {
       "properties": {
-        "managedBy": {
-          "readOnly": true,
-          "type": "string",
-          "description": "A relative URI containing the ID of the VM that has the disk attached."
-        },
         "sku": {
           "$ref": "#/definitions/DiskSku"
         },
