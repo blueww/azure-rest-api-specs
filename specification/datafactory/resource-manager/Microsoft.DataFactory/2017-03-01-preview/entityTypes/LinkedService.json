@@ -1,5 +1,10 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "swagger": "2.0",
+  "info": {
+    "title": "DataFactoryManagementClient",
+    "version": "2017-03-01-preview"
+  },
+  "paths": {},
   "definitions": {
     "LinkedService": {
       "description": "The Azure Data Factory nested object which contains the information and credential which can be used to connect with related store or compute resource.",

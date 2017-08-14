@@ -1,5 +1,10 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "swagger": "2.0",
+  "info": {
+    "title": "DataFactoryManagementClient",
+    "version": "2017-03-01-preview"
+  },
+  "paths": {},
   "definitions": {
     "Dataset": {
       "description": "The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents.",
