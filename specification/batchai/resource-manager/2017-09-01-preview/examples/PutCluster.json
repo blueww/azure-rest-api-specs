@@ -8,7 +8,11 @@
       "location": "southcentralus",
       "properties": {
         "vmSize": "STANDARD_NC6",
-        "targetNumberOfVMs": 2,
+        "scaleSettings" : {
+          "manual" : {
+            "targetNumberOfNodes": 2
+          }
+        },
         "vmPriority": "dedicated",
         "virtualMachineConfiguration": {
           "imageReference": {

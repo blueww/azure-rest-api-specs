@@ -15,19 +15,25 @@
         "location": "southcentralus",
         "properties": {
           "provisioningState": "Succeeded",
+          "allocationState": "steady",
           "creationTime": "2017-07-19T15:50:50.7612386Z",
           "lastModified": "2017-07-19T15:50:50.762741Z",
           "provisioningStateTransitionTime": "2017-07-19T15:50:50.7617131Z",
+          "allocationStateTransitionTime": "2017-07-19T15:55:50.7617131Z",
           "vmSize": "STANDARD_NC6",
-          "targetNumberOfVMs": 2,
-          "currentNumberOfVMs": 2,
+          "scaleSettings" : {
+            "manual" : {
+              "targetNumberOfNodes": 2,
+              "nodeDeallocationOption": "requeue"
+            }
+          },
+          "currentNumberOfNodes": 2,
           "nodeStateCounts": {
             "runningNodeCount": 0,
             "idleNodeCount": 2,
             "unusableNodeCount": 0,
             "preparingNodeCount": 0
           },
-          "defaultDeallocationOption": "Requeue",
           "vmPriority": "Dedicated",
           "virtualMachineConfiguration": {
             "imageReference": {

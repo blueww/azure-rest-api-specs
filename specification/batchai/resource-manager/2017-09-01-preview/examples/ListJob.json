@@ -15,7 +15,7 @@
             "properties": {
               "priority": 0,
               "cluster": { "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/clusters/demo_cluster" },
-              "numberOfVMs": 1,
+              "numberOfNodes": 1,
               "containerSettings": { "imageSourceRegistry": { "images": ["batchaitraining/tensorflow:1.1.0-gpu"] } },
               "toolType": "Custom",
               "customToolkitSettings": { "commandLine": "env" },

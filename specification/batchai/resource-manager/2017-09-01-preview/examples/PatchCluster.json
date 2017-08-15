@@ -5,7 +5,11 @@
     "subscriptionId": "SUBSCRIPTION_ID",
     "api-version": "2017-09-01-preview",
     "parameters": {
-      "targetNumberOfVMs":  1
+      "scaleSettings" : {
+        "manual" : {
+          "targetNumberOfNodes": 2
+        }
+      }
     }
   },
 

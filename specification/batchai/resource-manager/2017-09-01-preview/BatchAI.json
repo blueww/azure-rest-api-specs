@@ -73,7 +73,7 @@
           "Cluster"
         ],
         "operationId": "Cluster_Create",
-        "description": "Adds a cluster. A cluster is a collection of VMs. Multiple jobs can be run on the same cluster.",
+        "description": "Adds a cluster. A cluster is a collection of compute nodes. Multiple jobs can be run on the same cluster.",
         "parameters": [
           {
             "name": "resourceGroupName",
@@ -294,13 +294,13 @@
         }      
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/clusters/{clusterName}/remoteLoginInformation": {
-      "get": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/clusters/{clusterName}/listRemoteLoginInformation": {
+      "post": {
         "tags": [
           "Cluster"
         ],
         "operationId": "Cluster_ListRemoteLoginInformation",
-        "description": "Get the IP address, port of all the nodes in the cluster.",
+        "description": "Get the IP address, port of all the compute nodes in the cluster.",
         "parameters": [
           {
             "name": "resourceGroupName",
@@ -341,7 +341,7 @@
         },
         "x-ms-examples": {
             "Get a cluster's remote-login-information": {
-                "$ref": "./examples/GetClusterRemoteLoginInfo.json"
+                "$ref": "./examples/ClusterListRemoteLoginInfo.json"
             }
         }      
       }
@@ -625,13 +625,13 @@
         }      
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs/{jobName}/remoteLoginInformation": {
-      "get": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs/{jobName}/listRemoteLoginInformation": {
+      "post": {
         "tags": [
           "Job"
         ],
         "operationId": "Job_ListRemoteLoginInformation",
-        "description": "Gets the IP address and port information of all the nodes which are used for job execution.",
+        "description": "Gets the IP address and port information of all the compute nodes which are used for job execution.",
         "parameters": [
           {
             "name": "resourceGroupName",
@@ -657,7 +657,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The operation was successful. The response contains node remote login information.",
+            "description": "The operation was successful. The response contains compute node remote login information.",
             "schema": {
               "$ref": "#/definitions/RemoteLoginInformationListResult"
             }
@@ -671,7 +671,7 @@
         },
         "x-ms-examples": {
             "Get a job's remote-login-information ": {
-                "$ref": "./examples/GetJobRemoteLoginInfo.json"
+                "$ref": "./examples/JobListRemoteLoginInfo.json"
             }
         }      
       }
@@ -832,12 +832,12 @@
         }      
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs/{jobName}/files": {
-      "get": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs/{jobName}/listOutputFiles": {
+      "post": {
         "tags": [
           "Job"
         ],
-        "operationId": "File_List",
+        "operationId": "Job_ListOutputFiles",
         "description": "List all files inside the given output directory (Only if the output directory is on Azure File Share).",
         "parameters": [
           {
@@ -887,7 +887,7 @@
         },
         "x-ms-examples": {
             "List a job's files": {
-                "$ref": "./examples/ListFile.json"
+                "$ref": "./examples/ListOutputFiles.json"
             }
         }      
       }
@@ -1550,7 +1550,7 @@
           "items": {
             "type": "string"
           },
-          "title": "List of source IPs range which would be allowed to perform SSH with the Cluster VMs.",
+          "title": "List of source IPs range which would be allowed to perform SSH with the VMs.",
           "description": "Default value is '*' can be used to match all source IPs. Maximum number of publicIPs that can be specified are 400."
         },
         "userAccountSettings": {
@@ -1610,11 +1610,13 @@
         },
         "provisioningStateTransitionTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "Time when the status was changed."
         },
         "creationTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "Time when the FileServer was created."
         },
@@ -1638,6 +1640,7 @@
         },
         "status": {
           "type": "array",
+          "readOnly": true,
           "items": {
             "$ref": "#/definitions/Status"
           },
@@ -1669,11 +1672,13 @@
         },
         "transitionTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "State transition time for the status changed."
         },
         "message": {
           "type": "string",
+          "readOnly": true,
           "title": "Detailed message about the status."
         }
       },
@@ -1701,16 +1706,6 @@
           "title": "The size of the virtual machines in the cluster.",
           "description": "All virtual machines in a cluster are the same size. For information about available VM sizes for clusters using images from the Virtual Machines Marketplace (see Sizes for Virtual Machines (Linux) or Sizes for Virtual Machines (Windows). Batch AI service supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series)."
         },
-        "targetNumberOfVMs": {
-          "type": "integer",
-          "format": "int32",
-          "title": "The target number of the VMs the cluster can grow to.",
-          "description": "Default is 0. If autoScaleSettings are not specified, then the cluster starts with this target."
-        },
-        "defaultDeallocationOption": {
-          "title": "Specifies the default deallocation option.",
-          "$ref": "#/definitions/DeallocationOption"
-        },
         "vmPriority": {
           "type": "string",
           "title": "dedicated or lowPriority.",
@@ -1724,20 +1719,20 @@
             "modelAsString": false
           }
         },
-        "autoScaleSettings": {
-          "title": "Specifies the autoscale settings for the cluster.",
-          "$ref": "#/definitions/AutoScaleSettings"
+        "scaleSettings": {
+          "$ref": "#/definitions/ScaleSettings",
+          "title": "Desired scale for the cluster"
         },
         "virtualMachineConfiguration": {
           "title": "Settings for OS image and mounted data volumes.",
           "$ref": "#/definitions/VirtualMachineConfiguration"
         },
         "nodeSetup": {
-          "title": "Setup to be done on all VMs in the cluster.",
+          "title": "Setup to be done on all compute nodes in the cluster.",
           "$ref": "#/definitions/NodeSetup"
         },
         "userAccountSettings": {
-          "title": "Settings for user account of VMs.",
+          "title": "Settings for user account of compute nodes.",
           "$ref": "#/definitions/UserAccountSettings"
         },
         "subnet": {
@@ -1752,30 +1747,17 @@
     },
     "ClusterUpdateProperties": {
       "properties": {
-        "targetNumberOfVMs": {
-          "type": "integer",
-          "format": "int32",
-          "title": "The target number of the VMs the cluster can grow to."
-        },
-        "defaultDeallocationOption": {
-          "title": "Specifies when VMs may be removed from the cluster, if the cluster size is decreasing.",
-          "$ref": "#/definitions/DeallocationOption"
-        },
-        "autoScaleSettings": {
-          "title": "Specifies the autoscale settings for the cluster.",
-          "$ref": "#/definitions/AutoScaleSettings"
-        },
-        "nodeSetup": {
-          "title": "Setup to be done on all VMs in the cluster.",
-          "$ref": "#/definitions/NodeSetup"
+        "scaleSettings": {
+          "$ref": "#/definitions/ScaleSettings",
+          "title": "Desired scale for the cluster"
         }
       },
-      "description": "The resize properties of a Batch AI Cluster."
+      "description": "The properties of a Batch AI Cluster that need to be updated."
     },
     "DeallocationOption": {
       "type": "string",
-      "title": "Specifies when VMs may be removed from the cluster, if the cluster size is decreasing.",
-      "description": "Possible values are: requeue - Terminate running jobs and requeue them. The jobs will run again. Remove VMs as soon as jobs have been terminated. terminate - Terminate running jobs. The jobs will not run again. Remove VMs as soon as jobs have been terminated. jobcompletion - Allow currently running jobs to complete. Schedule no new jobs while waiting. Remove VMs when all jobs have completed. The default value is requeue.",
+      "title": "Specifies when compute nodes may be removed from the cluster, if the cluster size is decreasing.",
+      "description": "Possible values are: requeue - Terminate running jobs and requeue them. The jobs will run again. Remove compute nodes as soon as jobs have been terminated. terminate - Terminate running jobs. The jobs will not run again. Remove compute nodes as soon as jobs have been terminated. jobcompletion - Allow currently running jobs to complete. Schedule no new jobs while waiting. Remove compute nodes when all jobs have completed. The default value is requeue.",
       "enum": [
         "requeue",
         "terminate",
@@ -1786,23 +1768,52 @@
         "modelAsString": false
       }
     },
+    "ScaleSettings": {
+      "properties": {
+        "manual": {
+          "$ref": "#/definitions/ManualScaleSettings"
+        },
+        "autoScale": {
+          "$ref": "#/definitions/AutoScaleSettings"
+        }
+      },
+      "required": [ ],
+      "description": "Specifies the scale settings for the cluster. At least one of manual and autoScale settings must be specified. Only one of manual and autoScale settings can be specified."
+    },
     "AutoScaleSettings": {
       "properties": {
-        "minimumNumberOfVMs": {
+        "minimumNumberOfNodes": {
           "type": "integer",
           "format": "int32",
-          "title": "Specifies the minimum number of VMs the cluster can have."
+          "title": "Specifies the minimum number of compute nodes the cluster can have."
         },
-        "maximumNumberOfVMs": {
+        "maximumNumberOfNodes": {
           "type": "integer",
           "format": "int32",
-          "title": "Specifies the maximum number of VMs the cluster can have."
+          "title": "Specifies the maximum number of compute nodes the cluster can have."
         }
       },
       "required": [
-        "minimumNumberOfVMs", "maximumNumberOfVMs"
+        "minimumNumberOfNodes", "maximumNumberOfNodes"
       ],
       "description": "Specifies the autoscale settings for the cluster."
+    },
+    "ManualScaleSettings": {
+      "properties": {
+        "targetNumberOfNodes": {
+          "type": "integer",
+          "format": "int32",
+          "title": "The desired number of compute nodes in the cluster.",
+          "description": "Default is 0. If autoScaleSettings are not specified, then the cluster starts with this target."
+        },
+        "nodeDeallocationOption": {
+          "title": "Determines what to do with a compute node and its running task(s) if the cluster size is decreasing.",
+          "description": "The default value is requeue.",
+          "$ref": "#/definitions/DeallocationOption"
+        }
+      },
+      "required": [ "targetNumberOfNodes" ],
+      "description": "Manual scale settings for the cluster."
     },
     "VirtualMachineConfiguration": {
       "properties": {
@@ -1841,26 +1852,26 @@
         "idleNodeCount": {
           "type": "integer",
           "format": "int32",
-          "title": "Number of nodes in idle state."
+          "title": "Number of compute nodes in idle state."
         },
         "runningNodeCount": {
           "type": "integer",
           "format": "int32",
-          "title": "Number of nodes which are running jobs."
+          "title": "Number of compute nodes which are running jobs."
         },
         "preparingNodeCount": {
           "type": "integer",
           "format": "int32",
-          "title": "Number of nodes which are being prepared."
+          "title": "Number of compute nodes which are being prepared."
         },
         "unusableNodeCount": {
           "type": "integer",
           "format": "int32",
-          "title": "Number of nodes which are unusable"
+          "title": "Number of compute nodes which are unusable"
         }
       },
       "required": [ "idleNodeCount", "runningNodeCount", "preparingNodeCount", "unusableNodeCount" ],
-      "description": "Counts of various node states on the cluster."
+      "description": "Counts of various compute node states on the cluster."
     },
     "UserAccountSettings": {
       "properties": {
@@ -1891,7 +1902,7 @@
           }
         },
         "setupTask": {
-          "title": "Specifies a setup task which can be used to customize the nodes of the cluster.",
+          "title": "Specifies a setup task which can be used to customize the compute nodes of the cluster.",
           "$ref": "#/definitions/SetupTask"
         },
         "mountVolumes": {
@@ -1900,7 +1911,7 @@
         }
       },
       "required": [ ],
-      "description": "Setup to be done on all nodes in the cluster."
+      "description": "Setup to be done on all compute nodes in the cluster."
     },
     "SetupTask": {
       "properties": {
@@ -1921,7 +1932,7 @@
         }
       },
       "required": [ "commandLine" ],
-      "description": "Specifies a setup task which can be used to customize the nodes of the cluster."
+      "description": "Specifies a setup task which can be used to customize the compute nodes of the cluster."
     },
     "ClusterCreateParameters": {
       "properties": {
@@ -1971,16 +1982,6 @@
           "title": "The size of the virtual machines in the cluster.",
           "description": "All virtual machines in a cluster are the same size. For information about available VM sizes for clusters using images from the Virtual Machines Marketplace (see Sizes for Virtual Machines (Linux) or Sizes for Virtual Machines (Windows). Batch AI service supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series)."
         },
-        "targetNumberOfVMs": {
-          "type": "integer",
-          "format": "int32",
-          "title": "The target number of the VMs the cluster can grow to.",
-          "description": "Default is 0. If autoScaleSettings are not specified, then the cluster starts with this target."
-        },
-        "defaultDeallocationOption": {
-          "title": "Specifies the default deallocation option.",
-          "$ref": "#/definitions/DeallocationOption"
-        },
         "vmPriority": {
           "type": "string",
           "title": "dedicated or low-Priority.",
@@ -1994,20 +1995,20 @@
             "modelAsString": false
           }
         },
-        "autoScaleSettings": {
-          "title": "Specifies the autoscale settings for the cluster.",
-          "$ref": "#/definitions/AutoScaleSettings"
+        "scaleSettings": {
+          "$ref": "#/definitions/ScaleSettings",
+          "title": "Desired scale for the cluster"
         },
         "virtualMachineConfiguration": {
           "title": "Settings for OS image and mounted data volumes.",
           "$ref": "#/definitions/VirtualMachineConfiguration"
         },
         "nodeSetup": {
-          "title": "Setup to be done on all VMs in the cluster.",
+          "title": "Setup to be done on all compute nodes in the cluster.",
           "$ref": "#/definitions/NodeSetup"
         },
         "userAccountSettings": {
-          "title": "Settings for user account of VMs.",
+          "title": "Settings for user account of compute nodes.",
           "$ref": "#/definitions/UserAccountSettings"
         },
         "subnet": {
@@ -2016,6 +2017,7 @@
         },
         "creationTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "The creation time of the cluster."
         },
@@ -2038,21 +2040,40 @@
         },
         "provisioningStateTransitionTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "The provisioning state transition time of the cluster."
         },
+        "allocationState": {
+          "type": "string",
+          "title": "Indicates whether the cluster is resizing.",
+          "description": "Possible values are: steady and resizing. steady state indicates that the cluster is not resizing. There are no changes to the number of compute nodes in the cluster in progress. A cluster enters this state when it is created and when no operations are being performed on the cluster to change the number of compute nodes. resizing state indicates that the cluster is resizing; that is, compute nodes are being added to or removed from the cluster.",
+          "enum": [
+            "steady",
+            "resizing"
+          ],
+          "x-ms-enum": {
+            "name": "AllocationState",
+            "modelAsString": false
+          }
+        },
+        "allocationStateTransitionTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "The time at which the cluster entered its current allocation state."
+        },
         "errors": {
           "title": "Contains details of various errors on the cluster including resize and node setup task",
-          "description": "This element contains all the errors encountered by various nodes during node setup.",
+          "description": "This element contains all the errors encountered by various compute nodes during node setup.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CloudError"
           }
         },
-        "currentNumberOfVMs": {
+        "currentNumberOfNodes": {
           "type": "integer",
           "format": "int32",
-          "title": "The number of compute VMs currently assigned to the cluster."
+          "title": "The number of compute nodes currently assigned to the cluster."
         },
         "nodeStateCounts": {
           "title": "Counts of various node states on the cluster.",
@@ -2108,11 +2129,11 @@
           "title": "Specifies the Id of the cluster on which this job will run.",
           "$ref": "#/definitions/ResourceId"
         },
-        "numberOfVMs": {
+        "numberOfNodes": {
           "type": "integer",
           "format": "int32",
-          "title": "Number of VMs to run the job on.",
-          "description": "The job will be gang scheduled on that many VMs"
+          "title": "Number of compute nodes to run the job on.",
+          "description": "The job will be gang scheduled on that many compute nodes"
         },
         "containerSettings": {
           "title": "If provided the job will run in the specified container.",
@@ -2184,7 +2205,7 @@
         }
       },
       "required": [
-        "cluster", "numberOfVMs", "stdOutErrPathPrefix"
+        "cluster", "numberOfNodes", "stdOutErrPathPrefix"
       ],
       "description": "The properties of a Batch AI job."
     },
@@ -2228,11 +2249,11 @@
           "title": "Specifies the Id of the cluster on which this job will run.",
           "$ref": "#/definitions/ResourceId"
         },
-        "numberOfVMs": {
+        "numberOfNodes": {
           "type": "integer",
           "format": "int32",
-          "title": "Number of VMs to run the job on.",
-          "description": "The job will be gang scheduled on that many VMs"
+          "title": "Number of compute nodes to run the job on.",
+          "description": "The job will be gang scheduled on that many compute nodes"
         },
         "containerSettings": {
           "title": "If provided the job will run in the specified container.",
@@ -2307,7 +2328,7 @@
             "maxRetentionTime": {
               "type": "string",
               "format": "duration",
-              "title": "Max time till the job files, output need to be kept on the VM.",
+              "title": "Max time till the job files, output need to be kept on the compute node.",
               "description": "Default value = 1 day."
             }
           },
@@ -2315,6 +2336,7 @@
         },
         "creationTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "The job creation time.",
           "description": "The creation time of the job."
@@ -2337,6 +2359,7 @@
         },
         "provisioningStateTransitionTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "The time at which the job entered its current provisioning state.",
           "description": "The time at which the job entered its current provisioning state."
@@ -2359,6 +2382,7 @@
         },
         "executionStateTransitionTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "The time at which the job entered its current execution state.",
           "description": "The time at which the job entered its current execution state."
@@ -2442,7 +2466,7 @@
       "properties": {
         "nodeId": {
           "type": "string",
-          "description": "Id of the node"
+          "description": "Id of the compute node"
         },
         "ipAddress": {
           "type": "string",
@@ -2454,7 +2478,7 @@
           "title": "port number"
         }
       },
-      "description": "Contains remote login details to SSH/RDP to a node in cluster.",
+      "description": "Contains remote login details to SSH/RDP to a compute node in cluster.",
       "required": [ "nodeId", "ipAddress", "port" ]
     },
     "RemoteLoginInformationListResult": {
@@ -2499,7 +2523,7 @@
         "downloadUrl": {
           "type": "string",
           "title": "file downloand url, example: https://mystg.blob.core.windows.net/mycontainer/myModel_1.dnn",
-          "description": "This will be returned only if the model has been archived. During job run, this won't be returned and customers can use SSH tunneling to download. Users can use Get Remote Login Information API to get the IP address and port information of all the nodes running the job."
+          "description": "This will be returned only if the model has been archived. During job run, this won't be returned and customers can use SSH tunneling to download. Users can use Get Remote Login Information API to get the IP address and port information of all the compute nodes running the job."
         },
         "properties": {
             "x-ms-client-flatten": true,
@@ -2682,7 +2706,7 @@
             "$ref": "#/definitions/LocalDataVolume"
           },
           "title": "Data volumes to be mapped from Host to container.",
-          "description": "This is for power users and should be used only if the auto-mounts that the service provides are not enough. By default, the service mounts the following into the container: All mounted shares on the Cluster VM (e.g. Azure File share, NFS etc). The shared directory created on the cluster VM. Job level and Task level Temp directory. For more details on the various auto created directories on the Cluster VM and environment variables please look at the Add Cluster API"
+          "description": "This is for power users and should be used only if the auto-mounts that the service provides are not enough. By default, the service mounts the following into the container: All mounted shares on the Cluster compute node (e.g. Azure File share, NFS etc), the shared directory created on the cluster compute node and Job level Temp directory. For more details on the various auto created directories on the Cluster compute node and environment variables please look at the Put Cluster API"
         }
       },
       "description": "Settings for the container to be downloaded.",
@@ -2782,7 +2806,7 @@
         },
         "relativeMountPath": {
           "type": "string",
-          "title": "Specifies the relative path on the VM where the Azure file share will be mounted.",
+          "title": "Specifies the relative path on the compute node where the Azure file share will be mounted.",
           "description": "Note that all file shares will be mounted under $AZ_LEARNING_MOUNT_ROOT location."
         },
         "fileMode": {
@@ -2812,7 +2836,7 @@
         },
         "relativeMountPath": {
           "type": "string",
-          "title": "Specifies the relative path on the VM where the file server will be mounted.",
+          "title": "Specifies the relative path on the compute node where the file server will be mounted.",
           "description": "Note that all file shares will be mounted under $AZ_LEARNING_MOUNT_ROOT location."
         },
         "mountOptions": {
@@ -2890,7 +2914,7 @@
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfVMs property"
+          "description": "The default value for this property is equal to numberOfNodes property"
         }
       },
       "description": "Specifies the settings for CNTK job."
@@ -2909,7 +2933,7 @@
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfVMs property"
+          "description": "The default value for this property is equal to numberOfNodes property"
         }
       },
       "description": "Specifies the settings for Caffe job.",
@@ -2929,7 +2953,7 @@
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfVMs property"
+          "description": "The default value for this property is equal to numberOfNodes property"
         }
       },
       "description": "Specifies the settings for Chainer job.",
@@ -2968,13 +2992,13 @@
           "type": "integer",
           "format": "int32",
           "title": "The number of worker tasks.",
-          "description": "If specified, the value must be less than or equal to (numberOfVMs * numberOfGPUs per VM). If not specified, the default value is equal to numberOfVMs. This property can be specified only for distributed TensorFlow training"
+          "description": "If specified, the value must be less than or equal to (numberOfNodes * numberOfGPUs per VM). If not specified, the default value is equal to numberOfNodes. This property can be specified only for distributed TensorFlow training"
         },
         "numberOfParameterServers": {
           "type": "integer",
           "format": "int32",
           "title": "The number of parmeter server tasks.",
-          "description": "If specified, the value must be less than or equal to numberOfVMs. If not specified, the default value is equal to 1 for distributed TensorFlow training (This property is not applicable for single machine training). This property can be specified only for distributed TensorFlow training."
+          "description": "If specified, the value must be less than or equal to numberOfNodes. If not specified, the default value is equal to 1 for distributed TensorFlow training (This property is not applicable for single machine training). This property can be specified only for distributed TensorFlow training."
         }
       },
       "description": "Specifies the settings for TensorFlow job.",
