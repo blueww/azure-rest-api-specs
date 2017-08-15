@@ -1,23 +1,47 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "json.schemas": [
-        {
-            "fileMatch": [
-                "/**/swagger/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/Azure/autorest/master/schema/swagger-extensions.json"
-        },
-        {
-            "fileMatch": [
-                "/**/examples/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/Azure/autorest/master/schema/example-schema.json"
-        },
-        {
-            "fileMatch": [
-                "/**/composite*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/Azure/autorest/master/schema/composite-swagger.json"
-        }
-    ]
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/**/swagger/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Azure/autorest/master/schema/swagger-extensions.json"
+    },
+    {
+      "fileMatch": [
+        "/**/examples/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Azure/autorest/master/schema/example-schema.json"
+    },
+    {
+      "fileMatch": [
+        "/**/composite*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/Azure/autorest/master/schema/composite-swagger.json"
+    }
+  ],
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  },
+  "[yaml]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  }
 }
