@@ -1132,8 +1132,8 @@
                 "tags": [
                     "TopicTypes"
                 ],
-                "summary": "Get available topic types",
-                "description": "Get a list of the available topic types",
+                "summary": "List topic types",
+                "description": "List all registered topic types",
                 "operationId": "TopicTypes_List",
                 "consumes": [],
                 "produces": [
@@ -1202,8 +1202,8 @@
                 "tags": [
                     "TopicTypes"
                 ],
-                "summary": "Get event types",
-                "description": "Get event types for a topic type",
+                "summary": "List event types",
+                "description": "List event types for a topic type",
                 "operationId": "TopicTypes_ListEventTypes",
                 "consumes": [],
                 "produces": [
@@ -1347,8 +1347,8 @@
                 },
                 "isSubjectCaseSensitive": {
                     "description": "Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filter \r\nshould be compared in a case sensitive manner.",
-                    "type": "boolean",
-                    "default": false
+                    "default": false,
+                    "type": "boolean"
                 }
             }
         },
@@ -1524,6 +1524,9 @@
         },
         "TrackedResource": {
             "description": "Definition of a Tracked Resource",
+            "required": [
+                "location"
+            ],
             "type": "object",
             "allOf": [
                 {
@@ -1546,10 +1549,7 @@
                         "type": "string"
                     }
                 }
-            },
-            "required": [
-                "location"
-            ]
+            }
         },
         "Topic": {
             "description": "EventGrid Topic",
@@ -1596,6 +1596,9 @@
         },
         "TopicRegenerateKeyRequest": {
             "description": "Topic regenerate share access key key request",
+            "required": [
+                "keyName"
+            ],
             "type": "object",
             "properties": {
                 "keyName": {
@@ -1621,6 +1624,10 @@
             "description": "Properties of the event type",
             "type": "object",
             "properties": {
+                "displayName": {
+                    "description": "Display name of the event type.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "Description of the event type.",
                     "type": "string"
