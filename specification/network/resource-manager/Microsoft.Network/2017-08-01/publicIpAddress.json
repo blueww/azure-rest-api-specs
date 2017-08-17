@@ -332,6 +332,13 @@
     },
     "PublicIPAddress": {
       "properties": {
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
+        },
         "sku": {
           "$ref": "#/definitions/PublicIPAddressSku",
           "description": "The public IP address SKU."
