@@ -912,6 +912,13 @@
     },
     "FrontendIPConfigurationPropertiesFormat": {
       "properties": {
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
+        },
         "inboundNatRules": {
           "readOnly": true,
           "type": "array",
@@ -1478,6 +1485,13 @@
     },
     "LoadBalancer": {
       "properties": {
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
+        },
         "sku": {
           "$ref": "#/definitions/LoadBalancerSku",
           "description": "The load balancer SKU."
