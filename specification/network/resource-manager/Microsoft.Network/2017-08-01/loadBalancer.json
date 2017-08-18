@@ -912,13 +912,6 @@
     },
     "FrontendIPConfigurationPropertiesFormat": {
       "properties": {
-        "zones": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
-        },
         "inboundNatRules": {
           "readOnly": true,
           "type": "array",
@@ -978,6 +971,13 @@
         "provisioningState": {
           "type": "string",
           "description": "Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'."
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
         }
       },
       "description": "Properties of Frontend IP Configuration of the load balancer."
@@ -1485,13 +1485,6 @@
     },
     "LoadBalancer": {
       "properties": {
-        "zones": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
-        },
         "sku": {
           "$ref": "#/definitions/LoadBalancerSku",
           "description": "The load balancer SKU."
@@ -1504,6 +1497,13 @@
         "etag": {
           "type": "string",
           "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
         }
       },
       "allOf": [
