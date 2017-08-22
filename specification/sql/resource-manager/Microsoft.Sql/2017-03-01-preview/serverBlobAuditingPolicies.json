@@ -125,6 +125,7 @@
             "description": "Updating the auditing settings is in progress."
           }
         },
+        "x-ms-long-running-operation": true,
         "x-ms-examples": {
           "Update a server's blob auditing policy with all parameters": {
             "$ref": "./examples/ServerBlobAuditingCreateMax.json"
