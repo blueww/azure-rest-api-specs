@@ -291,7 +291,7 @@
             "Get cluster": {
                 "$ref": "./examples/GetCluster.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/clusters/{clusterName}/listRemoteLoginInformation": {
@@ -343,7 +343,7 @@
             "Get a cluster's remote-login-information": {
                 "$ref": "./examples/ClusterListRemoteLoginInfo.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.BatchAI/clusters": {
@@ -393,7 +393,7 @@
             "List clusters": {
                 "$ref": "./examples/ListCluster.json"
             }
-        }            
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/clusters": {
@@ -451,7 +451,7 @@
             "List clusters": {
                 "$ref": "./examples/ListCluster.json"
             }
-        }            
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs/{jobName}": {
@@ -520,7 +520,7 @@
             "Create or update job": {
                 "$ref": "./examples/PutJob.json"
             }
-        }            
+        }
       },
       "delete": {
         "tags": [
@@ -573,7 +573,7 @@
             "Delete job": {
                 "$ref": "./examples/DeleteJob.json"
             }
-        }      
+        }
       },
       "get": {
         "tags": [
@@ -622,7 +622,7 @@
             "Get job": {
                 "$ref": "./examples/GetJob.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs/{jobName}/listRemoteLoginInformation": {
@@ -673,7 +673,7 @@
             "Get a job's remote-login-information ": {
                 "$ref": "./examples/JobListRemoteLoginInfo.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs/{jobName}/terminate": {
@@ -725,7 +725,7 @@
             "Terminate job": {
                 "$ref": "./examples/TerminateJob.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.BatchAI/jobs": {
@@ -773,7 +773,7 @@
             "List jobs": {
                 "$ref": "./examples/ListJob.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs": {
@@ -829,7 +829,7 @@
             "List jobs": {
                 "$ref": "./examples/ListJob.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/jobs/{jobName}/listOutputFiles": {
@@ -889,7 +889,7 @@
             "List a job's files": {
                 "$ref": "./examples/ListOutputFiles.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/fileServers/{fileServerName}": {
@@ -956,7 +956,7 @@
             "Create or update jobserver": {
                 "$ref": "./examples/PutFileServer.json"
             }
-        }      
+        }
       },
       "patch": {
         "tags": [
@@ -1014,7 +1014,7 @@
             "Patch jobserver": {
                 "$ref": "./examples/PatchFileServer.json"
             }
-        }      
+        }
       },
       "delete": {
         "tags": [
@@ -1067,7 +1067,7 @@
             "Delete jobserver": {
                 "$ref": "./examples/DeleteFileServer.json"
             }
-        }      
+        }
       },
       "get": {
         "tags": [
@@ -1116,7 +1116,7 @@
             "Get jobserver": {
                 "$ref": "./examples/GetFileServer.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/fileServers/{fileServerName}/suspend": {
@@ -1168,7 +1168,7 @@
             "Suspend jobserver": {
                 "$ref": "./examples/SuspendFileServer.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/fileServers/{fileServerName}/start": {
@@ -1220,7 +1220,7 @@
             "Resume jobserver": {
                 "$ref": "./examples/ResumeFileServer.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.BatchAI/fileServers": {
@@ -1270,7 +1270,7 @@
             "List jobservers": {
                 "$ref": "./examples/ListFileServer.json"
             }
-        }      
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/fileServers": {
@@ -1328,7 +1328,7 @@
             "List jobservers": {
                 "$ref": "./examples/ListFileServer.json"
             }
-        }      
+        }
       }
     }
   },
@@ -1606,6 +1606,7 @@
         },
         "mountSettings": {
           "title": "Details of the file Server.",
+          "readOnly": true,
           "$ref": "#/definitions/MountSettings"
         },
         "provisioningStateTransitionTime": {
@@ -2046,6 +2047,7 @@
         },
         "allocationState": {
           "type": "string",
+          "readOnly": true,
           "title": "Indicates whether the cluster is resizing.",
           "description": "Possible values are: steady and resizing. steady state indicates that the cluster is not resizing. There are no changes to the number of compute nodes in the cluster in progress. A cluster enters this state when it is created and when no operations are being performed on the cluster to change the number of compute nodes. resizing state indicates that the cluster is resizing; that is, compute nodes are being added to or removed from the cluster.",
           "enum": [
@@ -2059,6 +2061,7 @@
         },
         "allocationStateTransitionTime": {
           "type": "string",
+          "readOnly": true,
           "format": "date-time",
           "title": "The time at which the cluster entered its current allocation state."
         },
@@ -2072,11 +2075,13 @@
         },
         "currentNumberOfNodes": {
           "type": "integer",
+          "readOnly": true,
           "format": "int32",
           "title": "The number of compute nodes currently assigned to the cluster."
         },
         "nodeStateCounts": {
           "title": "Counts of various node states on the cluster.",
+          "readOnly": true,
           "$ref": "#/definitions/NodeStateCounts"
         }
       },
@@ -2324,12 +2329,6 @@
               "format": "int32",
               "title": "Max number of times job can be retried.",
               "description": "Default Value = 0."
-            },
-            "maxRetentionTime": {
-              "type": "string",
-              "format": "duration",
-              "title": "Max time till the job files, output need to be kept on the compute node.",
-              "description": "Default value = 1 day."
             }
           },
           "description": "Constraints associated with the Job."
@@ -2764,7 +2763,7 @@
           "title": "True to create new directory.",
           "description": "Default is true. If false, then the directory is not created and can be any directory path that the user specifies."
         }
-      }, 
+      },
       "description": "Output directory for the job.",
       "required": [ "id", "pathPrefix"]
     },
