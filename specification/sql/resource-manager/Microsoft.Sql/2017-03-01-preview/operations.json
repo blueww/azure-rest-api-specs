@@ -90,6 +90,7 @@
           "readOnly": true,
 		  "x-ms-enum": {
             "name": "origin",
+            "modelAsString": true
           }
         },
         "properties": {
