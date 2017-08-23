@@ -30,7 +30,7 @@ tag: package-2017-09-preview
 
 ### Tag: package-2017-09-preview
 
-These settings apply only when `--tag=package-2017-09` is specified on the command line.
+These settings apply only when `--tag=package-2017-09-preview` is specified on the command line.
 
 ``` yaml $(tag) == 'package-2017-09-preview'
 input-file: 
