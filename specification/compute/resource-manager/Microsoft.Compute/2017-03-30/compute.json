@@ -1987,7 +1987,7 @@
             "schema": {
               "$ref": "#/definitions/VirtualMachineScaleSet"
             }
-          },
+          }
         },
         "x-ms-long-running-operation": true
       },
@@ -6070,7 +6070,7 @@
             "type": "string"
           },
           "description": "The virtual machine scale set zones."
-        },
+        }
       },
       "allOf": [
         {
