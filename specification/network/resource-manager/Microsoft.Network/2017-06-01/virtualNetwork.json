@@ -440,9 +440,8 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-          "Create subnet": {
-            "$ref": "./examples/SubnetCreate.json"
-          }
+          "Create subnet": { "$ref": "./examples/SubnetCreate.json" },
+          "Create subnet with service endpoints": { "$ref": "./examples/SubnetCreateServiceEndpoint.json" }
         }
       }
     },
@@ -859,6 +858,13 @@
           "$ref": "./routeTable.json#/definitions/RouteTable",
           "description": "The reference of the RouteTable resource."
         },
+        "serviceEndpoints": {
+        "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceEndpointPropertiesFormat"
+          },
+          "description": "An array of service endpoints."
+        },
         "ipConfigurations": {
           "readOnly": true,
           "type": "array",
@@ -880,6 +886,26 @@
         }
       },
       "description": "Properties of the subnet."
+    },
+    "ServiceEndpointPropertiesFormat": {
+      "properties": {
+        "service": {
+          "type": "string",
+          "description": "The type of the endpoint service."
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of locations."
+        },
+        "provisioningState": {
+          "type": "string",
+          "description": "The provisioning state of the resource."
+        }
+      },
+      "description": "The service endpoint properties."
     },
     "VirtualNetworkPeeringPropertiesFormat": {
       "properties": {
