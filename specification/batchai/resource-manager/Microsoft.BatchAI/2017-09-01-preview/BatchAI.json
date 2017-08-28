@@ -1625,7 +1625,7 @@
           "type": "string",
           "readOnly": true,
           "x-nullable": false,
-          "titie": "Specifies the provisioning state of the file server.",
+          "title": "Specifies the provisioning state of the file server.",
           "description": "Possible values: creating - The fileServer is just getting created. Updating - The file server creation has been accepted and it is getting updated. Deleting - The user has requested that the cluster be deleted, but the delete operation has not yet completed. Failed - The file server creation has failed with the specified errorCode. Details about the error code are specified in the message field. Succeeded - The file server creation has succeeded.",
           "enum": [
             "creating",
@@ -1656,7 +1656,7 @@
           "type": "string",
           "readOnly": true,
           "x-nullable": false,
-          "titie": "Status Type & Status Code",
+          "title": "Status Type & Status Code",
           "description": "Status Type & Status Code: PowerState/Creating - The fileServer is just getting created. PowerState/Running - The file server has been created and is available to be used. PowerState/Suspended - The file Server has been suspended. PowerState/Suspending. The user has requested that the file Server to be suspended, but the deallocation operation has not yet completed. PowerState/Deleting - The user has requested that the cluster be deleted, but the delete operation has not yet completed. PowerState/Failed/ErrorCode - The file server creation has failed with the specified errorCode. Details about the error code are specified in the message field.",
           "enum": [
             "PowerState/Creating",
@@ -1780,7 +1780,6 @@
           "title": "The scale for the cluster by autoscale settings"
         }
       },
-      "required": [ ],
       "description": "Specifies the scale settings for the cluster. At least one of manual and autoScale settings must be specified. Only one of manual and autoScale settings can be specified."
     },
     "AutoScaleSettings": {
@@ -1825,7 +1824,6 @@
           "$ref": "#/definitions/ImageReference"
         }
       },
-      "required": [ ],
       "description": "Settings for OS image and mounted data volumes."
     },
     "ImageReference": {
@@ -1913,7 +1911,6 @@
           "$ref": "#/definitions/MountVolumes"
         }
       },
-      "required": [ ],
       "description": "Setup to be done on all compute nodes in the cluster."
     },
     "SetupTask": {
@@ -2028,7 +2025,7 @@
           "type": "string",
           "readOnly": true,
           "x-nullable": false,
-          "titie": "Specifies the provisioning state of the cluster.",
+          "title": "Specifies the provisioning state of the cluster.",
           "description": "Possible value are: creating - Specifies that the cluster is being created. succeeded - Specifies that the cluster has been created successfully. failed - Specifies that the cluster creation has failed. deleting - Specifies that the cluster is being deleted.",
           "enum": [
             "creating",
