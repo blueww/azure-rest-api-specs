@@ -72,7 +72,7 @@
         "tags": [
           "Cluster"
         ],
-        "operationId": "Cluster_Create",
+        "operationId": "Clusters_Create",
         "description": "Adds a cluster. A cluster is a collection of compute nodes. Multiple jobs can be run on the same cluster.",
         "parameters": [
           {
@@ -137,7 +137,7 @@
         "tags": [
           "Cluster"
         ],
-        "operationId": "Cluster_Update",
+        "operationId": "Clusters_Update",
         "description": "Update the properties of a given cluster.",
         "parameters": [
           {
@@ -195,7 +195,7 @@
         "tags": [
           "Cluster"
         ],
-        "operationId": "Cluster_Delete",
+        "operationId": "Clusters_Delete",
         "description": "Deletes a Cluster.",
         "parameters": [
           {
@@ -248,7 +248,7 @@
         "tags": [
           "Cluster"
         ],
-        "operationId": "Cluster_Get",
+        "operationId": "Clusters_Get",
         "description": "Gets information about the specified Cluster.",
         "parameters": [
           {
@@ -299,7 +299,7 @@
         "tags": [
           "Cluster"
         ],
-        "operationId": "Cluster_ListRemoteLoginInformation",
+        "operationId": "Clusters_ListRemoteLoginInformation",
         "description": "Get the IP address, port of all the compute nodes in the cluster.",
         "parameters": [
           {
@@ -351,7 +351,7 @@
         "tags": [
           "Cluster"
         ],
-        "operationId": "Cluster_List",
+        "operationId": "Clusters_List",
         "description": "Gets information about the Batch AI Clusters associated with the subscription.",
         "parameters": [
           {
@@ -401,7 +401,7 @@
         "tags": [
           "Cluster"
         ],
-        "operationId": "Cluster_ListByResourceGroup",
+        "operationId": "Clusters_ListByResourceGroup",
         "description": "Gets information about the Batch AI Clusters associated within the specified resource group.",
         "parameters": [
           {
@@ -459,7 +459,7 @@
         "tags": [
           "Job"
         ],
-        "operationId": "Job_Create",
+        "operationId": "Jobs_Create",
         "description": "Adds a Job that gets executed on a cluster.",
         "parameters": [
           {
@@ -526,7 +526,7 @@
         "tags": [
           "Job"
         ],
-        "operationId": "Job_Delete",
+        "operationId": "Jobs_Delete",
         "description": "Deletes the specified Batch AI job.",
         "parameters": [
           {
@@ -579,7 +579,7 @@
         "tags": [
           "Job"
         ],
-        "operationId": "Job_Get",
+        "operationId": "Jobs_Get",
         "description": "Gets information about the specified Batch AI job.",
         "parameters": [
           {
@@ -630,7 +630,7 @@
         "tags": [
           "Job"
         ],
-        "operationId": "Job_ListRemoteLoginInformation",
+        "operationId": "Jobs_ListRemoteLoginInformation",
         "description": "Gets the IP address and port information of all the compute nodes which are used for job execution.",
         "parameters": [
           {
@@ -681,7 +681,7 @@
         "tags": [
           "Job"
         ],
-        "operationId": "Job_Terminate",
+        "operationId": "Jobs_Terminate",
         "description": "Terminates a job.",
         "parameters": [
           {
@@ -733,7 +733,7 @@
         "tags": [
           "Job"
         ],
-        "operationId": "Job_List",
+        "operationId": "Jobs_List",
         "description": "Gets information about the Batch AI jobs associated with the subscription.",
         "parameters": [
           {
@@ -781,7 +781,7 @@
         "tags": [
           "Job"
         ],
-        "operationId": "Job_ListByResourceGroup",
+        "operationId": "Jobs_ListByResourceGroup",
         "description": "Gets information about the Batch AI jobs associated within the specified resource group.",
         "parameters": [
           {
@@ -837,7 +837,7 @@
         "tags": [
           "Job"
         ],
-        "operationId": "Job_ListOutputFiles",
+        "operationId": "Jobs_ListOutputFiles",
         "description": "List all files inside the given output directory (Only if the output directory is on Azure File Share).",
         "parameters": [
           {
@@ -897,7 +897,7 @@
         "tags": [
           "FileServer"
         ],
-        "operationId": "FileServer_Create",
+        "operationId": "FileServers_Create",
         "description": "Creates a file server.",
         "parameters": [
           {
@@ -962,7 +962,7 @@
         "tags": [
           "FileServer"
         ],
-        "operationId": "FileServer_Update",
+        "operationId": "FileServers_Update",
         "description": "Update the properties of a given file server.",
         "parameters": [
           {
@@ -1020,7 +1020,7 @@
         "tags": [
           "FileServer"
         ],
-        "operationId": "FileServer_Delete",
+        "operationId": "FileServers_Delete",
         "description": "Delete a file Server.",
         "parameters": [
           {
@@ -1073,7 +1073,7 @@
         "tags": [
           "FileServer"
         ],
-        "operationId": "FileServer_Get",
+        "operationId": "FileServers_Get",
         "description": "Gets information about the specified Cluster.",
         "parameters": [
           {
@@ -1124,7 +1124,7 @@
         "tags": [
           "FileServer"
         ],
-        "operationId": "FileServer_Suspend",
+        "operationId": "FileServers_Suspend",
         "description": "Suspends the file server.",
         "parameters": [
           {
@@ -1176,7 +1176,7 @@
         "tags": [
           "FileServer"
         ],
-        "operationId": "FileServer_Resume",
+        "operationId": "FileServers_Resume",
         "description": "Starts a suspended file Server.",
         "parameters": [
           {
@@ -1228,7 +1228,7 @@
         "tags": [
           "FileServer"
         ],
-        "operationId": "FileServer_List",
+        "operationId": "FileServers_List",
         "description": "To list all the file servers available under the given subscription (and across all resource groups within that subscription)",
         "parameters": [
           {
@@ -1278,7 +1278,7 @@
         "tags": [
           "FileServer"
         ],
-        "operationId": "FileServer_ListByResourceGroup",
+        "operationId": "FileServers_ListByResourceGroup",
         "description": "Gets a formatted list of file servers and their properties associated within the specified resource group.",
         "parameters": [
           {
@@ -1772,10 +1772,12 @@
     "ScaleSettings": {
       "properties": {
         "manual": {
-          "$ref": "#/definitions/ManualScaleSettings"
+          "$ref": "#/definitions/ManualScaleSettings",
+          "title": "The scale for the cluster by manual settings"
         },
         "autoScale": {
-          "$ref": "#/definitions/AutoScaleSettings"
+          "$ref": "#/definitions/AutoScaleSettings",
+          "title": "The scale for the cluster by autoscale settings"
         }
       },
       "required": [ ],
