@@ -153,6 +153,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the cluster within the specified resource group."
           },
           {
@@ -211,6 +214,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the cluster within the specified resource group."
           },
           {
@@ -264,6 +270,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the Cluster."
           },
           {
@@ -315,6 +324,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the cluster within the specified resource group."
           },
           {
@@ -542,6 +554,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the job to be deleted."
           },
           {
@@ -595,6 +610,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the job."
           },
           {
@@ -646,6 +664,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the job."
           },
           {
@@ -697,6 +718,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the job."
           },
           {
@@ -853,6 +877,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the job."
           },
           {
@@ -978,6 +1005,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the File Server within the specified resource group."
           },
           {
@@ -1036,6 +1066,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the File Server within the specified resource group."
           },
           {
@@ -1089,6 +1122,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the Cluster."
           },
           {
@@ -1140,6 +1176,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the file Server within the specified resource group."
           },
           {
@@ -1192,6 +1231,9 @@
             "in": "path",
             "required": true,
             "type": "string",
+            "pattern": "^[-\\w\\._]+$",
+            "minLength": 1,
+            "maxLength": 64,            
             "description": "The name of the file Server within the specified resource group."
           },
           {
@@ -1668,7 +1710,7 @@
           ],
           "x-ms-enum": {
             "name": "Code",
-            "modelAsString": false
+            "modelAsString": true
           }
         },
         "transitionTime": {
@@ -1762,7 +1804,8 @@
       "enum": [
         "requeue",
         "terminate",
-        "waitforjobcompletion"
+        "waitforjobcompletion",
+        "unknown"
       ],
       "x-ms-enum": {
         "name": "DeallocationOption",
@@ -2606,7 +2649,7 @@
       ],
       "x-ms-enum": {
         "name": "ToolType",
-        "modelAsString": false
+        "modelAsString": true
       }
     },
     "NameValuePair": {
@@ -2754,7 +2797,7 @@
           ],
           "x-ms-enum": {
             "name": "OutputType",
-            "modelAsString": false
+            "modelAsString": true
           }
         },
         "createNew": {
