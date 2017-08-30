@@ -3003,6 +3003,7 @@
       "pattern": "^[-\\w\\._]+$",
       "minLength": 1,
       "maxLength": 64,
+      "x-ms-parameter-location": "method",
       "description": "The name of the cluster within the specified resource group. Cluster names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long."      
     },
     "JobNameParameter" : {
@@ -3013,6 +3014,7 @@
       "pattern": "^[-\\w\\._]+$",
       "minLength": 1,
       "maxLength": 64,
+      "x-ms-parameter-location": "method",
       "description": "The name of the job within the specified resource group. Job names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long."
     },
     "FileServerNameParameter" : {
@@ -3023,6 +3025,7 @@
       "pattern": "^[-\\w\\._]+$",
       "minLength": 1,
       "maxLength": 64,
+      "x-ms-parameter-location": "method",
       "description": "The name of the file server within the specified resource group. File server names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long."     
     },
     "ApiVersionParameter": {
