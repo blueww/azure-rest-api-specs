@@ -776,6 +776,9 @@
             }
           }
         },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
         "x-ms-examples": {
             "List a job's files": {
                 "$ref": "./examples/ListOutputFiles.json"
@@ -1007,6 +1010,7 @@
             }
           }
         },
+        "x-ms-long-running-operation": true,
         "x-ms-examples": {
             "Suspend jobserver": {
                 "$ref": "./examples/SuspendFileServer.json"
@@ -1050,6 +1054,7 @@
             }
           }
         },
+        "x-ms-long-running-operation": true,
         "x-ms-examples": {
             "Resume jobserver": {
                 "$ref": "./examples/ResumeFileServer.json"
@@ -1291,7 +1296,15 @@
         "storageAccountType": {
           "type": "string",
           "readOnly": false,
-          "title": "Specifies the type of storage account to be used on the disk. Possible values are: Standard_LRS or Premium_LRS."
+          "title": "Specifies the type of storage account to be used on the disk. Possible values are: Standard_LRS or Premium_LRS.",
+          "enum": [
+            "Standard_LRS",
+            "Premium_LRS"
+          ],
+          "x-ms-enum": {
+            "name": "StorageAccountType",
+            "modelAsString": true
+          }
         },
         "encryptionSettings": {
           "readOnly": true,
@@ -1367,7 +1380,15 @@
         },
         "fileServerType": {
           "type": "string",
-          "title": "Type of the fileserver e.g. nfs, glusterfs etc."
+          "title": "Type of the fileserver e.g. nfs, glusterfs etc.",
+          "enum": [
+            "nfs",
+            "glusterfs"
+          ],
+          "x-ms-enum": {
+            "name": "FileServerType",
+            "modelAsString": true
+          }
         }
       },
       "description": "Details of the file Server."
@@ -1641,6 +1662,7 @@
         "nodeDeallocationOption": {
           "title": "Determines what to do with a compute node and its running task(s) if the cluster size is decreasing.",
           "description": "The default value is requeue.",
+          "default": "requeue",
           "$ref": "#/definitions/DeallocationOption"
         }
       },
