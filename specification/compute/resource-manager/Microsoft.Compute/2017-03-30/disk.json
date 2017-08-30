@@ -1005,6 +1005,11 @@
     },
     "Snapshot": {
       "properties": {
+        "managedBy": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Unused. Always Null."
+        },
         "sku": {
           "$ref": "#/definitions/DiskSku"
         },
