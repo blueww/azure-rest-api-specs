@@ -1240,6 +1240,7 @@
       "type": "string",
       "title": "The RAID level to apply to the disks.",
       "description": "Allowed Enums: NoRAID, RAID0, RAID1, RAID2, RAID3, RAID4, RAID5, RAID6. At least two disks per virtual machine are required for RAID-0 and beyond. Default is NoRAID.",
+      "default": "NoRaid",
       "enum": [
         "NoRaid",
         "RAID0",
@@ -1260,7 +1261,18 @@
         "fileSystemType": {
           "type": "string",
           "readOnly": true,
-          "title": "The type of filesystem to use. Valid values are btrfs, ext4, ext3 and ext2. Default value is btrfs."
+          "title": "The type of filesystem to use. Valid values are btrfs, ext4, ext3 and ext2. Default value is btrfs.",
+          "default": "btrfs",
+          "enum": [
+            "btrfs",
+            "ext4",
+            "ext3",
+            "ext2"
+          ],
+          "x-ms-enum": {
+            "name": "FileSystemType",
+            "modelAsString": true
+            }          
         },
         "raidLevel": {
           "title": "The RAID level to apply to the disks.",
@@ -1277,6 +1289,7 @@
           "type": "string",
           "readOnly": true,
           "title": "None, ReadOnly, ReadWrite. Default value is None. This property is not patchable.",
+          "default" : "none",
           "enum": [
             "none",
             "readOnly",
@@ -1561,6 +1574,7 @@
           "type": "string",
           "title": "dedicated or lowPriority.",
           "description": "Default is dedicated.",
+          "default": "dedicated",
           "enum": [
             "dedicated",
             "lowPriority"
@@ -1609,6 +1623,7 @@
       "type": "string",
       "title": "Specifies when compute nodes may be removed from the cluster, if the cluster size is decreasing.",
       "description": "Possible values are: requeue - Terminate running jobs and requeue them. The jobs will run again. Remove compute nodes as soon as jobs have been terminated. terminate - Terminate running jobs. The jobs will not run again. Remove compute nodes as soon as jobs have been terminated. jobcompletion - Allow currently running jobs to complete. Schedule no new jobs while waiting. Remove compute nodes when all jobs have completed. The default value is requeue.",
+      "default" : "requeue",
       "enum": [
         "requeue",
         "terminate",
@@ -1657,6 +1672,7 @@
           "type": "integer",
           "format": "int32",
           "title": "The desired number of compute nodes in the cluster.",
+          "default" : "0",
           "description": "Default is 0. If autoScaleSettings are not specified, then the cluster starts with this target."
         },
         "nodeDeallocationOption": {
@@ -1780,7 +1796,8 @@
         },
         "runElevated": {
           "type": "boolean",
-          "title": "Specifies whether to run the setup task in elevated mode. The default value is false."
+          "title": "Specifies whether to run the setup task in elevated mode. The default value is false.",
+          "default" : "false"
         }
       },
       "required": [ "commandLine" ],
@@ -1838,6 +1855,7 @@
           "type": "string",
           "title": "dedicated or low-Priority.",
           "description": "Default is dedicated.",
+          "default" : "dedicated",
           "enum": [
             "dedicated",
             "lowPriority"
@@ -1979,7 +1997,8 @@
           "type": "integer",
           "format": "int32",
           "title": "Priority associated with the job.",
-          "description": "Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0."
+          "description": "Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0.",
+          "default": "0"
         },
         "cluster": {
           "title": "Specifies the Id of the cluster on which this job will run.",
@@ -2048,13 +2067,15 @@
               "type": "string",
               "format": "duration",
               "title": "Max time the job can run.",
-              "description": "Default Value = 1 week."
+              "description": "Default Value = 1 week.",
+              "default" : "7.00:00:00"
             },
             "maxTaskRetryCount": {
               "type": "integer",
               "format": "int32",
               "title": "Max number of times job can be retried.",
-              "description": "Default Value = 0."
+              "description": "Default Value = 0.",
+              "default" : "0"
             }
           },
           "description": "Constraints associated with the Job."
@@ -2099,7 +2120,8 @@
           "type": "integer",
           "format": "int32",
           "title": "Priority associated with the job.",
-          "description": "Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0."
+          "description": "Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0.",
+          "default" : "0"
         },
         "cluster": {
           "title": "Specifies the Id of the cluster on which this job will run.",
@@ -2173,13 +2195,15 @@
               "type": "string",
               "format": "duration",
               "title": "Max time the job can run.",
-              "description": "Default Value = 1 week."
+              "description": "Default Value = 1 week.",
+              "default" : "7.00:00:00"
             },
             "maxTaskRetryCount": {
               "type": "integer",
               "format": "int32",
               "title": "Max number of times job can be retried.",
-              "description": "Default Value = 0."
+              "description": "Default Value = 0.",
+              "default" : "0"
             }
           },
           "description": "Constraints associated with the Job."
@@ -2598,6 +2622,7 @@
           "type": "string",
           "title": "An enumeration, which specifies the type of job output directory.",
           "description": "Default value is Custom. The possible values are Model, Logs, Summary, and Custom. Users can use multiple enums for a single directory. Eg. outPutType='Model,Logs, Summary'",
+          "default" : "custom",
           "enum": [
             "model",
             "logs",
@@ -2612,7 +2637,8 @@
         "createNew": {
           "type": "boolean",
           "title": "True to create new directory.",
-          "description": "Default is true. If false, then the directory is not created and can be any directory path that the user specifies."
+          "description": "Default is true. If false, then the directory is not created and can be any directory path that the user specifies.",
+          "default" : "true"
         }
       },
       "description": "Output directory for the job.",
@@ -2662,12 +2688,14 @@
         "fileMode": {
           "type": "string",
           "title": "Specifies the file Mode.",
-          "description": "Default value is 0777. Valid only if OS is linux."
+          "description": "Default value is 0777. Valid only if OS is linux.",
+          "default" : "0777"
         },
         "directoryMode": {
           "type": "string",
           "title": "Specifies the directory Mode.",
-          "description": "Default value is 0777. Valid only if OS is linux."
+          "description": "Default value is 0777. Valid only if OS is linux.",
+          "default" : "0777"
         }
       },
       "description": "Details of the Azure File Share to mount on the cluster.",
