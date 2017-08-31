@@ -138,14 +138,16 @@
             "$ref": "./examples/QuotaStatusGet.json"
           }
         }
-      }      
+      }
     }
   },
   "definitions": {
     "ApplicationInsightsComponentBillingFeatures": {
       "type": "object",
+      "description": "An Application Insights component billing features",
       "properties": {
         "DataVolumeCap": {
+          "description": "An Application Insights component daily data volumne cap",
           "$ref": "#/definitions/ApplicationInsightsComponentDataVolumeCap"
         },
         "CurrentBillingFeatures": {
@@ -159,6 +161,7 @@
     },
     "ApplicationInsightsComponentDataVolumeCap": {
       "type": "object",
+      "description": "An Application Insights component daily data volumne cap",
       "properties": {
         "Cap": {
           "type": "number",
@@ -190,6 +193,7 @@
     },
     "ApplicationInsightsComponentQuotaStatus": {
       "type": "object",
+      "description": "An Application Insights component daily data volume cap status",
       "properties": {
         "AppId": {
           "type": "string",
@@ -207,7 +211,7 @@
           "description": "Date and time when the daily data volume cap will be reset, and data ingestion will resume."
         }
       }
-    }        
+    }
   },
   "parameters": {
     "SubscriptionIdParameter": {

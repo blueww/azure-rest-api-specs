@@ -29,8 +29,32 @@ title: ApplicationInsightsManagementClient
 description: Composite Swagger for Application Insights Management Client
 openapi-type: arm
 tag: package-2015-05
+azure-validator: true
 ```
 
+## Suppression
+
+``` yaml
+directive:
+  - suppress: DefinitionsPropertiesNamesCamelCase
+    reason: those api was existing there from 2015, it would be breaking change to change the name
+  - suppress: EnumInsteadOfBoolean
+    reason: those api was existing there from 2015, it would be breaking change to change to enumeration
+  - suppress: PutInOperationName
+    reason: We are only doing update for those API    
+  - suppress: PutRequestResponseScheme
+    reason: this api was existing there from 2015, it would be a breaking change to change the request
+  - suppress: XmsResourceInPutResponse
+    reason: this api was existing there from 2015, it would be a breaking change to chagne response.
+  - suppress: RequiredPropertiesMissingInResourceModel
+    reason: this api was existing there from 2015, it would be a breaking change to chagne response.    
+  - suppress: BodyTopLevelProperties
+    reason: this api was existing there from 2015, it would be a breaking change to chagne response.        
+  - suppress: ListInOperationName
+    reason: the return value is just an object, not an array
+  - suppress: TrackedResourceListByImmediateParent
+    reason: there is a list api existing from the parent
+```
 
 ### Tag: package-2015-05
 

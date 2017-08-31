@@ -122,6 +122,11 @@
           "204": {
             "description": "The specified component does not exist."
           }
+        },
+        "x-ms-examples": {
+          "webTestDelete": {
+            "$ref": "./examples/ComponentsDelete.json"
+          }
         }
       },
       "get": {
@@ -294,6 +299,7 @@
         },
         "properties": {
           "x-ms-client-flatten": true,
+          "description": "Properties that define an Application Insights component resource.",
           "$ref": "#/definitions/ApplicationInsightsComponentProperties"
         }
       },
@@ -332,7 +338,10 @@
             "name": "ApplicationType",
             "modelAsString": true
           },
-          "x-ms-mutability": ["create", "read"]
+          "x-ms-mutability": [
+            "create",
+            "read"
+          ]
         },
         "Flow_Type": {
           "type": "string",
