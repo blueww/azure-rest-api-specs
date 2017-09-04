@@ -11,6 +11,7 @@
             "state": "Enabled",
             "emailAccountAdmins": "true",
             "emailAddresses": ["test@microsoft.com","user@microsoft.com"],
+            "disabledAlerts": ["Sql_Injection","Usage_Anomaly"],
             "retentionDays": 6,
             "storageAccountAccessKey": "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD==",
             "storageEndpoint": "https://mystorage.blob.core.windows.net"
