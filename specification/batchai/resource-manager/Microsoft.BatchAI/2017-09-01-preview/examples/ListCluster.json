@@ -1,0 +1,69 @@
+{
+  "parameters": {
+    "subscriptionId": "SUBSCRIPTION_ID",
+    "api-version": "2017-09-01-preview"
+  },
+
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/clusters/demo_cluster",
+            "name": "demo_cluster",
+            "type": "Microsoft.BatchAI/Cluster",
+            "location": "southcentralus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "allocationState": "steady",
+              "creationTime": "2017-07-19T15:50:50.7612386Z",
+              "lastModified": "2017-07-19T15:50:50.762741Z",
+              "provisioningStateTransitionTime": "2017-07-19T15:50:50.7617131Z",
+              "allocationStateTransitionTime": "2017-07-19T15:55:50.7617131Z",
+              "vmSize": "STANDARD_NC6",
+              "scaleSettings" : {
+                "manual" : {
+                  "targetNumberOfNodes": 2,
+                  "nodeDeallocationOption": "requeue"
+                }
+              },
+              "currentNumberOfNodes": 2,
+              "nodeStateCounts": {
+                "runningNodeCount": 0,
+                "idleNodeCount": 2,
+                "unusableNodeCount": 0,
+                "preparingNodeCount": 0
+              },
+              "vmPriority": "Dedicated",
+              "virtualMachineConfiguration": {
+                "imageReference": {
+                  "publisher": "Canonical",
+                  "offer": "UbuntuServer",
+                  "sku": "16.04-LTS",
+                  "version": "latest"
+                }
+              },
+              "userAccountSettings": {
+                "adminUserName": "DemoUser"
+              },
+              "nodeSetup": {
+                "mountVolumes": {
+                  "azureFiles": [
+                    {
+                      "accountName": "ACCOUNT_NAME",
+                      "azureFileUrl": "https://ACCOUNT_NAME.file.core.windows.net/SHARE_NAME",
+                      "credentialsInfo": { },
+                      "relativeMountPath": "myazfileshare",
+                      "fileMode": "0777",
+                      "directoryMode": "0777"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
