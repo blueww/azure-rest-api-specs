@@ -4,7 +4,6 @@
     "subscriptionId" : "subid",
     "resourceGroupName" : "rg1",
     "loadBalancerName" : "lb",
-    "zones": [ "1" ],
     "parameters": {
       "properties": {
         "frontendIPConfigurations": [
@@ -106,7 +105,6 @@
         "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb",
         "type": "Microsoft.Network/loadBalancers",
         "location": "westus",
-        "zones": [ "1" ],
         "sku": {
             "name": "Basic"
         },
@@ -223,7 +221,6 @@
         "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb",
         "type": "Microsoft.Network/loadBalancers",
         "location": "westus",
-        "zones": [ "1" ],
         "sku": {
             "name": "Basic"
         },
