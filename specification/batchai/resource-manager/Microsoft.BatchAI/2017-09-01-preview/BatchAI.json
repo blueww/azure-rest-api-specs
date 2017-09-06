@@ -1679,7 +1679,7 @@
           "type": "integer",
           "format": "int32",
           "title": "The desired number of compute nodes in the cluster.",
-          "default": "0",
+          "default": 0,
           "description": "Default is 0. If autoScaleSettings are not specified, then the cluster starts with this target."
         },
         "nodeDeallocationOption": {
@@ -1817,7 +1817,7 @@
         "runElevated": {
           "type": "boolean",
           "title": "Specifies whether to run the setup task in elevated mode. The default value is false.",
-          "default": "false"
+          "default": false
         }
       },
       "required": [
@@ -2020,7 +2020,7 @@
           "format": "int32",
           "title": "Priority associated with the job.",
           "description": "Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0.",
-          "default": "0"
+          "default": 0
         },
         "cluster": {
           "title": "Specifies the Id of the cluster on which this job will run.",
@@ -2097,7 +2097,7 @@
               "format": "int32",
               "title": "Max number of times job can be retried.",
               "description": "Default Value = 0.",
-              "default": "0"
+              "default": 0
             }
           },
           "description": "Constraints associated with the Job."
@@ -2145,7 +2145,7 @@
           "format": "int32",
           "title": "Priority associated with the job.",
           "description": "Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0.",
-          "default": "0"
+          "default": 0
         },
         "cluster": {
           "title": "Specifies the Id of the cluster on which this job will run.",
@@ -2227,7 +2227,7 @@
               "format": "int32",
               "title": "Max number of times job can be retried.",
               "description": "Default Value = 0.",
-              "default": "0"
+              "default": 0
             }
           },
           "description": "Constraints associated with the Job."
@@ -2687,7 +2687,7 @@
           "type": "boolean",
           "title": "True to create new directory.",
           "description": "Default is true. If false, then the directory is not created and can be any directory path that the user specifies.",
-          "default": "true"
+          "default": true
         }
       },
       "description": "Output directory for the job.",
