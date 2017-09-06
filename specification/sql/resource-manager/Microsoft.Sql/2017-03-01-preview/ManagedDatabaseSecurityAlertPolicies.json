@@ -140,9 +140,6 @@
               "$ref": "#/definitions/ManagedDatabaseSecurityAlertPolicy"
             }
           },
-          "default": {
-            "description": "*** Error Responses: ***"
-          },
           "201": {
             "description": "Successfully created the managed database security alert policy.",
             "schema": {
