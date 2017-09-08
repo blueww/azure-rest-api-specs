@@ -2066,6 +2066,7 @@
         },
         "jobPreparation": {
           "title": "Specifies the actions to be performed before tool kit is launched.",
+          "description" : "The specified actions will run on all the nodes that are part of the job",
           "$ref": "#/definitions/JobPreparation"
         },
         "stdOutErrPathPrefix": {
@@ -2200,7 +2201,7 @@
         },
         "jobPreparation": {
           "title": "Specifies the actions to be performed before tool kit is launched.",
-          "decription" : "The specified actions will run on all the nodes that are part of the job",
+          "description" : "The specified actions will run on all the nodes that are part of the job",
           "$ref": "#/definitions/JobPreparation"
         },
         "stdOutErrPathPrefix": {
