@@ -1507,18 +1507,18 @@
             "modelAsString": false
           }
         },
-        "status": {
+        "statuses": {
           "type": "array",
           "readOnly": true,
           "items": {
-            "$ref": "#/definitions/Status"
+            "$ref": "#/definitions/FileServerStatus"
           },
           "title": "Captures file server status."
         }
       },
       "description": "File server specific properties."
     },
-    "Status": {
+    "FileServerStatus": {
       "properties": {
         "code": {
           "type": "string",
@@ -1551,7 +1551,7 @@
           "title": "Detailed message about the status."
         }
       },
-      "description": "File server specific properties."
+      "description": "Status of the file server."
     },
     "FileServer": {
       "properties": {
@@ -1665,6 +1665,12 @@
           "type": "integer",
           "format": "int32",
           "title": "Specifies the maximum number of compute nodes the cluster can have."
+        },
+        "initialNumberOfNodes": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Specifies the number of compute nodes to allocate on cluster creation. Note that this value is used only during cluster creation.",
+          "default" : 0
         }
       },
       "required": [
@@ -1782,14 +1788,6 @@
     },
     "NodeSetup": {
       "properties": {
-        "containerSettings": {
-          "title": "Collection of container settings.",
-          "description": "Settings for the containers to be downloaded for the cluster",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ContainerSettings"
-          }
-        },
         "setupTask": {
           "title": "Specifies a setup task which can be used to customize the compute nodes of the cluster.",
           "$ref": "#/definitions/SetupTask"
@@ -1818,10 +1816,15 @@
           "type": "boolean",
           "title": "Specifies whether to run the setup task in elevated mode. The default value is false.",
           "default": false
+        },
+        "stdOutErrPathPrefix": {
+          "type": "string",
+          "description": "The path where the Batch AI service will upload stdout and stderror of setup task."
         }
       },
       "required": [
-        "commandLine"
+        "commandLine",
+        "stdOutErrPathPrefix"
       ],
       "description": "Specifies a setup task which can be used to customize the compute nodes of the cluster."
     },
@@ -1961,7 +1964,7 @@
           "description": "This element contains all the errors encountered by various compute nodes during node setup.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CloudError"
+            "$ref": "#/definitions/BatchAIError"
           }
         },
         "currentNumberOfNodes": {
@@ -2049,6 +2052,10 @@
           "title": "Specifies the settings for Caffe job.",
           "$ref": "#/definitions/CaffeSettings"
         },
+        "caffe2Settings": {
+          "title": "Specifies the settings for Caffe2 job.",
+          "$ref": "#/definitions/Caffe2Settings"
+        },
         "chainerSettings": {
           "title": "Specifies the settings for Chainer job.",
           "$ref": "#/definitions/ChainerSettings"
@@ -2057,9 +2064,14 @@
           "title": "Specifies the settings for custom tool kit job.",
           "$ref": "#/definitions/CustomToolkitSettings"
         },
+        "jobPreparation": {
+          "title": "Specifies the actions to be performed before tool kit is launched.",
+          "decription" : "The specified actions will run on all the nodes that are part of the job",
+          "$ref": "#/definitions/JobPreparation"
+        },
         "stdOutErrPathPrefix": {
           "type": "string",
-          "description": "The path where the Batch AI service will upload job specific capture of stdout and stderror as stdout.txt and stderr.txt"
+          "description": "The path where the Batch AI service will upload stdout and stderror of the job."
         },
         "inputDirectories": {
           "type": "array",
@@ -2078,7 +2090,7 @@
         "environmentVariables": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/EnvironmentVariables"
+            "$ref": "#/definitions/EnvironmentSetting"
           },
           "title": "Additional environment variables to set on the job.",
           "description": "Batch AI service sets the following environment variables for all jobs: AZ_LEARNING_INPUT_id, AZ_LEARNING_OUTPUT_id, AZ_LEARNING_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following additional environment variables are set by the Batch AI Service: AZ_LEARNING_PS_HOSTS, AZ_LEARNING_WORKER_HOSTS"
@@ -2164,7 +2176,7 @@
         },
         "toolType": {
           "title": "The toolkit type of this job.",
-          "description": "Possible values are: cntk, tensorflow, caffe, chainer, custom.",
+          "description": "Possible values are: cntk, tensorflow, caffe, caffe2, chainer, custom.",
           "$ref": "#/definitions/ToolType"
         },
         "cntkSettings": {
@@ -2187,9 +2199,14 @@
           "title": "Specifies the settings for custom tool kit job.",
           "$ref": "#/definitions/CustomToolkitSettings"
         },
+        "jobPreparation": {
+          "title": "Specifies the actions to be performed before tool kit is launched.",
+          "decription" : "The specified actions will run on all the nodes that are part of the job",
+          "$ref": "#/definitions/JobPreparation"
+        },
         "stdOutErrPathPrefix": {
           "type": "string",
-          "description": "The path where the Batch AI service will upload job specific capture of stdout and stderror as stdout.txt and stderr.txt"
+          "description": "The path where the Batch AI service will upload stdout and stderror of the job."
         },
         "inputDirectories": {
           "type": "array",
@@ -2208,7 +2225,7 @@
         "environmentVariables": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/EnvironmentVariables"
+            "$ref": "#/definitions/EnvironmentSetting"
           },
           "title": "Additional environment variables to be passed to the job.",
           "description": "Batch AI services sends the following environment variables for all jobs: AZ_LEARNING_INPUT_id, AZ_LEARNING_OUTPUT_id, AZ_LEARNING_NUM_GPUS_PER_NODE, For distributed TensorFlow jobs, following additional environment variables are set by the Batch AI Service: AZ_LEARNING_PS_HOSTS, AZ_LEARNING_WORKER_HOSTS"
@@ -2305,10 +2322,12 @@
               "title": "The exit code of the job.",
               "description": "This property is only returned if the job is in completed state."
             },
-            "failureInfo": {
-              "$ref": "#/definitions/CloudError",
-              "title": "Details of any error encountered by the service in starting the job.",
-              "description": "This property is not set if there was no error starting the job."
+            "errors": {
+              "title": "Contains details of various errors encountered by the service during job execution",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BatchAIError"
+              }
             },
             "retryCount": {
               "type": "integer",
@@ -2512,6 +2531,7 @@
         "cntk",
         "tensorflow",
         "caffe",
+        "caffe2",
         "chainer",
         "custom"
       ],
@@ -2572,13 +2592,9 @@
           "type": "string",
           "title": "URL for image repository."
         },
-        "images": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "List of images to downlooad from the repository.",
-          "description": "The name of the image in image repository."
+        "image": {
+          "type": "string",
+          "title": "The name of the image in image repository."
         },
         "credentials": {
           "title": "Information to access the private Docker repository.",
@@ -2587,7 +2603,7 @@
       },
       "description": "Details of the container image such as name, URL and credentials.",
       "required": [
-        "images"
+        "image"
       ]
     },
     "PrivateRegistryCredentials": {
@@ -2617,14 +2633,6 @@
         "imageSourceRegistry": {
           "title": "Registry to download the container from.",
           "$ref": "#/definitions/ImageSourceRegistry"
-        },
-        "localDataVolumes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LocalDataVolume"
-          },
-          "title": "Data volumes to be mapped from Host to container.",
-          "description": "This is for power users and should be used only if the auto-mounts that the service provides are not enough. By default, the service mounts the following into the container: All mounted shares on the Cluster compute node (e.g. Azure File share, NFS etc), the shared directory created on the cluster compute node and Job level Temp directory. For more details on the various auto created directories on the Cluster compute node and environment variables please look at the Put Cluster API"
         }
       },
       "description": "Settings for the container to be downloaded.",
@@ -2696,18 +2704,11 @@
         "pathPrefix"
       ]
     },
-    "EnvironmentVariables": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/EnvironmentSetting"
-      },
-      "description": "A list of environment variables."
-    },
     "AzureStorageCredentialsInfo": {
       "properties": {
         "accountKey": {
           "type": "string",
-          "title": "Storage account key to login in Azure File.",
+          "title": "Storage account key.",
           "description": "One of accountKey or accountKeySecretUrl must be specified."
         },
         "accountKeySecretUrl": {
@@ -2754,6 +2755,34 @@
       "required": [
         "accountName",
         "azureFileUrl",
+        "credentialsInfo",
+        "relativeMountPath"
+      ]
+    },
+    "AzureBlobFileSystemReference": {
+      "properties": {
+        "accountName": {
+          "type": "string",
+          "title": "Name of the storage account."
+        },
+        "credentialsInfo": {
+          "title": "Information of the Azure Blob Storage account credentials.",
+          "$ref": "#/definitions/AzureStorageCredentialsInfo"
+        },
+        "relativeMountPath": {
+          "type": "string",
+          "title": "Specifies the relative path on the compute node where the Azure Blob file system will be mounted.",
+          "description": "Note that all blob file systems will be mounted under $AZ_LEARNING_MOUNT_ROOT location."
+        },
+        "mountOptions": {
+          "type": "string",
+          "title": "Specifies the various mount options that can be used to configure Blob file system."
+        }
+      },
+      "description": "Details of the Azure Blob Storage account to mount on the cluster.",
+      "required": [
+        "accountName",
+        "credentialsInfo",
         "relativeMountPath"
       ]
     },
@@ -2810,21 +2839,29 @@
             "$ref": "#/definitions/AzureFileShareReference"
           },
           "title": "Azure File Share setup configuration.",
-          "description": "Azure File will be mounted in the container."
+          "description": "Azure File will be mounted to the cluster node."
+        },
+        "azureBlobFileSystems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AzureBlobFileSystemReference"
+          },
+          "title": "Azure Blob FileSystem setup configuration.",
+          "description": "Azure Blob file system will be mounted to the cluster node."
         },
         "fileServers": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FileServerReference"
           },
-          "title": "References to a list of file servers that are mounted in the container."
+          "title": "References to a list of file servers that are mounted to the cluster node."
         },
         "unmanagedFileSystems": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/UnmanagedFileSystemReference"
           },
-          "title": "References to a list of file servers that are mounted in the container."
+          "title": "References to a list of file servers that are mounted to the cluster node."
         }
       },
       "description": "Details of volumes to mount on the cluster."
@@ -2846,6 +2883,11 @@
           "title": "The path and file name of the python script to execute the job.",
           "description": "This property can be specified only if the languageType is 'Python'."
         },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter.",
+          "description": "This property can be specified only if the languageType is 'Python'."
+        },
         "commandLineArgs": {
           "type": "string",
           "title": "Command line arguments that needs to be passed to the python script or CNTK.exe."
@@ -2863,7 +2905,18 @@
       "properties": {
         "configFilePath": {
           "type": "string",
-          "title": "Specifies the path of the config file."
+          "title": "Specifies the path of the config file.",
+          "description": "This property cannot be specified if pythonScriptFilePath is specified."
+        },
+        "pythonScriptFilePath": {
+          "type": "string",
+          "title": "The path and file name of the python script to execute the job.",
+          "description": "This property cannot be specified if configFilePath is specified."
+        },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter.",
+          "description": "This property can be specified only if the pythonScriptFilePath is specified."
         },
         "commandLineArgs": {
           "type": "string",
@@ -2876,9 +2929,26 @@
           "description": "The default value for this property is equal to numberOfNodes property"
         }
       },
-      "description": "Specifies the settings for Caffe job.",
+      "description": "Specifies the settings for Caffe job."
+    },
+    "Caffe2Settings": {
+      "properties": {
+        "pythonScriptFilePath": {
+          "type": "string",
+          "title": "The path and file name of the python script to execute the job."
+        },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter."
+        },
+        "commandLineArgs": {
+          "type": "string",
+          "title": "Command line arguments that needs to be passed to the python script"
+        }
+      },
+      "description": "Specifies the settings for Caffe2 job.",
       "required": [
-        "configFilePath"
+        "pythonScriptFilePath"
       ]
     },
     "ChainerSettings": {
@@ -2886,6 +2956,10 @@
         "pythonScriptFilePath": {
           "type": "string",
           "title": "The path and file name of the python script to execute the job."
+        },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter."
         },
         "commandLineArgs": {
           "type": "string",
@@ -2912,11 +2986,28 @@
       },
       "description": "Specifies the settings for a custom tool kit job."
     },
+    "JobPreparation": {
+      "properties": {
+        "commandLine": {
+          "type": "string",
+          "title": "The command line to execute.",
+          "description" : "If containerSettings is specified on the job, this commandLine will be executed in the same container as job. Otherwise it will be executed on the node."
+        }
+      },
+      "description": "Specifies the settings for job preparation.",
+      "required": [
+        "commandLine"
+      ]
+    },
     "TensorFlowSettings": {
       "properties": {
         "pythonScriptFilePath": {
           "type": "string",
           "title": "The path and file name of the python script to execute the job."
+        },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter."
         },
         "masterCommandLineArgs": {
           "type": "string",
@@ -2980,6 +3071,26 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CloudErrorBody"
+          },
+          "description": "A list of additional details about the error."
+        }
+      },
+      "description": "An error response from the Batch AI service."
+    },
+    "BatchAIError": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "An identifier for the error. Codes are invariant and are intended to be consumed programmatically."
+        },
+        "message": {
+          "type": "string",
+          "description": "A message describing the error, intended to be suitable for display in a user interface."
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NameValuePair"
           },
           "description": "A list of additional details about the error."
         }
