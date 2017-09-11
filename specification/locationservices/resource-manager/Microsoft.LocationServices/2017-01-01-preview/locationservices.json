@@ -220,7 +220,7 @@
         },
         "x-ms-pageable": {
           "nextLinkName": null,
-          "value": "value"
+          "itemName": "value"
         },
         "parameters": [
           {
@@ -258,7 +258,7 @@
         },
         "x-ms-pageable": {
           "nextLinkName": null,
-          "value": "value"
+          "itemName": "value"
         },
         "parameters": [
           {
@@ -427,6 +427,10 @@
         "operationId": "Accounts_ListOperations",
         "x-ms-examples": {
           "GetOperations": { "$ref": "./examples/GetOperations.json" }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null,
+          "itemName": "value"
         },
         "parameters": [
           {
