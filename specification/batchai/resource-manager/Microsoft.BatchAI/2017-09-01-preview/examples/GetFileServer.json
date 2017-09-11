@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "resourceGroupName": "demo_resource_group",
+    "fileServerName": "demo_nfs",
+    "subscriptionId":  "SUBSCRIPTION_ID",
+    "api-version": "2017-09-01-preview"
+  },
+
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/fileservers/demo_nfs",
+        "name": "demo_nfs",
+        "type": "Microsoft.BatchAI/FileServer",
+        "location": "southcentralus",
+        "properties": {
+          "provisioningState": "Updating",
+          "creationTime": "2017-07-19T17:20:21.7767665Z",
+          "provisioningStateTransitionTime": "2017-07-19T17:20:27.3989676Z",
+          "vmSize": "STANDARD_A1",
+          "sshConfiguration": {
+            "userAccountSettings": {
+              "adminUserName": "demoUser"
+            }
+          },
+          "dataDisks": {
+            "fileSystemType": "BRTFS",
+            "raidLevel": "NoRaid",
+            "diskSizeInGB": 10,
+            "cachingType": "None",
+            "numberOfDisks": 2,
+            "storageAccountType": "Standard_LRS"
+          },
+          "mountSettings": {
+            "mountPoint": "/mnt/data",
+            "fileServerType": "NFS"
+          }
+        }
+      }
+    }
+  }
+}

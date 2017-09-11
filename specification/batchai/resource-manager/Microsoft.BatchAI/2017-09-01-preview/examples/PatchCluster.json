@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "resourceGroupName": "demo_resource_group",
+    "clusterName": "demo_cluster",
+    "subscriptionId": "SUBSCRIPTION_ID",
+    "api-version": "2017-09-01-preview",
+    "parameters": {
+      "scaleSettings" : {
+        "manual" : {
+          "targetNumberOfNodes": 2
+        }
+      }
+    }
+  },
+
+  "responses": {
+    "202": {
+      "headers": {
+        "Location": "https://BATCHAI_ENDPOINT/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/clusters/demo_cluster/operationResults/OPERATION_RESULT_ID?api-version=2017-09-01-preview",
+        "Retry-After": 15
+      }
+    }
+  }
+}
