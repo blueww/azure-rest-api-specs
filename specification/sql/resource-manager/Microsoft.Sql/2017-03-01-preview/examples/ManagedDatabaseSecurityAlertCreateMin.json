@@ -9,6 +9,7 @@
     "databaseSecurityAlertPolicyResource": {
       "properties": {
         "state": "Enabled",
+		"emailAccountAdmins": "true"
       }
     }
   },
