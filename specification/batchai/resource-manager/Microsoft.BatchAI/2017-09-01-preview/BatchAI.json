@@ -1291,7 +1291,7 @@
             "modelAsString": false
           }
         },
-        "numberOfDisks": {
+        "diskCount": {
           "type": "integer",
           "format": "int32",
           "readOnly": false,
@@ -1318,7 +1318,7 @@
       },
       "required": [
         "diskSizeInGB",
-        "numberOfDisks",
+        "diskCount",
         "storageAccountType"
       ],
       "description": "Settings for the data disk which would be created for the file server."
@@ -1386,11 +1386,11 @@
           "type": "string",
           "title": "Path where the NFS is mounted on the Server."
         },
-        "fileServerPublicIp": {
+        "fileServerPublicIP": {
           "type": "string",
           "title": "Public IP which can be used to access the file Server VM."
         },
-        "fileServerInternalIp": {
+        "fileServerInternalIP": {
           "type": "string",
           "title": "Internal subnet IP which can be used to access the file Server from within the subnet."
         },
@@ -1411,7 +1411,7 @@
     },
     "SshConfiguration": {
       "properties": {
-        "publicIpsToAllow": {
+        "publicIPsToAllow": {
           "type": "array",
           "items": {
             "type": "string"
@@ -1656,17 +1656,17 @@
     },
     "AutoScaleSettings": {
       "properties": {
-        "minimumNumberOfNodes": {
+        "minimumNodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Specifies the minimum number of compute nodes the cluster can have."
         },
-        "maximumNumberOfNodes": {
+        "maximumNodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Specifies the maximum number of compute nodes the cluster can have."
         },
-        "initialNumberOfNodes": {
+        "initialNodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Specifies the number of compute nodes to allocate on cluster creation. Note that this value is used only during cluster creation.",
@@ -1674,14 +1674,14 @@
         }
       },
       "required": [
-        "minimumNumberOfNodes",
-        "maximumNumberOfNodes"
+        "minimumNodeCount",
+        "maximumNodeCount"
       ],
       "description": "Specifies the autoscale settings for the cluster."
     },
     "ManualScaleSettings": {
       "properties": {
-        "targetNumberOfNodes": {
+        "targetNodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "The desired number of compute nodes in the cluster.",
@@ -1696,7 +1696,7 @@
         }
       },
       "required": [
-        "targetNumberOfNodes"
+        "targetNodeCount"
       ],
       "description": "Manual scale settings for the cluster."
     },
@@ -1967,7 +1967,7 @@
             "$ref": "#/definitions/BatchAIError"
           }
         },
-        "currentNumberOfNodes": {
+        "currentNodeCount": {
           "type": "integer",
           "readOnly": true,
           "format": "int32",
@@ -2029,7 +2029,7 @@
           "title": "Specifies the Id of the cluster on which this job will run.",
           "$ref": "#/definitions/ResourceId"
         },
-        "numberOfNodes": {
+        "nodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of compute nodes to run the job on.",
@@ -2041,7 +2041,7 @@
           "$ref": "#/definitions/ContainerSettings"
         },
         "cntkSettings": {
-          "title": "Specifies the settings for CNTK job.",
+          "title": "Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job.",
           "$ref": "#/definitions/CNTKsettings"
         },
         "tensorFlowSettings": {
@@ -2117,7 +2117,7 @@
       },
       "required": [
         "cluster",
-        "numberOfNodes",
+        "nodeCount",
         "stdOutErrPathPrefix"
       ],
       "description": "The properties of a Batch AI job."
@@ -2163,7 +2163,7 @@
           "title": "Specifies the Id of the cluster on which this job will run.",
           "$ref": "#/definitions/ResourceId"
         },
-        "numberOfNodes": {
+        "nodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of compute nodes to run the job on.",
@@ -2180,7 +2180,7 @@
           "$ref": "#/definitions/ToolType"
         },
         "cntkSettings": {
-          "title": "Specifies the settings for CNTK job.",
+          "title": "Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job.",
           "$ref": "#/definitions/CNTKsettings"
         },
         "tensorFlowSettings": {
@@ -2870,7 +2870,7 @@
       "properties": {
         "languageType": {
           "type": "string",
-          "title": "Specifies the language type to use for launching CNTK job.",
+          "title": "Specifies the language type to use for launching CNTK (aka Microsoft Cognitive Toolkit) job.",
           "description": "Valid values are 'BrainScript' or 'Python'."
         },
         "configFilePath": {
@@ -2892,14 +2892,14 @@
           "type": "string",
           "title": "Command line arguments that needs to be passed to the python script or CNTK.exe."
         },
-        "numberOfProcesses": {
+        "processCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfNodes property"
+          "description": "The default value for this property is equal to nodeCount property"
         }
       },
-      "description": "Specifies the settings for CNTK job."
+      "description": "Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job."
     },
     "CaffeSettings": {
       "properties": {
@@ -2922,11 +2922,11 @@
           "type": "string",
           "title": "Command line arguments that needs to be passed to the Caffe job."
         },
-        "numberOfProcesses": {
+        "processCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfNodes property"
+          "description": "The default value for this property is equal to nodeCount property"
         }
       },
       "description": "Specifies the settings for Caffe job."
@@ -2965,11 +2965,11 @@
           "type": "string",
           "title": "Command line arguments that needs to be passed to the python script"
         },
-        "numberOfProcesses": {
+        "processCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfNodes property"
+          "description": "The default value for this property is equal to nodeCount property"
         }
       },
       "description": "Specifies the settings for Chainer job.",
@@ -3023,17 +3023,17 @@
           "title": "Specifies the command line arguments for the parameter server task.",
           "description": "This property is optional for single machine training."
         },
-        "numberOfWorkers": {
+        "workerCount": {
           "type": "integer",
           "format": "int32",
           "title": "The number of worker tasks.",
-          "description": "If specified, the value must be less than or equal to (numberOfNodes * numberOfGPUs per VM). If not specified, the default value is equal to numberOfNodes. This property can be specified only for distributed TensorFlow training"
+          "description": "If specified, the value must be less than or equal to (nodeCount * numberOfGPUs per VM). If not specified, the default value is equal to nodeCount. This property can be specified only for distributed TensorFlow training"
         },
-        "numberOfParameterServers": {
+        "parameterServerCount": {
           "type": "integer",
           "format": "int32",
           "title": "The number of parmeter server tasks.",
-          "description": "If specified, the value must be less than or equal to numberOfNodes. If not specified, the default value is equal to 1 for distributed TensorFlow training (This property is not applicable for single machine training). This property can be specified only for distributed TensorFlow training."
+          "description": "If specified, the value must be less than or equal to nodeCount. If not specified, the default value is equal to 1 for distributed TensorFlow training (This property is not applicable for single machine training). This property can be specified only for distributed TensorFlow training."
         }
       },
       "description": "Specifies the settings for TensorFlow job.",
