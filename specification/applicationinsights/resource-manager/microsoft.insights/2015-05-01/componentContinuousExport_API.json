@@ -110,7 +110,7 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/exportconfiguration/{exportId}": {
       "delete": {
         "description": "Delete a Continuous Export configuration of an Application Insights component.",
-        "operationId": "ExportConfiguration_Delete",
+        "operationId": "ExportConfigurations_Delete",
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -144,7 +144,7 @@
       },
       "get": {
         "description": "Get the Continuous Export configuration for this export id.",
-        "operationId": "ExportConfiguration_Get",
+        "operationId": "ExportConfigurations_Get",
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -178,7 +178,7 @@
       },
       "put": {
         "description": "Update the Continuous Export configuration for this export id.",
-        "operationId": "ExportConfiguration_Update",
+        "operationId": "ExportConfigurations_Update",
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
