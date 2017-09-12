@@ -218,6 +218,10 @@
         "x-ms-examples": {
           "ListAccountsByResourceGroup": { "$ref": "./examples/ListAccountsByResourceGroup.json" }
         },
+        "x-ms-pageable": {
+          "nextLinkName": null,
+          "itemName": "value"
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -251,6 +255,10 @@
         "operationId": "Accounts_ListBySubscription",
         "x-ms-examples": {
           "ListAccountsBySubscription": { "$ref": "./examples/ListAccountsBySubscription.json" }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null,
+          "itemName": "value"
         },
         "parameters": [
           {
@@ -419,6 +427,10 @@
         "operationId": "Accounts_ListOperations",
         "x-ms-examples": {
           "GetOperations": { "$ref": "./examples/GetOperations.json" }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null,
+          "itemName": "value"
         },
         "parameters": [
           {
@@ -633,35 +645,17 @@
       "properties": {
         "name": {
           "description": "The name of the SKU, in standard format (such as S0).",
-          "$ref": "#/definitions/SkuName"
+          "type": "string"
         },
         "tier": {
           "readOnly": true,
           "type": "string",
-          "description": "Gets the sku tier. This is based on the SKU name.",
-          "enum": [
-            "Standard"
-          ],
-          "x-ms-enum": {
-            "name": "SkuTier",
-            "modelAsString": true
-          }
+          "description": "Gets the sku tier. This is based on the SKU name."
         }
       },
       "required": [
         "name"
       ]
-    },
-    "SkuName": {
-      "type": "string",
-      "description": "The name of SKU.",
-      "enum": [
-        "S0"
-      ],
-      "x-ms-enum": {
-        "name": "SkuName",
-        "modelAsString": true
-      }
     },
     "LocationServicesAccountsMoveRequest": {
       "description": "The description of what resources to move between resource groups.",
