@@ -20,7 +20,14 @@
                     "description": "My Operationalization Cluster",
                     "createdOn": "2017-05-04T07:12:28.191Z",
                     "modifiedOn": "2017-05-04T07:12:28.191Z",
-                    "provisioningState": "Succeeded",
+                    "provisioningState": "Failed",
+                    "provisioningErrors": [
+                        {
+                            "code": "Timeout",
+                            "message": "Timeout waiting for deployment to start.",
+                            "statusCode": "408"
+                        }
+                    ],
                     "clusterType": "ACS",
                     "storageAccount": {
                         "resourceId": "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/mycluster123456"

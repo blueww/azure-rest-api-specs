@@ -587,6 +587,14 @@
           },
           "readOnly": true
         },
+        "provisioningErrors": {
+          "type": "array",
+          "description": "List of provisioning errors reported by the resource provider.",
+          "items": {
+            "$ref": "#/definitions/ErrorResponseWrapper"
+          },
+          "readOnly": true
+        },
         "clusterType": {
           "type": "string",
           "description": "The cluster type.",
