@@ -187,14 +187,14 @@
           }
         },
         "emailAddresses": {
-          "description": "Specifies an array of e-mail addresses to which the alert is sent.",
+          "description": "Specifies an array of e-mail addresses to which the alert is sent. If state is Enabled, then at least one of emailAccountAdmins or emailAddresses is required",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "emailAccountAdmins": {
-          "description": "Specifies that the alert is sent to the account administrators.",
+          "description": "Specifies that the alert is sent to the account administrators. If state is Enabled, then at least one of emailAccountAdmins or emailAddresses is required",
           "type": "boolean"
         },
         "storageEndpoint": {
