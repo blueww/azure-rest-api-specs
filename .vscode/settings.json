@@ -3,7 +3,7 @@
   "json.schemas": [
     {
       "fileMatch": [
-        "/**/swagger/*.json"
+        "/**/specification/*.json"
       ],
       "url": "https://raw.githubusercontent.com/Azure/autorest/master/schema/swagger-extensions.json"
     },
