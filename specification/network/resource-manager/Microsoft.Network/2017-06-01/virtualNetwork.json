@@ -440,8 +440,12 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-          "Create subnet": { "$ref": "./examples/SubnetCreate.json" },
-          "Create subnet with service endpoints": { "$ref": "./examples/SubnetCreateServiceEndpoint.json" }
+          "Create subnet": {
+            "$ref": "./examples/SubnetCreate.json"
+          },
+          "Create subnet with service endpoints": {
+            "$ref": "./examples/SubnetCreateServiceEndpoint.json"
+          }
         }
       }
     },
@@ -859,7 +863,7 @@
           "description": "The reference of the RouteTable resource."
         },
         "serviceEndpoints": {
-        "type": "array",
+          "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceEndpointPropertiesFormat"
           },

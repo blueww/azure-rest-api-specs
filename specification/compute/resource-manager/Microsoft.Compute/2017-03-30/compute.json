@@ -6591,7 +6591,7 @@
           "description": "The extensions information."
         },
         "vmHealth": {
-          "readOnly":  true,
+          "readOnly": true,
           "$ref": "#/definitions/VirtualMachineHealthStatus",
           "description": "The health status for the VM."
         },
