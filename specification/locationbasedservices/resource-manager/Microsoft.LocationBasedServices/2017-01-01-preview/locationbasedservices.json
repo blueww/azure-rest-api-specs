@@ -1,10 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Azure Location Services Resource Provider",
+    "title": "Azure Location Based Services Resource Provider",
     "description": "Resource Provider",
     "version": "2017-01-01-preview",
-    "x-ms-code-generation-settings": { "name": "Client" }
+    "x-ms-code-generation-settings": {
+      "name": "Client"
+    }
   },
   "host": "management.azure.com",
   "schemes": [
@@ -35,14 +37,14 @@
     }
   },
   "paths": {
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LocationServices/accounts/{accountName}":
-    {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LocationBasedServices/accounts/{accountName}": {
       "put": {
-        "description":
-          "Create or update a Location Based Services Account. A Location Based Services Account holds the keys which allow access to the Location Based Services REST APIs.",
+        "description": "Create or update a Location Based Services Account. A Location Based Services Account holds the keys which allow access to the Location Based Services REST APIs.",
         "operationId": "Accounts_CreateOrUpdate",
         "x-ms-examples": {
-          "CreateAccount": { "$ref": "./examples/CreateAccount.json" }
+          "CreateAccount": {
+            "$ref": "./examples/CreateAccount.json"
+          }
         },
         "parameters": [
           {
@@ -58,12 +60,12 @@
             "$ref": "#/parameters/AccountNameParameter"
           },
           {
-            "name": "locationServicesAccountCreateParameters",
+            "name": "LocationBasedServicesAccountCreateParameters",
             "in": "body",
             "description": "The new or updated parameters for the Location Based Services Account.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccountCreateParameters"
+              "$ref": "#/definitions/LocationBasedServicesAccountCreateParameters"
             }
           }
         ],
@@ -71,13 +73,13 @@
           "200": {
             "description": "The Account was successfully updated.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccount"
+              "$ref": "#/definitions/LocationBasedServicesAccount"
             }
           },
           "201": {
             "description": "The Account was successfully created.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccount"
+              "$ref": "#/definitions/LocationBasedServicesAccount"
             }
           },
           "default": {
@@ -89,11 +91,12 @@
         }
       },
       "patch": {
-        "description":
-          "Updates a Location Services Account. Only a subset of the parameters may be updated after creation, such as Sku and Tags.",
+        "description": "Updates a Location Based Services Account. Only a subset of the parameters may be updated after creation, such as Sku and Tags.",
         "operationId": "Accounts_Update",
         "x-ms-examples": {
-          "UpdateAccount": { "$ref": "./examples/UpdateAccount.json" }
+          "UpdateAccount": {
+            "$ref": "./examples/UpdateAccount.json"
+          }
         },
         "parameters": [
           {
@@ -109,12 +112,12 @@
             "$ref": "#/parameters/AccountNameParameter"
           },
           {
-            "name": "locationServicesAccountUpdateParameters",
+            "name": "LocationBasedServicesAccountUpdateParameters",
             "in": "body",
             "description": "The updated parameters for the Location Based Services Account.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccountUpdateParameters"
+              "$ref": "#/definitions/LocationBasedServicesAccountUpdateParameters"
             }
           }
         ],
@@ -122,7 +125,7 @@
           "200": {
             "description": "The Account was successfully updated.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccount"
+              "$ref": "#/definitions/LocationBasedServicesAccount"
             }
           },
           "404": {
@@ -137,10 +140,12 @@
         }
       },
       "delete": {
-        "description": "Delete a Location Services Account",
+        "description": "Delete a Location Based Services Account",
         "operationId": "Accounts_Delete",
         "x-ms-examples": {
-          "DeleteAccount": { "$ref": "./examples/DeleteAccount.json" }
+          "DeleteAccount": {
+            "$ref": "./examples/DeleteAccount.json"
+          }
         },
         "parameters": [
           {
@@ -175,7 +180,9 @@
         "description": "Get a Location Based Services Account",
         "operationId": "Accounts_Get",
         "x-ms-examples": {
-          "GetAccount": { "$ref": "./examples/GetAccount.json" }
+          "GetAccount": {
+            "$ref": "./examples/GetAccount.json"
+          }
         },
         "parameters": [
           {
@@ -195,7 +202,7 @@
           "200": {
             "description": "The request was successful.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccount"
+              "$ref": "#/definitions/LocationBasedServicesAccount"
             }
           },
           "404": {
@@ -210,13 +217,14 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LocationServices/accounts":
-    {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LocationBasedServices/accounts": {
       "get": {
         "description": "Get all Location Based Services Accounts in a Resource Group",
         "operationId": "Accounts_ListByResourceGroup",
         "x-ms-examples": {
-          "ListAccountsByResourceGroup": { "$ref": "./examples/ListAccountsByResourceGroup.json" }
+          "ListAccountsByResourceGroup": {
+            "$ref": "./examples/ListAccountsByResourceGroup.json"
+          }
         },
         "x-ms-pageable": {
           "nextLinkName": null,
@@ -237,7 +245,7 @@
           "200": {
             "description": "The request was successful.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccounts"
+              "$ref": "#/definitions/LocationBasedServicesAccounts"
             }
           },
           "default": {
@@ -249,12 +257,14 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.LocationServices/accounts": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.LocationBasedServices/accounts": {
       "get": {
         "description": "Get all Location Based Services Accounts in a Subscription",
         "operationId": "Accounts_ListBySubscription",
         "x-ms-examples": {
-          "ListAccountsBySubscription": { "$ref": "./examples/ListAccountsBySubscription.json" }
+          "ListAccountsBySubscription": {
+            "$ref": "./examples/ListAccountsBySubscription.json"
+          }
         },
         "x-ms-pageable": {
           "nextLinkName": null,
@@ -272,7 +282,7 @@
           "200": {
             "description": "The request was successful.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccounts"
+              "$ref": "#/definitions/LocationBasedServicesAccounts"
             }
           },
           "default": {
@@ -289,7 +299,9 @@
         "description": "Moves Location Based Services Accounts from one ResourceGroup (or Subscription) to another",
         "operationId": "Accounts_Move",
         "x-ms-examples": {
-          "MoveAccounts": { "$ref": "./examples/MoveAccounts.json" }
+          "MoveAccounts": {
+            "$ref": "./examples/MoveAccounts.json"
+          }
         },
         "parameters": [
           {
@@ -311,7 +323,7 @@
             "description": "The details of the Location Based Services Account move.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccountsMoveRequest"
+              "$ref": "#/definitions/LocationBasedServicesAccountsMoveRequest"
             }
           }
         ],
@@ -328,14 +340,14 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LocationServices/accounts/{accountName}/listKeys":
-    {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LocationBasedServices/accounts/{accountName}/listKeys": {
       "post": {
-        "description":
-          "Get the keys to use with the Location Based Services APIs. A key is used to authenticate and authorize access to the Location Based Services REST APIs. Only one key is needed at a time; two are given to provide seamless key regeneration.",
+        "description": "Get the keys to use with the Location Based Services APIs. A key is used to authenticate and authorize access to the Location Based Services REST APIs. Only one key is needed at a time; two are given to provide seamless key regeneration.",
         "operationId": "Accounts_ListKeys",
         "x-ms-examples": {
-          "ListKeys": { "$ref": "./examples/ListKeys.json" }
+          "ListKeys": {
+            "$ref": "./examples/ListKeys.json"
+          }
         },
         "parameters": [
           {
@@ -355,7 +367,7 @@
           "200": {
             "description": "The request was successful.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccountKeys"
+              "$ref": "#/definitions/LocationBasedServicesAccountKeys"
             }
           },
           "404": {
@@ -370,14 +382,14 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LocationServices/accounts/{accountName}/regenerateKey":
-    {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LocationBasedServices/accounts/{accountName}/regenerateKey": {
       "post": {
-        "description":
-          "Regenerate either the primary or secondary key for use with the Location Based Services APIs. The old key will stop working immediately.",
+        "description": "Regenerate either the primary or secondary key for use with the Location Based Services APIs. The old key will stop working immediately.",
         "operationId": "Accounts_RegenerateKeys",
         "x-ms-examples": {
-          "RegenerateKey": { "$ref": "./examples/RegenerateKey.json" }
+          "RegenerateKey": {
+            "$ref": "./examples/RegenerateKey.json"
+          }
         },
         "parameters": [
           {
@@ -398,7 +410,7 @@
             "required": true,
             "description": "Which key to regenerate:  primary or secondary.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesKeySpecification"
+              "$ref": "#/definitions/LocationBasedServicesKeySpecification"
             }
           }
         ],
@@ -406,7 +418,7 @@
           "200": {
             "description": "The request was successful.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesAccountKeys"
+              "$ref": "#/definitions/LocationBasedServicesAccountKeys"
             }
           },
           "404": {
@@ -421,12 +433,14 @@
         }
       }
     },
-    "/providers/Microsoft.LocationServices/operations": {
+    "/providers/Microsoft.LocationBasedServices/operations": {
       "get": {
-        "description": "List operations available for the Location Services Resource Provider",
+        "description": "List operations available for the Location Based Services Resource Provider",
         "operationId": "Accounts_ListOperations",
         "x-ms-examples": {
-          "GetOperations": { "$ref": "./examples/GetOperations.json" }
+          "GetOperations": {
+            "$ref": "./examples/GetOperations.json"
+          }
         },
         "x-ms-pageable": {
           "nextLinkName": null,
@@ -441,7 +455,7 @@
           "200": {
             "description": "The request was successful.",
             "schema": {
-              "$ref": "#/definitions/LocationServicesOperations"
+              "$ref": "#/definitions/LocationBasedServicesOperations"
             }
           },
           "default": {
@@ -460,8 +474,7 @@
       "in": "path",
       "required": true,
       "type": "string",
-      "description":
-        "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
     },
     "ApiVersionParameter": {
       "name": "api-version",
@@ -555,7 +568,7 @@
       },
       "x-ms-azure-resource": true
     },
-    "LocationServicesAccount": {
+    "LocationBasedServicesAccount": {
       "description": "An Azure resource which represents access to a suite of Location Based Services REST APIs.",
       "type": "object",
       "properties": {
@@ -584,7 +597,7 @@
         }
       ]
     },
-    "LocationServicesAccountCreateParameters": {
+    "LocationBasedServicesAccountCreateParameters": {
       "description": "Parameters used to create a new Location Based Services Account.",
       "type": "object",
       "properties": {
@@ -609,7 +622,7 @@
         "sku"
       ]
     },
-    "LocationServicesAccountUpdateParameters": {
+    "LocationBasedServicesAccountUpdateParameters": {
       "description": "Parameters used to update an existing Location Based Services Account.",
       "type": "object",
       "properties": {
@@ -626,7 +639,7 @@
         }
       }
     },
-    "LocationServicesAccounts": {
+    "LocationBasedServicesAccounts": {
       "description": "A list of Location Based Services Accounts.",
       "type": "object",
       "properties": {
@@ -635,7 +648,7 @@
           "type": "array",
           "readOnly": true,
           "items": {
-            "$ref": "#/definitions/LocationServicesAccount"
+            "$ref": "#/definitions/LocationBasedServicesAccount"
           }
         }
       }
@@ -657,7 +670,7 @@
         "name"
       ]
     },
-    "LocationServicesAccountsMoveRequest": {
+    "LocationBasedServicesAccountsMoveRequest": {
       "description": "The description of what resources to move between resource groups.",
       "type": "object",
       "required": [
@@ -678,7 +691,7 @@
         }
       }
     },
-    "LocationServicesKeySpecification": {
+    "LocationBasedServicesKeySpecification": {
       "description": "Whether the operation refers to the primary or secondary key.",
       "type": "object",
       "required": [
@@ -699,7 +712,7 @@
         }
       }
     },
-    "LocationServicesAccountKeys": {
+    "LocationBasedServicesAccountKeys": {
       "description": "The set of keys which can be used to access the Location Based Services REST APIs. Two keys are provided for key rotation without interruption.",
       "type": "object",
       "properties": {
@@ -720,7 +733,7 @@
         }
       }
     },
-    "LocationServicesOperations": {
+    "LocationBasedServicesOperations": {
       "description": "The set of operations available for Location Based Services.",
       "type": "object",
       "properties": {
@@ -743,7 +756,7 @@
                   "provider": {
                     "type": "string",
                     "readOnly": true,
-                    "description": "Service provider: Microsoft Location Services."
+                    "description": "Service provider: Microsoft Location Based Services."
                   },
                   "resource": {
                     "type": "string",

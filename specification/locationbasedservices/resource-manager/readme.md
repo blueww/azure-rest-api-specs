@@ -1,12 +1,12 @@
-# LocationServices
+# LocationBasedServices
     
 > see https://aka.ms/autorest
 
-This is the AutoRest configuration file for LocationServices.
+This is the AutoRest configuration file for LocationBasedServices.
 
 ---
 ## Getting Started 
-To build the SDK for LocationServices, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
+To build the SDK for LocationBasedServices, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
 
@@ -20,7 +20,7 @@ To see additional help and options, run:
 
 
 ### Basic Information 
-These are the global settings for the LocationServices API.
+These are the global settings for the LocationBasedServices API.
 
 ``` yaml
 openapi-type: arm
@@ -34,7 +34,7 @@ These settings apply only when `--tag=package-2017-01` is specified on the comma
 
 ``` yaml $(tag) == 'package-2017-01'
 input-file:
-- Microsoft.LocationServices/2017-01-01-preview/locationservices.json
+- Microsoft.LocationBasedServices/2017-01-01-preview/locationbasedservices.json
 ```
 
 ---
@@ -50,7 +50,7 @@ Please also specify `--csharp-sdks-folder=<path to "SDKs" directory of your azur
 csharp:
   azure-arm: true
   license-header: MICROSOFT_MIT_NO_VERSION
-  namespace: Microsoft.Azure.Management.LocationServices
-  output-folder: $(csharp-sdks-folder)/LocationServices/Management.LocationServices/Generated
+  namespace: Microsoft.Azure.Management.LocationBasedServices
+  output-folder: $(csharp-sdks-folder)/LocationBasedServices/Management.LocationBasedServices/Generated
   clear-output-folder: true
 ```
