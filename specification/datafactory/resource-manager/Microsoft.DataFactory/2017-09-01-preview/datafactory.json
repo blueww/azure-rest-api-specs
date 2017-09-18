@@ -2518,16 +2518,6 @@
           "readOnly": true,
           "format": "date-time"
         },
-        "error": {
-          "description": "Factory provisioning error code, or null.",
-          "type": "string",
-          "readOnly": true
-        },
-        "errorMessage": {
-          "description": "Factory error message, or null.",
-          "type": "string",
-          "readOnly": true
-        },
         "version": {
           "description": "Version of the factory.",
           "type": "string",
