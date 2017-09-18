@@ -1,0 +1,425 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2017-11-01-preview",
+    "title": "Billing Context Managment Client",
+    "description": "The billing context management client provides an interface to create and retrieve billing contexts which are used to create Azure subscriptions."
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/providers/Microsoft.Billing/operations": {
+      "get": {
+        "tags": [
+          "Operations"
+        ],
+        "description": "Lists all of the available Microsoft.Billing API operations.",
+        "operationId": "Operations_list",
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/OperationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/providers/Microsoft.Management/managementGroups/{groupName}/providers/Microsoft.Billing/eligibleOffers": {
+      "get": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "Retrieves the list of eligle offers.",
+        "operationId": "EligleOffers_List",
+        "x-ms-examples": {
+          "ListEligibleOffers": {
+            "$ref": "./examples/listEligibleOffers.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/groupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok - returns an array of eligle offers.",
+            "schema": {
+              "$ref": "#/definitions/OfferListResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/providers/Microsoft.Management/managementGroups/{groupName}/providers/Microsoft.Billing/eligibleOffers/{offerName}": {
+      "get": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "Retrieves an offer within the list of eligle offers.",
+        "operationId": "EligleOffer_Get",
+        "x-ms-examples": {
+          "getEligibleOffer": {
+            "$ref": "./examples/getEligibleOffer.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/groupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/offerNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok - returns an array of eligle offers.",
+            "schema": {
+              "$ref": "#/definitions/Offer"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/providers/Microsoft.Management/managementGroups/{groupName}/providers/Microsoft.Billing/billingContexts": {
+      "get": {
+        "tags": [
+          "BillingContext"
+        ],
+        "description": "Retrieves the list of billing context.",
+        "operationId": "BillingContexts_List",
+        "x-ms-examples": {
+          "listBillingContexts": {
+            "$ref": "./examples/listBillingContexts.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/groupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok - returns an array of billing contexts.",
+            "schema": {
+              "$ref": "#/definitions/BillingContextListResult"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/providers/Microsoft.Management/managementGroups/{groupName}/providers/Microsoft.Billing/billingContext/{billingContextName}": {
+      "get": {
+        "tags": [
+          "BillingContext"
+        ],
+        "description": "Get an Azure billing context within a management group.",
+        "operationId": "BillingContext_Get",
+        "x-ms-examples": {
+          "getManagementGroupsBillingContext": {
+            "$ref": "./examples/getBillingContext.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/groupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/billingContextNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normal response for a successful query. The response body will contain the data that matches the filters specified in the query parameters.",
+            "schema": {
+              "$ref": "#/definitions/BillingContext"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "BillingContext"
+        ],
+        "description": "Create an Azure billing context.",
+        "operationId": "BillingContext_Create",
+        "x-ms-examples": {
+          "createBillingContext": {
+            "$ref": "./examples/createBillingContext.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/groupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/billingContextNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "billing context creation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillingContext"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normal response for a successful query. The response body will contain the data that matches the filters specified in the query parameters.",
+            "schema": {
+              "$ref": "#/definitions/BillingContext"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Offer": {
+      "description": "An offer used to create a subscription",
+      "properties": {
+        "id": {
+          "description": "The resource ID.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "The name of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "description": "The type of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/OfferProperties",
+          "description": "properties of the offer definition"
+        }
+      }
+    },
+    "OfferProperties": {
+      "description": "properties of the offer definition",
+      "properties": {
+        "offerId": {
+          "readOnly": true,
+          "type": "string",
+          "description": "the offer id used to create a subscription"
+        }        
+      }
+    },
+    "OfferListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Offer"
+          },
+          "description": "An array of offers"
+        }
+      },
+      "description": "Offer List operation response"
+    },    
+    "BillingContext": {
+      "description": "A billing context used to create a subscription",
+      "properties": {
+        "id": {
+          "description": "The billing context ID.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "The name of the billing context.",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "description": "The type of the billing context.",
+          "type": "string",
+          "readOnly": true
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/BillingContextProperties",
+          "description": "properties of the billing context"
+        }
+      }
+    },
+    "BillingContextProperties": {
+      "description": "properties of the billing context",
+      "properties": {
+        "offer": {
+          "$ref": "#/definitions/Offer"
+        }        
+      }
+    },
+    "BillingContextListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillingContext"
+          },
+          "description": "An array of billing contexts"
+        }
+      },
+      "description": "Billing context list operation response"
+    },
+    "Operation": {
+      "description": "REST API operation",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Operation name: {provider}/{resource}/{operation}",
+          "type": "string"
+        },
+        "display": {
+          "description": "The object that represents the operation.",
+          "properties": {
+            "provider": {
+              "description": "Service provider: Microsoft.Subscription",
+              "type": "string"
+            },
+            "resource": {
+              "description": "Resource on which the operation is performed: Profile, endpoint, etc.",
+              "type": "string"
+            },
+            "operation": {
+              "description": "Operation type: Read, write, delete, etc.",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "OperationListResult": {
+     "description": "Result of the request to list operations. It contains a list of operations and a URL link to get the next set of results.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Operation"
+          },
+          "description": "List of operations."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of operation list results if there are any."
+        }
+      }
+    },
+    "ErrorResponse": {
+      "description": "Describes the format of Error response.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code",
+          "type": "string"
+        },
+        "message": {
+          "description": "Error message indicating why the operation failed.",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "apiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "description": "Version of the API to be used with the client request. Current version is 2015-06-01"
+    },
+    "billingContextNameParameter": {
+      "name": "billingContextName",
+      "in": "path",
+      "description": "The name of the Azure billing context.",
+      "required": true,
+      "type": "string"
+    },
+    "groupNameParameter": {
+      "name": "groupName",
+      "in": "path",
+      "description": "The management group that contains the subscription definition ID.",
+      "required": true,
+      "type": "string"
+    },
+    "offerNameParameter": {
+      "name": "offerName",
+      "in": "path",
+      "description": "the offer name",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  }
+}
