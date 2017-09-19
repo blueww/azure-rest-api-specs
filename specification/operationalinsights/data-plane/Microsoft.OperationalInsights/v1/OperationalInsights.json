@@ -23,30 +23,10 @@
         "hostTemplate": "api{environment}.loganalytics.io/{api-version}",
         "parameters": [
             {
-                "name": "environment",
-                "description": "Internal use only: Log Analytics environment to query against.",
-                "required": false,
-                "type": "string",
-                "x-ms-skip-url-encoding": true,
-                "default": "",
-                "in": "path",
-                "enum": [
-                    null,
-                    ".aimon",
-                    ".int"
-                ]
+                "$ref": "#/parameters/environment"
             },
             {
-                "name": "api-version",
-                "description": "The version of the API to use. This is either 'v1' (the current stable API version) or 'beta' (the next version of the API, under development)",
-                "in": "path",
-                "required": false,
-                "type": "string",
-                "default": "v1",
-                "enum": [
-                    "beta",
-                    "v1"
-                ]
+                "$ref": "#/parameters/api-version"
             }
         ]
     },
@@ -101,7 +81,7 @@
                 "tags": [
                     "Query"
                 ],
-                "operationId": "Query_Post",
+                "operationId": "Query",
                 "summary": "Execute an Analytics query",
                 "description": "Executes an Analytics query for data. [Here](/documentation/2-Using-the-API/Query) is an example for using POST with an Analytics query.",
                 "x-ms-examples": {
@@ -144,6 +124,32 @@
         }
     },
     "parameters": {
+        "environment": {
+            "name": "environment",
+            "description": "Internal use only: Log Analytics environment to query against.",
+            "required": false,
+            "type": "string",
+            "x-ms-skip-url-encoding": true,
+            "default": "",
+            "in": "path",
+            "enum": [
+                "",
+                ".aimon",
+                ".int"
+            ]
+        },
+        "api-version": {
+            "name": "api-version",
+            "description": "The version of the API to use. This is either 'v1' (the current stable API version) or 'beta' (the next version of the API, under development)",
+            "in": "path",
+            "required": false,
+            "type": "string",
+            "default": "v1",
+            "enum": [
+                "beta",
+                "v1"
+            ]
+        },
         "workspace-id": {
             "name": "workspace-id",
             "description": "ID of the workspace. This is Workspace ID from the Properties blade in the Azure portal.",
