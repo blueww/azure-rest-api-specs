@@ -8,9 +8,9 @@
     "202": {},
     "200": {
       "body": {
-        "id": "/subscriptions/0ebc0024-9459-448b-aef4-6617b6f8d217/providers/Microsoft.Subscription/subscriptionDefinitions/MySubscriptionDefinitionName",
+        "id": "/subscriptions/0ebc0024-9459-448b-aef4-6617b6f8d217/providers/Microsoft.Subscription/subscriptionDefinitions/default",
         "type": "SubscriptionDefinition",
-        "name": "MySubscriptionDefinitionName",
+        "name": "default",
         "properties": {
           "subscriptionId": "0ebc0024-9459-448b-aef4-6617b6f8d217",
           "subscriptionDisplayName": "My Azure Subscription Name",

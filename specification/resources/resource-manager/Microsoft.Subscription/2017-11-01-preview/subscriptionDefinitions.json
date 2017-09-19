@@ -206,6 +206,42 @@
         "x-ms-long-running-operation": true        
       }
     },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/subscriptionDefinitions": {
+      "get": {
+        "tags": [
+          "SubscriptionDefinition"
+        ],
+        "description": "List an Azure subscription definition by subscriptionId.",
+        "operationId": "SubscriptionsSubscriptionDefinition_List",
+        "x-ms-examples": {
+          "getManagementGroupsSubscriptionDefinition": {
+            "$ref": "./examples/listSubscriptionDefinition.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normal response for a successful query. The response body will contain the data that matches the filters specified in the query parameters.",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionDefinitionList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/subscriptionDefinitions/default": {
       "get": {
         "tags": [
