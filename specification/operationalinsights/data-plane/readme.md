@@ -36,7 +36,7 @@ These settings apply only when `--tag=v1` is specified on the command line.
 
 ``` yaml $(tag) == 'v1'
 input-file:
-- Microsoft.OperationalInsights/v1/OperationalInsights.yaml
+- Microsoft.OperationalInsights/v1/OperationalInsights.json
 ```
 
 ---
