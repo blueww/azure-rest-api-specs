@@ -20,11 +20,8 @@
     },
     "host": "api.loganalytics.io",
     "x-ms-parameterized-host": {
-        "hostTemplate": "api{environment}.loganalytics.io/{api-version}",
+        "hostTemplate": "api.loganalytics.io/{api-version}",
         "parameters": [
-            {
-                "$ref": "#/parameters/environment"
-            },
             {
                 "$ref": "#/parameters/api-version"
             }
@@ -98,9 +95,6 @@
                     },
                     {
                         "$ref": "#/parameters/timespan-param"
-                    },
-                    {
-                        "$ref": "#/parameters/prefer-param"
                     }
                 ],
                 "responses": {
@@ -110,11 +104,8 @@
                             "$ref": "#/definitions/query-response"
                         }
                     },
-                    "204": {
-                        "description": "No Content. The {workspace-id} being queried has not yet been enabled for Analytics queries and populated with data"
-                    },
                     "default": {
-                        "description": "400:\n  description: Bad Request. The request was invalid; can be caused by a bad API request body, or errors in the Analytics query in the request\n401:\n  description: Unauthorized. No authentication was provided; authenticate and re-issue the API call\n403:\n  description: Forbidden. Authentication was provided, but the caller did not have the necessary permissions\n404:\n  description: Not Found. The caller supplied an invalid {workspace-id}\n429:\n  description: Too Many Requests. The caller has exceeded the rate limits for the user/workspace\n500:\n  description: Internal Server Error. The service experienced an unexpected error while processing the request\n502:\n  description: Bad Gateway. A downstream service dependency experienced an internal service error while processing the request\n503:\n  description: Service Unavailable. A downstream service dependency was temporarily unavailable due to load or maintenance\n504:\n  description: Gateway Timeout. A downstream service dependency timed out while processing the request\n",
+                        "description": "An error response object.",
                         "schema": {
                             "$ref": "#/definitions/error-response"
                         }
@@ -124,20 +115,6 @@
         }
     },
     "parameters": {
-        "environment": {
-            "name": "environment",
-            "description": "Internal use only: Log Analytics environment to query against.",
-            "required": false,
-            "type": "string",
-            "x-ms-skip-url-encoding": true,
-            "default": "",
-            "in": "path",
-            "enum": [
-                "",
-                ".aimon",
-                ".int"
-            ]
-        },
         "api-version": {
             "name": "api-version",
             "description": "The version of the API to use. This is either 'v1' (the current stable API version) or 'beta' (the next version of the API, under development)",
@@ -165,14 +142,6 @@
             "schema": {
                 "$ref": "#/definitions/query-body"
             },
-            "x-ms-examples": {
-                "Example 1": {
-                    "query": "traces | limit 10"
-                },
-                "Example 2": {
-                    "query": "requests | where timestamp > ago(1d) | summarize count() by operation_Name"
-                }
-            },
             "x-ms-parameter-location": "method"
         },
         "timespan-param": {
@@ -185,13 +154,6 @@
         "query-param": {
             "name": "query",
             "description": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
-            "in": "query",
-            "type": "string",
-            "x-ms-parameter-location": "method"
-        },
-        "prefer-param": {
-            "name": "prefer",
-            "description": "Optional. HTTP preferences that should be applied to the query",
             "in": "query",
             "type": "string",
             "x-ms-parameter-location": "method"
@@ -230,46 +192,6 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/table-object"
-                    }
-                },
-                "render": {
-                    "description": "Contains visualization rendering data, if requested. See https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator",
-                    "type": "object",
-                    "properties": {
-                        "visualization": {
-                            "description": "The type of visualization (barchart, table, piechart, etc.)",
-                            "type": "string"
-                        },
-                        "title": {
-                            "description": "The title of the visualization.",
-                            "type": "string"
-                        },
-                        "accumulate": {
-                            "description": "Indicates whether y-axis values should be accumulated.",
-                            "type": "string"
-                        },
-                        "isQuerySorted": {
-                            "description": "Indicates whether the query is sorted.",
-                            "type": "boolean"
-                        },
-                        "kind": {
-                            "description": "Indicates the kind of visualization, if the visualization type supports multiple.",
-                            "type": "string"
-                        },
-                        "annotation": {
-                            "description": "An string value that makes us look stupid (try using \"cat\").",
-                            "type": "string"
-                        },
-                        "by": {
-                            "description": "Used by some visualizations to control which axis is driven by which column in the data.",
-                            "type": "string"
-                        }
-                    }
-                },
-                "statistics": {
-                    "description": "Contains query statistics.",
-                    "additionalProperties": {
-                        "type": "object"
                     }
                 }
             }
