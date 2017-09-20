@@ -1139,58 +1139,6 @@
         }
       }
     },
-    "AsyncOperation": {
-      "type": "object",
-      "description": "Azure async operation details.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Async operation id."
-        },
-        "name": {
-          "type": "string",
-          "description": "Async operation name."
-        },
-        "status": {
-          "type": "string",
-          "description": "The provisioning state of the cluster.",
-          "enum": [
-            "Unknown",
-            "Updating",
-            "Creating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled"
-          ],
-          "x-ms-enum": {
-            "name": "OperationStatus",
-            "modelAsString": true
-          },
-          "readOnly": true
-        },
-        "startTime": {
-          "type": "string",
-          "description": "The date time that the async operation started.",
-          "format": "date-time",
-          "readOnly": true
-        },
-        "endTime": {
-          "type": "string",
-          "description": "The date time that the async operation finished.",
-          "format": "date-time",
-          "readOnly": true
-        },
-        "percentComplete": {
-          "type": "number",
-          "description": "Async operation progress."
-        },
-        "error": {
-          "description": "If the async operation fails, this structure contains the error details.",
-          "$ref": "#/definitions/ErrorResponseWrapper"
-        }
-      }
-    },
     "ErrorResponseWrapper": {
       "type": "object",
       "description": "Wrapper for error response to follow ARM guidelines.",
