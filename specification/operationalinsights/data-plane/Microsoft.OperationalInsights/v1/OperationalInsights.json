@@ -86,7 +86,7 @@
                 "description": "Executes an Analytics query for data. [Here](/documentation/2-Using-the-API/Query) is an example for using POST with an Analytics query.",
                 "x-ms-examples": {
                     "query": {
-                        "$ref": "examples/oms-post-example.yaml"
+                        "$ref": "examples/oms-post-example.json"
                     }
                 },
                 "parameters": [
