@@ -71,11 +71,6 @@
           },
           "201": {
             "description": "The request was accepted and will complete asynchronously. To get the progress of the operation, call GET operation on the URL in Azure-AsyncOperation header field. For more information about Asynchronous Operations, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-async-operations.",
-            "headers": {
-              "Azure-AsyncOperation": {
-                "type": "string"
-              }
-            },
             "schema": {
               "$ref": "#/definitions/OperationalizationCluster"
             }
