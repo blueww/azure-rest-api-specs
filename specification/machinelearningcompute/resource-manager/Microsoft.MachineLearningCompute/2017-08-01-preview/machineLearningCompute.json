@@ -71,11 +71,6 @@
           },
           "201": {
             "description": "The request was accepted and will complete asynchronously. To get the progress of the operation, call GET operation on the URL in Azure-AsyncOperation header field. For more information about Asynchronous Operations, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-async-operations.",
-            "headers": {
-              "Azure-AsyncOperation": {
-                "type": "string"
-              }
-            },
             "schema": {
               "$ref": "#/definitions/OperationalizationCluster"
             }
@@ -1141,58 +1136,6 @@
         "nextLink": {
           "type": "string",
           "description": "A continuation link (absolute URI) to the next page of results in the list."
-        }
-      }
-    },
-    "AsyncOperation": {
-      "type": "object",
-      "description": "Azure async operation details.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Async operation id."
-        },
-        "name": {
-          "type": "string",
-          "description": "Async operation name."
-        },
-        "status": {
-          "type": "string",
-          "description": "The provisioning state of the cluster.",
-          "enum": [
-            "Unknown",
-            "Updating",
-            "Creating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled"
-          ],
-          "x-ms-enum": {
-            "name": "OperationStatus",
-            "modelAsString": true
-          },
-          "readOnly": true
-        },
-        "startTime": {
-          "type": "string",
-          "description": "The date time that the async operation started.",
-          "format": "date-time",
-          "readOnly": true
-        },
-        "endTime": {
-          "type": "string",
-          "description": "The date time that the async operation finished.",
-          "format": "date-time",
-          "readOnly": true
-        },
-        "percentComplete": {
-          "type": "number",
-          "description": "Async operation progress."
-        },
-        "error": {
-          "description": "If the async operation fails, this structure contains the error details.",
-          "$ref": "#/definitions/ErrorResponseWrapper"
         }
       }
     },
