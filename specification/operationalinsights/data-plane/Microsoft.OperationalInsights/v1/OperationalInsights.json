@@ -316,6 +316,13 @@
                     "description": "A human readable error message.",
                     "type": "string"
                 },
+                "details": {
+                    "description": "error details.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/error-detail"
+                    }
+                },
                 "innererror": {
                     "description": "Inner error details if they exist.",
                     "$ref": "#/definitions/error-info"

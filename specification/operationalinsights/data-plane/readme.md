@@ -63,8 +63,4 @@ directive:
     from: swagger-document
     where: $.paths["/workspaces/{workspace-id}/query"].post
     transform: $.operationId = "Query"
-  - reason: Hide the default Query method so that we can expose a prettier one.
-    from: code-model-v1
-    where: $.operations[*].methods[?(@["#serializedName"] == "Query" && @["#url"] == "/workspaces/{workspace-id}/query")]
-    transform: $.hidden = true
 ```
