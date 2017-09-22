@@ -299,8 +299,10 @@
     "BillingContextProperties": {
       "description": "properties of the billing context",
       "properties": {
-        "offer": {
-          "$ref": "#/definitions/Offer"
+        "offerId": {
+          "readOnly": true,
+          "type": "string",
+          "description": "the offer id used to create a subscription"
         }        
       }
     },

@@ -5,11 +5,7 @@
     "api-version": "2017-11-01",
     "body": {
       "properties": {
-        "offer" : {
-          "properties": {
-            "offerId": "MS-AZR-0017P"
-          }
-        }
+        "offerId" :"MS-AZR-0017P"
       }
     }
   },
@@ -18,11 +14,7 @@
       "headers": {},
       "body": {
         "properties": {
-          "offer" : {
-            "properties": {
               "offerId": "MS-AZR-0017P"
-            }
-          }
         }
       }
     }

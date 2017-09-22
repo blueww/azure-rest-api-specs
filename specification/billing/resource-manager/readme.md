@@ -29,9 +29,7 @@ openapi-type: arm
 tag: package-2017-11-preview
 ```
 
-
-### Tag: package-2017-04-preview
-
+### Tag: package-2017-11-preview
 These settings apply only when `--tag=package-2017-11-preview` is specified on the command line.
 ``` yaml $(tag) == 'package-2017-11-preview'
 input-file:
@@ -39,6 +37,8 @@ input-file:
 - Microsoft.Billing/2017-11-01-preview/billingContexts.json
 ```
 
+### Tag: package-2017-04-preview
+These settings apply only when `--tag=package-2017-04-preview` is specified on the command line.
 ``` yaml $(tag) == 'package-2017-04-preview'
 input-file:
 - Microsoft.Billing/2017-04-24-preview/billing.json

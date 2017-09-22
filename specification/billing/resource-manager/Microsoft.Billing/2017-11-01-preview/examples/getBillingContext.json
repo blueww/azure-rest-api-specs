@@ -9,11 +9,7 @@
       "headers": {},
       "body": {
         "properties": {
-           "offer" : {
-             "properties" : {
                "offerId": "MS-AZR-0017P"
-             }
-           }
          }
       }
     }

@@ -10,20 +10,12 @@
         "value": [
           {
             "properties": {
-              "offer" : {
-                "properties": {
                   "offerId": "MS-AZR-0017P"
-                }
               }
-            }
           },
           {
             "properties": {
-              "offer": {
-                "properties": {
                   "offerId": "MS-AZR-0148P"
-                }
-              }
             }
           }
         ]
