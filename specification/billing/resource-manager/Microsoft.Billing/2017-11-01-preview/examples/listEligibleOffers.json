@@ -1,7 +1,7 @@
 {
   "parameters": {
     "groupName": "d7bd0f12-2920-450e-a54a-4c35d851a3fc",
-    "api-version": "2017-11-01"
+    "api-version": "2017-11-01-preview"
   },
   "responses": {
     "200": {
@@ -9,11 +9,17 @@
       "body": {
         "value": [
           {
+            "id": "/providers/Microsoft.Management/managementGroups/d7bd0f12-2920-450e-a54a-4c35d851a3fc/providers/Microsoft.Billing/eligibleOffers/MS-AZR-0017P",
+            "type": "Offer",
+            "name": "MS-AZR-0017P",
             "properties": {
               "offerId": "MS-AZR-0017P"
             }
           },
           {
+            "id": "/providers/Microsoft.Management/managementGroups/d7bd0f12-2920-450e-a54a-4c35d851a3fc/providers/Microsoft.Billing/eligibleOffers/MS-AZR-0148P",
+            "type": "Offer",
+            "name": "MS-AZR-0148P",
             "properties": {
               "offerId": "MS-AZR-0148P"
             }
