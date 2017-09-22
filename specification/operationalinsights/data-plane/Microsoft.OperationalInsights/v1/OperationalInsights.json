@@ -19,14 +19,7 @@
         }
     },
     "host": "api.loganalytics.io",
-    "x-ms-parameterized-host": {
-        "hostTemplate": "api.loganalytics.io/{api-version}",
-        "parameters": [
-            {
-                "$ref": "#/parameters/api-version"
-            }
-        ]
-    },
+    "basePath": "/v1",
     "schemes": [
         "https"
     ],
@@ -37,48 +30,65 @@
         "application/json"
     ],
     "securityDefinitions": {
-        "api-key-header": {
-            "type": "apiKey",
-            "name": "x-api-key",
-            "in": "header"
-        },
-        "api-key-query": {
-            "type": "apiKey",
-            "name": "api_key",
-            "in": "query"
-        },
-        "api-key-basic": {
-            "type": "basic"
-        }
-    },
-    "x-air-security-description": {
-        "basic": {
-            "typeDisplayName": "Basic Auth",
-            "description": "Use the API key 'DEMO_KEY' as either username or password with normal HTTP basic auth [[More info](/documentation/Authorization)]"
-        },
-        "apiKey": {
-            "typeDisplayName": "API key",
-            "description": "Pass the API key 'DEMO_KEY' via an `X-Api-Key` custom header or an `api_key` query parameter. [[More info](/documentation/Authorization)]"
+        "azure_auth": {
+            "type": "oauth2",
+            "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+            "flow": "implicit",
+            "description": "Azure Active Directory OAuth2 Flow",
+            "scopes": {
+                "user_impersonation": "impersonate your user account"
+            }
         }
     },
     "security": [
         {
-            "api-key-header": []
-        },
-        {
-            "api-key-query": []
-        },
-        {
-            "api-key-basic": []
+            "azure_auth": [
+                "user_impersonation"
+            ]
         }
     ],
     "paths": {
         "/workspaces/{workspace-id}/query": {
-            "post": {
-                "tags": [
-                    "Query"
+            "get": {
+                "operationId": "Query_Get",
+                "summary": "Execute an Analytics query",
+                "description": "Executes an Analytics query for data",
+                "x-ms-examples": {
+                    "query": {
+                        "$ref": "examples/oms-get-example.json"
+                    }
+                },
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/workspace-id"
+                    },
+                    {
+                        "$ref": "#/parameters/query-param"
+                    },
+                    {
+                        "$ref": "#/parameters/timespan-param"
+                    },
+                    {
+                        "$ref": "#/parameters/workspaces-param"
+                    }
                 ],
-                "operationId": "Query",
+                "responses": {
+                    "200": {
+                        "description": "OK. The API call succeeded and the Analytics query result is in the response payload",
+                        "schema": {
+                            "$ref": "#/definitions/query-response"
+                        }
+                    },
+                    "default": {
+                        "description": "An error response object.",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "Query_Post",
                 "summary": "Execute an Analytics query",
                 "description": "Executes an Analytics query for data. [Here](/documentation/2-Using-the-API/Query) is an example for using POST with an Analytics query.",
                 "x-ms-examples": {
@@ -95,6 +105,9 @@
                     },
                     {
                         "$ref": "#/parameters/timespan-param"
+                    },
+                    {
+                        "$ref": "#/parameters/workspaces-param"
                     }
                 ],
                 "responses": {
@@ -115,18 +128,6 @@
         }
     },
     "parameters": {
-        "api-version": {
-            "name": "api-version",
-            "description": "The version of the API to use. This is either 'v1' (the current stable API version) or 'beta' (the next version of the API, under development)",
-            "in": "path",
-            "required": false,
-            "type": "string",
-            "default": "v1",
-            "enum": [
-                "beta",
-                "v1"
-            ]
-        },
         "workspace-id": {
             "name": "workspace-id",
             "description": "ID of the workspace. This is Workspace ID from the Properties blade in the Azure portal.",
@@ -135,10 +136,19 @@
             "type": "string",
             "x-ms-parameter-location": "client"
         },
+        "workspaces-param": {
+            "name": "workspaces",
+            "description": "Comma separated workspace IDs to include in cross-workspace queries.",
+            "in": "path",
+            "type": "string",
+            "required": false,
+            "default": ""
+        },
         "query-body": {
             "name": "body",
             "in": "body",
             "description": "HTTP request body",
+            "required": true,
             "schema": {
                 "$ref": "#/definitions/query-body"
             },
@@ -149,6 +159,7 @@
             "description": "Optional. The timespan over which to query data. This is an ISO8601 time period value.  This timespan is applied in addition to any that are specified in the query expression.",
             "in": "query",
             "type": "string",
+            "required": false,
             "x-ms-parameter-location": "method"
         },
         "query-param": {
@@ -156,6 +167,7 @@
             "description": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
             "in": "query",
             "type": "string",
+            "required": true,
             "x-ms-parameter-location": "method"
         }
     },
@@ -168,6 +180,13 @@
             "description": "Optional. The timespan over which to query data. This is an ISO8601 time period value.  This timespan is applied in addition to any that are specified in the query expression.",
             "type": "string"
         },
+        "workspaces-param": {
+            "description": "Workspace IDs to include in cross-workspace queries.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
         "query-body": {
             "title": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
             "type": "object",
@@ -179,8 +198,15 @@
                 "timespan": {
                     "description": "Optional. The timespan over which to query data. This is an ISO8601 time period value.  This timespan is applied in addition to any that are specified in the query expression.",
                     "$ref": "#/definitions/timespan-param"
+                },
+                "workspaces": {
+                    "description": "something about cross workspace queries",
+                    "$ref": "#/definitions/workspaces-param"
                 }
-            }
+            },
+            "required": [
+                "query"
+            ]
         },
         "query-response": {
             "title": "A query response.",
@@ -194,7 +220,10 @@
                         "$ref": "#/definitions/table-object"
                     }
                 }
-            }
+            },
+            "required": [
+                "tables"
+            ]
         },
         "table-object": {
             "title": "A query response table.",
@@ -239,23 +268,66 @@
                 "rows"
             ]
         },
-        "error-info": {
-            "title": "The code and message for an error.",
+        "error-detail": {
+            "title": "Error details.",
             "type": "object",
             "properties": {
+                "code": {
+                    "description": "The error's code.",
+                    "type": "string"
+                },
                 "message": {
                     "description": "A human readable error message.",
                     "type": "string"
                 },
+                "target": {
+                    "description": "Indicates which property in the request is responsible for the error.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Indicates which value in 'target' is responsible for the error.",
+                    "type": "string"
+                },
+                "resources": {
+                    "description": "Indicates resources which were responsible for the error.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {
+                    "type": "object"
+                }
+            },
+            "required": [
+                "code",
+                "message"
+            ]
+        },
+        "error-info": {
+            "title": "The code and message for an error.",
+            "type": "object",
+            "properties": {
                 "code": {
                     "description": "A machine readable error code.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "A human readable error message.",
                     "type": "string"
                 },
                 "innererror": {
                     "description": "Inner error details if they exist.",
                     "$ref": "#/definitions/error-info"
+                },
+                "additionalProperties": {
+                    "type": "object"
                 }
-            }
+            },
+            "required": [
+                "code",
+                "message"
+            ]
         },
         "error-response": {
             "title": "Error details.",
@@ -266,7 +338,10 @@
                     "description": "The error details.",
                     "$ref": "#/definitions/error-info"
                 }
-            }
+            },
+            "required": [
+                "error"
+            ]
         }
     }
 }

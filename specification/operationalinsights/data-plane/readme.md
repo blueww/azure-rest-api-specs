@@ -27,6 +27,7 @@ These are the global settings for the OperationalInsightsData API.
 title: OperationalInsightsDataClient
 description: Operational Insights Data Client
 add-credentials: true
+openapi-type: data-plane
 tag: v1
 ```
 
@@ -54,18 +55,16 @@ csharp:
   output-folder: $(csharp-sdks-folder)/OperationalInsights/Data/OperationalInsights.Data/Generated
   clear-output-folder: true
 directive:
-  reason: Don't expose the prefer param as a string query param. We'll make a better interface for this.
-  from: swagger-document
-  where: $.paths[*][*].parameters
-  transform: >
-    var idxToRemove = -1;
-    for (var i=0; i<$.length; i++) {
-      if ($[i]["$ref"] === "#/parameters/prefer-param") {
-        idxToRemove = i;
-        break;
-      }
-    }
-    if (idxToRemove !== -1) {
-      $.splice(idxToRemove, 1);
-    }
+  - reason: Don't expose the GET endpoint since it's behavior is more limited than POST
+    from: swagger-document
+    where: $.paths["/workspaces/{workspace-id}/query"]
+    transform: delete $.get
+  - reason: Rename Query_Post to Query so that we don't get an IQuery interface with 1 operation
+    from: swagger-document
+    where: $.paths["/workspaces/{workspace-id}/query"].post
+    transform: $.operationId = "Query"
+  - reason: Hide the default Query method so that we can expose a prettier one.
+    from: code-model-v1
+    where: $.operations[*].methods[?(@["#serializedName"] == "Query" && @["#url"] == "/workspaces/{workspace-id}/query")]
+    transform: $.hidden = true
 ```
