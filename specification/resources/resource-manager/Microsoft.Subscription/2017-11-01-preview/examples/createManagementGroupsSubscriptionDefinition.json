@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "managementGroupsCreationScope": "providers/Microsoft.Management/managementGroups/d7bd0f12-2920-450e-a54a-4c35d851a3fc",
+    "scope": "providers/Microsoft.Management/managementGroups/d7bd0f12-2920-450e-a54a-4c35d851a3fc",
     "subscriptionDefinitionName": "MySubscriptionDefinitionName",
     "api-version": "2017-11-01-preview",
     "body": {

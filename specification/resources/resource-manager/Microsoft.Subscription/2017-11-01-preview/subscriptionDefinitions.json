@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "2017-11-01-preview",
-    "title": "Subscription Definition Client",
+    "title": "SubscriptionDefinitionClient",
     "description": "Subscription definition client provides an interface to create, modify and retrieve azure subscriptions programmatically."
   },
   "host": "management.azure.com",
@@ -47,7 +47,7 @@
         }
       }
     },
-    "/{managementGroupsCreationScope}/providers/Microsoft.Subscription/subscriptionDefinitions/{subscriptionDefinitionName}": {  
+    "/{scope}/providers/Microsoft.Subscription/subscriptionDefinitions/{subscriptionDefinitionName}": {
       "put": {
         "tags": [
           "SubscriptionDefinition"
@@ -107,9 +107,7 @@
           }
         },
         "x-ms-long-running-operation": true        
-      }
-    },
-    "/{scope}/providers/Microsoft.Subscription/subscriptionDefinitions/{subscriptionDefinitionName}": {
+      },
       "get": {
         "tags": [
           "SubscriptionDefinition"
@@ -475,7 +473,7 @@
   },
   "parameters": {
     "managementGroupsCreationScopeParameter": {
-      "name": "managementGroupsCreationScope",
+      "name": "scope",
       "in": "path",      
       "description": "The scope of the Microsoft.Subscription url. The scope can only be 'providers/Microsoft.Management/managementGroups/{groupName}' where groupname is the name of the management group",
       "required": true,
