@@ -90,7 +90,7 @@
             "description": "Accepted. Subscription creation is in progress.",
             "headers": {
               "Location": {
-                "description": "The URL where the status of the asynchronous operation can be checked.",
+                "description": "GET this URL to retrieve the status of the asynchronous operation.",
                 "type": "string"
               },
               "Retry-After": {
@@ -199,7 +199,7 @@
             "description": "Accepted. Subscription update is in progress.",
             "headers": {
               "Location": {
-                "description": "The URL where the status of the asynchronous operation can be checked.",
+                "description": "GET this URL to retrieve the status of the asynchronous operation.",
                 "type": "string"
               },
               "Retry-After": {
@@ -262,7 +262,7 @@
         "tags": [
           "SubscriptionOperation"
         ],
-        "description": "Retrieves the status of the subscription definition operation. Invoke this API after calling the generation recommendation. The URI of this API is returned in the Location field of the response header.",
+        "description": "Retrieves the status of the subscription definition PUT or PATCH operation. The URI of this API is returned in the Location field of the response header.",
         "operationId": "ManagementGroupsSubscriptionDefinition_GetOperationStatus",
         "x-ms-examples": {
           "getManagementGroupsSubscriptionDefinitionOperation": {
@@ -300,7 +300,7 @@
             }
           },
           "200": {
-            "description": "Normal response for a successful query. The response body will contain the data that matches the filters specified in the query parameters.",
+            "description": "Successful completion of the asynchronous operation",
             "schema": {
               "$ref": "#/definitions/SubscriptionDefinition"
             }
