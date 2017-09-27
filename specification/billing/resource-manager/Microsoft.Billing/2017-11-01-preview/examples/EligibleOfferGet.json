@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "groupName": "d7bd0f12-2920-450e-a54a-4c35d851a3fc",
+    "scope": "providers/Microsoft.Management/managementGroups/d7bd0f12-2920-450e-a54a-4c35d851a3fc",
     "offerName": "MS-AZR-0017P",
     "api-version": "2017-11-01-preview"
   },
