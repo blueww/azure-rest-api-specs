@@ -1,0 +1,21 @@
+{
+	"parameters": {
+        "api-version": "2017-10-10-privatepreview",
+        "subscriptionId": "subid"
+    },
+	"responses": {
+		"200": {
+			"body": {
+			  "nextLink": "string",
+			  "value": [
+				{
+				  "resource": "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab/providers/Microsoft.Compute/virtualMachines/alertsmgmt1",
+				  "sev1": 5,
+				  "sev2": 40,
+				  "sev3": 15
+				}
+			  ]
+			}
+		}	
+	}
+}

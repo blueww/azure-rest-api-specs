@@ -1,0 +1,55 @@
+{
+	"parameters": {
+        "api-version": "2017-10-10-privatepreview",
+        "subscriptionId": "subid"
+    },
+	"responses": {
+		"200": {
+			"body": {
+			  "nextLink": "",
+			  "value": [
+				{
+				  "id": "/subscriptions/subid/providers/microsoft.alertsmanagement/alerts/b67f7fec-69fc-4974-9099-a26bd6ffeda3",
+				  "type": "string",
+				  "properties": {
+					"id": "b67f7fec-69fc-4974-9099-a26bd6ffeda3",
+					"name": "High CPU > 80%",
+					"severity": "Sev1",
+					"signalType": "Metric",
+					"state": "Active",
+					"targetResource": "",
+					"monitorService": "Azure Monitor",
+					"sourceCreatedId": "abc1234",
+					"ruleId": "string",
+					"repeatCount": 0,
+					"startDateTime": "2017-09-27T06:57:12.088Z",
+					"lastModifiedDateTime": "2017-09-27T06:57:12.088Z",
+					"lastModifiedUserName": "string",
+					"payload": {}
+				  }
+				},
+				{
+				  "id": "/subscriptions/subid/providers/microsoft.alertsmanagement/alerts/a35dwrwd-69fc-4974-9099-a35dwrwd",
+				  "type": "string",
+				  "properties": {
+					"id": "a35dwrwd-69fc-4974-9099-a35dwrwd",
+					"name": "Heart beat failure",
+					"severity": "Sev1",
+					"signalType": "Log",
+					"state": "Active",
+					"targetResource": "",
+					"monitorService": "Azure Monitor",
+					"sourceCreatedId": "abc1235",
+					"ruleId": "string",
+					"repeatCount": 0,
+					"startDateTime": "2017-09-27T06:57:12.088Z",
+					"lastModifiedDateTime": "2017-09-27T06:57:12.088Z",
+					"lastModifiedUserName": "string",
+					"payload": {}
+				  }
+				}
+			  ]
+			}
+		}	
+	}
+}
