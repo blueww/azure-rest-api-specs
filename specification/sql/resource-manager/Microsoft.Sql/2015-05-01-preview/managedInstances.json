@@ -274,11 +274,11 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-          "Update managed instance with minimal properties": {
-            "$ref": "./examples/ManagedInstanceUpdateMin.json"
-          },
           "Update managed instance with all properties": {
             "$ref": "./examples/ManagedInstanceUpdateMax.json"
+          },
+          "Update managed instance with minimal properties": {
+            "$ref": "./examples/ManagedInstanceUpdateMin.json"
           }
         }
       }
@@ -446,14 +446,17 @@
           "readOnly": true
         },
         "licenseType": {
+          "description": "The licence type.",
           "type": "string"
         },
         "vCores": {
           "format": "int32",
+          "description": "The number of VCores.",
           "type": "integer"
         },
         "storageSizeInGB": {
           "format": "int32",
+          "description": "The maximum storage size in GB.",
           "type": "integer"
         }
       }
