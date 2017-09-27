@@ -35,7 +35,7 @@ These settings apply only when `--tag=package-2017-10` is specified on the comma
 
 ``` yaml $(tag) == 'package-2017-10'
 input-file:
-- Microsoft.AlertManagement/2017-10-10-privatepreview/AlertsManagement.json
+- Microsoft.AlertsManagement/2017-10-10-privatepreview/AlertsManagement.json
 ```
 
 ---
