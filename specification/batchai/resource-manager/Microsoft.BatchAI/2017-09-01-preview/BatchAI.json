@@ -967,92 +967,6 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/fileServers/{fileServerName}/suspend": {
-      "post": {
-        "tags": [
-          "FileServer"
-        ],
-        "operationId": "FileServers_Suspend",
-        "description": "Suspends the file server.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/FileServerNameParameter"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The operation was successful."
-          },
-          "202": {
-            "description": "The operation is accepted."
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Suspend jobserver": {
-            "$ref": "./examples/SuspendFileServer.json"
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/fileServers/{fileServerName}/start": {
-      "post": {
-        "tags": [
-          "FileServer"
-        ],
-        "operationId": "FileServers_Resume",
-        "description": "Starts a suspended file Server.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/FileServerNameParameter"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The operation was successful."
-          },
-          "202": {
-            "description": "The operation is accepted."
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Resume jobserver": {
-            "$ref": "./examples/ResumeFileServer.json"
-          }
-        }
-      }
-    },
     "/subscriptions/{subscriptionId}/providers/Microsoft.BatchAI/fileServers": {
       "get": {
         "tags": [
@@ -1755,14 +1669,20 @@
         "unusableNodeCount": {
           "type": "integer",
           "format": "int32",
-          "title": "Number of compute nodes which are unusable"
+          "title": "Number of compute nodes which are unusable."
+        },
+        "leavingNodeCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number of compute nodes which are leaving the cluster."
         }
       },
       "required": [
         "idleNodeCount",
         "runningNodeCount",
         "preparingNodeCount",
-        "unusableNodeCount"
+        "unusableNodeCount",
+        "leavingNodeCount"
       ],
       "description": "Counts of various compute node states on the cluster."
     },
@@ -2103,13 +2023,6 @@
               "title": "Max time the job can run.",
               "description": "Default Value = 1 week.",
               "default": "7.00:00:00"
-            },
-            "maxTaskRetryCount": {
-              "type": "integer",
-              "format": "int32",
-              "title": "Max number of times job can be retried.",
-              "description": "Default Value = 0.",
-              "default": 0
             }
           },
           "description": "Constraints associated with the Job."
@@ -2238,13 +2151,6 @@
               "title": "Max time the job can run.",
               "description": "Default Value = 1 week.",
               "default": "7.00:00:00"
-            },
-            "maxTaskRetryCount": {
-              "type": "integer",
-              "format": "int32",
-              "title": "Max number of times job can be retried.",
-              "description": "Default Value = 0.",
-              "default": 0
             }
           },
           "description": "Constraints associated with the Job."
@@ -2328,18 +2234,6 @@
               "items": {
                 "$ref": "#/definitions/BatchAIError"
               }
-            },
-            "retryCount": {
-              "type": "integer",
-              "format": "int32",
-              "title": "The number of times the job has been retried.",
-              "description": "The job is retried if it exits with a nonzero exit code, up to the specified MaxRetryCount."
-            },
-            "lastRetryTime": {
-              "type": "string",
-              "format": "date-time",
-              "title": "The most recent time at which a retry of the job started running.",
-              "description": "This element is present only if the job was retried (i.e. retryCount is nonzero). If present, this is typically the same as startTime, but may be different if the job has been restarted for reasons other than retry."
             }
           },
           "required": [
@@ -2763,7 +2657,11 @@
       "properties": {
         "accountName": {
           "type": "string",
-          "title": "Name of the storage account."
+          "title": "Name of the Azure Blob Storage account."
+        },
+        "containerName": {
+          "type": "string",
+          "title": "Name of the Azure Blob Storage container to mount on the cluster."
         },
         "credentialsInfo": {
           "title": "Information of the Azure Blob Storage account credentials.",
@@ -2779,9 +2677,10 @@
           "title": "Specifies the various mount options that can be used to configure Blob file system."
         }
       },
-      "description": "Details of the Azure Blob Storage account to mount on the cluster.",
+      "description": "Details of the Azure Blob Storage container to mount on the cluster.",
       "required": [
         "accountName",
+        "containerName",
         "credentialsInfo",
         "relativeMountPath"
       ]
