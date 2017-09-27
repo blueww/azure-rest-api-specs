@@ -5,7 +5,6 @@
 This is the AutoRest configuration file for AlerManagement.
 
 
-
 ---
 ## Getting Started 
 To build the SDK for AlertManagement, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
@@ -36,7 +35,7 @@ These settings apply only when `--tag=package-2017-10` is specified on the comma
 
 ``` yaml $(tag) == 'package-2017-10'
 input-file:
-- Microsoft.AlertManagement/2017-10-10-preview/AlertsManagement.json
+- Microsoft.AlertManagement/2017-10-10-privatepreview/AlertsManagement.json
 ```
 
 ---
