@@ -1,1 +1,19 @@
-{}
+{
+	"parameters": {
+        "api-version": "2017-10-10-privatepreview",
+        "subscriptionId": "subid"
+    },
+	"responses": {
+		"200": {
+			"body": {
+			  "total": 65,
+			  "unresolved": {
+				"sev1": 10,
+				"sev2": 15,
+				"sev3": 35
+			  }
+
+			}
+		}	
+	}
+}
