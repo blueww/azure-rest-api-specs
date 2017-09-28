@@ -16,15 +16,15 @@
             "name" : "CLS3",
             "tier" : "Standard",
             "capacity" : 1,
-            "vCores": 8,
-            "storageSizeInGB": 32,
-            "licenceType": "Full",
             "family":"Gen5"
             },
             "properties" : {
               "fullyQualifiedDomainName" : "testcl.database.windows.net",
               "administratorLogin" : "cloudSA",
-              "state": "Ready"
+              "state": "Ready",
+			  "vCores": 8,
+              "storageSizeInGB": 32,
+              "licenseType": "Full"
             }
           }, {
             "location" : "onebox",

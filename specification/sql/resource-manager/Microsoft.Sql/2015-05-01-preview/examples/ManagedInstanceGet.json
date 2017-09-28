@@ -20,7 +20,7 @@
           "state": "Ready",
           "vCores": 8,
           "storageSizeInGB": 1024,
-          "licenceType": "Full"
+          "licenseType": "Full"
 
         },
         "location" : "onebox",
