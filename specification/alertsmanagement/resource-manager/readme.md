@@ -25,7 +25,7 @@ These are the global settings for the AlertManagement API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2017-08
+tag: package-2017-10
 ```
 
 
