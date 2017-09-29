@@ -1,0 +1,24 @@
+{
+    "parameters": {
+        "api-version": "2017-09-01-preview",
+        "subscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resourceGroupName": "myResourceGroup",
+        "projectName": "myProject"
+    },
+    "responses": {
+        "200": {
+            "body": {
+                "properties": {
+                    "authKey": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                    "containerServiceDnsName": "container.location.cloudapp.azure.com",
+                    "containerServiceAdmin": "azureuser",
+                    "containerServiceSshKey": "opensshkey",
+                    "containerServiceSshPort": 0,
+                    "defaultWorkspaceStorageAccountName": "storageAccount",
+                    "defaultWorkspaceStorageAccountKey": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                    "innerloopServiceEndpoint": "container.location.cloudapp.azure.com"
+                }
+            }
+        }
+    }
+}

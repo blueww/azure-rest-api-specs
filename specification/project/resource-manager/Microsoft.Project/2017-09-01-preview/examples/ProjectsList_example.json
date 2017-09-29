@@ -1,0 +1,31 @@
+{
+    "parameters": {
+        "api-version": "2017-09-01-preview",
+        "subscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    "responses": {
+        "200": {
+            "body": {
+                "value": [
+                    {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Project/projects/myProject",
+                        "name": "myProject",
+                        "type": "Microsoft.Project/projects",
+                        "location": "westus",
+                        "tags": {},
+                        "sku": {
+                            "name": "Basic",
+                            "tier": "Basic"
+                        },
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "aiResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myAIResourceGroup/providers/Microsoft.Insights/components/myAIResource",
+                            "aiInstrumentationKey": "00000000-0000-0000-0000-000000000000",
+                            "aiAppId": "00000000-0000-0000-0000-000000000000"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

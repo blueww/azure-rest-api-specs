@@ -1,0 +1,877 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2017-09-01-preview",
+    "title": "ProjectManagement",
+    "description": "Azure Project REST API"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "flow": "implicit",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/providers/Microsoft.Project/operations": {
+      "get": {
+        "tags": [
+          "Operations"
+        ],
+        "summary": "Lists operations for the resource provider.",
+        "description": "Lists all the supported operations by the Microsoft.Project resource provider along with their description.",
+        "operationId": "Operations_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; response contains the list of operations under Microsoft.Project resource provider.",
+            "schema": {
+              "$ref": "#/definitions/ResourceProviderOperationListResponse"
+            }
+          },
+          "default": {
+            "description": "Error response for the operation.",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Project/projects/{projectName}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Gets an Azure Project resource.",
+        "description": "Gets the properties for an Azure Project.",
+        "operationId": "Projects_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ProjectNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; response contains the Azure Project resource.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResource"
+            }
+          },
+          "default": {
+            "description": "Error response for the operation. The error response codes can be: 404 - NotFound(Azure Project doesn't exist.)",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ProjectsGet": {
+            "$ref": "./examples/ProjectsGet_example.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Creates an Azure Project resource.",
+        "description": "Creates an Azure Project resource with the specified create parameters.",
+        "operationId": "Projects_Create",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ProjectNameParameter"
+          },
+          {
+            "name": "projectCreateParameters",
+            "in": "body",
+            "description": "Parameters for creating the project.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProjectCreateParameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; response contains the created Azure Project resource.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResource"
+            }
+          },
+          "201": {
+            "description": "The request was successful; Azure Project resource is being created.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResource"
+            }
+          },
+          "default": {
+            "description": "Error response for the operation.",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ProjectsCreate": {
+            "$ref": "./examples/ProjectsCreate_example.json"
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Deletes an Azure Project resource.",
+        "description": "Deletes an existing Azure Project resource.",
+        "operationId": "Projects_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ProjectNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; the Azure Project resource is deleted."
+          },
+          "202": {
+            "description": "The request was successful; Azure Project resource is being deleted."
+          },
+          "204": {
+            "description": "The request was successful; Azure Project does not exist."
+          },
+          "default": {
+            "description": "Error response for the operation. The error response codes can be: 409 - Conflict(Azure Project is already in Provisioning State Deleting.)",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ProjectsDelete": {
+            "$ref": "./examples/ProjectsDelete_example.json"
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Updates an Azure Project resource.",
+        "description": "Updates the properties of an existing Azure Project resource with the specified update parameters.",
+        "operationId": "Projects_Update",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ProjectNameParameter"
+          },
+          {
+            "name": "projectUpdateParameters",
+            "in": "body",
+            "description": "Parameters for updating the project.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProjectUpdateParameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; response contains the updated Azure Project resource.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResource"
+            }
+          },
+          "201": {
+            "description": "The request was successful; Azure Project resource is being updated.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResource"
+            }
+          },
+          "default": {
+            "description": "Error response for the operation.",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ProjectsUpdate": {
+            "$ref": "./examples/ProjectsUpdate_example.json"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Project/projects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Lists the Azure Project resources in a resource group.",
+        "description": "Lists all the Azure Project resources with their properties in the specified resource group and subscription.",
+        "operationId": "Projects_ListByResourceGroup",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; response contains the list of Azure Project resources in the resource group.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResourceListResponse"
+            }
+          },
+          "default": {
+            "description": "Error response for the operation.",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ProjectsListByResourceGroup": {
+            "$ref": "./examples/ProjectsListByResourceGroup_example.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Project/projects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Lists the Azure Project resources in a subscription.",
+        "description": "Lists all the Azure Project resources with their properties in the subscription.",
+        "operationId": "Projects_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; response contains the list of Azure Project resources in the subscription.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResourceListResponse"
+            }
+          },
+          "default": {
+            "description": "Error response for the operation.",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ProjectsList": {
+            "$ref": "./examples/ProjectsList_example.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Project/projects/{projectName}/getConnectionDetails": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Gets connection details for an Azure Project resource.",
+        "description": "Gets connection details for the underlying container resources of an Azure Project resource.",
+        "operationId": "Projects_GetConnectionDetails",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ProjectNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; response contains the connection details for the Azure Project resource.",
+            "schema": {
+              "$ref": "#/definitions/ProjectConnectionDetailsResult"
+            }
+          },
+          "default": {
+            "description": "Error response for the operation.",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ProjectsGetConnectionDetails": {
+            "$ref": "./examples/ProjectsGetConnectionDetails_example.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Project/checkNameAvailability": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Checks the availability of an Azure Project resource name.",
+        "description": "Checks whether the Azure Project name is available for use. A valid project name contains only alphanumeric characters and '-'.",
+        "operationId": "Projects_CheckNameAvailability",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "checkNameAvailabilityRequest",
+            "in": "body",
+            "description": "Request containing the Azure Project name to verify.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CheckNameAvailabilityRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful; response contains the name availability check result.",
+            "schema": {
+              "$ref": "#/definitions/CheckNameAvailabilityResponse"
+            }
+          },
+          "default": {
+            "description": "Error response for the operation.",
+            "schema": {
+              "$ref": "#/definitions/ArmErrorResponseModel"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ProjectsCheckNameAvailability": {
+            "$ref": "./examples/ProjectsCheckNameAvailability_example.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ArmResourceModel": {
+      "description": "An Azure resource.",
+      "required": [
+        "location"
+      ],
+      "properties": {
+        "id": {
+          "description": "Resource ID.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Name of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "description": "Type of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "location": {
+          "description": "Location of the resource. This cannot be changed after the resource is created.",
+          "type": "string",
+          "x-ms-mutability": [
+            "create",
+            "read"
+          ]
+        },
+        "tags": {
+          "description": "Tags of the resource.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ResourceProviderOperationListResponse": {
+      "properties": {
+        "value": {
+          "description": "Resource provider operations list.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceProviderOperationDefinition"
+          }
+        },
+        "nextLink": {
+          "description": "The URI that can be used to request the next page for list of Azure operations.",
+          "type": "string"
+        }
+      }
+    },
+    "ResourceProviderOperationDefinition": {
+      "properties": {
+        "name": {
+          "description": "Resource provider operation name.",
+          "type": "string"
+        },
+        "display": {
+          "$ref": "#/definitions/ResourceProviderOperationDisplay"
+        }
+      }
+    },
+    "ResourceProviderOperationDisplay": {
+      "properties": {
+        "provider": {
+          "description": "Name of the resource provider.",
+          "type": "string"
+        },
+        "resource": {
+          "description": "Name of the resource type.",
+          "type": "string"
+        },
+        "operation": {
+          "description": "Name of the resource provider operation.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the resource provider operation.",
+          "type": "string"
+        }
+      }
+    },
+    "ProjectResource": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ArmResourceModel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/ProjectProperties",
+          "x-ms-client-flatten": true
+        },
+        "sku": {
+          "$ref": "#/definitions/Sku"
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "ProjectProperties": {
+      "properties": {
+        "provisioningState": {
+          "description": "Provisioning state of the project resource.",
+          "enum": [
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Updating",
+            "Creating",
+            "Deleting"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "ProvisioningState",
+            "modelAsString": false
+          }
+        },
+        "aiResourceId": {
+          "description": "Application Insights resource ID.",
+          "type": "string"
+        },
+        "aiInstrumentationKey": {
+          "description": "Application Insights instrumentation key.",
+          "type": "string"
+        },
+        "aiAppId": {
+          "description": "Application Insights application ID.",
+          "type": "string"
+        }
+      }
+    },
+    "Sku": {
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the SKU for Azure Project.",
+          "enum": [
+            "Basic"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SkuName",
+            "modelAsString": true
+          }
+        },
+        "tier": {
+          "description": "The tier of the SKU for Azure Project.",
+          "enum": [
+            "Basic"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SkuTier",
+            "modelAsString": true
+          }
+        }
+      }
+    },
+    "ProjectCreateParameters": {
+      "description": "Parameters for creating an Azure Project.",
+      "required": [
+        "location",
+        "sku",
+        "properties"
+      ],
+      "properties": {
+        "location": {
+          "description": "Azure Project location, this cannot be changed after creation.",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags for the Azure Project.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "sku": {
+          "$ref": "#/definitions/Sku"
+        },
+        "properties": {
+          "$ref": "#/definitions/ProjectCreateParametersProperties",
+          "x-ms-client-flatten": true
+        }
+      }
+    },
+    "ProjectCreateParametersProperties": {
+      "description": "Properties for creating an Azure Project.",
+      "required": [
+        "aiAppId",
+        "aiResourceId",
+        "aiInstrumentationKey"
+      ],
+      "properties": {
+        "aiAppId": {
+          "description": "Application Insights Application Id.",
+          "type": "string"
+        },
+        "aiResourceId": {
+          "description": "Application Insights Resource Id.",
+          "type": "string"
+        },
+        "aiInstrumentationKey": {
+          "description": "Application Insights Instrumentation Key.",
+          "type": "string"
+        }
+      }
+    },
+    "ProjectUpdateParameters": {
+      "description": "Parameters for updating an Azure Project.",
+      "properties": {
+        "tags": {
+          "description": "Tags for the Azure Project.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProjectResourceListResponse": {
+      "properties": {
+        "value": {
+          "description": "List of Azure projects.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProjectResource"
+          }
+        },
+        "nextLink": {
+          "description": "The URI that can be used to request the next page for list of Azure projects.",
+          "type": "string"
+        }
+      }
+    },
+    "ProjectConnectionDetailsResult": {
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/ProjectConnectionDetailsProperties",
+          "x-ms-client-flatten": true
+        }
+      }
+    },
+    "ProjectConnectionDetailsProperties": {
+      "properties": {
+        "authKey": {
+          "description": "Authentication key for Innerloop services.",
+          "type": "string",
+          "readOnly": true
+        },
+        "containerServiceDnsName": {
+          "description": "Azure Container Service DNS name.",
+          "type": "string",
+          "readOnly": true
+        },
+        "containerServiceAdmin": {
+          "description": "Azure Container Service admin username.",
+          "type": "string"
+        },
+        "containerServiceSshKey": {
+          "description": "Azure Container Service private SSH key.",
+          "type": "string",
+          "readOnly": true
+        },
+        "containerServiceSshPort": {
+          "format": "int32",
+          "description": "Azure Container Service port for SSH connection.",
+          "type": "integer"
+        },
+        "defaultWorkspaceStorageAccountName": {
+          "description": "Project's default workspace storage account name.",
+          "type": "string",
+          "readOnly": true
+        },
+        "defaultWorkspaceStorageAccountKey": {
+          "description": "Project's default workspace storage account key.",
+          "type": "string",
+          "readOnly": true
+        },
+        "innerloopServiceEndpoint": {
+          "description": "Public endpoint for accessing innerloop service.",
+          "type": "string"
+        }
+      }
+    },
+    "CheckNameAvailabilityRequest": {
+      "description": "Parameters for creating an Azure Project.",
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "description": "Azure Project name to verify.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Resource type for Azure Project. This must be set to \"Microsoft.Project/projects\"",
+          "type": "string"
+        }
+      }
+    },
+    "CheckNameAvailabilityResponse": {
+      "description": "The response of a check name availability request for Azure Project.",
+      "properties": {
+        "nameAvailable": {
+          "description": "Value indicating whether the project name is available. A project name has to be globally unique.",
+          "type": "boolean",
+          "readOnly": true
+        },
+        "reason": {
+          "description": "Reason why a project name might be unavailable.",
+          "type": "string",
+          "readOnly": true
+        },
+        "message": {
+          "description": "Error message when project name is unavailable.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "ArmErrorResponseModel": {
+      "description": "Error response model.",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ArmErrorDetails"
+        }
+      }
+    },
+    "ArmErrorDetails": {
+      "properties": {
+        "code": {
+          "description": "Status code for the error.",
+          "type": "string",
+          "readOnly": true
+        },
+        "message": {
+          "description": "Error message describing the error in detail.",
+          "type": "string",
+          "readOnly": true
+        },
+        "target": {
+          "description": "The target of the particular error.",
+          "type": "string",
+          "readOnly": true
+        },
+        "details": {
+          "description": "An array of service defined error details.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ArmErrorServiceDefinedDetails"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "ArmErrorServiceDefinedDetails": {
+      "description": "Custom error details defined by the service.",
+      "properties": {
+        "code": {
+          "description": "Custom status code for the error defined by the service.",
+          "type": "string",
+          "readOnly": true
+        },
+        "message": {
+          "description": "Service defined error message describing the error in detail.",
+          "type": "string",
+          "readOnly": true
+        },
+        "possibleCause": {
+          "description": "Possible cause for the error.",
+          "type": "string",
+          "readOnly": true
+        },
+        "recommendedAction": {
+          "description": "Recommended action for the error.",
+          "type": "string",
+          "readOnly": true
+        },
+        "clientRequestId": {
+          "description": "Client request ID for the operation.",
+          "type": "string",
+          "readOnly": true
+        },
+        "requestId": {
+          "description": "Request ID for the operation.",
+          "type": "string",
+          "readOnly": true
+        },
+        "target": {
+          "description": "The target of the particular error.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "description": "Azure subscription ID.",
+      "required": true,
+      "type": "string",
+      "pattern": "^([0-9A-Fa-f]{8}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{12})$"
+    },
+    "ResourceGroupParameter": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "description": "Resource group to which the Azure project belongs.",
+      "required": true,
+      "type": "string",
+      "maxLength": 90,
+      "x-ms-parameter-location": "method"
+    },
+    "ProjectNameParameter": {
+      "name": "projectName",
+      "in": "path",
+      "description": "Name of the Azure project.",
+      "required": true,
+      "type": "string",
+      "maxLength": 100,
+      "minLength": 5,
+      "pattern": "^[a-zA-Z0-9]+[a-zA-Z0-9-]*[a-zA-Z0-9]+$",
+      "x-ms-parameter-location": "method"
+    },
+    "ApiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "description": "Client API version.",
+      "required": true,
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}(-[a-zA-Z]*)?$"
+    }
+  }
+}
