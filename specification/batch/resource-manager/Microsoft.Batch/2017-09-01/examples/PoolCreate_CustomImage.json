@@ -6,7 +6,17 @@
     "poolName": "testpool",
     "api-version": "2017-09-01",
     "parameters": {
-      "targetOSVersion": "WA-GUEST-OS-5.10_201708-01"
+      "properties": {
+        "vmSize": "STANDARD_D4",
+        "deploymentConfiguration": {
+          "virtualMachineConfiguration": {
+            "imageReference": {
+              "id": "/subscriptions/subid/resourceGroups/networking-group/providers/Microsoft.Compute/images/image-123"
+            },
+            "nodeAgentSkuId": "batch.node.ubuntu 14.04"
+          }
+        }
+      }
     }
   },
   "responses": {
@@ -32,24 +42,19 @@
           "taskSchedulingPolicy": {
             "nodeFillType": "Spread"
           },
+          "deploymentConfiguration": {
+            "virtualMachineConfiguration": {
+              "imageReference": {
+                "id": "/subscriptions/subid/resourceGroups/networking-group/providers/Microsoft.Compute/images/image-123"
+              },
+              "nodeAgentSkuId": "batch.node.ubuntu 14.04"
+            }
+          },
           "scaleSettings": {
             "fixedScale": {
-              "targetDedicatedNodes": 3,
-              "targetLowPriorityNodes": 0,
-              "resizeTimeout": "PT15M"
+              "targetDedicatedNodes": 0,
+              "targetLowPriorityNodes": 0
             }
-          },
-          "deploymentConfiguration": {
-            "cloudServiceConfiguration": {
-              "osFamily": "5",
-              "targetOSVersion": "WA-GUEST-OS-5.10_201708-01",
-              "currentOSVersion": "WA-GUEST-OS-5.8_201706-01"
-            }
-          },
-          "resizeOperationStatus": {
-            "targetDedicatedNodes": 1,
-            "nodeDeallocationOption": "Requeue",
-            "resizeTimeout": "PT10M"
           },
           "currentDedicatedNodes": 0,
           "currentLowPriorityNodes": 0

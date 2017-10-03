@@ -1007,6 +1007,10 @@
         ],
         "operationId": "Certificate_ListByBatchAccount",
         "description": "Lists all of the certificates in the specified account.",
+        "x-ms-examples": {
+          "ListCertificates": { "$ref": "./examples/CertificateList.json" },
+          "ListCertificates - Filter and Select": { "$ref": "./examples/CertificateListWithFilter.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1059,10 +1063,6 @@
         },
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
-        },
-        "x-ms-examples": {
-          "ListCertificates": { "$ref": "./examples/CertificateList.json" },
-          "ListCertificates - Filter and Select": { "$ref": "./examples/CertificateListWithFilter.json" }
         }
       }
     },
@@ -1073,6 +1073,11 @@
         ],
         "operationId": "Certificate_Create",
         "description": "Creates a new certificate inside the specified account.",
+        "x-ms-examples": {
+          "CreateCertificate - Minimal Pfx": { "$ref": "./examples/CertificateCreate_Minimal.json" },
+          "CreateCertificate - Minimal Cer": { "$ref": "./examples/CertificateCreate_MinimalCer.json" },
+          "CreateCertificate - Full": { "$ref": "./examples/CertificateCreate_Full.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1088,23 +1093,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CertificateCreateParameters"
+              "$ref": "#/definitions/CertificateCreateOrUpdateParameters"
             },
-            "description": "Certificate  Additional parameters for certificate creation."
+            "description": "Additional parameters for certificate creation."
           },
           {
             "name": "If-Match",
             "in": "header",
             "required": false,
             "type": "string",
-            "description": "The entity state (ETag) version of the certificate to update. If omitted, this operation will always be applied, or a value of \"*\" can be used to apply the operation only if the Certificate already exists."
+            "description": "The entity state (ETag) version of the certificate to update. A value of \"*\" can be used to apply the operation only if the certificate already exists. If omitted, this operation will always be applied."
           },
           {
             "name": "If-None-Match",
             "in": "header",
             "required": false,
             "type": "string",
-            "description": "Defines the If-None-Match condition. Set to '*' to force Create-If-Not-Exist. Other values will be ignored."
+            "description": "Set to '*' to allow a new certificate to be created, but to prevent updating an existing certificate. Other values will be ignored."
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -1133,12 +1138,7 @@
             }
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "CreateCertificate - Minimal Pfx": { "$ref": "./examples/CertificateCreate_Minimal.json" },
-          "CreateCertificate - Minimal Cer": { "$ref": "./examples/CertificateCreate_MinimalCer.json" },
-          "CreateCertificate - Full": { "$ref": "./examples/CertificateCreate_Full.json" }
-        }
+        "x-ms-long-running-operation": true
       },
       "patch": {
         "tags": [
@@ -1146,6 +1146,9 @@
         ],
         "operationId": "Certificate_Update",
         "description": "Updates the properties of an existing certificate.",
+        "x-ms-examples": {
+          "UpdateCertificate": { "$ref": "./examples/CertificateUpdate.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1161,7 +1164,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Certificate"
+              "$ref": "#/definitions/CertificateCreateOrUpdateParameters"
             },
             "description": "Certificate entity to update."
           },
@@ -1198,9 +1201,6 @@
               "$ref": "#/definitions/CloudError"
             }
           }
-        },
-        "x-ms-examples": {
-          "UpdateCertificate": { "$ref": "./examples/CertificateUpdate.json" }
         }
       },
       "delete": {
@@ -1209,6 +1209,9 @@
         ],
         "operationId": "Certificate_Delete",
         "description": "Deletes the specified certificate.",
+        "x-ms-examples": {
+          "CertificateDelete": { "$ref": "./examples/CertificateDelete.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1254,10 +1257,7 @@
             }
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "CertificateDelete": { "$ref": "./examples/CertificateDelete.json" }
-        }
+        "x-ms-long-running-operation": true
       },
       "get": {
         "tags": [
@@ -1265,6 +1265,10 @@
         ],
         "operationId": "Certificate_Get",
         "description": "Gets information about the specified certificate.",
+        "x-ms-examples": {
+          "Get Certificate": { "$ref": "./examples/CertificateGet.json" },
+          "Get Certificate with Deletion Error": { "$ref": "./examples/CertificateGetWithDeletionError.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1301,10 +1305,6 @@
               "$ref": "#/definitions/CloudError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Get Certificate": { "$ref": "./examples/CertificateGet.json" },
-          "Get Certificate with Deletion Error": { "$ref": "./examples/CertificateGetWithDeletionError.json" }
         }
       }
     },
@@ -1316,6 +1316,9 @@
         "operationId": "Certificate_CancelDeletion",
         "summary": "Cancels a failed deletion of a certificate from the specified account.",
         "description": "If you try to delete a certificate that is being used by a pool or compute node, the status of the certificate changes to deleteFailed. If you decide that you want to continue using the certificate, you can use this operation to set the status of the certificate back to active. If you intend to delete the certificate, you do not need to run this operation after the deletion failed. You must make sure that the certificate is not being used by any resources, and then you can try again to delete the certificate.",
+        "x-ms-examples": {
+          "CertificateCancelDeletion": { "$ref": "./examples/CertificateCancelDeletion.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1352,9 +1355,6 @@
               "$ref": "#/definitions/CloudError"
             }
           }
-        },
-        "x-ms-examples": {
-          "CertificateCancelDeletion": { "$ref": "./examples/CertificateCancelDeletion.json" }
         }
       }
     },
@@ -1365,6 +1365,10 @@
         ],
         "operationId": "Pool_ListByBatchAccount",
         "description": "Lists all of the pools in the specified account.",
+        "x-ms-examples": {
+          "ListPool": { "$ref": "./examples/PoolList.json" },
+          "ListPoolWithFilter": { "$ref": "./examples/PoolListWithFilter.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1417,10 +1421,6 @@
         },
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
-        },
-        "x-ms-examples": {
-          "ListPool": { "$ref": "./examples/PoolList.json" },
-          "ListPoolWithFilter": { "$ref": "./examples/PoolListWithFilter.json" }
         }
       }
     },
@@ -1431,6 +1431,13 @@
         ],
         "operationId": "Pool_Create",
         "description": "Creates a new pool inside the specified account.",
+        "x-ms-examples": {
+          "CreatePool - Minimal CloudServiceConfiguration": { "$ref": "./examples/PoolCreate_MinimalCloudServiceConfiguration.json" },
+          "CreatePool - Minimal VirtualMachineConfiguration": { "$ref": "./examples/PoolCreate_MinimalVirtualMachineConfiguration.json" },
+          "CreatePool - Full Example": { "$ref": "./examples/PoolCreate_FullExample.json" },
+          "CreatePool - Custom Image": { "$ref": "./examples/PoolCreate_CustomImage.json" },
+          "CreatePool - Full VirtualMachineConfiguration": { "$ref": "./examples/PoolCreate_VirtualMachineConfiguration.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1455,14 +1462,14 @@
             "in": "header",
             "required": false,
             "type": "string",
-            "description": "The entity state (ETag) version of the pool to update. If omitted, this operation will always be applied, or a value of \"*\" can be used to apply the operation only if the Pool already exists."
+            "description": "The entity state (ETag) version of the pool to update. A value of \"*\" can be used to apply the operation only if the pool already exists. If omitted, this operation will always be applied."
           },
           {
             "name": "If-None-Match",
             "in": "header",
             "required": false,
             "type": "string",
-            "description": "Defines the If-None-Match condition. Set to '*' to force Create-If-Not-Exist. Other values will be ignored."
+            "description": "Set to '*' to allow a new pool to be created, but to prevent updating an existing pool. Other values will be ignored."
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -1491,12 +1498,7 @@
             }
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "CreatePool - Minimal CloudServiceConfiguration": { "$ref": "./examples/PoolCreate_MinimalCloudServiceConfiguration.json" },
-          "CreatePool - Minimal VirtualMachineConfiguration": { "$ref": "./examples/PoolCreate_MinimalVirtualMachineConfiguration.json" },
-          "CreatePool - Full Example": { "$ref": "./examples/PoolCreate_FullExample.json" }
-        }
+        "x-ms-long-running-operation": true
       },
       "patch": {
         "tags": [
@@ -1504,6 +1506,12 @@
         ],
         "operationId": "Pool_Update",
         "description": "Updates the properties of an existing pool.",
+        "x-ms-examples": {
+          "UpdatePool - Resize Pool": { "$ref": "./examples/PoolUpdate_ResizePool.json" },
+          "UpdatePool - Enable Autoscale": { "$ref": "./examples/PoolUpdate_EnableAutoScale.json" },
+          "UpdatePool - Remove Start Task": { "$ref": "./examples/PoolUpdate_RemoveStartTask.json" },
+          "UpdatePool - Other Properties": { "$ref": "./examples/PoolUpdate_OtherProperties.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1556,12 +1564,6 @@
               "$ref": "#/definitions/CloudError"
             }
           }
-        },
-        "x-ms-examples": {
-          "UpdatePool - Resize Pool": { "$ref": "./examples/PoolUpdate_ResizePool.json" },
-          "UpdatePool - Enable Autoscale": { "$ref": "./examples/PoolUpdate_EnableAutoScale.json" },
-          "UpdatePool - Remove Start Task": { "$ref": "./examples/PoolUpdate_RemoveStartTask.json" },
-          "UpdatePool - Other Properties": { "$ref": "./examples/PoolUpdate_OtherProperties.json" }
         }
       },
       "delete": {
@@ -1570,6 +1572,9 @@
         ],
         "operationId": "Pool_Delete",
         "description": "Deletes the specified pool.",
+        "x-ms-examples": {
+          "DeletePool": { "$ref": "./examples/PoolDelete.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1615,10 +1620,7 @@
             }
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "DeletePool": { "$ref": "./examples/PoolDelete.json" }
-        }
+        "x-ms-long-running-operation": true
       },
       "get": {
         "tags": [
@@ -1626,6 +1628,9 @@
         ],
         "operationId": "Pool_Get",
         "description": "Gets information about the specified pool.",
+        "x-ms-examples": {
+          "GetPool": { "$ref": "./examples/PoolGet.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1662,9 +1667,6 @@
               "$ref": "#/definitions/CloudError"
             }
           }
-        },
-        "x-ms-examples": {
-          "GetPool": { "$ref": "./examples/PoolGet.json" }
         }
       }
     },
@@ -1675,6 +1677,9 @@
         ],
         "operationId": "Pool_DisableAutoScale",
         "description": "Disables automatic scaling for a pool.",
+        "x-ms-examples": {
+          "Disable AutoScale": { "$ref": "./examples/PoolDisableAutoScale.json" }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1711,9 +1716,6 @@
               "$ref": "#/definitions/CloudError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Disable AutoScale": { "$ref": "./examples/PoolDisableAutoScale.json" }
         }
       }
     },
@@ -1725,56 +1727,9 @@
         "operationId": "Pool_StopResize",
         "summary": "Stops an ongoing resize operation on the pool.",
         "description": "This does not restore the pool to its previous state before the resize operation: it only stops any further changes being made, and the pool maintains its current state. After stopping, the pool stabilizes at the number of nodes it was at when the stop operation was done. During the stop operation, the pool allocation state changes first to stopping and then to steady. A resize operation need not be an explicit resize pool request; this API can also be used to halt the initial sizing of the pool when it is created.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/AccountNameParameter"
-          },
-          {
-            "$ref": "#/parameters/PoolNameParameter"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The operation was successful. The response contains the pool entity.",
-            "schema": {
-              "$ref": "#/definitions/Pool"
-            },
-            "headers": {
-              "ETag": {
-                "description": "The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.",
-                "type": "string"
-              }
-            }
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        },
         "x-ms-examples": {
           "StopPoolResize": { "$ref": "./examples/PoolStopResize.json" }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}/upgradeOs": {
-      "post": {
-        "tags": [
-          "Pool"
-        ],
-        "operationId": "Pool_UpgradeOs",
-        "summary": "Upgrades the operating system of the specified pool.",
-        "description": "During an upgrade, the Batch service upgrades each compute node in the pool. When a compute node is chosen for upgrade, any tasks running on that node are removed from the node and returned to the queue to be rerun later (or on a different compute node). The node will be unavailable until the upgrade is complete. This operation results in temporarily reduced pool capacity as nodes are taken out of service to be upgraded. Although the Batch service tries to avoid upgrading all compute nodes at the same time, it does not guarantee to do this (particularly on small pools); therefore, the pool may be temporarily unavailable to run tasks. While the upgrade is in progress, the pool's currentOSVersion reflects the OS version that nodes are upgrading from, and targetOSVersion reflects the OS version that nodes are upgrading to. Once the upgrade is complete, currentOSVersion is updated to reflect the OS version now running on all nodes. This operation can only be invoked on pools created with the cloudServiceConfiguration property.",
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -1790,15 +1745,6 @@
           },
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "name": "parameters",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/PoolUpgradeOSParameter"
-            },
-            "description": "The parameters for the request."
           }
         ],
         "responses": {
@@ -1820,9 +1766,6 @@
               "$ref": "#/definitions/CloudError"
             }
           }
-        },
-        "x-ms-examples": {
-          "UpgradePoolOS": { "$ref": "./examples/PoolUpgradeOS.json" }
         }
       }
     }
@@ -2310,11 +2253,13 @@
       "properties": {
         "thumbprintAlgorithm": {
           "type": "string",
-          "description": "Algorithm of the certificate thumbprint, must match the first portion of the certificate name. Currently required to be 'SHA1'."
+          "title": "The algorithm of the certificate thumbprint",
+          "description":  "This must match the first portion of the certificate name. Currently required to be 'SHA1'."
         },
         "thumbprint": {
           "type": "string",
-          "description": "Thumbprint of the certificate, must match the thumbprint from the name."
+          "title": "The thumbprint of the certificate",
+          "description": "This must match the thumbprint from the name."
         },
         "format": {
           "type": "string",
@@ -2395,7 +2340,7 @@
       ],
       "description": "Certificate properties."
     },
-    "CertificateCreateProperties": {
+    "CertificateCreateOrUpdateProperties": {
       "allOf": [
         {
           "$ref": "#/definitions/CertificateBaseProperties"
@@ -2431,11 +2376,11 @@
       ],
       "description": "Contains information about a certificate."
     },
-    "CertificateCreateParameters": {
+    "CertificateCreateOrUpdateParameters": {
       "properties": {
         "properties": {
           "x-ms-client-flatten": true,
-          "$ref": "#/definitions/CertificateCreateProperties",
+          "$ref": "#/definitions/CertificateCreateOrUpdateProperties",
           "description": "The properties associated with the certificate."
         }
       },
@@ -2771,7 +2716,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "Fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool."
+          "title": "The fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool."
         },
         "storeLocation": {
           "type": "string",
@@ -2817,7 +2762,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists."
+          "title": "The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists."
         },
         "version": {
           "type": "string",
@@ -2878,7 +2823,7 @@
           "title": "The time at which the autoscale formula was last evaluated."
         },
         "results": {
-          "type": "object",
+          "type": "string",
           "title": "The final values of all variables used in the evaluation of the autoscale formula.",
           "description": "Each variable value is returned in the form $variable=value, and variables are separated by semicolons."
         },
@@ -2894,13 +2839,11 @@
       "properties": {
         "imageReference": {
           "$ref": "#/definitions/ImageReference",
-          "title": "A reference to the Azure Virtual Machines Marketplace image to use.",
-          "description": "This property and osDisk are mutually exclusive and one of the properties must be specified."
+          "title": "A reference to the Azure Virtual Machines Marketplace Image or the custom Virtual Machine Image to use."
         },
         "osDisk": {
           "$ref": "#/definitions/OSDisk",
-          "title": "A reference to the OS disk image to use.",
-          "description": "This property can be specified only if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'. This property and imageReference are mutually exclusive and one of the properties must be specified."
+          "title": "Settings for the operating system disk of the Virtual Machine."
         },
         "nodeAgentSkuId": {
           "type": "string",
@@ -2910,26 +2853,31 @@
         "windowsConfiguration": {
           "$ref": "#/definitions/WindowsConfiguration",
           "title": "Windows operating system settings on the virtual machine.",
-          "description": "This property must not be specified if the imageReference or osDisk property specifies a Linux OS image."
+          "description": "This property must not be specified if the imageReference specifies a Linux OS image."
+        },
+        "dataDisks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataDisk"
+          },
+          "title": "The configuration for data disks attached to the comptue nodes in the pool.",
+          "description": "This property must be specified if the compute nodes in the pool need to have empty data disks attached to them."
+        },
+        "licenseType": {
+          "type": "string",
+          "title": "The type of on-premises license to be used when deploying the operating system.",
+          "description": "This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:\n\n Windows_Server - The on-premises license is for Windows Server.\n Windows_Client - The on-premises license is for Windows Client.\n"
         }
       },
-      "required": [ "nodeAgentSkuId" ],
+      "required": [ "imageReference", "nodeAgentSkuId" ],
       "title": "The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure."
     },
     "WindowsConfiguration": {
       "properties": {
-        "automaticUpdates": {
-          "type": "string",
-          "enum": [
-            "Enabled",
-            "Disabled"
-          ],
-          "x-ms-enum": {
-            "name": "AutomaticUpdateState",
-            "modelAsString": false
-          },
+        "enableAutomaticUpdates": {
+          "type": "boolean",
           "title": "Whether automatic updates are enabled on the virtual machine.",
-          "description": "If omitted, the default value is enabled."
+          "description": "If omitted, the default value is true."
         }
       },
       "title": "Windows operating system settings to apply to the virtual machine."
@@ -2955,10 +2903,44 @@
           "type": "string",
           "title": "The version of the Azure Virtual Machines Marketplace image.",
           "description": "A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'."
+        },
+        "id": {
+          "type": "string",
+          "title": "The ARM resource identifier of the virtual machine image. Computes nodes of the pool will be created using this custom image. This is of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}",
+          "description": "This property is mutually exclusive with other properties. The virtual machine image must be in the same region and subscription as the Azure Batch account. For information about the firewall settings for Batch node agent to communicate with Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration ."
         }
       },
-      "required": [ "publisher", "offer", "sku" ],
-      "title": "A reference to an Azure Virtual Machines Marketplace image. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation."
+      "title": "A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation."
+    },
+    "DataDisk": {
+      "properties": {
+        "lun": {
+          "type": "integer",
+          "format": "int32",
+          "title": "The logical unit number.",
+          "description": "The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun."
+        },
+        "caching": {
+          "$ref": "#/definitions/CachingType",
+          "title": "The type of caching to be enabled for the data disks.",
+          "description": "Values are:\n\n none - The caching mode for the disk is not enabled.\n readOnly - The caching mode for the disk is read only.\n readWrite - The caching mode for the disk is read and write.\n\n The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/."
+        },
+        "diskSizeGB": {
+          "type": "integer",
+          "format": "int32",
+          "title": "The initial disk size in GB when creating new data disk."
+        },
+        "storageAccountType": {
+          "title": "The storage account type to be used for the data disk.",
+          "description": "If omitted, the default is \"Standard_LRS\". Values are:\n\n Standard_LRS - The data disk should use standard locally redundant storage.\n Premium_LRS - The data disk should use premium locally redundant storage.",
+          "$ref": "#/definitions/StorageAccountType"
+        }
+      },
+      "required": [
+        "lun",
+        "diskSizeGB"
+      ],
+      "description": "Data Disk settings which will be used by the data disks associated to Compute Nodes in the pool."
     },
     "TaskSchedulingPolicy": {
       "properties": {
@@ -3150,33 +3132,41 @@
         "modelAsString": false
       }
     },
+    "StorageAccountType": {
+      "type": "string",
+      "title": "The storage account type for use in creating data disks.",
+      "enum": [
+        "Standard_LRS",
+        "Premium_LRS"
+      ],
+      "x-ms-enum": {
+        "name": "StorageAccountType",
+        "modelAsString": false
+      }
+    },
+    "CachingType": {
+      "type": "string",
+      "title": "The type of caching to enable for the disk.",
+      "description": "Values are:\n\n None - The caching mode for the disk is not enabled.\n ReadOnly - The caching mode for the disk is read only.\n ReadWrite - The caching mode for the disk is read and write. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.",
+      "enum": [
+        "None",
+        "ReadOnly",
+        "ReadWrite"
+      ],
+      "x-ms-enum": {
+        "name": "CachingType",
+        "modelAsString": false
+      }
+    },
     "OSDisk": {
       "properties": {
-        "imageUris": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "The collection of Virtual Hard Disk (VHD) URIs.",
-          "description": "All the VHDs must be identical and must reside in an Azure Storage account within the same subscription and same region as the Batch account. For best performance, it is recommended that each VHD resides in a separate Azure Storage account. Each VHD can serve upto 20 Windows compute nodes or 40 Linux compute nodes. You must supply enough VHD URIs to satisfy the 'targetDedicatedNodes' property of the pool. If you do not supply enough VHD URIs, the pool will partially allocate compute nodes, and a resize error will occur."
-        },
         "caching": {
-          "type": "string",
-          "title": "The type of caching to enable for the OS disk.",
-          "description": "None - The caching mode for the disk is not enabled. ReadOnly - The caching mode for the disk is read only. ReadWrite - The caching mode for the disk is read and write. The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.",
-          "enum": [
-            "None",
-            "ReadOnly",
-            "ReadWrite"
-          ],
-          "x-ms-enum": {
-            "name": "CachingType",
-            "modelAsString": false
-          }
+          "$ref": "#/definitions/CachingType",
+          "title": "The type of caching to be enabled for the data disks. none - The caching mode for the disk is not enabled. readOnly - The caching mode for the disk is read only. readWrite - The caching mode for the disk is read and write.",
+          "description": "Default value is none."
         }
       },
-      "required": [ "imageUris" ],
-      "title": "A reference to an OS disk image."
+      "title": "Settings for the operating system disk of the virtual machine."
     },
     "NetworkConfiguration": {
       "properties": {
@@ -3261,7 +3251,7 @@
           "format": "date-time",
           "title": "The time when this resize operation was started."
         },
-        "resizeErrors": {
+        "errors": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ResizeError"
@@ -3380,16 +3370,6 @@
         }
       },
       "description": "Values returned by the List operation."
-    },
-    "PoolUpgradeOSParameter": {
-      "properties": {
-        "targetOSVersion": {
-          "type": "string",
-          "title": "The Azure Guest OS version to be installed on the virtual machines in the pool."
-        }
-      },
-      "required": [ "targetOSVersion" ],
-      "title": "Options for upgrading the operating system of compute nodes in a pool."
     },
     "CloudError": {
       "x-ms-external": true,
@@ -3575,7 +3555,7 @@
       "pattern": "^[\\w]+-[\\w]+$",
       "minLength": 5,
       "maxLength": 45,
-      "description": "Identifier for the certificate. This must be made up of algorithm and thumbprint separated by a dash, and must match the certificate data in the request. For example SHA1-a3d1c5.",
+      "description": "The identifier for the certificate. This must be made up of algorithm and thumbprint separated by a dash, and must match the certificate data in the request. For example SHA1-a3d1c5.",
       "x-ms-parameter-location": "method"
     },
     "PoolNameParameter": {
@@ -3586,7 +3566,7 @@
       "pattern": "^[a-zA-Z0-9_-]+$",
       "minLength": 1,
       "maxLength": 64,
-      "description": "Pool name. This must be unique within the account.",
+      "description": "The pool name. This must be unique within the account.",
       "x-ms-parameter-location": "method"
     }
   }

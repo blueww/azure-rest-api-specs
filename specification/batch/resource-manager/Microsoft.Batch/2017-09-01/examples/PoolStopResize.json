@@ -48,6 +48,7 @@
             }
           },
           "resizeOperationStatus": {
+            "startTime": "2017-08-28T10:22:55.9407275Z",
             "targetDedicatedNodes": 1,
             "nodeDeallocationOption": "Requeue",
             "resizeTimeout": "PT10M"
