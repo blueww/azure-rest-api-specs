@@ -64,6 +64,9 @@
           "APIKeysList": {
             "$ref": "./examples/APIKeysList.json"
           }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
         }
       },
       "post": {
