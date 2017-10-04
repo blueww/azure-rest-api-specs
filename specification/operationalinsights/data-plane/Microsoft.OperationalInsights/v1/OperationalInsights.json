@@ -54,8 +54,11 @@
                 "summary": "Execute an Analytics query",
                 "description": "Executes an Analytics query for data",
                 "x-ms-examples": {
-                    "query": {
+                    "simple-query": {
                         "$ref": "examples/oms-get-example.json"
+                    },
+                    "cross-workspace": {
+                        "$ref": "examples/oms-get-cross-workspace-example.json"
                     }
                 },
                 "parameters": [
@@ -67,9 +70,6 @@
                     },
                     {
                         "$ref": "#/parameters/timespan-param"
-                    },
-                    {
-                        "$ref": "#/parameters/workspaces-param"
                     }
                 ],
                 "responses": {
@@ -92,8 +92,11 @@
                 "summary": "Execute an Analytics query",
                 "description": "Executes an Analytics query for data. [Here](/documentation/2-Using-the-API/Query) is an example for using POST with an Analytics query.",
                 "x-ms-examples": {
-                    "query": {
+                    "simple-query": {
                         "$ref": "examples/oms-post-example.json"
+                    },
+                    "cross-workspace": {
+                        "$ref": "examples/oms-post-cross-workspace-example.json"
                     }
                 },
                 "parameters": [
@@ -105,9 +108,6 @@
                     },
                     {
                         "$ref": "#/parameters/timespan-param"
-                    },
-                    {
-                        "$ref": "#/parameters/workspaces-param"
                     }
                 ],
                 "responses": {
@@ -136,18 +136,18 @@
             "type": "string",
             "x-ms-parameter-location": "client"
         },
-        "workspaces-param": {
-            "name": "workspaces",
-            "description": "Comma separated workspace IDs to include in cross-workspace queries.",
-            "in": "path",
-            "type": "string",
-            "required": false,
-            "default": ""
+        "query-param": {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "x-ms-parameter-location": "method",
+            "description": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
+            "type": "string"
         },
         "query-body": {
             "name": "body",
             "in": "body",
-            "description": "HTTP request body",
+            "description": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
             "required": true,
             "schema": {
                 "$ref": "#/definitions/query-body"
@@ -156,19 +156,11 @@
         },
         "timespan-param": {
             "name": "timespan",
-            "description": "Optional. The timespan over which to query data. This is an ISO8601 time period value.  This timespan is applied in addition to any that are specified in the query expression.",
             "in": "query",
-            "type": "string",
             "required": false,
-            "x-ms-parameter-location": "method"
-        },
-        "query-param": {
-            "name": "query",
-            "description": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
-            "in": "query",
-            "type": "string",
-            "required": true,
-            "x-ms-parameter-location": "method"
+            "x-ms-parameter-location": "method",
+            "description": "Optional. The timespan over which to query data. This is an ISO8601 time period value.  This timespan is applied in addition to any that are specified in the query expression.",
+            "type": "string"
         }
     },
     "definitions": {
@@ -188,7 +180,7 @@
             }
         },
         "query-body": {
-            "title": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
+            "description": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
             "type": "object",
             "properties": {
                 "query": {

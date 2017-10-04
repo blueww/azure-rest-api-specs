@@ -1,4 +1,6 @@
 {
+    "title": "Simple Query",
+    "description": "A simple query that returns query results.",
     "parameters": {
         "workspace-id": "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345",
         "query": "Usage | take 10",
@@ -185,19 +187,6 @@
                                 "peakPerNode": 0
                             }
                         }
-                    }
-                }
-            }
-        },
-        "204": {},
-        "default": {
-            "body": {
-                "error": {
-                    "message": "The request had some invalid properties",
-                    "code": "BadArgumentError",
-                    "innererror": {
-                        "code": "SyntaxError",
-                        "message": "Syntax Error"
                     }
                 }
             }
