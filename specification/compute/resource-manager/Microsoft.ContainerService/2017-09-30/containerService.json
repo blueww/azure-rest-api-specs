@@ -961,21 +961,24 @@
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of the resource group."
+      "description": "The name of the resource group.",
+      "x-ms-parameter-location": "method"
     },
     "ResourceNameParameter": {
       "name": "resourceName",
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of the resource."
+      "description": "The name of the resource.",
+      "x-ms-parameter-location": "method"
     },
     "LocationParameter": {
       "name": "location",
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of a supported Azure region."
+      "description": "The name of a supported Azure region.",
+      "x-ms-parameter-location": "method"
     }
   }
 }
