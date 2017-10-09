@@ -61,13 +61,13 @@ input-file:
 - Microsoft.Compute/2017-03-30/runCommands.json
 ```
 
-### Tag: package-container-service-2017-01
+### Tag: package-container-service-2017-09
 
-These settings apply only when `--tag=package-container-service-2017-01` is specified on the command line.
+These settings apply only when `--tag=package-container-service-2017-09` is specified on the command line.
 
-``` yaml $(tag) == 'package-container-service-2017-01'
+``` yaml $(tag) == 'package-container-service-2017-09'
 input-file:
-- Microsoft.ContainerService/2017-01-31/containerService.json
+- Microsoft.ContainerService/2017-09-30/containerService.json
 ```
 
 ### Tag: package-2016-04-preview
