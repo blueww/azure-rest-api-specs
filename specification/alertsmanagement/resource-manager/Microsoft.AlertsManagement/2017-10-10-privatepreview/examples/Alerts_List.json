@@ -10,7 +10,7 @@
 			  "value": [
 				{
 				  "id": "/subscriptions/subid/providers/microsoft.alertsmanagement/alerts/b67f7fec-69fc-4974-9099-a26bd6ffeda3",
-				  "type": "Azure Alerts",
+				  "type": "Microsoft.AlertsManagement/alerts",
 				  "name": "High CPU > 80%",
 				  "properties": {
 					"severity": "Sev1",
@@ -29,7 +29,7 @@
 				},
 				{
 				  "id": "/subscriptions/subid/providers/microsoft.alertsmanagement/alerts/a35dwrwd-69fc-4974-9099-a35dwrwd",
-				  "type": "string",
+				  "type": "Microsoft.AlertsManagement/alerts",
 				  "name": "Heart beat failure"
 				  "properties": {
 					"severity": "Sev1",

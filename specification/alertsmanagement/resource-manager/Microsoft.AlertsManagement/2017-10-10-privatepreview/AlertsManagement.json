@@ -145,7 +145,7 @@
         },
         "x-ms-examples": {
           "GetById": {
-            "$ref": "./examples/Alerts_GetById.json"
+            "$ref": "./examples/Alerts_GetbyId.json"
           }
         }
       }
@@ -186,7 +186,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.AlertManagement/alerts/summary": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.AlertManagement/alertsSummary": {
       "get": {
         "operationId": "Alerts_GetSummary",
         "description": "Summary of alerts with the count each severity.",
@@ -195,10 +195,10 @@
             "$ref": "#/parameters/subscriptionId"
           },
           {
-            "$ref": "#parameters/resourceGroupIdFilter"
+            "$ref": "#/parameters/resourceGroupIdFilter"
           },
           {
-            "$ref": "#parameters/timeRangeFilter"
+            "$ref": "#/parameters/timeRangeFilter"
           },
           {
             "$ref": "#/parameters/api-version"
@@ -221,48 +221,6 @@
         "x-ms-examples": {
           "Summary": {
             "$ref": "./examples/Alerts_Summary.json"
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.AlertManagement/alerts/unresolvedByResource": {
-      "get": {
-        "operationId": "Alerts_ListUnresolvedByResource",
-        "description": "Summary of alerts by resource with the count per severity.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/subscriptionId"
-          },
-          {
-            "$ref": "#parameters/resourceGroupIdFilter"
-          },
-          {
-            "$ref": "#parameters/timeRangeFilter"
-          },
-          {
-            "$ref": "#/parameters/api-version"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK. Alert state updated.",
-            "schema": {
-              "$ref": "#/definitions/unresolvedAlertsByResource"
-            }
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
-            }
-          }
-        },
-        "x-ms-pageable": {
-          "nextLinkName": "nextLink"
-        },
-        "x-ms-examples": {
-          "unresolvedByResource": {
-            "$ref": "./examples/Alerts_UnresolvedByResource.json"
           }
         }
       }
@@ -545,16 +503,25 @@
       }
     },
     "alertsSummary": {
+      "description": "Summary of the alerts.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/azureResource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/alertsSummaryProperties"
+        }
+      }
+    },
+    "alertsSummaryProperties": {
       "type": "object",
       "description": "Summary of the alerts",
       "properties": {
-        "total": {
-          "type": "integer",
-          "description": "Total number of alerts"
-        },
-        "unresolved": {
+        "summary": {
           "type": "object",
-          "description": "Unresolved alerts summary.",
+          "description": "Total number of alerts by severity",
           "properties": {
             "sev1": {
               "type": "integer",
@@ -569,23 +536,23 @@
               "description": "Unresolved severity sev3 count"
             }
           }
-        }
-      }
-    },
-    "unresolvedAlertsByResource": {
-      "type": "object",
-      "description": "Summary of the unresolved alerts by severity per resource",
-      "properties": {
+        },
+        "details": {
+          "type": "object",
+          "description": "Summary of the unresolved alerts by severity per resource",
+          "properties": {
+            "value": {
+              "description": "Summary of alerts by severity per resource",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/unresolvedAlertsByResourceItem"
+              }
+            }
+          }
+        },
         "nextLink": {
           "description": "URL to fetch the next set of alerts.",
           "type": "string"
-        },
-        "value": {
-          "description": "Summary of alerts by severity per resource",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/unresolvedAlertsByResourceItem"
-          }
         }
       }
     },
@@ -594,20 +561,22 @@
       "description": "Unresolved alerts summary of a resource",
       "properties": {
         "resource": {
-          "type": "string",
-          "description": "resource uri"
-        },
-        "sev1": {
-          "type": "integer",
-          "description": "Unresolved severity sev1 count"
-        },
-        "sev2": {
-          "type": "integer",
-          "description": "Unresolved severity sev2 count"
-        },
-        "sev3": {
-          "type": "integer",
-          "description": "Unresolved severity sev3 count"
+          "type": "object",
+          "description": "resource uri",
+          "properties": {
+            "sev1": {
+              "type": "integer",
+              "description": "Unresolved severity sev1 count"
+            },
+            "sev2": {
+              "type": "integer",
+              "description": "Unresolved severity sev2 count"
+            },
+            "sev3": {
+              "type": "integer",
+              "description": "Unresolved severity sev3 count"
+            }
+          }
         }
       }
     },

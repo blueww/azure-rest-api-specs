@@ -6,14 +6,31 @@
 	"responses": {
 		"200": {
 			"body": {
-			  "total": 65,
-			  "unresolved": {
-				"sev1": 10,
-				"sev2": 15,
-				"sev3": 35
-			  }
-
-			}
+				"id": "/subscriptions/subid/providers/Microsoft.AlertManagement/alertsSummary/current",
+				"type": "Microsoft.AlertManagement/alertsSummary",
+				"name": "current",
+				"properties": {
+					"summary": {
+					  "sev1": 0,
+					  "sev2": 0,
+					  "sev3": 0
+					},
+					"details": {
+					  "value": [
+						{
+						  "resource": {
+							"sev1": 0,
+							"sev2": 0,
+							"sev3": 0
+						  }
+						}
+					  ]
+					},
+				"nextLink": "string"
+				}
+			}	
 		}	
 	}
 }
+
+

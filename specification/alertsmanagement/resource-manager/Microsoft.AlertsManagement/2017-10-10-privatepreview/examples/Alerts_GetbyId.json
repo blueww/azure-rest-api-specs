@@ -8,9 +8,9 @@
 		"200": {
 			"body": {
 			"id": "/subscriptions/subid/providers/microsoft.alertsmanagement/alerts/b67f7fec-69fc-4974-9099-a26bd6ffeda3",
-			"type": "Azure Alerts",
+			"type": "Microsoft.AlertsManagement/alerts",
 			"name": "High CPU > 80%",
-			"properties": {,
+			"properties": {
 				"severity": "Sev1",
 				"signalType": "Metric",
 				"state": "Active",
