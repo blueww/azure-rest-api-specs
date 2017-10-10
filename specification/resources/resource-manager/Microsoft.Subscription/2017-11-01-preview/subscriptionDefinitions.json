@@ -52,7 +52,7 @@
         "tags": [
           "SubscriptionDefinition"
         ],
-        "description": "Create an Azure subscription defition. Note, action is only available via /providers/Microsoft.Management/managementGroups/{groupName}",
+        "description": "Create an Azure subscription definition. Note, action is only available via /providers/Microsoft.Management/managementGroups/{groupName}.",
         "operationId": "ManagementGroupsSubscriptionDefinitions_Create",
         "x-ms-examples": {
           "createManagementGroupsSubscriptionDefinition": {
@@ -72,7 +72,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "subscription definition creation.",
+            "description": "The subscription definition creation.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/SubscriptionDefinition"
@@ -112,7 +112,7 @@
         "tags": [
           "SubscriptionDefinition"
         ],
-        "description": "Get an Azure subscription defition within a management group.",
+        "description": "Get an Azure subscription definition within a management group.",
         "operationId": "SubscriptionDefinitions_Get",
         "x-ms-examples": {
           "getManagementGroupsSubscriptionDefinition": {
@@ -152,7 +152,7 @@
         "tags": [
           "SubscriptionDefinition"
         ],
-        "description": "Update an Azure subscription defition.",
+        "description": "Update an Azure subscription definition.",
         "operationId": "SubscriptionDefinitions_Update",
         "x-ms-examples": {
           "updateViaManagementGroupsSubscriptionDefinitions": {
@@ -181,7 +181,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "subscription definition update.",
+            "description": "A subscription definition update.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/SubscriptionDefinitionInput"
@@ -338,15 +338,11 @@
       }
     },
     "SubscriptionDefinitionProperties": {
-      "description": "subscription definition properties",
+      "description": "The subscription definition properties.",
       "properties": {
         "subscriptionId": {
           "description": "The uuid of the subscription.",
           "readOnly": true,          
-          "type": "string"
-        },
-        "subscriptionDisplayName": {
-          "description": "The display name of the subscription.",
           "type": "string"
         },
         "subscriptionTenantId": {
@@ -354,13 +350,22 @@
           "readOnly": true,          
           "type": "string"
         },
-        "billingContextId": {
-          "description": "Link to the subscription's billing context.",
-          "x-ms-mutability": [
-            "create",
-            "read"
-          ],
+        "subscriptionDisplayName": {
+          "description": "The display name of the subscription.",
           "type": "string"
+        },
+        "ratingContext": {
+          "description": "The subscription rating configuration .",
+          "properties": {
+            "offerType": {
+              "type": "string",
+              "description": "The offer type of the subscription. For example, MS-AZR-0017P (EnterpriseAgreement) and MS-AZR-0148P (EnterpriseAgreement devTest) are available.",
+              "x-ms-mutability": [
+                "create",
+                "read"
+              ]
+            }        
+          }
         },
         "userCancellationRequested": {
           "type": "boolean",
@@ -388,13 +393,13 @@
           "description": "An array of subscriptionDefinitions"
         }
       },
-      "description": "Subscription Definition List operation response"
+      "description": "Subscription Definition List operation response."
     },
     "SubscriptionDefinitionInput": {
       "description": "The subscription definition used to create and modify the subscription.",
       "properties": {
         "properties": {
-          "description": "the subscription definiton input properties",
+          "description": "The subscription definiton input properties.",
           "x-ms-client-flatten": true,
           "$ref": "#/definitions/SubscriptionDefinitionInputProperties"
         }
@@ -409,7 +414,7 @@
         },
         "userCancellationRequested": {
           "type": "boolean",
-          "description": "true when User wants the subscription disabled due to userCancellation."
+          "description": "Set to true when a user wants the subscription disabled due to userCancellation.  Set to false when a user wants the userCancellation to be removed."
         }
       }
     },
@@ -475,7 +480,7 @@
     "managementGroupsCreationScopeParameter": {
       "name": "scope",
       "in": "path",      
-      "description": "The scope of the Microsoft.Subscription url. The scope can only be 'providers/Microsoft.Management/managementGroups/{groupName}' where groupname is the name of the management group",
+      "description": "The scope of the Microsoft.Subscription url. The scope can only be 'providers/Microsoft.Management/managementGroups/{groupName}' where groupname is the name of the management group ARM resource.",
       "required": true,
       "type": "string"
     },
@@ -511,7 +516,7 @@
     "groupNameParameter": {
       "name": "groupName",
       "in": "path",
-      "description": "The management group that contains the subscription definition ID.",
+      "description": "The management group ARM resource name.",
       "required": true,
       "type": "string",
       "format": "uuid"
