@@ -60,6 +60,7 @@ input-file:
 - Microsoft.Compute/2017-03-30/disk.json
 - Microsoft.Compute/2017-03-30/runCommands.json
 - Microsoft.ContainerService/2017-07-01/containerService.json
+- Microsoft.ContainerService/2017-09-30/location.json
 ```
 
 ### Tag: package-compute-2017-03
