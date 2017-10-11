@@ -857,7 +857,7 @@
           ],
           "x-ms-enum": {
             "name": "ContainerServiceOSTypes",
-            "modelAsString": false
+            "modelAsString": true
           },
           "description": "OS type."
         },
@@ -896,14 +896,17 @@
     "UpgradeProfile": {
       "properties": {
         "id": {
+          "readOnly": true,
           "type": "string",
           "description": "id of upgrade profile"
         },
         "name": {
+          "readOnly": true,
           "type": "string",
           "description": "name of upgrade profile"
         },
         "type": {
+          "readOnly": true,
           "type": "string",
           "description": "type of upgrade profile"
         },
