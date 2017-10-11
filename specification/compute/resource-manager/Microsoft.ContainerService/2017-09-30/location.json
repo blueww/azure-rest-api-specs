@@ -72,6 +72,16 @@
       "properties": {
         "orchestratorType": {
           "type": "string",
+          "enum": [
+            "Kubernetes",
+            "Swarm",
+            "DCOS",
+            "DockerCE"
+          ],
+          "x-ms-enum": {
+            "name": "OrchestratorTypes",
+            "modelAsString": false
+          },
           "description": "Orchestrator type."
         },
         "orchestratorVersion": {
@@ -108,16 +118,40 @@
         }
       }
     },
-    "OrchestratorVersionProfileListResult": {
+    "OrchestratorVersionProfileProperties": {
       "properties": {
-        "value": {
+        "orchestrators": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrchestratorVersionProfile"
-          },
-          "description": "the list of versions for supported orchestrators."
+          "$ref": "#/definitions/OrchestratorVersionProfile"
         }
       }
+    },
+    "OrchestratorVersionProfileListResult": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "id of the orchestrator version profile list result"
+        },
+        "name": {
+          "type": "string",
+          "description": "name of the orchestrator version profile list result"
+        },
+        "type": {
+          "type": "string",
+          "description": "typeof the orchestrator version profile list result"
+        },
+        "properties": {
+          "$ref": "#/definitions/OrchestratorVersionProfileProperties"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of orchestrator version profile results."
+        }
+      },
+      "required": [
+        "properties"
+      ],
+      "description": "the list of versions for supported orchestrators."
     }
   },
   "parameters": {
