@@ -99,6 +99,46 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/upgradeProfiles/default": {
+      "get": {
+        "tags": [
+          "ManagedClusters"
+        ],
+        "operationId": "ManagedClustersUpgradeProfile_Get",
+        "summary": "Gets upgrade profile for a managed cluster.",
+        "description": "Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "resourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the managed cluster resource."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UpgradeProfile"
+            }
+          }
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}": {
       "get": {
         "tags": [
@@ -797,6 +837,96 @@
         }
       },
       "description": "Profile for enabling a user to access a managed cluster."
+    },
+    "OrchestratorProfile": {
+      "properties": {
+        "orchestratorType": {
+          "type": "string",
+          "description": "Orchestrator type."
+        },
+        "orchestratorVersion": {
+          "type": "string",
+          "description": "Orchestrator version (major, minor, patch)."
+        }
+      },
+      "required": [
+        "orchestratorType",
+        "orchestratorVersion"
+      ],
+      "description": "Contains information about orchestrator."
+    },
+    "PoolUpgradeProfile": {
+      "properties": {
+        "orchestratorType": {
+          "type": "string",
+          "description": "Orchestrator type."
+        },
+        "orchestratorVersion": {
+          "type": "string",
+          "description": "Orchestrator version (major, minor, patch)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Pool name."
+        },
+        "osType": {
+          "type": "string",
+          "description": "OS type."
+        },
+        "upgrades": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrchestratorProfile"
+          }
+        }
+      },
+      "required": [
+        "orchestratorType",
+        "orchestratorVersion",
+        "osType"
+      ],
+      "description": "the list of available upgrade versions."
+    },
+    "UpgradeProfileProperties": {
+      "properties": {
+        "controlPlaneProfile": {
+          "$ref": "#/definitions/PoolUpgradeProfile"
+        },
+        "agentPoolProfiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PoolUpgradeProfile"
+          }
+        }
+      },
+      "required": [
+        "controlPlaneProfile",
+        "agentPoolProfiles"
+      ],
+      "description": "control plane and agent pool upgrade profiles."
+    },
+    "UpgradeProfile": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "id of upgrade profile"
+        },
+        "name": {
+          "type": "string",
+          "description": "name of upgrade profile"
+        },
+        "type": {
+          "type": "string",
+          "description": "type of upgrade profile"
+        },
+        "properties": {
+          "$ref": "#/definitions/UpgradeProfileProperties"
+        }
+      },
+      "required": [
+        "properties"
+      ],
+      "description": "the list of available upgrades for compute pools."
     }
   },
   "parameters": {
