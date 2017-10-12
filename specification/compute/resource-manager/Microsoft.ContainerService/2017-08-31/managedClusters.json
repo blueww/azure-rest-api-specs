@@ -627,16 +627,7 @@
           "description": "VNet SubnetID specifies the vnet's subnet identifier. If you specify either master VNet Subnet, or agent VNet Subnet, you need to specify both. And they have to be in the same VNet."
         },
         "osType": {
-          "type": "string",
-          "default": "Linux",
-          "enum": [
-            "Linux",
-            "Windows"
-          ],
-          "x-ms-enum": {
-            "name": "OSType",
-            "modelAsString": true
-          },
+          "$ref": "#/definitions/OSType",
           "description": "osType to be used to specify os type. Choose from Linux and Windows. Default to Linux"
         }
       },
@@ -792,7 +783,6 @@
           "description": "Minor release of Kubernetes specified when creating the managed cluster."
         },
         "kubernetesVersion": {
-          "readOnly": true,
           "type": "string",
           "description": "Version of Kubernetes specified when creating the managed cluster."
         },
@@ -870,8 +860,8 @@
           "description": "Pool name."
         },
         "osType": {
-          "type": "string",
-          "description": "OS type."
+          "$ref": "#/definitions/OSType",
+          "description": "osType to be used to specify os type. Choose from Linux and Windows. Default to Linux"
         },
         "upgrades": {
           "type": "array",
@@ -908,14 +898,17 @@
     "UpgradeProfile": {
       "properties": {
         "id": {
+          "readOnly": true,
           "type": "string",
           "description": "id of upgrade profile"
         },
         "name": {
+          "readOnly": true,
           "type": "string",
           "description": "name of upgrade profile"
         },
         "type": {
+          "readOnly": true,
           "type": "string",
           "description": "type of upgrade profile"
         },
@@ -927,6 +920,19 @@
         "properties"
       ],
       "description": "the list of available upgrades for compute pools."
+    },
+    "OSType": {
+      "type": "string",
+      "default": "Linux",
+      "enum": [
+        "Linux",
+        "Windows"
+      ],
+      "x-ms-enum": {
+        "name": "OSType",
+        "modelAsString": true
+      },
+      "description": "osType to be used to specify os type. Choose from Linux and Windows. Default to Linux"
     }
   },
   "parameters": {
