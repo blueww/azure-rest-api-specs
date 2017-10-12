@@ -69,16 +69,6 @@
       "properties": {
         "orchestratorType": {
           "type": "string",
-          "enum": [
-            "Kubernetes",
-            "Swarm",
-            "DCOS",
-            "DockerCE"
-          ],
-          "x-ms-enum": {
-            "name": "OrchestratorTypes",
-            "modelAsString": false
-          },
           "description": "Orchestrator type."
         },
         "orchestratorVersion": {
