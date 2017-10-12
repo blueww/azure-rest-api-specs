@@ -3,7 +3,7 @@
   "info": {
     "title": "ContainerServiceClient",
     "description": "The Container Service Client.",
-    "version": "2017-07-01"
+    "version": "2017-08-31"
   },
   "host": "management.azure.com",
   "schemes": [
@@ -34,14 +34,14 @@
     }
   },
   "paths": {
-    "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters": {
       "get": {
         "tags": [
-          "ContainerServices"
+          "ManagedClusters"
         ],
-        "operationId": "ContainerServices_List",
-        "summary": "Gets a list of container services in the specified subscription.",
-        "description": "Gets a list of container services in the specified subscription. The operation returns properties of each container service including state, orchestrator, number of masters and agents, and FQDNs of masters and agents.",
+        "operationId": "ManagedClusters_List",
+        "summary": "Gets a list of managed clusters in the specified subscription.",
+        "description": "Gets a list of managed clusters in the specified subscription. The operation returns properties of each managed cluster.",
         "parameters": [
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -54,7 +54,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ContainerServiceListResult"
+              "$ref": "#/definitions/ManagedClusterListResult"
             }
           }
         },
@@ -63,78 +63,15 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}": {
-      "put": {
-        "tags": [
-          "ContainerService"
-        ],
-        "operationId": "ContainerServices_CreateOrUpdate",
-        "summary": "Creates or updates a container service.",
-        "description": "Creates or updates a container service with the specified configuration of orchestrator, masters, and agents.",
-        "parameters": [
-          {
-            "name": "containerServiceName",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The name of the container service in the specified subscription and resource group."
-          },
-          {
-            "name": "parameters",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ContainerService"
-            },
-            "description": "Parameters supplied to the Create or Update a Container Service operation."
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "$ref": "#/parameters/ResourceGroupParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ContainerService"
-            }
-          },
-          "201": {
-            "description": "Created",
-            "schema": {
-              "$ref": "#/definitions/ContainerService"
-            }
-          },
-          "202": {
-            "description": "Accepted",
-            "schema": {
-              "$ref": "#/definitions/ContainerService"
-            }
-          }
-        },
-        "x-ms-long-running-operation": true
-      },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters": {
       "get": {
         "tags": [
-          "ContainerService"
+          "ManagedClusters"
         ],
-        "operationId": "ContainerServices_Get",
-        "summary": "Gets the properties of the specified container service.",
-        "description": "Gets the properties of the specified container service in the specified subscription and resource group. The operation returns the properties including state, orchestrator, number of masters and agents, and FQDNs of masters and agents. ",
+        "operationId": "ManagedClusters_ListByResourceGroup",
+        "summary": "Lists managed clusters in the specified subscription and resource group.",
+        "description": "Lists managed clusters in the specified subscription and resource group. The operation returns properties of each managed cluster.",
         "parameters": [
-          {
-            "name": "containerServiceName",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The name of the container service in the specified subscription and resource group."
-          },
           {
             "$ref": "#/parameters/ApiVersionParameter"
           },
@@ -142,78 +79,18 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupParameter"
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ContainerService"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "ContainerService"
-        ],
-        "operationId": "ContainerServices_Delete",
-        "summary": "Deletes the specified container service.",
-        "description": "Deletes the specified container service in the specified subscription and resource group. The operation does not delete other resources created as part of creating a container service, including storage accounts, VMs, and availability sets. All the other resources created with the container service are part of the same resource group and can be deleted individually.",
-        "parameters": [
-          {
-            "name": "containerServiceName",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The name of the container service in the specified subscription and resource group."
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "$ref": "#/parameters/ResourceGroupParameter"
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          },
-          "204": {
-            "description": "Not found"
-          }
-        },
-        "x-ms-long-running-operation": true
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices": {
-      "get": {
-        "tags": [
-          "ContainerServices"
-        ],
-        "operationId": "ContainerServices_ListByResourceGroup",
-        "summary": "Gets a list of container services in the specified resource group.",
-        "description": "Gets a list of container services in the specified subscription and resource group. The operation returns properties of each container service including state, orchestrator, number of masters and agents, and FQDNs of masters and agents.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "$ref": "#/parameters/ResourceGroupParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ContainerServiceListResult"
+              "$ref": "#/definitions/ManagedClusterListResult"
             }
           }
         },
@@ -222,26 +99,34 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{resourceName}/upgradeProfiles/default": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/upgradeProfiles/default": {
       "get": {
         "tags": [
-          "ContainerService"
+          "ManagedClusters"
         ],
-        "operationId": "ContainerServicesUpgradeProfiles_Get",
-        "summary": "Gets upgrade profile information for specified container service.",
-        "description": "Gets upgrade profile information for specified container service. The operation returns properties of the compute pools including name, OS, orchestrator verison, and available upgrades.",
+        "operationId": "ManagedClusters_GetUpgradeProfile",
+        "summary": "Gets upgrade profile for a managed cluster.",
+        "description": "Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.",
         "parameters": [
           {
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupParameter"
-          },
-          {
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceNameParameter"
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "resourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the managed cluster resource."
           }
         ],
         "responses": {
@@ -252,6 +137,139 @@
             }
           }
         }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}": {
+      "get": {
+        "tags": [
+          "ManagedClusters"
+        ],
+        "operationId": "ManagedClusters_Get",
+        "summary": "Gets a managed cluster.",
+        "description": "Gets the details of the managed cluster with a specified resource group and name.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "resourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the managed cluster resource."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ManagedCluster"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ManagedClusters"
+        ],
+        "operationId": "ManagedClusters_CreateOrUpdate",
+        "summary": "Creates or updates a managed cluster.",
+        "description": "Creates or updates a managed cluster with the specified configuration for agents and Kubernetes version.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "resourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the managed cluster resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ManagedClusterProperties"
+            },
+            "description": "Parameters supplied to the Create or Update a Managed Cluster operation."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ManagedCluster"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/ManagedCluster"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "tags": [
+          "ManagedClusters"
+        ],
+        "operationId": "ManagedClusters_Delete",
+        "summary": "Deletes a managed cluster.",
+        "description": "Deletes the managed cluster with a specified resource group and name.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "resourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the managed cluster resource."
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "NoContent"
+          }
+        },
+        "x-ms-long-running-operation": true
       }
     }
   },
@@ -312,7 +330,7 @@
         "StorageAccount",
         "ManagedDisks"
       ],
-      "description": "Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
+      "description": "storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
     },
     "ContainerServiceVnetSubnetID": {
       "type": "string",
@@ -458,31 +476,19 @@
         "Standard_NV6"
       ]
     },
-    "ContainerServiceCustomProfile": {
-      "properties": {
-        "orchestrator": {
-          "type": "string",
-          "description": "The name of the custom orchestrator to use."
-        }
-      },
-      "description": "Properties to configure a custom container service cluster.",
-      "required": [
-        "orchestrator"
-      ]
-    },
     "KeyVaultSecretRef": {
       "properties": {
         "vaultID": {
           "type": "string",
-          "description": "Key vault identifier."
+          "description": "key vault identifier"
         },
         "secretName": {
           "type": "string",
-          "description": "The secret name."
+          "description": "the secret name"
         },
         "version": {
           "type": "string",
-          "description": "The secret version."
+          "description": "the secret version"
         }
       },
       "description": "Reference to a secret stored in Azure Key Vault.",
@@ -506,36 +512,9 @@
           "description": "Reference to a secret stored in Azure Key Vault."
         }
       },
-      "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Exact one of secret or keyVaultSecretRef need to be specified.",
+      "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Either secret or keyVaultSecretRef must be specified",
       "required": [
         "clientId"
-      ]
-    },
-    "ContainerServiceOrchestratorProfile": {
-      "properties": {
-        "orchestratorType": {
-          "type": "string",
-          "enum": [
-            "Kubernetes",
-            "Swarm",
-            "DCOS",
-            "DockerCE",
-            "Custom"
-          ],
-          "x-ms-enum": {
-            "name": "ContainerServiceOrchestratorTypes",
-            "modelAsString": false
-          },
-          "description": "The orchestrator to use to manage container service cluster resources. Valid values are Kubernetes, Swarm, DCOS, DockerCE and Custom."
-        },
-        "orchestratorVersion": {
-          "type": "string",
-          "description": "The version of the orchestrator to use. You can specify the major.minor.patch part of the actual version.For example, you can specify version as \"1.6.11\"."
-        }
-      },
-      "description": "Profile for the container service orchestrator.",
-      "required": [
-        "orchestratorType"
       ]
     },
     "ContainerServiceMasterProfile": {
@@ -557,7 +536,7 @@
         },
         "dnsPrefix": {
           "type": "string",
-          "description": "DNS prefix to be used to create the FQDN for the master pool."
+          "description": "DNS prefix to be used to create the FQDN for the master pool"
         },
         "vmSize": {
           "$ref": "#/definitions/ContainerServiceVMSize",
@@ -573,7 +552,7 @@
         },
         "firstConsecutiveStaticIP": {
           "type": "string",
-          "description": "FirstConsecutiveStaticIP used to specify the first static ip of masters.",
+          "description": "firstConsecutiveStaticIP used to specify the first static ip of masters.",
           "default": "10.240.255.5"
         },
         "storageProfile": {
@@ -631,7 +610,7 @@
             "minimum": 1,
             "maximum": 65535
           },
-          "description": "Ports number array used to expose on this agent pool. The default opened ports are different based on your choice of orchestrator."
+          "description": "ports number array used to expose on this agent pool. The default opened ports are different based on your choice of orchestrator."
         },
         "storageProfile": {
           "$ref": "#/definitions/ContainerServiceStorageProfile",
@@ -642,16 +621,8 @@
           "description": "VNet SubnetID specifies the vnet's subnet identifier. If you specify either master VNet Subnet, or agent VNet Subnet, you need to specify both. And they have to be in the same VNet."
         },
         "osType": {
-          "type": "string",
-          "default": "Linux",
-          "enum": [
-            "Linux",
-            "Windows"
-          ],
-          "x-ms-enum": {
-            "name": "OSType"
-          },
-          "description": "OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux."
+          "$ref": "#/definitions/OSType",
+          "description": "osType to be used to specify os type. Choose from Linux and Windows. Default to Linux"
         }
       },
       "required": [
@@ -705,7 +676,7 @@
           "items": {
             "$ref": "#/definitions/ContainerServiceSshPublicKey"
           },
-          "description": "The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified."
+          "description": "the list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified"
         }
       },
       "description": "SSH configuration for Linux-based VMs running on Azure.",
@@ -754,7 +725,23 @@
         "enabled"
       ]
     },
-    "ContainerService": {
+    "ManagedClusterListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ManagedCluster"
+          },
+          "description": "the list of managed clusters."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of managed cluster results."
+        }
+      },
+      "description": "The response from the List Managed Clusters operation."
+    },
+    "ManagedCluster": {
       "allOf": [
         {
           "$ref": "#/definitions/Resource"
@@ -762,51 +749,46 @@
         {
           "properties": {
             "properties": {
-              "$ref": "#/definitions/ContainerServiceProperties"
+              "$ref": "#/definitions/ManagedClusterProperties"
             }
           }
         }
       ],
-      "description": "Container service."
+      "description": "Managed cluster."
     },
-    "ContainerServiceListResult": {
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ContainerService"
-          },
-          "description": "The list of container services."
-        },
-        "nextLink": {
-          "type": "string",
-          "description": "The URL to get the next set of container service results."
-        }
-      },
-      "description": "The response from the List Container Services operation."
-    },
-    "ContainerServiceProperties": {
+    "ManagedClusterProperties": {
       "properties": {
         "provisioningState": {
           "readOnly": true,
           "type": "string",
-          "description": "The current deployment or provisioning state, which only appears in the response."
+          "description": "the current deployment or provisioning state, which only appears in the response."
         },
-        "orchestratorProfile": {
-          "$ref": "#/definitions/ContainerServiceOrchestratorProfile",
-          "description": "Profile for the container service orchestrator."
+        "dnsPrefix": {
+          "type": "string",
+          "description": "DNS prefix specified when creating the managed cluster."
         },
-        "customProfile": {
-          "$ref": "#/definitions/ContainerServiceCustomProfile",
-          "description": "Properties to configure a custom container service cluster."
+        "fqdn": {
+          "readOnly": true,
+          "type": "string",
+          "description": "FDQN for the master pool."
         },
-        "servicePrincipalProfile": {
-          "$ref": "#/definitions/ContainerServiceServicePrincipalProfile",
-          "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Exact one of secret or keyVaultSecretRef need to be specified"
+        "kubernetesVersion": {
+          "type": "string",
+          "description": "Version of Kubernetes specified when creating the managed cluster."
         },
-        "masterProfile": {
-          "$ref": "#/definitions/ContainerServiceMasterProfile",
-          "description": "Profile for the container service master."
+        "accessProfiles": {
+          "type": "object",
+          "properties": {
+            "clusterAdmin": {
+              "$ref": "#/definitions/AccessProfile",
+              "description": "An access profile with administrative privileges to the cluster"
+            },
+            "clusterUser": {
+              "$ref": "#/definitions/AccessProfile",
+              "description": "An access profile with user-level privileges to the cluster"
+            }
+          },
+          "description": "Access profiles for the managed cluster."
         },
         "agentPoolProfiles": {
           "type": "array",
@@ -815,25 +797,26 @@
           },
           "description": "Properties of the agent pool."
         },
-        "windowsProfile": {
-          "$ref": "#/definitions/ContainerServiceWindowsProfile",
-          "description": "Profile for Windows VMs in the container service cluster."
-        },
         "linuxProfile": {
           "$ref": "#/definitions/ContainerServiceLinuxProfile",
           "description": "Profile for Linux VMs in the container service cluster."
         },
-        "diagnosticsProfile": {
-          "$ref": "#/definitions/ContainerServiceDiagnosticsProfile",
-          "description": "Profile for diagnostics in the container service cluster."
+        "servicePrincipalProfile": {
+          "$ref": "#/definitions/ContainerServiceServicePrincipalProfile",
+          "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Either secret or keyVaultSecretRef must be specified"
         }
       },
-      "required": [
-        "orchestratorProfile",
-        "masterProfile",
-        "linuxProfile"
-      ],
-      "description": "Properties of the container service."
+      "description": "Properties of the managed cluster."
+    },
+    "AccessProfile": {
+      "type": "object",
+      "properties": {
+        "kubeConfig": {
+          "type": "string",
+          "description": "Base64-encoded Kubernetes configuration file."
+        }
+      },
+      "description": "Profile for enabling a user to access a managed cluster."
     },
     "OrchestratorProfile": {
       "properties": {
@@ -856,13 +839,6 @@
       "properties": {
         "orchestratorType": {
           "type": "string",
-          "enum": [
-            "Kubernetes"
-          ],
-          "x-ms-enum": {
-            "name": "PoolOrchestratorType",
-            "modelAsString": false
-          },
           "description": "Orchestrator type."
         },
         "orchestratorVersion": {
@@ -874,16 +850,8 @@
           "description": "Pool name."
         },
         "osType": {
-          "type": "string",
-          "enum": [
-            "Linux",
-            "Windows"
-          ],
-          "x-ms-enum": {
-            "name": "ContainerServiceOSTypes",
-            "modelAsString": true
-          },
-          "description": "OS type."
+          "$ref": "#/definitions/OSType",
+          "description": "osType to be used to specify os type. Choose from Linux and Windows. Default to Linux"
         },
         "upgrades": {
           "type": "array",
@@ -897,7 +865,7 @@
         "orchestratorVersion",
         "osType"
       ],
-      "description": "The list of available upgrade versions."
+      "description": "the list of available upgrade versions."
     },
     "UpgradeProfileProperties": {
       "properties": {
@@ -915,24 +883,24 @@
         "controlPlaneProfile",
         "agentPoolProfiles"
       ],
-      "description": "Control plane and agent pool upgrade profiles."
+      "description": "control plane and agent pool upgrade profiles."
     },
     "UpgradeProfile": {
       "properties": {
         "id": {
           "readOnly": true,
           "type": "string",
-          "description": "Id of upgrade profile."
+          "description": "id of upgrade profile"
         },
         "name": {
           "readOnly": true,
           "type": "string",
-          "description": "Name of upgrade profile."
+          "description": "name of upgrade profile"
         },
         "type": {
           "readOnly": true,
           "type": "string",
-          "description": "Type of upgrade profile."
+          "description": "type of upgrade profile"
         },
         "properties": {
           "$ref": "#/definitions/UpgradeProfileProperties"
@@ -941,7 +909,20 @@
       "required": [
         "properties"
       ],
-      "description": "The list of available upgrades for compute pools."
+      "description": "the list of available upgrades for compute pools."
+    },
+    "OSType": {
+      "type": "string",
+      "default": "Linux",
+      "enum": [
+        "Linux",
+        "Windows"
+      ],
+      "x-ms-enum": {
+        "name": "OSType",
+        "modelAsString": true
+      },
+      "description": "osType to be used to specify os type. Choose from Linux and Windows. Default to Linux"
     }
   },
   "parameters": {
@@ -958,22 +939,6 @@
       "required": true,
       "type": "string",
       "description": "Client Api Version."
-    },
-    "ResourceGroupParameter": {
-      "name": "resourceGroupName",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "description": "The name of the resource group.",
-      "x-ms-parameter-location": "method"
-    },
-    "ResourceNameParameter": {
-      "name": "resourceName",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "description": "The name of the resource.",
-      "x-ms-parameter-location": "method"
     }
   }
 }
