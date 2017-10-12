@@ -184,7 +184,7 @@
         ],
         "operationId": "ManagedClusters_CreateOrUpdate",
         "summary": "Creates or updates a managed cluster.",
-        "description": "Creates or updates a managed cluster with the specified configuration for agents and Kubernetes release.",
+        "description": "Creates or updates a managed cluster with the specified configuration for agents and Kubernetes version.",
         "parameters": [
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -771,10 +771,6 @@
           "readOnly": true,
           "type": "string",
           "description": "FDQN for the master pool."
-        },
-        "kubernetesRelease": {
-          "type": "string",
-          "description": "Minor release of Kubernetes specified when creating the managed cluster."
         },
         "kubernetesVersion": {
           "type": "string",
