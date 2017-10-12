@@ -116,10 +116,6 @@
         "orchestrators": {
           "type": "array",
           "$ref": "#/definitions/OrchestratorVersionProfile"
-        },
-        "nextLink": {
-          "type": "string",
-          "description": "The URL to get the next set of orchestrator version profile results."
         }
       },
       "required": [
