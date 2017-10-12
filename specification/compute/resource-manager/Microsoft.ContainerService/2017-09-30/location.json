@@ -41,7 +41,7 @@
         ],
         "operationId": "ContainerServicesOrchestrators_List",
         "summary": "Gets a list of supported orchestrators in the specified subscription.",
-        "description": "Gets a list of supported orchestrators in the specified subscription. The operation returns properties of each orchestrator including verison and available upgrades",
+        "description": "Gets a list of supported orchestrators in the specified subscription. The operation returns properties of each orchestrator including verison and available upgrades.",
         "parameters": [
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -60,9 +60,6 @@
               "$ref": "#/definitions/OrchestratorVersionProfileListResult"
             }
           }
-        },
-        "x-ms-pageable": {
-          "nextLinkName": "nextLink"
         }
       }
     }
@@ -99,16 +96,6 @@
       "properties": {
         "orchestratorType": {
           "type": "string",
-          "enum": [
-            "Kubernetes",
-            "Swarm",
-            "DCOS",
-            "DockerCE"
-          ],
-          "x-ms-enum": {
-            "name": "OrchestratorVersionTypes",
-            "modelAsString": false
-          },
           "description": "Orchestrator type."
         },
         "orchestratorVersion": {
@@ -124,7 +111,7 @@
           "items": {
             "$ref": "#/definitions/OrchestratorProfile"
           },
-          "description": "the list of available upgrade versions."
+          "description": "The list of available upgrade versions."
         }
       },
       "required": [
@@ -139,6 +126,10 @@
         "orchestrators": {
           "type": "array",
           "$ref": "#/definitions/OrchestratorVersionProfile"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of orchestrator version profile results."
         }
       },
       "required": [
@@ -150,30 +141,26 @@
         "id": {
           "readOnly": true,
           "type": "string",
-          "description": "id of the orchestrator version profile list result"
+          "description": "Id of the orchestrator version profile list result."
         },
         "name": {
           "readOnly": true,
           "type": "string",
-          "description": "name of the orchestrator version profile list result"
+          "description": "Name of the orchestrator version profile list result."
         },
         "type": {
           "readOnly": true,
           "type": "string",
-          "description": "typeof the orchestrator version profile list result"
+          "description": "Type of the orchestrator version profile list result."
         },
         "properties": {
           "$ref": "#/definitions/OrchestratorVersionProfileProperties"
-        },
-        "nextLink": {
-          "type": "string",
-          "description": "The URL to get the next set of orchestrator version profile results."
         }
       },
       "required": [
         "properties"
       ],
-      "description": "the list of versions for supported orchestrators."
+      "description": "The list of versions for supported orchestrators."
     }
   },
   "parameters": {

@@ -229,7 +229,7 @@
         ],
         "operationId": "ContainerServicesUpgradeProfiles_Get",
         "summary": "Gets upgrade profile information for specified container service.",
-        "description": "Gets upgrade profile information for specified container service. The operation returns properties of the compute pools including name, OS, orchestrator verison, and available upgrades",
+        "description": "Gets upgrade profile information for specified container service. The operation returns properties of the compute pools including name, OS, orchestrator verison, and available upgrades.",
         "parameters": [
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -308,7 +308,7 @@
         "StorageAccount",
         "ManagedDisks"
       ],
-      "description": "storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
+      "description": "Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
     },
     "ContainerServiceVnetSubnetID": {
       "type": "string",
@@ -470,15 +470,15 @@
       "properties": {
         "vaultID": {
           "type": "string",
-          "description": "key vault identifier"
+          "description": "Key vault identifier."
         },
         "secretName": {
           "type": "string",
-          "description": "the secret name"
+          "description": "The secret name."
         },
         "version": {
           "type": "string",
-          "description": "the secret version"
+          "description": "The secret version."
         }
       },
       "required": [
@@ -500,7 +500,7 @@
           "$ref": "#/definitions/KeyVaultSecretRef"
         }
       },
-      "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Exact one of secret or keyVaultSecretRef need to be specified",
+      "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Exact one of secret or keyVaultSecretRef need to be specified.",
       "required": [
         "clientId"
       ]
@@ -547,7 +547,7 @@
         },
         "dnsPrefix": {
           "type": "string",
-          "description": "DNS prefix to be used to create the FQDN for the master pool"
+          "description": "DNS prefix to be used to create the FQDN for the master pool."
         },
         "vmSize": {
           "$ref": "#/definitions/ContainerServiceVMSize"
@@ -560,7 +560,7 @@
         },
         "firstConsecutiveStaticIP": {
           "type": "string",
-          "description": "firstConsecutiveStaticIP used to specify the first static ip of masters.",
+          "description": "FirstConsecutiveStaticIP used to specify the first static ip of masters.",
           "default": "10.240.255.5"
         },
         "storageProfile": {
@@ -615,7 +615,7 @@
             "minimum": 1,
             "maximum": 65535
           },
-          "description": "ports number array used to expose on this agent pool. The default opened ports are different based on your choice of orchestrator."
+          "description": "Ports number array used to expose on this agent pool. The default opened ports are different based on your choice of orchestrator."
         },
         "storageProfile": {
           "$ref": "#/definitions/ContainerServiceStorageProfile"
@@ -630,7 +630,7 @@
             "Linux",
             "Windows"
           ],
-          "description": "osType to be used to specify os type. Choose from Linux and Windows. Default to Linux"
+          "description": "OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux."
         }
       },
       "required": [
@@ -683,7 +683,7 @@
           "items": {
             "$ref": "#/definitions/ContainerServiceSshPublicKey"
           },
-          "description": "the list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified"
+          "description": "The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified."
         }
       },
       "description": "SSH configuration for Linux-based VMs running on Azure.",
@@ -752,7 +752,7 @@
           "items": {
             "$ref": "#/definitions/ContainerService"
           },
-          "description": "the list of container services."
+          "description": "The list of container services."
         },
         "nextLink": {
           "type": "string",
@@ -766,7 +766,7 @@
         "provisioningState": {
           "readOnly": true,
           "type": "string",
-          "description": "the current deployment or provisioning state, which only appears in the response."
+          "description": "The current deployment or provisioning state, which only appears in the response."
         },
         "orchestratorProfile": {
           "$ref": "#/definitions/ContainerServiceOrchestratorProfile"
@@ -808,13 +808,6 @@
       "properties": {
         "orchestratorType": {
           "type": "string",
-          "enum": [
-            "Kubernetes"
-          ],
-          "x-ms-enum": {
-            "name": "OrchestratorTypes",
-            "modelAsString": false
-          },
           "description": "Orchestrator type."
         },
         "orchestratorVersion": {
@@ -873,7 +866,7 @@
         "orchestratorVersion",
         "osType"
       ],
-      "description": "the list of available upgrade versions."
+      "description": "The list of available upgrade versions."
     },
     "UpgradeProfileProperties": {
       "properties": {
@@ -891,24 +884,24 @@
         "controlPlaneProfile",
         "agentPoolProfiles"
       ],
-      "description": "control plane and agent pool upgrade profiles."
+      "description": "Control plane and agent pool upgrade profiles."
     },
     "UpgradeProfile": {
       "properties": {
         "id": {
           "readOnly": true,
           "type": "string",
-          "description": "id of upgrade profile"
+          "description": "Id of upgrade profile."
         },
         "name": {
           "readOnly": true,
           "type": "string",
-          "description": "name of upgrade profile"
+          "description": "Name of upgrade profile."
         },
         "type": {
           "readOnly": true,
           "type": "string",
-          "description": "type of upgrade profile"
+          "description": "Type of upgrade profile."
         },
         "properties": {
           "$ref": "#/definitions/UpgradeProfileProperties"
@@ -917,7 +910,7 @@
       "required": [
         "properties"
       ],
-      "description": "the list of available upgrades for compute pools."
+      "description": "The list of available upgrades for compute pools."
     }
   },
   "parameters": {
