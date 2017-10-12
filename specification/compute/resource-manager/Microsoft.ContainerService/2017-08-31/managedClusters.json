@@ -263,16 +263,10 @@
         ],
         "responses": {
           "202": {
-            "description": "Accepted",
-            "schema": {
-              "$ref": "#/definitions/ManagedCluster"
-            }
+            "description": "Accepted"
           },
           "204": {
-            "description": "NoContent",
-            "schema": {
-              "$ref": "#/definitions/ManagedCluster"
-            }
+            "description": "NoContent"
           }
         },
         "x-ms-long-running-operation": true
