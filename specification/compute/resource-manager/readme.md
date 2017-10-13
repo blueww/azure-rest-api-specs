@@ -37,6 +37,19 @@ openapi-type: arm
 tag: package-2017-08
 ```
 
+### Tag: package-2017-09
+
+These settings apply only when `--tag=package-2017-08` is specified on the command line.
+
+``` yaml $(tag) == 'package-2017-08'
+input-file:
+- Microsoft.Compute/2017-03-30/compute.json
+- Microsoft.Compute/2017-03-30/disk.json
+- Microsoft.Compute/2017-03-30/runCommands.json
+- Microsoft.ContainerService/2017-07-01/containerService.json
+- Microsoft.ContainerService/2017-08-31/managedClusters.json
+- Microsoft.ContainerService/2017-09-30/location.json
+```
 
 ### Tag: package-2017-08
 
@@ -63,6 +76,18 @@ input-file:
 - Microsoft.ContainerService/2017-01-31/containerService.json
 ```
 
+### Tag: package-2017-07
+
+These settings apply only when `--tag=package-2017-07` is specified on the command line.
+
+``` yaml $(tag) == 'package-2017-07'
+input-file:
+- Microsoft.Compute/2017-03-30/compute.json
+- Microsoft.Compute/2017-03-30/disk.json
+- Microsoft.Compute/2017-03-30/runCommands.json
+- Microsoft.ContainerService/2017-07-01/containerService.json
+```
+
 ### Tag: package-compute-2017-03
 
 These settings apply only when `--tag=package-compute-2017-03` is specified on the command line.
@@ -81,6 +106,15 @@ These settings apply only when `--tag=package-container-service-2017-01` is spec
 ``` yaml $(tag) == 'package-container-service-2017-01'
 input-file:
 - Microsoft.ContainerService/2017-01-31/containerService.json
+```
+
+### Tag: package-container-service-2017-07
+
+These settings apply only when `--tag=package-container-service-2017-07` is specified on the command line.
+
+``` yaml $(tag) == 'package-container-service-2017-07'
+input-file:
+- Microsoft.ContainerService/2017-07-01/containerService.json
 ```
 
 ### Tag: package-2016-04-preview
