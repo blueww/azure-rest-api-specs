@@ -578,7 +578,7 @@
         },
         "storageProfile": {
           "$ref": "#/definitions/ContainerServiceStorageProfile",
-          "description": "storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
+          "description": "Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
         },
         "fqdn": {
           "readOnly": true,
@@ -635,7 +635,7 @@
         },
         "storageProfile": {
           "$ref": "#/definitions/ContainerServiceStorageProfile",
-          "description": "storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
+          "description": "Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice."
         },
         "vnetSubnetID": {
           "$ref": "#/definitions/ContainerServiceVnetSubnetID",
@@ -802,7 +802,7 @@
         },
         "servicePrincipalProfile": {
           "$ref": "#/definitions/ContainerServiceServicePrincipalProfile",
-          "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Exact one of secret or keyVaultSecretRef need to be specified"
+          "description": "Information about a service principal identity for the cluster to use for manipulating Azure APIs. Exact one of secret or keyVaultSecretRef need to be specified."
         },
         "masterProfile": {
           "$ref": "#/definitions/ContainerServiceMasterProfile",
@@ -883,7 +883,7 @@
             "name": "ContainerServiceOSTypes",
             "modelAsString": true
           },
-          "description": "OS type."
+          "description": "OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux."
         },
         "upgrades": {
           "type": "array",

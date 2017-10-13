@@ -851,6 +851,14 @@
         },
         "osType": {
           "$ref": "#/definitions/OSType",
+          "enum": [
+            "Linux",
+            "Windows"
+          ],
+          "x-ms-enum": {
+            "name": "ContainerServiceOSTypes",
+            "modelAsString": true
+          },
           "description": "OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux."
         },
         "upgrades": {
