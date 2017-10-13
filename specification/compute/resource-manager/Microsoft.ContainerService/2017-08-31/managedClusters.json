@@ -536,7 +536,7 @@
         },
         "dnsPrefix": {
           "type": "string",
-          "description": "DNS prefix to be used to create the FQDN for the master pool"
+          "description": "DNS prefix to be used to create the FQDN for the master pool."
         },
         "vmSize": {
           "$ref": "#/definitions/ContainerServiceVMSize",
