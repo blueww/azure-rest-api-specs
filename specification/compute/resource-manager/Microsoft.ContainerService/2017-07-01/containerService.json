@@ -227,7 +227,7 @@
         "tags": [
           "ContainerService"
         ],
-        "operationId": "ContainerServicesUpgradeProfiles_Get",
+        "operationId": "ContainerServices_GetUpgradeProfiles",
         "summary": "Gets upgrade profile information for specified container service.",
         "description": "Gets upgrade profile information for specified container service. The operation returns properties of the compute pools including name, OS, orchestrator verison, and available upgrades.",
         "parameters": [
@@ -762,7 +762,9 @@
         {
           "properties": {
             "properties": {
-              "$ref": "#/definitions/ContainerServiceProperties"
+              "description": "Properties of the container service.",
+              "$ref": "#/definitions/ContainerServiceProperties",
+              "x-ms-client-flatten": false
             }
           }
         }
@@ -935,7 +937,8 @@
           "description": "Type of upgrade profile."
         },
         "properties": {
-          "$ref": "#/definitions/UpgradeProfileProperties"
+          "$ref": "#/definitions/UpgradeProfileProperties",
+          "x-ms-client-flatten": false
         }
       },
       "required": [

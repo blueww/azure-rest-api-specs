@@ -211,7 +211,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ManagedClusterProperties"
+              "$ref": "#/definitions/ManagedCluster"
             },
             "description": "Parameters supplied to the Create or Update a Managed Cluster operation."
           }
@@ -749,7 +749,9 @@
         {
           "properties": {
             "properties": {
-              "$ref": "#/definitions/ManagedClusterProperties"
+              "description": "Properties of a managed cluster.",
+              "$ref": "#/definitions/ManagedClusterProperties",
+              "x-ms-client-flatten": false
             }
           }
         }
@@ -865,7 +867,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/OrchestratorProfile"
-          }
+          },
+          "description": "List of orchestrator types and versions available for upgrade."
         }
       },
       "required": [
@@ -878,13 +881,15 @@
     "UpgradeProfileProperties": {
       "properties": {
         "controlPlaneProfile": {
-          "$ref": "#/definitions/PoolUpgradeProfile"
+          "$ref": "#/definitions/PoolUpgradeProfile",
+          "description": "The list of available upgrade versions for the control plane."
         },
         "agentPoolProfiles": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/PoolUpgradeProfile"
-          }
+          },
+          "description": "The list of available upgrade versions for agent pools."
         }
       },
       "required": [
@@ -911,7 +916,9 @@
           "description": "Type of upgrade profile."
         },
         "properties": {
-          "$ref": "#/definitions/UpgradeProfileProperties"
+          "$ref": "#/definitions/UpgradeProfileProperties",
+          "description": "Properties of upgrade profile.",
+          "x-ms-client-flatten": false
         }
       },
       "required": [

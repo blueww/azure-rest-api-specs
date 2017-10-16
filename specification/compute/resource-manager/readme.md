@@ -34,14 +34,14 @@ These are the global settings for the Compute API.
 title: ComputeManagementClient
 description: Compute Client
 openapi-type: arm
-tag: package-2017-08
+tag: package-2017-09
 ```
 
 ### Tag: package-2017-09
 
-These settings apply only when `--tag=package-2017-08` is specified on the command line.
+These settings apply only when `--tag=package-2017-09` is specified on the command line.
 
-``` yaml $(tag) == 'package-2017-08'
+``` yaml $(tag) == 'package-2017-09'
 input-file:
 - Microsoft.Compute/2017-03-30/compute.json
 - Microsoft.Compute/2017-03-30/disk.json
