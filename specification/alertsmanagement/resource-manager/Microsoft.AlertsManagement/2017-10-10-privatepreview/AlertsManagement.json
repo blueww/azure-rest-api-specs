@@ -145,7 +145,7 @@
         },
         "x-ms-examples": {
           "GetById": {
-            "$ref": "./examples/Alerts_GetById.json"
+            "$ref": "./examples/Alerts_GetbyId.json"
           }
         }
       }
@@ -242,16 +242,7 @@
       "required": true,
       "enum": [
         "2017-10-10-privatepreview"
-      ],
-      "x-ms-enum": {
-        "name": "AlertsManagementApiVersion",
-        "modelAsString": false,
-        "values": [
-          {
-            "value": "2017-10-10-privatepreview"
-          }
-        ]
-      }
+      ]
     },
     "alertId": {
       "name": "alertId",
@@ -300,34 +291,7 @@
         "Activity Logs",
         "Zabbix",
         "SCOM"
-      ],
-      "x-ms-enum": {
-        "name": "MonitorService",
-        "modelAsString": false,
-        "values": [
-          {
-            "value": "Azure Monitor"
-          },
-          {
-            "value": "Application Insights"
-          },
-          {
-            "value": "Log Analytics"
-          },
-          {
-            "value": "Solution"
-          },
-          {
-            "value": "Activity Logs"
-          },
-          {
-            "value": "Zabbix"
-          },
-          {
-            "value": "SCOM"
-          }
-        ]
-      }
+      ]
     },
     "severityFilter": {
       "description": "filter by filter",
@@ -337,25 +301,12 @@
       "required": false,
       "x-ms-parameter-location": "method",
       "enum": [
-        "sev1",
-        "sev2",
-        "sev3"
-      ],
-      "x-ms-enum": {
-        "name": "AlertSeverity",
-        "modelAsString": false,
-        "values": [
-          {
-            "value": "Sev 1"
-          },
-          {
-            "value": "Sev 2"
-          },
-          {
-            "value": "Sev 3"
-          }
-        ]
-      }
+        "Sev0",
+        "Sev1",
+        "Sev2",
+        "Sev3",
+        "Sev4"
+      ]
     },
     "stateFilter": {
       "description": "filter by state",
@@ -366,24 +317,8 @@
       "x-ms-parameter-location": "method",
       "enum": [
         "Resolved",
-        "Active",
-        "Unknown"
-      ],
-      "x-ms-enum": {
-        "name": "AlertState",
-        "modelAsString": false,
-        "values": [
-          {
-            "value": "Resolved"
-          },
-          {
-            "value": "Active"
-          },
-          {
-            "value": "Unknown"
-          }
-        ]
-      }
+        "Active"
+      ]
     },
     "timeRangeFilter": {
       "description": "filter by time range",
@@ -397,25 +332,7 @@
         "1d",
         "7d",
         "30d"
-      ],
-      "x-ms-enum": {
-        "name": "TimeRange",
-        "modelAsString": false,
-        "values": [
-          {
-            "value": "1h"
-          },
-          {
-            "value": "1d"
-          },
-          {
-            "value": "7d"
-          },
-          {
-            "value": "30d"
-          }
-        ]
-      }
+      ]
     }
   },
   "definitions": {
@@ -633,25 +550,12 @@
           "description": "Severity of alert Sev1 being highest and Sev3 being lowest.",
           "readOnly": true,
           "enum": [
+            "Sev0",
             "Sev1",
             "Sev2",
-            "Sev3"
-          ],
-          "x-ms-enum": {
-            "name": "AlertSeverity",
-            "modelAsString": false,
-            "values": [
-              {
-                "value": "Sev 1"
-              },
-              {
-                "value": "Sev 2"
-              },
-              {
-                "value": "Sev 3"
-              }
-            ]
-          }
+            "Sev3",
+            "Sev4"
+          ]
         },
         "signalType": {
           "type": "string",
@@ -659,20 +563,9 @@
           "readOnly": true,
           "enum": [
             "Metric",
-            "Log"
-          ],
-          "x-ms-enum": {
-            "name": "AlertSignalType",
-            "modelAsString": false,
-            "values": [
-              {
-                "value": "Metric"
-              },
-              {
-                "value": "Log"
-              }
-            ]
-          }
+            "Log",
+            "Unknown"
+          ]
         },
         "state": {
           "type": "string",
@@ -680,24 +573,8 @@
           "readOnly": true,
           "enum": [
             "Active",
-            "Resolved",
-            "Unknown"
-          ],
-          "x-ms-enum": {
-            "name": "AlertState",
-            "modelAsString": false,
-            "values": [
-              {
-                "value": "Resolved"
-              },
-              {
-                "value": "Active"
-              },
-              {
-                "value": "Unknown"
-              }
-            ]
-          }
+            "Resolved"
+          ]
         },
         "targetResource": {
           "type": "string",
@@ -715,34 +592,7 @@
             "Activity Logs",
             "Zabbix",
             "SCOM"
-          ],
-          "x-ms-enum": {
-            "name": "MonitorService",
-            "modelAsString": false,
-            "values": [
-              {
-                "value": "Azure Monitor"
-              },
-              {
-                "value": "Application Insights"
-              },
-              {
-                "value": "Log Analytics"
-              },
-              {
-                "value": "Solution"
-              },
-              {
-                "value": "Activity Logs"
-              },
-              {
-                "value": "Zabbix"
-              },
-              {
-                "value": "SCOM"
-              }
-            ]
-          }
+          ]
         },
         "sourceCreatedId": {
           "type": "string",
