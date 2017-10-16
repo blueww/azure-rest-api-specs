@@ -30,7 +30,7 @@
 				{
 				  "id": "/subscriptions/subid/providers/microsoft.alertsmanagement/alerts/a35dwrwd-69fc-4974-9099-a35dwrwd",
 				  "type": "Microsoft.AlertsManagement/alerts",
-				  "name": "Heart beat failure"
+				  "name": "Heart beat failure",
 				  "properties": {
 					"severity": "Sev1",
 					"signalType": "Log",

@@ -59,19 +59,19 @@
             "$ref": "#/parameters/subscriptionId"
           },
           {
-            "$ref": "#/parameters/resourceGroupIdFilter"
+            "$ref": "#/parameters/resourceGroupNameFilter"
           },
           {
-            "$ref": "#/parameters/resourceIdFilter"
+            "$ref": "#/parameters/resourceNameFilter"
+          },
+          {
+            "$ref": "#/parameters/resourceTypeFilter"
           },
           {
             "$ref": "#/parameters/severityFilter"
           },
           {
             "$ref": "#/parameters/stateFilter"
-          },
-          {
-            "$ref": "#/parameters/resourceTypeFilter"
           },
           {
             "$ref": "#/parameters/monitorServiceFilter"
@@ -145,7 +145,7 @@
         },
         "x-ms-examples": {
           "GetById": {
-            "$ref": "./examples/Alerts_GetbyId.json"
+            "$ref": "./examples/Alerts_GetById.json"
           }
         }
       }
@@ -195,7 +195,7 @@
             "$ref": "#/parameters/subscriptionId"
           },
           {
-            "$ref": "#/parameters/resourceGroupIdFilter"
+            "$ref": "#/parameters/resourceGroupNameFilter"
           },
           {
             "$ref": "#/parameters/timeRangeFilter"
@@ -234,20 +234,6 @@
       "in": "path",
       "required": true
     },
-    "alertId": {
-      "name": "alertId",
-      "description": "Unique ID of an alert object.",
-      "type": "string",
-      "in": "path",
-      "required": true
-    },
-    "alertIdQueryParam": {
-      "name": "alertId",
-      "description": "Unique ID of an alert object.",
-      "type": "string",
-      "in": "query",
-      "required": true
-    },
     "api-version": {
       "name": "api-version",
       "description": "Client API version",
@@ -267,26 +253,37 @@
         ]
       }
     },
-    "resourceGroupIdFilter": {
-      "description": "filter by resource group id",
-      "name": "resourceGroupId",
+    "alertId": {
+      "name": "alertId",
+      "description": "Unique ID of an alert object.",
       "type": "string",
-      "in": "query",
-      "required": false
+      "in": "path",
+      "required": true,
+      "x-ms-parameter-location": "method"
     },
-    "resourceIdFilter": {
-      "description": "filter by resource id",
-      "name": "resourceId",
+    "resourceGroupNameFilter": {
+      "description": "filter by resource group name",
+      "name": "resourceGroupName",
       "type": "string",
       "in": "query",
-      "required": false
+      "required": false,
+      "x-ms-parameter-location": "method"
+    },
+    "resourceNameFilter": {
+      "description": "filter by resource name",
+      "name": "resourceName",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "method"
     },
     "resourceTypeFilter": {
       "description": "filter by resource type",
       "name": "resourceType",
       "type": "string",
       "in": "query",
-      "required": false
+      "required": false,
+      "x-ms-parameter-location": "method"
     },
     "monitorServiceFilter": {
       "description": "filter by monitor source",
@@ -294,6 +291,7 @@
       "type": "string",
       "in": "query",
       "required": false,
+      "x-ms-parameter-location": "method",
       "enum": [
         "Azure Monitor",
         "Application Insights",
@@ -337,6 +335,7 @@
       "type": "string",
       "in": "query",
       "required": false,
+      "x-ms-parameter-location": "method",
       "enum": [
         "sev1",
         "sev2",
@@ -364,6 +363,7 @@
       "type": "string",
       "in": "query",
       "required": false,
+      "x-ms-parameter-location": "method",
       "enum": [
         "Resolved",
         "Active",
@@ -391,6 +391,7 @@
       "type": "string",
       "in": "query",
       "required": false,
+      "x-ms-parameter-location": "method",
       "enum": [
         "1h",
         "1d",
@@ -538,16 +539,10 @@
           }
         },
         "details": {
-          "type": "object",
+          "type": "array",
           "description": "Summary of the unresolved alerts by severity per resource",
-          "properties": {
-            "value": {
-              "description": "Summary of alerts by severity per resource",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/unresolvedAlertsByResourceItem"
-              }
-            }
+          "items": {
+            "$ref": "#/definitions/unresolvedAlertsByResourceItem"
           }
         },
         "nextLink": {
@@ -561,22 +556,20 @@
       "description": "Unresolved alerts summary of a resource",
       "properties": {
         "resource": {
-          "type": "object",
-          "description": "resource uri",
-          "properties": {
-            "sev1": {
-              "type": "integer",
-              "description": "Unresolved severity sev1 count"
-            },
-            "sev2": {
-              "type": "integer",
-              "description": "Unresolved severity sev2 count"
-            },
-            "sev3": {
-              "type": "integer",
-              "description": "Unresolved severity sev3 count"
-            }
-          }
+          "type": "string",
+          "description": "Name of the resource"
+        },
+        "sev1": {
+          "type": "integer",
+          "description": "Unresolved severity sev1 count"
+        },
+        "sev2": {
+          "type": "integer",
+          "description": "Unresolved severity sev2 count"
+        },
+        "sev3": {
+          "type": "integer",
+          "description": "Unresolved severity sev3 count"
         }
       }
     },
@@ -625,7 +618,7 @@
           "description": "List of alerts",
           "type": "array",
           "items": {
-            "$ref": "#definitions/alert"
+            "$ref": "#/definitions/alert"
           }
         }
       }

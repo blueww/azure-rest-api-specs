@@ -11,22 +11,19 @@
 				"name": "current",
 				"properties": {
 					"summary": {
-					  "sev1": 0,
-					  "sev2": 0,
-					  "sev3": 0
+					  "sev1": 10,
+					  "sev2": 5,
+					  "sev3": 19
 					},
-					"details": {
-					  "value": [
-						{
-						  "resource": {
-							"sev1": 0,
-							"sev2": 0,
-							"sev3": 0
-						  }
-						}
-					  ]
-					},
-				"nextLink": "string"
+					"details": [
+					  {
+						"resource": "computer123",
+						"sev1": 12,
+						"sev2": 25,
+						"sev3": 30
+					  }
+					],
+					"nextLink": "string"
 				}
 			}	
 		}	
