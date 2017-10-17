@@ -764,7 +764,7 @@
             "properties": {
               "description": "Properties of the container service.",
               "$ref": "#/definitions/ContainerServiceProperties",
-              "x-ms-client-flatten": false
+              "x-ms-client-flatten": true
             }
           }
         }
