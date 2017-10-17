@@ -19,10 +19,15 @@
     "/providers/Microsoft.Subscription/operations": {
       "get": {
         "tags": [
-          "Operations"
+          "SubscriptionDefinition"
         ],
         "description": "Lists all of the available Microsoft.Subscription API operations.",
-        "operationId": "Operations_list",
+        "operationId": "SubscriptionDefinitionsOperationMetadata_list",
+        "x-ms-examples": {
+          "getSubscriptionDefinitionOperations": {
+            "$ref": "./examples/getOperations.json"
+          }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/apiVersionParameter"
@@ -53,7 +58,7 @@
           "SubscriptionDefinition"
         ],
         "description": "Create an Azure subscription definition. Note, action is only available via /providers/Microsoft.Management/managementGroups/{groupName}.",
-        "operationId": "ManagementGroupsSubscriptionDefinitions_Create",
+        "operationId": "SubscriptionDefinitions_Create",
         "x-ms-examples": {
           "createManagementGroupsSubscriptionDefinition": {
             "$ref": "./examples/createManagementGroupsSubscriptionDefinition.json"
@@ -61,7 +66,7 @@
         },
         "parameters": [
           {
-            "$ref": "#/parameters/managementGroupsCreationScopeParameter"
+            "$ref": "#/parameters/scopeParameter"
           },
           {
             "$ref": "#/parameters/subscriptionDefinitionNameParameter"
@@ -106,7 +111,7 @@
             }
           }
         },
-        "x-ms-long-running-operation": true        
+        "x-ms-long-running-operation": true
       },
       "get": {
         "tags": [
@@ -147,75 +152,6 @@
             }
           }
         }
-      },
-      "patch": {
-        "tags": [
-          "SubscriptionDefinition"
-        ],
-        "description": "Update an Azure subscription definition.",
-        "operationId": "SubscriptionDefinitions_Update",
-        "x-ms-examples": {
-          "updateViaManagementGroupsSubscriptionDefinitions": {
-            "$ref": "./examples/updateManagementGroupsSubscriptionDefinition.json"
-          },
-          "updateViaSubscriptionsSubscriptionDefinitions": {
-            "$ref": "./examples/updateSubscriptionsSubscriptionDefinition.json"
-          },
-          "updateWithUserCancellation": {
-            "$ref": "./examples/updateWithUserCancellationViaManagementGroups.json"
-          },
-          "reactivateFromUserCancellation": {
-            "$ref" : "./examples/ReactivateFromUserCancellationViaMangementGroups.json"
-          }
-        },
-        "parameters": [
-          {
-            "$ref": "#/parameters/scopeParameter"
-          },
-          {
-            "$ref": "#/parameters/subscriptionDefinitionNameParameter"
-          },
-          {
-            "$ref": "#/parameters/apiVersionParameter"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "A subscription definition update.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/SubscriptionDefinitionInput"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Normal response for a successful query. The response body will contain the data that matches the filters specified in the query parameters.",
-            "schema": {
-              "$ref": "#/definitions/SubscriptionDefinition"
-            }
-          },
-          "202": {
-            "description": "Accepted. Subscription update is in progress.",
-            "headers": {
-              "Location": {
-                "description": "GET this URL to retrieve the status of the asynchronous operation.",
-                "type": "string"
-              },
-              "Retry-After": {
-                "description": "The amount of delay to use while the status of the operation is checked. The value is expressed in seconds.",
-                "type": "string"
-              }
-            }
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "x-ms-long-running-operation": true        
       }
     },
     "/{scope}/providers/Microsoft.Subscription/subscriptionDefinitions": {
@@ -262,8 +198,8 @@
         "tags": [
           "SubscriptionOperation"
         ],
-        "description": "Retrieves the status of the subscription definition PUT or PATCH operation. The URI of this API is returned in the Location field of the response header.",
-        "operationId": "ManagementGroupsSubscriptionDefinition_GetOperationStatus",
+        "description": "Retrieves the status of the subscription definition PUT operation. The URI of this API is returned in the Location field of the response header.",
+        "operationId": "SubscriptionDefinitions_GetOperationStatus",
         "x-ms-examples": {
           "getManagementGroupsSubscriptionDefinitionOperation": {
             "$ref": "./examples/getManagementGroupsSubscriptionDefinitionOperation.json"
@@ -341,13 +277,13 @@
       "description": "The subscription definition properties.",
       "properties": {
         "subscriptionId": {
-          "description": "The uuid of the subscription.",
-          "readOnly": true,          
+          "description": "The ID of the subscription.",
+          "readOnly": true,
           "type": "string"
         },
         "subscriptionTenantId": {
-          "description": "The AAD tenant id associated with the subscription.",
-          "readOnly": true,          
+          "description": "The AAD Tenant ID associated with the subscription.",
+          "readOnly": true,
           "type": "string"
         },
         "subscriptionDisplayName": {
@@ -364,28 +300,32 @@
                 "create",
                 "read"
               ]
-            }        
+            }
           }
         },
         "userCancellationRequested": {
           "type": "boolean",
-          "description": "true when User wants the subscription disabled due to userCancellation."
+          "description": "True when User wants the subscription disabled due to userCancellation."
         },
         "groupId": {
           "description": "Link to the management group that contains subscription definition.",
-          "readOnly": true,          
+          "readOnly": true,
           "type": "string"
         },
         "groupTenantId": {
-          "description": "The AAD tenant id associated with the management group.",
-          "readOnly": true,          
+          "description": "The AAD Tenant ID associated with the management group.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "etag": {
+          "description": "The etag the subscription definition.",
           "type": "string"
         }
       }
     },
     "SubscriptionDefinitionList": {
       "properties": {
-        "value": {  
+        "value": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/SubscriptionDefinition"
@@ -394,29 +334,6 @@
         }
       },
       "description": "Subscription Definition List operation response."
-    },
-    "SubscriptionDefinitionInput": {
-      "description": "The subscription definition used to create and modify the subscription.",
-      "properties": {
-        "properties": {
-          "description": "The subscription definiton input properties.",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/SubscriptionDefinitionInputProperties"
-        }
-      }
-    },
-    "SubscriptionDefinitionInputProperties": {
-      "description": "The subscription definition input properties.",
-      "properties": {
-        "subscriptionDisplayName": {
-          "description": "The display name of the subscription.",
-          "type": "string"
-        },
-        "userCancellationRequested": {
-          "type": "boolean",
-          "description": "Set to true when a user wants the subscription disabled due to userCancellation.  Set to false when a user wants the userCancellation to be removed."
-        }
-      }
     },
     "Operation": {
       "description": "REST API operation",
@@ -446,7 +363,7 @@
       }
     },
     "OperationListResult": {
-     "description": "Result of the request to list operations. It contains a list of operations and a URL link to get the next set of results.",
+      "description": "Result of the request to list operations. It contains a list of operations and a URL link to get the next set of results.",
       "properties": {
         "value": {
           "type": "array",
@@ -477,17 +394,10 @@
     }
   },
   "parameters": {
-    "managementGroupsCreationScopeParameter": {
-      "name": "scope",
-      "in": "path",      
-      "description": "The scope of the Microsoft.Subscription url. The scope can only be 'providers/Microsoft.Management/managementGroups/{groupName}' where groupname is the name of the management group ARM resource.",
-      "required": true,
-      "type": "string"
-    },
     "scopeParameter": {
       "name": "scope",
-      "in": "path",      
-      "description": "The scope of the Microsoft.Subscription url. The scope can be 'subscriptions/{subscriptionId}' or 'providers/Microsoft.Management/managementGroups/{groupName}'.",
+      "in": "path",
+      "description": "The scope of the Microsoft.Subscription url. The scope can be 'subscriptions/{subscriptionId}' or 'providers/Microsoft.Management/managementGroups/{groupName}' however put will only allow 'providers/Microsoft.Management/managementGroups/{groupName}'.",
       "required": true,
       "type": "string"
     },
