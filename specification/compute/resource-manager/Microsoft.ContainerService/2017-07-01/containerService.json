@@ -587,7 +587,6 @@
         }
       },
       "required": [
-        "count",
         "dnsPrefix",
         "vmSize"
       ],
@@ -656,7 +655,6 @@
       },
       "required": [
         "name",
-        "count",
         "vmSize"
       ],
       "description": "Profile for the container service agent pool."
