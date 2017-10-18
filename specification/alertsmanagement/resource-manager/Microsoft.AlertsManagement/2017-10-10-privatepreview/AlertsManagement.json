@@ -28,6 +28,7 @@
   "paths": {
     "/providers/Microsoft.AlertManagement/operations": {
       "get": {
+        "operationId": "Operations_List",
         "description": "Lists all operations available Azure Alerts Management REST API operations.",
         "parameters": [
           {
@@ -291,7 +292,11 @@
         "Activity Logs",
         "Zabbix",
         "SCOM"
-      ]
+      ],
+      "x-ms-enum": {
+        "name": "MonitorService",
+        "modelAsString": true
+      }
     },
     "severityFilter": {
       "description": "filter by filter",
@@ -306,7 +311,11 @@
         "Sev2",
         "Sev3",
         "Sev4"
-      ]
+      ],
+      "x-ms-enum": {
+        "name": "Severity",
+        "modelAsString": true
+      }
     },
     "stateFilter": {
       "description": "filter by state",
@@ -318,7 +327,11 @@
       "enum": [
         "Resolved",
         "Active"
-      ]
+      ],
+      "x-ms-enum": {
+        "name": "State",
+        "modelAsString": true
+      }
     },
     "timeRangeFilter": {
       "description": "filter by time range",
@@ -332,7 +345,11 @@
         "1d",
         "7d",
         "30d"
-      ]
+      ],
+      "x-ms-enum": {
+        "name": "TimeRange",
+        "modelAsString": true
+      }
     }
   },
   "definitions": {
@@ -421,10 +438,11 @@
       }
     },
     "alertsSummary": {
+      "x-ms-azure-resource": true,
       "description": "Summary of the alerts.",
       "allOf": [
         {
-          "$ref": "#/definitions/azureResource"
+          "$ref": "#/definitions/Resource"
         }
       ],
       "properties": {
@@ -490,7 +508,7 @@
         }
       }
     },
-    "azureResource": {
+    "Resource": {
       "description": "An azure resource object",
       "properties": {
         "id": {
@@ -511,15 +529,15 @@
       }
     },
     "alert": {
+      "x-ms-azure-resource": true,
       "description": "An alert created in alert management service.",
       "allOf": [
         {
-          "$ref": "#/definitions/azureResource"
+          "$ref": "#/definitions/Resource"
         }
       ],
       "properties": {
         "properties": {
-          "x-ms-client-flatten": true,
           "$ref": "#/definitions/alertProperties"
         }
       }
@@ -555,7 +573,11 @@
             "Sev2",
             "Sev3",
             "Sev4"
-          ]
+          ],
+          "x-ms-enum": {
+            "name": "Severity",
+            "modelAsString": true
+          }
         },
         "signalType": {
           "type": "string",
@@ -565,7 +587,11 @@
             "Metric",
             "Log",
             "Unknown"
-          ]
+          ],
+          "x-ms-enum": {
+            "name": "SignalType",
+            "modelAsString": true
+          }
         },
         "state": {
           "type": "string",
@@ -574,7 +600,11 @@
           "enum": [
             "Active",
             "Resolved"
-          ]
+          ],
+          "x-ms-enum": {
+            "name": "State",
+            "modelAsString": true
+          }
         },
         "targetResource": {
           "type": "string",
@@ -592,7 +622,11 @@
             "Activity Logs",
             "Zabbix",
             "SCOM"
-          ]
+          ],
+          "x-ms-enum": {
+            "name": "MonitorService",
+            "modelAsString": true
+          }
         },
         "sourceCreatedId": {
           "type": "string",
