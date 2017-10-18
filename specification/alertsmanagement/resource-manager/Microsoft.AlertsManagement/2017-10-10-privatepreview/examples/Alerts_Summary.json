@@ -20,11 +20,11 @@
 					"details": [
 					  {
 						"resource": "computer123",
-						"sev1": 10,
+						"sev0": 10,
 						"sev1": 12,
 						"sev2": 25,
 						"sev3": 30,
-						"sev1": 10
+						"sev4": 10
 					  }
 					],
 					"nextLink": "string"
