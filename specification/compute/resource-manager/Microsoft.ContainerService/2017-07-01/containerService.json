@@ -902,13 +902,15 @@
     "UpgradeProfileProperties": {
       "properties": {
         "controlPlaneProfile": {
-          "$ref": "#/definitions/PoolUpgradeProfile"
+          "$ref": "#/definitions/PoolUpgradeProfile",
+          "description": "The list of available upgrade versions for the control plane."
         },
         "agentPoolProfiles": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/PoolUpgradeProfile"
-          }
+          },
+          "description": "The list of available upgrade versions for agent pools."
         }
       },
       "required": [
@@ -936,6 +938,7 @@
         },
         "properties": {
           "$ref": "#/definitions/UpgradeProfileProperties",
+          "description": "Properties of upgrade profile.",
           "x-ms-client-flatten": false
         }
       },
