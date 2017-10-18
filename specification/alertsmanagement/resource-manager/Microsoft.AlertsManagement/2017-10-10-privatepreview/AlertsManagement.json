@@ -438,7 +438,6 @@
       }
     },
     "alertsSummary": {
-      "x-ms-azure-resource": true,
       "description": "Summary of the alerts.",
       "allOf": [
         {
@@ -459,6 +458,10 @@
           "type": "object",
           "description": "Total number of alerts by severity",
           "properties": {
+            "total": {
+              "type": "integer",
+              "description": "Total alerts including resolved and unresolved"
+            },
             "sev1": {
               "type": "integer",
               "description": "Unresolved severity sev1 count"
@@ -494,6 +497,10 @@
           "type": "string",
           "description": "Name of the resource"
         },
+        "sev0": {
+          "type": "integer",
+          "description": "Unresolved severity sev0 count"
+        },
         "sev1": {
           "type": "integer",
           "description": "Unresolved severity sev1 count"
@@ -505,10 +512,15 @@
         "sev3": {
           "type": "integer",
           "description": "Unresolved severity sev3 count"
+        },
+        "sev4": {
+          "type": "integer",
+          "description": "Unresolved severity sev4 count"
         }
       }
     },
     "Resource": {
+      "x-ms-azure-resource": true,
       "description": "An azure resource object",
       "properties": {
         "id": {
@@ -529,7 +541,6 @@
       }
     },
     "alert": {
-      "x-ms-azure-resource": true,
       "description": "An alert created in alert management service.",
       "allOf": [
         {

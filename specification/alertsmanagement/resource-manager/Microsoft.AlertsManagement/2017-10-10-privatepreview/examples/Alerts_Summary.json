@@ -11,16 +11,20 @@
 				"name": "current",
 				"properties": {
 					"summary": {
+					  "sev0": 10,
 					  "sev1": 10,
 					  "sev2": 5,
-					  "sev3": 19
+					  "sev3": 19,
+					  "sev4": 10
 					},
 					"details": [
 					  {
 						"resource": "computer123",
+						"sev1": 10,
 						"sev1": 12,
 						"sev2": 25,
-						"sev3": 30
+						"sev3": 30,
+						"sev1": 10
 					  }
 					],
 					"nextLink": "string"
