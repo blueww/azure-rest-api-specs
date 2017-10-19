@@ -13,9 +13,6 @@
         "license": {
             "name": "Microsoft",
             "url": "https://dev.loganalytics.io/license"
-        },
-        "x-ms-code-generation-settings": {
-            "internalConstructors": true
         }
     },
     "host": "api.loganalytics.io",
@@ -76,7 +73,7 @@
                     "200": {
                         "description": "OK. The API call succeeded and the Analytics query result is in the response payload",
                         "schema": {
-                            "$ref": "#/definitions/query-response"
+                            "$ref": "#/definitions/query-results"
                         }
                     },
                     "default": {
@@ -114,7 +111,7 @@
                     "200": {
                         "description": "OK. The API call succeeded and the Analytics query result is in the response payload",
                         "schema": {
-                            "$ref": "#/definitions/query-response"
+                            "$ref": "#/definitions/query-results"
                         }
                     },
                     "default": {
@@ -192,7 +189,7 @@
                     "$ref": "#/definitions/timespan-param"
                 },
                 "workspaces": {
-                    "description": "something about cross workspace queries",
+                    "description": "A list of workspaces that are included in the query.",
                     "$ref": "#/definitions/workspaces-param"
                 }
             },
@@ -200,7 +197,7 @@
                 "query"
             ]
         },
-        "query-response": {
+        "query-results": {
             "title": "A query response.",
             "description": "Contains the tables, columns & rows resulting from a query.",
             "type": "object",
@@ -209,7 +206,7 @@
                     "description": "The list of tables, columns and rows.",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/table-object"
+                        "$ref": "#/definitions/table"
                     }
                 }
             },
@@ -217,7 +214,7 @@
                 "tables"
             ]
         },
-        "table-object": {
+        "table": {
             "title": "A query response table.",
             "description": "Contains the columns and rows for one table in a query response.",
             "type": "object",
@@ -230,17 +227,7 @@
                     "description": "The list of columns in this table.",
                     "type": "array",
                     "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "description": "The name of this column.",
-                                "type": "string"
-                            },
-                            "type": {
-                                "description": "The data type of this column.",
-                                "type": "string"
-                            }
-                        }
+                        "$ref": "#/definitions/column"
                     }
                 },
                 "rows": {
@@ -259,6 +246,21 @@
                 "columns",
                 "rows"
             ]
+        },
+        "column": {
+            "title": "A table column.",
+            "description": "A column in a table.",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "The name of this column.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The data type of this column.",
+                    "type": "string"
+                }
+            }
         },
         "error-detail": {
             "title": "Error details.",

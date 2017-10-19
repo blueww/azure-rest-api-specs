@@ -54,13 +54,17 @@ csharp:
   namespace: Microsoft.Azure.Management.OperationalInsights.Data
   output-folder: $(csharp-sdks-folder)/OperationalInsights/Data/OperationalInsights.Data/Generated
   clear-output-folder: true
+  use-internal-constructors: true
 directive:
   - reason: Don't expose the GET endpoint since it's behavior is more limited than POST
-    from: swagger-document
-    where: $.paths["/workspaces/{workspace-id}/query"]
-    transform: delete $.get
+    remove-operation: Query_Get
   - reason: Rename Query_Post to Query so that we don't get an IQuery interface with 1 operation
-    from: swagger-document
-    where: $.paths["/workspaces/{workspace-id}/query"].post
+    where-operation: Query_Post
     transform: $.operationId = "Query"
+  - reason: Hide the default signatures so that we can provide our own facade
+    from: code-model-v1
+    where-operation: Query
+    transform: >
+      $.hidden = true;
+      $.excludeFromInterface = true;
 ```
