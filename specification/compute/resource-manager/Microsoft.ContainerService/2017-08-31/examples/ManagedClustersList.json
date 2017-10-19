@@ -30,7 +30,7 @@
                   "osType": "Linux",
                   "ports": null,
                   "storageProfile": "ManagedDisks",
-                  "vmSize": "Standard_D2_v2",
+                  "vmSize": "vmsize1",
                   "vnetSubnetId": null
                 }
               ],
