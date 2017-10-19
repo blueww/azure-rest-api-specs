@@ -55,16 +55,11 @@ csharp:
   output-folder: $(csharp-sdks-folder)/OperationalInsights/Data/OperationalInsights.Data/Generated
   clear-output-folder: true
   use-internal-constructors: true
+  payload-flattening-threshold: 3
 directive:
   - reason: Don't expose the GET endpoint since it's behavior is more limited than POST
     remove-operation: Query_Get
   - reason: Rename Query_Post to Query so that we don't get an IQuery interface with 1 operation
     where-operation: Query_Post
     transform: $.operationId = "Query"
-  - reason: Hide the default signatures so that we can provide our own facade
-    from: code-model-v1
-    where-operation: Query
-    transform: >
-      $.hidden = true;
-      $.excludeFromInterface = true;
 ```

@@ -102,9 +102,6 @@
                     },
                     {
                         "$ref": "#/parameters/query-body"
-                    },
-                    {
-                        "$ref": "#/parameters/timespan-param"
                     }
                 ],
                 "responses": {
