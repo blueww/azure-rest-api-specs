@@ -1,0 +1,65 @@
+{
+  "parameters": {
+    "api-version": "2017-08-31",
+    "subscriptionId": "subid1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/subid1/providers/Microsoft.ContainerService/managedClusters",
+            "location": "location1",
+            "name": "mycluster1",
+            "properties": {
+              "accessProfiles": {
+                "clusterAdmin": {
+                  "kubeConfig": "kubeConfig1"
+                },
+                "clusterUser": {
+                  "kubeConfig": "kubeConfig2"
+                }
+              },
+              "agentPoolProfiles": [
+                {
+                  "count": 1,
+                  "dnsPrefix": null,
+                  "fqdn": null,
+                  "name": "agentpool1",
+                  "osDiskSizeGb": null,
+                  "osType": "Linux",
+                  "ports": null,
+                  "storageProfile": "ManagedDisks",
+                  "vmSize": "Standard_D2_v2",
+                  "vnetSubnetId": null
+                }
+              ],
+              "dnsPrefix": "dnsprefix1",
+              "fqdn": "dnsprefix1-123456.abc.location1.azmk8s.io",
+              "kubernetesVersion": "1.7.7",
+              "linuxProfile": {
+                "adminUsername": "azureuser",
+                "ssh": {
+                  "publicKeys": [
+                    {
+                      "keyData": "keydata"
+                    }
+                  ]
+                }
+              },
+              "provisioningState": "Succeeded",
+              "servicePrincipalProfile": {
+                "clientId": "clientid",
+                "keyVaultSecretRef": null,
+                "secret": null
+              }
+            },
+            "resourceGroup": "rg1",
+            "tags": null,
+            "type": "Microsoft.ContainerService/ManagedClusters"
+          }
+        ]
+      }
+    }
+  }
+}
