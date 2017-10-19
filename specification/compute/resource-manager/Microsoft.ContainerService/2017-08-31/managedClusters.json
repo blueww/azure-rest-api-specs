@@ -297,7 +297,7 @@
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
           "Delete Managed Cluster": {
-            "$ref": "./examples/ManagedClustersDelete.json"
+            "$ref": "./examples/ManagedClustersCreate_Update.json"
           }
         }
       }
