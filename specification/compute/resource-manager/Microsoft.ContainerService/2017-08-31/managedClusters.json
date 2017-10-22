@@ -62,7 +62,7 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-          "Get Managed Clusters": {
+          "List Managed Clusters": {
             "$ref": "./examples/ManagedClustersList.json"
           }
         }
@@ -297,7 +297,7 @@
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
           "Delete Managed Cluster": {
-            "$ref": "./examples/ManagedClustersCreate_Update.json"
+            "$ref": "./examples/ManagedClustersDelete.json"
           }
         }
       }

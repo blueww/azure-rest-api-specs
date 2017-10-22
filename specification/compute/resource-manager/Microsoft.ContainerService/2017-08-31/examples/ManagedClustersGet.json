@@ -23,15 +23,15 @@
           "agentPoolProfiles": [
             {
               "count": 1,
-              "dnsPrefix": null,
-              "fqdn": null,
+              "dnsPrefix": "agentpool1dnsPrefix",
+              "fqdn": "agentpool1fqdn",
               "name": "agentpool1",
-              "osDiskSizeGb": null,
               "osType": "Linux",
-              "ports": null,
+              "ports": [
+                1
+              ],
               "storageProfile": "ManagedDisks",
-              "vmSize": "vmsize1",
-              "vnetSubnetId": null
+              "vmSize": "Standard_D2_v2"
             }
           ],
           "dnsPrefix": "dnsprefix1",
@@ -51,11 +51,10 @@
           "servicePrincipalProfile": {
             "clientId": "clientid",
             "keyVaultSecretRef": null,
-            "secret": null
+            "secret": "secret"
           }
         },
-        "resourceGroup": "rg1",
-        "tags": null,
+        "tags": "managed-cluster",
         "type": "Microsoft.ContainerService/ManagedClusters"
       }
     }
