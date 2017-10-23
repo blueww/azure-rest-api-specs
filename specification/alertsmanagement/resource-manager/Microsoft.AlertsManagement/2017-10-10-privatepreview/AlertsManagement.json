@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "2017-10-10-privatepreview",
-    "title": "Azure Alert Management Client",
-    "description": "REST APIs for Azure Alert Management Service."
+    "title": "Azure Alerts Management Client",
+    "description": "REST APIs for Azure Alerts Management Service."
   },
   "schemes": [
     "https"
@@ -54,31 +54,31 @@
     "/subscriptions/{subscriptionId}/providers/Microsoft.AlertManagement/alerts": {
       "get": {
         "operationId": "Alerts_List",
-        "description": "List all the existing active alerts. Return list can be made selective and sorted by using the $filter and $orderby parameters.",
+        "description": "List all the existing active alerts. Return list can be made selective by passing the parameters.",
         "parameters": [
           {
             "$ref": "#/parameters/subscriptionId"
           },
           {
-            "$ref": "#/parameters/resourceGroupNameFilter"
+            "$ref": "#/parameters/resourceGroupName"
           },
           {
-            "$ref": "#/parameters/resourceNameFilter"
+            "$ref": "#/parameters/resourceName"
           },
           {
-            "$ref": "#/parameters/resourceTypeFilter"
+            "$ref": "#/parameters/resourceType"
           },
           {
-            "$ref": "#/parameters/severityFilter"
+            "$ref": "#/parameters/severity"
           },
           {
-            "$ref": "#/parameters/stateFilter"
+            "$ref": "#/parameters/state"
           },
           {
-            "$ref": "#/parameters/monitorServiceFilter"
+            "$ref": "#/parameters/monitorService"
           },
           {
-            "$ref": "#/parameters/timeRangeFilter"
+            "$ref": "#/parameters/timeRange"
           },
           {
             "$ref": "#/parameters/api-version"
@@ -196,10 +196,10 @@
             "$ref": "#/parameters/subscriptionId"
           },
           {
-            "$ref": "#/parameters/resourceGroupNameFilter"
+            "$ref": "#/parameters/resourceGroupName"
           },
           {
-            "$ref": "#/parameters/timeRangeFilter"
+            "$ref": "#/parameters/timeRange"
           },
           {
             "$ref": "#/parameters/api-version"
@@ -253,7 +253,7 @@
       "required": true,
       "x-ms-parameter-location": "method"
     },
-    "resourceGroupNameFilter": {
+    "resourceGroupName": {
       "description": "filter by resource group name",
       "name": "resourceGroupName",
       "type": "string",
@@ -261,7 +261,7 @@
       "required": false,
       "x-ms-parameter-location": "method"
     },
-    "resourceNameFilter": {
+    "resourceName": {
       "description": "filter by resource name",
       "name": "resourceName",
       "type": "string",
@@ -269,7 +269,7 @@
       "required": false,
       "x-ms-parameter-location": "method"
     },
-    "resourceTypeFilter": {
+    "resourceType": {
       "description": "filter by resource type",
       "name": "resourceType",
       "type": "string",
@@ -277,8 +277,8 @@
       "required": false,
       "x-ms-parameter-location": "method"
     },
-    "monitorServiceFilter": {
-      "description": "filter by monitor source",
+    "monitorService": {
+      "description": "filter by monitor service",
       "name": "monitorService",
       "type": "string",
       "in": "query",
@@ -298,8 +298,8 @@
         "modelAsString": true
       }
     },
-    "severityFilter": {
-      "description": "filter by filter",
+    "severity": {
+      "description": "filter by severity",
       "name": "severity",
       "type": "string",
       "in": "query",
@@ -317,7 +317,7 @@
         "modelAsString": true
       }
     },
-    "stateFilter": {
+    "state": {
       "description": "filter by state",
       "name": "state",
       "type": "string",
@@ -333,7 +333,7 @@
         "modelAsString": true
       }
     },
-    "timeRangeFilter": {
+    "timeRange": {
       "description": "filter by time range",
       "name": "timeRange",
       "type": "string",
@@ -446,6 +446,7 @@
       ],
       "properties": {
         "properties": {
+          "x-ms-client-flatten": true,
           "$ref": "#/definitions/alertsSummaryProperties"
         }
       }
@@ -462,17 +463,25 @@
               "type": "integer",
               "description": "Total alerts including resolved and unresolved"
             },
+            "sev0": {
+              "type": "integer",
+              "description": "Unresolved alerts count of severity sev0"
+            },
             "sev1": {
               "type": "integer",
-              "description": "Unresolved severity sev1 count"
+              "description": "Unresolved alerts count of severity sev1"
             },
             "sev2": {
               "type": "integer",
-              "description": "Unresolved severity sev2 count"
+              "description": "Unresolved alerts count of severity sev2"
             },
             "sev3": {
               "type": "integer",
-              "description": "Unresolved severity sev3 count"
+              "description": "Unresolved alerts count of severity sev3"
+            },
+            "sev4": {
+              "type": "integer",
+              "description": "Unresolved alerts count of severity sev4"
             }
           }
         },
@@ -549,6 +558,7 @@
       ],
       "properties": {
         "properties": {
+          "x-ms-client-flatten": true,
           "$ref": "#/definitions/alertProperties"
         }
       }
@@ -572,7 +582,6 @@
     "alertProperties": {
       "type": "object",
       "description": "An alert created in alert management service. Resource NOT tracked by ARM.",
-      "x-ms-client-flatten": true,
       "properties": {
         "severity": {
           "type": "string",
