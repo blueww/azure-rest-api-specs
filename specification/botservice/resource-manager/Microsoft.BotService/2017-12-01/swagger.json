@@ -382,7 +382,6 @@
   "definitions": {
     "ResourceProperties": {
       "description": "Azure resource",
-      "required": [ "location" ],
       "properties": {
         "id": {
           "description": "Specifies the resource ID.",
@@ -548,7 +547,7 @@
     },
     "BotPatchRequest": {
       "type": "object",
-      "anyOf": [
+      "allOf": [
         {
           "$ref": "#/definitions/ResourceProperties"
         }

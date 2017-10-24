@@ -7,7 +7,7 @@
     "parameters": {
       "location": "West US",
       "sku": {
-        "name": "S0"
+        "name": "S1"
       },
       "tags": {
         "tag1": "value1",
@@ -18,7 +18,6 @@
       "kind": "sdk",
       "id": "someid",
       "properties": {
-        "botHandle": "Unique Id for the bot",
         "description": "The description of the bot",
         "developerAppInsightKey": "appinsightskey",
         "developerAppInsightsApiKey": "appinsightsapikey",
@@ -51,7 +50,6 @@
           "botHandle": "Unique Id for the bot",
           "description": "The description of the bot",
           "developerAppInsightKey": "appinsightskey",
-          "developerAppInsightsApiKey": "appinsightsapikey",
           "developerAppInsightsApplicationId": "appinsightsappid",
           "displayName": "The Name of the bot",
           "endpoint": "http://mybot.coffee",
@@ -62,7 +60,6 @@
             "luisappid1",
             "luisappid2"
           ],
-          "luisKey": "luiskey",
           "msaAppId": "msaappid",
           "configuredChannels": [
             "facebook",
@@ -89,7 +86,6 @@
           "botHandle": "Unique Id for the bot",
           "description": "The description of the bot",
           "developerAppInsightKey": "appinsightskey",
-          "developerAppInsightsApiKey": "appinsightsapikey",
           "developerAppInsightsApplicationId": "appinsightsappid",
           "displayName": "The Name of the bot",
           "endpoint": "http://mybot.coffee",
@@ -100,7 +96,6 @@
             "luisappid1",
             "luisappid2"
           ],
-          "luisKey": "luiskey",
           "msaAppId": "msaappid",
           "configuredChannels": [
             "facebook",

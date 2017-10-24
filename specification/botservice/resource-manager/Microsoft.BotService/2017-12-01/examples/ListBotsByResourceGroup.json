@@ -22,7 +22,6 @@
               "botHandle": "Unique Id for the bot",
               "description": "The description of the bot",
               "developerAppInsightKey": "appinsightskey",
-              "developerAppInsightsApiKey": "appinsightsapikey",
               "developerAppInsightsApplicationId": "appinsightsappid",
               "displayName": "The Name of the bot",
               "endpoint": "http://mybot.coffee",
@@ -33,7 +32,6 @@
                 "luisappid1",
                 "luisappid2"
               ],
-              "luisKey": "luiskey",
               "msaAppId": "msaappid",
               "configuredChannels": [
                 "facebook",
