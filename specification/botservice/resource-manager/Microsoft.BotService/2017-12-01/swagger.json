@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "BotFrameworkManagementClient",
-    "description": "Bot Framework Management Client",
+    "title": "Azure Bot Service",
+    "description": "Azure Bot Service is a platform for creating smart conversational agents.",
     "version": "2017-12-01"
   },
   "host": "management.azure.com",
@@ -33,7 +33,7 @@
           "BotService"
         ],
         "description": "Creates a Bot Service. Bot Service is a resource group wide resource type.",
-        "operationId": "PUT BotService",
+        "operationId": "BotServices_Create",
         "x-ms-examples": {
           "Create Bot": {
             "$ref": "./examples/CreateBot.json"
@@ -99,7 +99,7 @@
           "BotService"
         ],
         "description": "Updates a Bot Service",
-        "operationId": "PATCH BotService",
+        "operationId": "BotServices_Update",
         "x-ms-examples": {
           "Update Bot": {
             "$ref": "./examples/UpdateBot.json"
@@ -166,7 +166,7 @@
           "BotService"
         ],
         "description": "Deletes a Bot Service from the resource group. ",
-        "operationId": "DELETE BotService",
+        "operationId": "BotServices_Delete",
         "x-ms-examples": {
           "Delete Bot": {
             "$ref": "./examples/DeleteBot.json"
@@ -217,7 +217,7 @@
           "BotService"
         ],
         "description": "Returns a BotService specified by the parameters.",
-        "operationId": "GET BotService",
+        "operationId": "BotServices_Get",
         "x-ms-examples": {
           "Get Bot": {
             "$ref": "./examples/GetBot.json"
@@ -270,7 +270,7 @@
           "BotService"
         ],
         "description": "Returns all the resources of a particular type belonging to a resource group",
-        "operationId": "GET BotServicesByResourceGroup",
+        "operationId": "BotServicesByResourceGroup_Get",
         "x-ms-examples": {
           "List Bots by Resource Group": {
             "$ref": "./examples/ListBotsByResourceGroup.json"
@@ -316,7 +316,7 @@
           "BotService"
         ],
         "description": "Returns all the resources of a particular type belonging to a subscription.",
-        "operationId": "GET BotsBySubscription",
+        "operationId": "BotServicesBySubscription_Get",
         "x-ms-examples": {
           "List Bots by Subscription": {
             "$ref": "./examples/ListBotsBySubscription.json"
@@ -351,7 +351,9 @@
     },
     "/providers/Microsoft.BotService/operations": {
       "get": {
-        "tags": [ "Operations" ],
+        "tags": [
+          "Operations"
+        ],
         "description": "Lists all the available BotService operations.",
         "operationId": "Operations_List",
         "x-ms-examples": {
@@ -484,7 +486,9 @@
           "description": "The set of properties specific to a put request for a bot"
         }
       },
-      "required": [ "properties" ]
+      "required": [
+        "properties"
+      ]
     },
     "BotPutRequestProperties": {
       "type": "object",
@@ -627,7 +631,9 @@
           "description": "The set of properties specific to bot response"
         }
       },
-      "required": [ "properties" ],
+      "required": [
+        "properties"
+      ],
       "x-ms-azure-resource": true
     },
     "BotResponseProperties": {
