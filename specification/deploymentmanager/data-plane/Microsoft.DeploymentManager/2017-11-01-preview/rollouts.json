@@ -708,6 +708,7 @@
         "ServiceGroupParameter": {
             "name": "serviceGroup",
             "in": "path",
+            "x-ms-parameter-location": "method",
             "required": true,
             "type": "string",
             "description": "Name of the collection of services the rollout is targeted to."
@@ -715,6 +716,7 @@
         "RolloutIdParameter": {
             "name": "rolloutId",
             "in": "path",
+            "x-ms-parameter-location": "method",
             "required": true,
             "type": "string",
             "description": "Unique id of  the rollout, created by the ADM service and returned when the rollout is created."
