@@ -1,0 +1,31 @@
+{
+	"parameters": {
+        "api-version": "2017-10-10-privatepreview",
+        "subscriptionId": "subid",
+		"alertId": "b67f7fec-69fc-4974-9099-a26bd6ffeda3"
+    },
+	"responses": {
+		"200": {
+			"body": {
+			"id": "/subscriptions/subid/providers/microsoft.alertsmanagement/alerts/b67f7fec-69fc-4974-9099-a26bd6ffeda3",
+			"type": "Microsoft.AlertsManagement/alerts",
+			"name": "High CPU > 80%",
+			"properties": {
+				"severity": "Sev1",
+				"signalType": "Metric",
+				"state": "Resolved",
+				"targetResource": "",
+				"monitorService": "Azure Monitor",
+				"sourceCreatedId": "abc1234",
+				"rule": "",
+				"duplicateAlertCount": 0,
+				"startDateTime": "2017-09-27T06:57:12.088Z",
+				"lastModifiedDateTime": "2017-09-27T06:57:12.088Z",
+				"lastModifiedUserName": "user23",
+				"payload": {}
+			  }
+			}
+		}	
+	}
+}
+
