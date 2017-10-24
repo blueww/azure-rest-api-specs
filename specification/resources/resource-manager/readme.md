@@ -48,6 +48,10 @@ tag: package-resources-2017-05
 tag: package-subscriptions-2016-06
 ```
 
+``` yaml $(package-subscriptionDefinitions)
+tag: package-subscriptionDefinitions-2017-11-preview
+```
+
 ``` yaml $(package-links)
 tag: package-links-2016-09
 ```
@@ -56,7 +60,7 @@ tag: package-links-2016-09
 tag: package-managedapplications-2016-09
 ```
 
-``` yaml $(package-managedapplications)
+``` yaml $(package-management)
 tag: package-management-2017-08
 ```
 
@@ -175,6 +179,14 @@ input-file:
 - Microsoft.Resources/2015-11-01/subscriptions.json
 ```
 
+### Tag: package-subscriptionDefinitions-2017-11-preview
+These settings apply only when `--tag=package-subscriptionDefinitions-2017-11-preview` is specified on the command line.
+
+``` yaml $(tag) == 'package-subscriptionDefinitions-2017-11-preview'
+input-file:
+- Microsoft.Subscription/2017-11-01-preview/subscriptionDefinitions.json
+```
+
 ### Tag: package-links-2016-09
 These settings apply only when `--tag=package-links-2016-09` is specified on the command line.
 
@@ -221,6 +233,7 @@ batch:
   - package-policy: true
   - package-resources: true
   - package-subscriptions: true
+  - package-subscriptionDefinitions: true  
   - package-links: true
   - package-management: true
 #  - package-managedapplications: true
@@ -237,6 +250,7 @@ batch:
   - package-policy: true
   - package-resources: true
   - package-subscriptions: true
+  - package-subscriptionDefinitions: true    
   - package-links: true
   - package-managedapplications: true
   - package-management: true

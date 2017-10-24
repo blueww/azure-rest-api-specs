@@ -217,6 +217,7 @@ input-file:
  - Microsoft.Sql/2017-03-01-preview/sensitivityLabels.json
  - Microsoft.Sql/2017-03-01-preview/vulnerabilityAssessmentRuleBaselines.json
  - Microsoft.Sql/2017-03-01-preview/operations.json
+ - Microsoft.Sql/2017-03-01-preview/ManagedDatabaseSecurityAlertPolicies.json
 
 # Needed when there is more than one input file
 override-info:

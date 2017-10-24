@@ -1,48 +1,57 @@
 {
   "parameters": {
-    "subscriptionId": "SUBSCRIPTION_ID",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
     "api-version": "2017-09-01-preview"
   },
-
   "responses": {
     "200": {
       "body": {
         "value": [
           {
-            "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/jobs/demo_job",
-            "name": "demo_job",
-            "type": "Microsoft.BatchAI/Job",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/jobs/job",
+            "name": "job",
+            "type": "Microsoft.BatchAI/Jobs",
             "properties": {
               "priority": 0,
-              "cluster": { "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/clusters/demo_cluster" },
-              "numberOfNodes": 1,
-              "containerSettings": { "imageSourceRegistry": { "images": ["batchaitraining/tensorflow:1.1.0-gpu"] } },
+              "cluster": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo_resource_group/providers/Microsoft.BatchAI/clusters/demo_cluster"
+              },
+              "nodeCount": 1,
+              "containerSettings": {
+                "imageSourceRegistry": {
+                  "image": "ubuntu"
+                }
+              },
               "toolType": "Custom",
-              "customToolkitSettings": { "commandLine": "env" },
-              "stdOutErrPathPrefix": "$AZ_LEARNING_MOUNT_ROOT/myazfileshare",
+              "customToolkitSettings": {
+                "commandLine": "echo hi | tee $AZ_LEARNING_OUTPUT_OUTPUTS/hi.txt"
+              },
+              "stdOutErrPathPrefix": "$AZ_LEARNING_MOUNT_ROOT/azfiles",
+              "inputDirectories": [
+                {
+                  "id": "INPUT",
+                  "path": "$AZ_LEARNING_MOUNT_ROOT/azfiles/input"
+                }
+              ],
               "outputDirectories": [
                 {
-                  "id": "modelOutput",
-                  "pathPrefix": "$AZ_LEARNING_MOUNT_ROOT/myazfileshare",
-                  "pathSuffix": "Models",
+                  "id": "OUTPUTS",
+                  "pathPrefix": "$AZ_LEARNING_MOUNT_ROOT/azfiles/",
+                  "pathSuffix": "files",
                   "type": "Custom",
                   "createNew": true
                 }
               ],
               "constraints": {
-                "maxWallClockTime": "P7D",
-                "maxRetryCount": 0,
-                "maxRetentionTime": "P1D"
+                "maxWallClockTime": "P7D"
               },
-              "creationTime": "2017-07-19T18:21:27.9215528Z",
+              "creationTime": "2017-09-27T23:36:52.611Z",
               "provisioningState": "Succeeded",
-              "provisioningStateTransitionTime": "2017-07-19T18:21:27.9215528Z",
-              "executionState": "Succeeded",
-              "executionStateTransitionTime": "2017-07-19T18:22:33.01782Z",
+              "provisioningStateTransitionTime": "2017-09-27T23:36:53.701Z",
+              "executionState": "Running",
+              "executionStateTransitionTime": "2017-09-27T23:36:56.395Z",
               "executionInfo": {
-                "startTime": "2017-07-19T18:21:30.9648947Z",
-                "endTime": "2017-07-19T18:24:05.4429206Z",
-                "exitCode": 0
+                "startTime": "2017-09-27T23:36:54.115Z"
               }
             }
           }

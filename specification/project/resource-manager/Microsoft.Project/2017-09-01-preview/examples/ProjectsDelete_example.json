@@ -1,0 +1,18 @@
+{
+    "parameters": {
+        "api-version": "2017-09-01-preview",
+        "subscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resourceGroupName": "myResourceGroup",
+        "projectName": "myProject"
+    },
+    "responses": {
+        "200": {},
+        "202": {
+            "headers":
+            {
+                "Location": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Project/operationresults/00000000-0000-0000-0000-000000000000"
+            }
+        },
+        "204": {}
+    }
+}

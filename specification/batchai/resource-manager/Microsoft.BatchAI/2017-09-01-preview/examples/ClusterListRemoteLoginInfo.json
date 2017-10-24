@@ -2,7 +2,7 @@
   "parameters": {
     "resourceGroupName": "demo_resource_group",
     "clusterName": "demo_cluster",
-    "subscriptionId": "SUBSCRIPTION_ID",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
     "api-version": "2017-09-01-preview"
   },
 
@@ -21,6 +21,14 @@
             "port": 50001
           }
         ]
+      }
+    },
+    "404": {
+      "body": {
+        "error": {
+          "code": "ResourceNotFound",
+          "message": "The Resource 'Microsoft.BatchAI/clusters/demo_cluster' under resource group 'demo_resource_group' was not found."
+        }
       }
     }
   }
