@@ -62,7 +62,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/BotPutRequest"
+              "$ref": "#/definitions/BotRequest"
             },
             "description": "The parameters to provide for the created bot."
           },
@@ -129,7 +129,7 @@
             "required": true,
             "x-ms-client-flatten": true,
             "schema": {
-              "$ref": "#/definitions/BotPatchRequest"
+              "$ref": "#/definitions/BotRequest"
             },
             "description": "The parameters to provide for the created bot."
           },
@@ -270,7 +270,7 @@
           "BotService"
         ],
         "description": "Returns all the resources of a particular type belonging to a resource group",
-        "operationId": "BotServicesByResourceGroup_Get",
+        "operationId": "BotServicesByResourceGroup_List",
         "x-ms-examples": {
           "List Bots by Resource Group": {
             "$ref": "./examples/ListBotsByResourceGroup.json"
@@ -316,7 +316,7 @@
           "BotService"
         ],
         "description": "Returns all the resources of a particular type belonging to a subscription.",
-        "operationId": "BotServicesBySubscription_Get",
+        "operationId": "BotServicesBySubscription_List",
         "x-ms-examples": {
           "List Bots by Subscription": {
             "$ref": "./examples/ListBotsBySubscription.json"
@@ -473,8 +473,9 @@
         "modelAsString": true
       }
     },
-    "BotPutRequest": {
+    "BotRequest": {
       "type": "object",
+      "description": "A request object to create or update a bot.",
       "allOf": [
         {
           "$ref": "#/definitions/ResourceProperties"
@@ -482,21 +483,18 @@
       ],
       "properties": {
         "properties": {
-          "$ref": "#/definitions/BotPutRequestProperties",
-          "description": "The set of properties specific to a put request for a bot"
+          "$ref": "#/definitions/BotRequestProperties",
+          "description": "The set of properties specific to a put or patch request for a bot"
         }
-      },
-      "required": [
-        "properties"
-      ]
+      }
     },
-    "BotPutRequestProperties": {
+    "BotRequestProperties": {
       "type": "object",
       "description": "The set of properties specific to the Bot Service put request",
       "properties": {
         "botHandle": {
           "type": "string",
-          "description": "Unique Id for the bot"
+          "description": "Unique Id for the bot. Required for creation, but ignored for update. This property cannot be changed after creation."
         },
         "description": {
           "type": "string",
@@ -539,82 +537,12 @@
         },
         "msaAppId": {
           "type": "string",
-          "description": "Microsoft App Id for the bot"
+          "description": "Microsoft App Id for the bot.  Required for creation, but ignored for update. This property cannot be changed after creation."
         }
       },
       "required": [
-        "botHandle",
         "displayName",
-        "endpoint",
-        "msaAppId"
-      ]
-    },
-    "BotPatchRequest": {
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ResourceProperties"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "$ref": "#/definitions/BotPatchRequestProperties",
-          "description": "The set of properties specific to a patch request for a bot"
-        }
-      }
-    },
-    "BotPatchRequestProperties": {
-      "type": "object",
-      "properties": {
-        "displayName": {
-          "type": "string",
-          "description": "The Name of the bot"
-        },
-        "description": {
-          "type": "string",
-          "description": "The description of the bot"
-        },
-        "iconUrl": {
-          "type": "string",
-          "description": "The Icon Url of the bot"
-        },
-        "endpoint": {
-          "type": "string",
-          "description": "The bot's endpoint"
-        },
-        "msaAppId": {
-          "type": "string",
-          "description": "Microsoft App Id for the bot"
-        },
-        "developerAppInsightKey": {
-          "type": "string",
-          "description": "The Application Insights key"
-        },
-        "developerAppInsightsApiKey": {
-          "type": "string",
-          "description": "The Application Insights Api Key"
-        },
-        "developerAppInsightsApplicationId": {
-          "type": "string",
-          "description": "The Application Insights App Id"
-        },
-        "luisAppIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Collection of LUIS App Ids"
-        },
-        "luisKey": {
-          "type": "string",
-          "description": "The LUIS Key"
-        }
-      },
-      "description": "The parameters to provide for the Bot.",
-      "required": [
-        "displayName",
-        "endpoint",
-        "msaAppId"
+        "endpoint"
       ]
     },
     "BotResponse": {
