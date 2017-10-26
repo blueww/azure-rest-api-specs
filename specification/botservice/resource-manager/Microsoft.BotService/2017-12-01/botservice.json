@@ -270,7 +270,7 @@
           "BotService"
         ],
         "description": "Returns all the resources of a particular type belonging to a resource group",
-        "operationId": "BotServicesByResourceGroup_List",
+        "operationId": "BotServices_ListByResourceGroup",
         "x-ms-examples": {
           "List Bots by Resource Group": {
             "$ref": "./examples/ListBotsByResourceGroup.json"
@@ -316,7 +316,7 @@
           "BotService"
         ],
         "description": "Returns all the resources of a particular type belonging to a subscription.",
-        "operationId": "BotServicesBySubscription_List",
+        "operationId": "BotServices_List",
         "x-ms-examples": {
           "List Bots by Subscription": {
             "$ref": "./examples/ListBotsBySubscription.json"
