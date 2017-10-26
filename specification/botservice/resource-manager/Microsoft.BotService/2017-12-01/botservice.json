@@ -62,7 +62,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/BotRequest"
+              "$ref": "#/definitions/BotResource"
             },
             "description": "The parameters to provide for the created bot."
           },
@@ -77,13 +77,13 @@
           "200": {
             "description": "If resource is created successfully or already existed, the service should return 200 (OK).",
             "schema": {
-              "$ref": "#/definitions/BotResponse"
+              "$ref": "#/definitions/BotResource"
             }
           },
           "201": {
             "description": "If resource is created successfully, the service should return 201 (Created). Execution to continue asynchronously.",
             "schema": {
-              "$ref": "#/definitions/BotResponse"
+              "$ref": "#/definitions/BotResource"
             }
           },
           "default": {
@@ -129,7 +129,7 @@
             "required": true,
             "x-ms-client-flatten": true,
             "schema": {
-              "$ref": "#/definitions/BotRequest"
+              "$ref": "#/definitions/BotResource"
             },
             "description": "The parameters to provide for the created bot."
           },
@@ -144,13 +144,13 @@
           "200": {
             "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
             "schema": {
-              "$ref": "#/definitions/BotResponse"
+              "$ref": "#/definitions/BotResource"
             }
           },
           "201": {
             "description": "If resource is updated successfully, the service should return 201 (Created). Execution to continue asynchronously.",
             "schema": {
-              "$ref": "#/definitions/BotResponse"
+              "$ref": "#/definitions/BotResource"
             }
           },
           "default": {
@@ -252,7 +252,7 @@
           "200": {
             "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
             "schema": {
-              "$ref": "#/definitions/BotResponse"
+              "$ref": "#/definitions/BotResource"
             }
           },
           "default": {
@@ -473,9 +473,9 @@
         "modelAsString": true
       }
     },
-    "BotRequest": {
+    "BotResource": {
       "type": "object",
-      "description": "A request object to create or update a bot.",
+      "description": "Bot resource definition",
       "allOf": [
         {
           "$ref": "#/definitions/ResourceProperties"
@@ -483,93 +483,14 @@
       ],
       "properties": {
         "properties": {
-          "$ref": "#/definitions/BotRequestProperties",
-          "description": "The set of properties specific to a put or patch request for a bot"
-        }
-      }
-    },
-    "BotRequestProperties": {
-      "type": "object",
-      "description": "The set of properties specific to the Bot Service put request",
-      "properties": {
-        "botHandle": {
-          "type": "string",
-          "description": "Unique Id for the bot. Required for creation, but ignored for update. This property cannot be changed after creation."
-        },
-        "description": {
-          "type": "string",
-          "description": "The description of the bot"
-        },
-        "developerAppInsightKey": {
-          "type": "string",
-          "description": "The Application Insights key"
-        },
-        "developerAppInsightsApiKey": {
-          "type": "string",
-          "description": "The Application Insights Api Key"
-        },
-        "developerAppInsightsApplicationId": {
-          "type": "string",
-          "description": "The Application Insights App Id"
-        },
-        "displayName": {
-          "type": "string",
-          "description": "The Name of the bot"
-        },
-        "endpoint": {
-          "type": "string",
-          "description": "The bot's endpoint"
-        },
-        "iconUrl": {
-          "type": "string",
-          "description": "The Icon Url of the bot"
-        },
-        "luisAppIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Collection of LUIS App Ids"
-        },
-        "luisKey": {
-          "type": "string",
-          "description": "The LUIS Key"
-        },
-        "msaAppId": {
-          "type": "string",
-          "description": "Microsoft App Id for the bot.  Required for creation, but ignored for update. This property cannot be changed after creation."
+          "$ref": "#/definitions/BotResourceProperties",
+          "description": "The set of properties specific to bot resource"
         }
       },
-      "required": [
-        "displayName",
-        "endpoint"
-      ]
-    },
-    "BotResponse": {
-      "type": "object",
-      "description": "Response of a bot object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ResourceProperties"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "$ref": "#/definitions/BotResponseProperties",
-          "description": "The set of properties specific to bot response"
-        }
-      },
-      "required": [
-        "properties"
-      ],
       "x-ms-azure-resource": true
     },
-    "BotResponseProperties": {
+    "BotResourceProperties": {
       "properties": {
-        "botHandle": {
-          "type": "string",
-          "description": "Unique Id for the bot"
-        },
         "displayName": {
           "type": "string",
           "description": "The Name of the bot"
@@ -588,6 +509,7 @@
         },
         "endpointVersion": {
           "type": "string",
+          "readOnly": true,
           "description": "The bot's endpoint version"
         },
         "msaAppId": {
@@ -603,6 +525,7 @@
           "items": {
             "type": "string"
           },
+          "readOnly": true,
           "description": "Collection of channels for which the bot is configured"
         },
         "enabledChannels": {
@@ -610,11 +533,16 @@
           "items": {
             "type": "string"
           },
+          "readOnly": true,
           "description": "Collection of channels for which the bot is enabled"
         },
         "developerAppInsightKey": {
           "type": "string",
           "description": "The Application Insights key"
+        },
+        "developerAppInsightsApiKey": {
+          "type": "string",
+          "description": "The Application Insights Api Key"
         },
         "developerAppInsightsApplicationId": {
           "type": "string",
@@ -626,14 +554,16 @@
             "type": "string"
           },
           "description": "Collection of LUIS App Ids"
+        },
+        "luisKey": {
+          "type": "string",
+          "description": "The LUIS Key"
         }
       },
       "description": "The parameters to provide for the Bot.",
       "required": [
-        "botHandle",
         "displayName",
         "endpoint",
-        "endpointVersion",
         "msaAppId"
       ]
     },
@@ -647,7 +577,7 @@
           "readOnly": true,
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BotResponse"
+            "$ref": "#/definitions/BotResource"
           },
           "description": "Gets the list of bot service results and their properties."
         }

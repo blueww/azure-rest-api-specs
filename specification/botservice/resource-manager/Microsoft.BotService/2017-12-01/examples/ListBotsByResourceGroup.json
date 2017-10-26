@@ -19,7 +19,6 @@
             "id": "someid",
             "kind": "sdk",
             "properties": {
-              "botHandle": "Unique Id for the bot",
               "description": "The description of the bot",
               "developerAppInsightKey": "appinsightskey",
               "developerAppInsightsApplicationId": "appinsightsappid",
