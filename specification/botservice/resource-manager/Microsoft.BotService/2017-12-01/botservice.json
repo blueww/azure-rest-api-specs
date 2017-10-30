@@ -349,6 +349,45 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/botServices/checkNameAvailability": {
+      "post": {
+        "tags": [
+          "BotService"
+        ],
+        "description": "Check whether a bot name is available.",
+        "operationId": "BotServices_CheckNameAvailability",
+        "x-ms-examples": {
+          "List Bots by Subscription": {
+            "$ref": "./examples/CheckNameAvailability.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/botNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. For other errors (e.g. internal errors) use the appropriate HTTP error code.\nThe nextLink field is expected to point to the URL the client should use to fetch the next page (per server side paging). This matches the OData guidelines for paged responses. If a resource provider does not support paging, it should return the same body but leave nextLink empty for future compatibility.\nFor a detailed explanation of each field in the response body, please refer to the request body description in the PUT resource section. ",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
     "/providers/Microsoft.BotService/operations": {
       "get": {
         "tags": [
@@ -677,6 +716,13 @@
       "name": "subscriptionId",
       "in": "path",
       "description": "Azure Subscription ID.",
+      "required": true,
+      "type": "string"
+    },
+    "botNameParameter": {
+      "name": "botName",
+      "in": "path",
+      "description": "Proposed bot name",
       "required": true,
       "type": "string"
     },
