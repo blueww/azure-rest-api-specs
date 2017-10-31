@@ -1,0 +1,12 @@
+﻿{
+  "parameters": {
+    "subscriptionId": "subscription-id",
+    "api-version": "2017-01-01",
+    "botName": "tesT-name"
+  },
+  "responses": {
+    "200": {
+      "body": "true"
+    }
+  }
+}
