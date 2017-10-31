@@ -58,17 +58,17 @@
           "SubscriptionDefinition"
         ],
         "description": "Create an Azure subscription definition.",
-        "operationId": "SubscriptionDefinitions_Create",
+        "operationId": "SubscriptionDefinition_Create",
         "x-ms-examples": {
-          "createManagementGroupsSubscriptionDefinition": {
-            "$ref": "./examples/createManagementGroupsSubscriptionDefinition.json"
+          "createSubscriptionDefinition": {
+            "$ref": "./examples/createSubscriptionDefinition.json"
           }
         },
         "parameters": [
           {
             "name": "subscriptionDefinitionName",
             "in": "path",
-            "description": "The name of the Azure subscription definition or 'default' for the subscriptions/{subscriptionId} scope.",
+            "description": "The name of the Azure subscription definition.",
             "required": true,
             "type": "string"
           },
@@ -118,21 +118,18 @@
         "tags": [
           "SubscriptionDefinition"
         ],
-        "description": "Get an Azure subscription definition within a management group.",
-        "operationId": "SubscriptionDefinitions_Get",
+        "description": "Get an Azure subscription definition.",
+        "operationId": "SubscriptionDefinition_Get",
         "x-ms-examples": {
-          "getManagementGroupsSubscriptionDefinition": {
-            "$ref": "./examples/getManagementGroupsSubscriptionDefinition.json"
-          },
-          "getSubscriptionsSubscriptionDefinition": {
-            "$ref": "./examples/getSubscriptionsSubscriptionDefinition.json"
+          "getSubscriptionDefinition": {
+            "$ref": "./examples/getSubscriptionDefinition.json"
           }
         },
         "parameters": [
           {
             "name": "subscriptionDefinitionName",
             "in": "path",
-            "description": "The name of the Azure subscription definition or 'default' for the subscriptions/{subscriptionId} scope.",
+            "description": "The name of the Azure subscription definition.",
             "required": true,
             "type": "string"
           },
@@ -162,13 +159,10 @@
           "SubscriptionDefinition"
         ],
         "description": "List an Azure subscription definition by subscriptionId.",
-        "operationId": "SubscriptionDefinitions_List",
+        "operationId": "SubscriptionDefinition_List",
         "x-ms-examples": {
-          "ListViaSubscriptionsSubscriptionDefinition": {
-            "$ref": "./examples/listSubscriptionDefinition.json"
-          },
-          "ListViaManagementGroupsSubscriptionDefinition": {
-            "$ref": "./examples/listSubscriptionDefinitionsViaManagementGroups.json"
+          "ListSubscriptionDefinition": {
+            "$ref": "./examples/listSubscriptionDefinitions.json"
           }
         },
         "parameters": [
@@ -198,10 +192,10 @@
           "SubscriptionOperation"
         ],
         "description": "Retrieves the status of the subscription definition PUT operation. The URI of this API is returned in the Location field of the response header.",
-        "operationId": "SubscriptionDefinitions_GetOperationStatus",
+        "operationId": "SubscriptionDefinition_GetOperationStatus",
         "x-ms-examples": {
-          "getManagementGroupsSubscriptionDefinitionOperation": {
-            "$ref": "./examples/getManagementGroupsSubscriptionDefinitionOperation.json"
+          "getSubscriptionDefinitionOperation": {
+            "$ref": "./examples/getSubscriptionDefinitionOperation.json"
           }
         },
         "parameters": [
@@ -244,7 +238,7 @@
   },
   "definitions": {
     "SubscriptionDefinition": {
-      "description": "The subscription definition used to create and modify the subscription.",
+      "description": "The subscription definition used to create the subscription.",
       "x-ms-azure-resource": true,
       "properties": {
         "id": {
