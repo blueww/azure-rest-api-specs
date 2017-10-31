@@ -17,13 +17,13 @@
             "type": "sampletype",
             "id": "someid",
             "kind": "sdk",
+            "etag": "etag1",
             "properties": {
               "description": "The description of the bot",
               "developerAppInsightKey": "appinsightskey",
               "developerAppInsightsApplicationId": "appinsightsappid",
               "displayName": "The Name of the bot",
               "endpoint": "http://mybot.coffee",
-              "eTag": "etag",
               "endpointVersion": "version",
               "iconUrl": "http://myicon",
               "luisAppIds": [

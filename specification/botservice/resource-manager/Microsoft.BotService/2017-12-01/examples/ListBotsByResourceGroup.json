@@ -17,6 +17,7 @@
             "name": "samplename",
             "type": "sampletype",
             "id": "someid",
+            "etag": "etag1",
             "kind": "sdk",
             "properties": {
               "description": "The description of the bot",
@@ -24,7 +25,6 @@
               "developerAppInsightsApplicationId": "appinsightsappid",
               "displayName": "The Name of the bot",
               "endpoint": "http://mybot.coffee",
-              "eTag": "etag",
               "endpointVersion": "version",
               "iconUrl": "http://myicon",
               "luisAppIds": [

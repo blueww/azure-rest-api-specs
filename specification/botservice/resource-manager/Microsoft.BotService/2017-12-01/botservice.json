@@ -457,6 +457,10 @@
         "kind": {
           "$ref": "#/definitions/Kind",
           "description": "Required. Gets or sets the Kind of the resource."
+        },
+        "etag": {
+          "type": "string",
+          "description": "Entity Tag"
         }
       }
     },
@@ -554,10 +558,6 @@
         "msaAppId": {
           "type": "string",
           "description": "Microsoft App Id for the bot"
-        },
-        "eTag": {
-          "type": "string",
-          "description": "The bot etag used for concurrency"
         },
         "configuredChannels": {
           "type": "array",

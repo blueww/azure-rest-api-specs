@@ -13,6 +13,7 @@
         "tag1": "value1",
         "tag2": "value2"
       },
+      "etag": "etag1",
       "name": "samplename",
       "type": "sampletype",
       "kind": "sdk",
@@ -42,6 +43,7 @@
           "tag1": "value1",
           "tag2": "value2"
         },
+        "etag": "etag1",
         "name": "samplename",
         "type": "sampletype",
         "id": "someid",
@@ -52,7 +54,6 @@
           "developerAppInsightsApplicationId": "appinsightsappid",
           "displayName": "The Name of the bot",
           "endpoint": "http://mybot.coffee",
-          "eTag": "etag",
           "endpointVersion": "version",
           "iconUrl": "http://myicon",
           "luisAppIds": [
@@ -81,13 +82,13 @@
         "type": "sampletype",
         "id": "someid",
         "kind": "sdk",
+        "etag": "etag1",
         "properties": {
           "description": "The description of the bot",
           "developerAppInsightKey": "appinsightskey",
           "developerAppInsightsApplicationId": "appinsightsappid",
           "displayName": "The Name of the bot",
           "endpoint": "http://mybot.coffee",
-          "eTag": "etag",
           "endpointVersion": "version",
           "iconUrl": "http://myicon",
           "luisAppIds": [

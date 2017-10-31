@@ -9,6 +9,7 @@
       "sku": {
         "name": "S1"
       },
+      "etag": "etag1",
       "tags": {
         "tag1": "value1",
         "tag2": "value2"
@@ -46,13 +47,13 @@
         "type": "sampletype",
         "id": "someid",
         "kind": "sdk",
+        "etag": "etag1",
         "properties": {
           "description": "The description of the bot",
           "developerAppInsightKey": "appinsightskey",
           "developerAppInsightsApplicationId": "appinsightsappid",
           "displayName": "The Name of the bot",
           "endpoint": "http://mybot.coffee",
-          "eTag": "etag",
           "endpointVersion": "version",
           "iconUrl": "http://myicon",
           "luisAppIds": [
@@ -86,7 +87,6 @@
           "developerAppInsightsApplicationId": "appinsightsappid",
           "displayName": "The Name of the bot",
           "endpoint": "http://mybot.coffee",
-          "eTag": "etag",
           "endpointVersion": "version",
           "iconUrl": "http://myicon",
           "luisAppIds": [
