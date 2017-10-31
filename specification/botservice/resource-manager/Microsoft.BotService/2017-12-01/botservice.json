@@ -421,8 +421,9 @@
     }
   },
   "definitions": {
-    "ResourceProperties": {
+    "Resource": {
       "description": "Azure resource",
+      "x-ms-azure-resource": true,
       "properties": {
         "id": {
           "description": "Specifies the resource ID.",
@@ -521,7 +522,7 @@
       "description": "Bot resource definition",
       "allOf": [
         {
-          "$ref": "#/definitions/ResourceProperties"
+          "$ref": "#/definitions/Resource"
         }
       ],
       "properties": {
@@ -529,8 +530,7 @@
           "$ref": "#/definitions/BotResourceProperties",
           "description": "The set of properties specific to bot resource"
         }
-      },
-      "x-ms-azure-resource": true
+      }
     },
     "BotResourceProperties": {
       "properties": {
