@@ -350,12 +350,12 @@
       }
     },
     "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/botServices/checkNameAvailability": {
-      "post": {
+      "get": {
         "tags": [
           "BotService"
         ],
         "description": "Check whether a bot name is available.",
-        "operationId": "BotServices_CheckNameAvailability",
+        "operationId": "BotServices_GetCheckNameAvailability",
         "x-ms-examples": {
           "List Bots by Subscription": {
             "$ref": "./examples/CheckNameAvailability.json"
