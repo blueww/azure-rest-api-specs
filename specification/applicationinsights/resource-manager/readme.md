@@ -161,6 +161,7 @@ input-file:
 - microsoft.insights/2015-05-01/componentContinuousExport_API.json
 - microsoft.insights/2015-05-01/componentFeaturesAndPricing_API.json
 - microsoft.insights/2015-05-01/componentApiKeys_API.json
+- microsoft.insights/2017-10-01/componentFeaturesAndPricing_API.json
 ```
 ---
 # Code Generation

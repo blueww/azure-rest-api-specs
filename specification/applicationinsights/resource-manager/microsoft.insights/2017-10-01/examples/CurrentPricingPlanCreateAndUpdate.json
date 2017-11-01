@@ -9,7 +9,7 @@
       "name": "current",
       "type": "microsoft.insights/components/pricingPlans",
       "properties": {
-        "planName": "Basic",
+        "planType": "Basic",
         "cap": 500,
         "maxHistoryCap": 500,
         "resetTime": 16,
@@ -26,7 +26,7 @@
         "name": "current",
         "type": "microsoft.insights/components/pricingPlans",
         "properties": {
-          "planName": "Basic",
+          "planType": "Basic",
           "cap": 500,
           "maxHistoryCap": 500,
           "resetTime": 16,
