@@ -363,10 +363,6 @@
       "type": "object",
       "description": "Database specific information for SQL to Azure SQL DB migration task inputs",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the database"
-        },
         "name": {
           "type": "string",
           "description": "Name of the database"
