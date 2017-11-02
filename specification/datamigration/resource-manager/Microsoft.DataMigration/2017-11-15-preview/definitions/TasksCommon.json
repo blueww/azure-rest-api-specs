@@ -370,35 +370,6 @@
         "modelAsString": false
       }
     },
-    "MigrateSqlServerSqlServerDatabaseInput": {
-      "type": "object",
-      "description": "Database specific information for SQL to SQL migration task inputs",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the database"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the database"
-        },
-        "restoreDatabaseName": {
-          "type": "string",
-          "description": "Name of the database at destination"
-        },
-        "backupAndRestoreFolder": {
-          "type": "string",
-          "description": "The backup and restore folder"
-        },
-        "databaseFiles": {
-          "type": "array",
-          "description": "The list of database files",
-          "items": {
-            "$ref": "#/definitions/DatabaseFileInput"
-          }
-        }
-      }
-    },
     "DatabaseFileInput": {
       "type": "object",
       "description": "Database file specific information for input",
