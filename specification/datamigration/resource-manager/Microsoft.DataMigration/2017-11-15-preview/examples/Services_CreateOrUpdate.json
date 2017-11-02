@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "groupName": "rg1",
+    "api-version": "2017-11-15-preview",
+    "resourceName": "dms1",
+    "location": "eastus"
+  },
+  "responses":{
+    "200":{},
+    "201":{
+      "body":{
+        "id":"/subscriptions/subId1/resourceGroups/dms1",
+        "name":"dms1",
+        "location":"eastus",
+        "properties":{
+          "provisioningState":"Succeeded"
+        }
+      }
+    },
+    "202":{}
+  }
+}
