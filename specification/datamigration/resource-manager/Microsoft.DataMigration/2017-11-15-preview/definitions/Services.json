@@ -171,7 +171,7 @@
         },
         "status": {
           "type": "string",
-          "description": "The machine-readable status, such as 'Offline', 'Online', 'Deploying', 'Deleting', 'Stopped', 'Stopping', 'Starting', 'FailedToStart', 'FailedToStop', or 'Failed'"
+          "description": "The machine-readable status, such as 'Initializing', 'Offline', 'Online', 'Deploying', 'Deleting', 'Stopped', 'Stopping', 'Starting', 'FailedToStart', 'FailedToStop' or 'Failed'"
         },
         "vmSize": {
           "type": "string",
