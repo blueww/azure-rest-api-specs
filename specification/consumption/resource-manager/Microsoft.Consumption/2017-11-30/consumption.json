@@ -466,7 +466,7 @@
       "in": "query",
       "required": true,
       "type": "string",
-      "description": "Version of the API to be used with the client request. The current version is 2017-02-27-preview."
+      "description": "Version of the API to be used with the client request. The current version is 2017-11-30."
     },
     "subscriptionIdParameter": {
       "name": "subscriptionId",
