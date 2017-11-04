@@ -191,7 +191,7 @@
         },
         "password": {
           "type": "string",
-          "description": "Password credential. It must be RSA encrypted by the public key of the VM, then base64 encoded. It must never be the plaintext!\n"
+          "description": "Password credential."
         }
       },
       "required": [ "type" ],
