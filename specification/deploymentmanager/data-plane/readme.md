@@ -45,7 +45,7 @@ Please also specify `--csharp-sdks-folder=<path to "SDKs" directory of your azur
 csharp:
   azure-arm: false
   license-header: MICROSOFT_MIT_NO_VERSION
-  namespace: Microsoft.DeploymentManager
-  output-folder: $(csharp-sdks-folder)/deploymentmanager/dataplane/Microsoft.DeploymentManager/Generated
+  namespace: Microsoft.Azure.DeploymentManager
+  output-folder: $(csharp-sdks-folder)/deploymentmanager/Microsoft.DeploymentManager/Generated
   clear-output-folder: true
 ```
