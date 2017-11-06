@@ -2839,6 +2839,131 @@
         "x-ms-long-running-operation": true
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel": {
+      "post": {
+        "tags": [
+          "VirtualMachineScaleSetRollingUpgrades"
+        ],
+        "operationId": "VirtualMachineScaleSetRollingUpgrades_Cancel",
+        "description": "Cancels the current virtual machine scale set rolling upgrade.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "vmScaleSetName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the VM scale set."
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperationStatusResponse"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade": {
+      "post": {
+        "tags": [
+          "VirtualMachineScaleSetRollingUpgrades"
+        ],
+        "operationId": "VirtualMachineScaleSetRollingUpgrades_StartOSUpgrade",
+        "description": "Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version. Instances which are already running the latest available OS version are not affected.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "vmScaleSetName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the VM scale set."
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperationStatusResponse"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/latest": {
+      "get": {
+        "tags": [
+          "VirtualMachineScaleSetRollingUpgrades"
+        ],
+        "operationId": "VirtualMachineScaleSetRollingUpgrades_GetLatest",
+        "description": "Gets the status of the latest virtual machine scale set rolling upgrade.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "vmScaleSetName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the VM scale set."
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RollingUpgradeStatusInfo"
+            }
+          }
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage": {
       "post": {
         "tags": [
@@ -4191,7 +4316,7 @@
         },
         "vhd": {
           "$ref": "#/definitions/VirtualHardDisk",
-          "description": "The virtual hard disk.."
+          "description": "The virtual hard disk."
         },
         "image": {
           "$ref": "#/definitions/VirtualHardDisk",
@@ -4835,33 +4960,54 @@
           "description": "Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.",
           "enum": [
             "Automatic",
-            "Manual"
+            "Manual",
+            "Rolling"
           ],
           "x-ms-enum": {
             "name": "UpgradeMode",
             "modelAsString": false
           }
+        },
+        "rollingUpgradePolicy": {
+          "$ref": "#/definitions/RollingUpgradePolicy",
+          "description": "The configuration parameters used while performing a rolling upgrade."
+        },
+        "automaticOSUpgrade": {
+          "type": "boolean",
+          "description": "Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available."
         }
       },
-      "description": "Describes an upgrade policy - automatic or manual."
+      "description": "Describes an upgrade policy - automatic, manual, or rolling."
     },
-    "RecoveryPolicy": {
+    "RollingUpgradePolicy": {
       "properties": {
-        "mode": {
+        "maxBatchInstancePercent": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 5,
+          "maximum": 100,
+          "description": "The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The default value for this parameter is 20%."
+        },
+        "maxUnhealthyInstancePercent": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 5,
+          "maximum": 100,
+          "description": "The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The default value for this parameter is 20%."
+        },
+        "maxUnhealthyUpgradedInstancePercent": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The default value for this parameter is 20%."
+        },
+        "pauseTimeBetweenBatches": {
           "type": "string",
-          "description": "Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action in [Manage all VMs in a set](manage-all-vms-in-a-set.md).<br /><br /> **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.",
-          "enum": [
-            "None",
-            "OverProvision",
-            "Reprovision"
-          ],
-          "x-ms-enum": {
-            "name": "RecoveryMode",
-            "modelAsString": false
-          }
+          "description": "The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format. The default value is 0 seconds (PT0S)."
         }
       },
-      "description": "Describes the recovery policy."
+      "description": "The configuration parameters used while performing a rolling upgrade."
     },
     "ImageOSDisk": {
       "properties": {
@@ -5061,7 +5207,7 @@
         },
         "type": {
           "type": "string",
-          "description": "The type of identity used for the virtual machine. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.",
+          "description": "The type of identity used for the virtual machine scale set. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.",
           "enum": [
             "SystemAssigned"
           ],
@@ -5827,6 +5973,10 @@
     },
     "VirtualMachineScaleSetNetworkProfile": {
       "properties": {
+        "healthProbe": {
+          "$ref": "#/definitions/ApiEntityReference",
+          "description": "A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'."
+        },
         "networkInterfaceConfigurations": {
           "type": "array",
           "items": {
@@ -6440,6 +6590,11 @@
           },
           "description": "The extensions information."
         },
+        "vmHealth": {
+          "readOnly":  true,
+          "$ref": "#/definitions/VirtualMachineHealthStatus",
+          "description": "The health status for the VM."
+        },
         "bootDiagnostics": {
           "$ref": "#/definitions/BootDiagnosticsInstanceView",
           "description": "Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view the output of your console log. <br><br> For both Windows and Linux virtual machines, Azure also enables you to see a screenshot of the VM from the hypervisor."
@@ -6457,6 +6612,16 @@
         }
       },
       "description": "The instance view of a virtual machine scale set VM."
+    },
+    "VirtualMachineHealthStatus": {
+      "properties": {
+        "status": {
+          "readOnly": true,
+          "$ref": "#/definitions/InstanceViewStatus",
+          "description": "The health status information for the VM."
+        }
+      },
+      "description": "The health status of the VM."
     },
     "VirtualMachineScaleSetVMListResult": {
       "properties": {
@@ -6476,6 +6641,119 @@
         "value"
       ],
       "description": "The List Virtual Machine Scale Set VMs operation response."
+    },
+    "RollingUpgradeStatusInfo": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/RollingUpgradeStatusInfoProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "description": "The status of the latest virtual machine scale set rolling upgrade."
+    },
+    "RollingUpgradeStatusInfoProperties": {
+      "properties": {
+        "policy": {
+          "readOnly": true,
+          "$ref": "#/definitions/RollingUpgradePolicy",
+          "description": "The rolling upgrade policies applied for this upgrade."
+        },
+        "runningStatus": {
+          "readOnly": true,
+          "$ref": "#/definitions/RollingUpgradeRunningStatus",
+          "description": "Information about the current running state of the overall upgrade."
+        },
+        "progress": {
+          "readOnly": true,
+          "$ref": "#/definitions/RollingUpgradeProgressInfo",
+          "description": "Information about the number of virtual machine instances in each upgrade state."
+        },
+        "error": {
+          "readOnly": true,
+          "$ref": "#/definitions/ApiError",
+          "description": "Error details for this upgrade, if there are any."
+        }
+      },
+      "description": "The status of the latest virtual machine scale set rolling upgrade."
+    },
+    "RollingUpgradeRunningStatus": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Code indicating the current status of the upgrade.",
+          "enum": [
+            "RollingForward",
+            "Cancelled",
+            "Completed",
+            "Faulted"
+          ],
+          "x-ms-enum": {
+            "name": "RollingUpgradeStatusCode",
+            "modelAsString": false
+          }
+        },
+        "startTime": {
+          "readOnly": true,
+          "type": "string",
+          "format": "date-time",
+          "description": "Start time of the upgrade."
+        },
+        "lastAction": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The last action performed on the rolling upgrade.",
+          "enum": [
+            "Start",
+            "Cancel"
+          ],
+          "x-ms-enum": {
+            "name": "RollingUpgradeActionType",
+            "modelAsString": false
+          }
+        },
+        "lastActionTime": {
+          "readOnly": true,
+          "type": "string",
+          "format": "date-time",
+          "description": "Last action time of the upgrade."
+        }
+      },
+      "description": "Information about the current running state of the overall upgrade."
+    },
+    "RollingUpgradeProgressInfo": {
+      "properties": {
+        "successfulInstanceCount": {
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of instances that have been successfully upgraded."
+        },
+        "failedInstanceCount": {
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of instances that have failed to be upgraded successfully."
+        },
+        "inProgressInstanceCount": {
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of instances that are currently being upgraded."
+        },
+        "pendingInstanceCount": {
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of instances that have not yet begun to be upgraded."
+        }
+      },
+      "description": "Information about the number of virtual machine instances in each upgrade state."
     },
     "ApiErrorBase": {
       "properties": {

@@ -26,7 +26,26 @@ These are the global settings for the Batch API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2017-05
+tag: package-2017-09
+```
+
+### Tag: package-2017-09
+
+These settings apply only when `--tag=package-2017-09` is specified on the command line.
+
+``` yaml $(tag) == 'package-2017-09'
+input-file:
+- Microsoft.Batch/2017-09-01/BatchManagement.json
+```
+
+## Suppression
+
+Note that this setting should be removed once [this GitHub bug](https://github.com/Azure/azure-openapi-validator/issues/68) is fixed.
+``` yaml
+directive:
+  - suppress: R2063
+    from: BatchManagement.json
+    reason: Bug in linter
 ```
 
 

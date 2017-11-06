@@ -40,7 +40,7 @@
     "/providers/Microsoft.BatchAI/operations": {
       "get": {
         "tags": [
-            "Operations"
+          "Operations"
         ],
         "operationId": "Operations_List",
         "description": "Lists available operations for the Microsoft.BatchAI provider.",
@@ -61,9 +61,9 @@
           "nextLinkName": null
         },
         "x-ms-examples": {
-            "List of available operations for Batch AI Resource Provider": {
-                "$ref": "./examples/OperationList.json"
-            }
+          "List of available operations for Batch AI Resource Provider": {
+            "$ref": "./examples/OperationList.json"
+          }
         }
       }
     },
@@ -116,9 +116,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Create or update cluster": {
-                "$ref": "./examples/PutCluster.json"
-            }
+          "Create or update cluster": {
+            "$ref": "./examples/PutCluster.json"
+          }
         }
       },
       "patch": {
@@ -151,23 +151,23 @@
           }
         ],
         "responses": {
-            "200": {
-                "description": "The operation was successful. The response contains the Cluster entity.",
-                "schema": {
-                    "$ref": "#/definitions/Cluster"
-                }
-            },
-            "default": {
-                "description": "Error response describing why the operation failed.",
-                "schema": {
-                    "$ref": "#/definitions/CloudError"
-                }
+          "200": {
+            "description": "The operation was successful. The response contains the Cluster entity.",
+            "schema": {
+              "$ref": "#/definitions/Cluster"
             }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
         },
         "x-ms-examples": {
-            "Patch cluster": {
-                "$ref": "./examples/PatchCluster.json"
-            }
+          "Patch cluster": {
+            "$ref": "./examples/PatchCluster.json"
+          }
         }
       },
       "delete": {
@@ -209,9 +209,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Delete cluster": {
-                "$ref": "./examples/DeleteCluster.json"
-            }
+          "Delete cluster": {
+            "$ref": "./examples/DeleteCluster.json"
+          }
         }
       },
       "get": {
@@ -249,9 +249,9 @@
           }
         },
         "x-ms-examples": {
-            "Get cluster": {
-                "$ref": "./examples/GetCluster.json"
-            }
+          "Get cluster": {
+            "$ref": "./examples/GetCluster.json"
+          }
         }
       }
     },
@@ -270,7 +270,6 @@
             "$ref": "#/parameters/ClusterNameParameter"
           },
           {
-            "description": "Specifies the version of API used for this request.",
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
@@ -293,11 +292,11 @@
         },
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
-        },        
+        },
         "x-ms-examples": {
-            "Get a cluster's remote-login-information": {
-                "$ref": "./examples/ClusterListRemoteLoginInfo.json"
-            }
+          "Get a cluster's remote-login-information": {
+            "$ref": "./examples/ClusterListRemoteLoginInfo.json"
+          }
         }
       }
     },
@@ -319,11 +318,9 @@
             "$ref": "#/parameters/MaxResultsParameter"
           },
           {
-            "description": "Specifies the version of API used for this request.",
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "description": "The subscriptionID for the Azure user.",
             "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
@@ -345,9 +342,9 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-            "List clusters": {
-                "$ref": "./examples/ListCluster.json"
-            }
+          "List clusters": {
+            "$ref": "./examples/ListCluster.json"
+          }
         }
       }
     },
@@ -372,11 +369,9 @@
             "$ref": "#/parameters/MaxResultsParameter"
           },
           {
-            "description": "Specifies the version of API used for this request.",
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "description": "The subscriptionID for the Azure user.",
             "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
@@ -398,9 +393,9 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-            "List clusters": {
-                "$ref": "./examples/ListCluster.json"
-            }
+          "List clusters": {
+            "$ref": "./examples/ListCluster.json"
+          }
         }
       }
     },
@@ -428,11 +423,9 @@
             "description": "The parameters to provide for job creation."
           },
           {
-            "description": "Specifies the version of API used for this request.",
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "description": "The subscriptionID for the Azure user.",
             "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
@@ -455,9 +448,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Create or update job": {
-                "$ref": "./examples/PutJob.json"
-            }
+          "Create or update job": {
+            "$ref": "./examples/PutJob.json"
+          }
         }
       },
       "delete": {
@@ -499,9 +492,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Delete job": {
-                "$ref": "./examples/DeleteJob.json"
-            }
+          "Delete job": {
+            "$ref": "./examples/DeleteJob.json"
+          }
         }
       },
       "get": {
@@ -539,9 +532,9 @@
           }
         },
         "x-ms-examples": {
-            "Get job": {
-                "$ref": "./examples/GetJob.json"
-            }
+          "Get job": {
+            "$ref": "./examples/GetJob.json"
+          }
         }
       }
     },
@@ -582,11 +575,11 @@
         },
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
-        },         
+        },
         "x-ms-examples": {
-            "Get a job's remote-login-information ": {
-                "$ref": "./examples/JobListRemoteLoginInfo.json"
-            }
+          "Get a job's remote-login-information ": {
+            "$ref": "./examples/JobListRemoteLoginInfo.json"
+          }
         }
       }
     },
@@ -627,9 +620,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Terminate job": {
-                "$ref": "./examples/TerminateJob.json"
-            }
+          "Terminate job": {
+            "$ref": "./examples/TerminateJob.json"
+          }
         }
       }
     },
@@ -672,12 +665,12 @@
           }
         },
         "x-ms-pageable": {
-            "nextLinkName": "nextLink"
+          "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-            "List jobs": {
-                "$ref": "./examples/ListJob.json"
-            }
+          "List jobs": {
+            "$ref": "./examples/ListJob.json"
+          }
         }
       }
     },
@@ -726,9 +719,9 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-            "List jobs": {
-                "$ref": "./examples/ListJob.json"
-            }
+          "List jobs": {
+            "$ref": "./examples/ListJob.json"
+          }
         }
       }
     },
@@ -780,9 +773,9 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-            "List a job's files": {
-                "$ref": "./examples/ListOutputFiles.json"
-            }
+          "List a job's files": {
+            "$ref": "./examples/ListOutputFiles.json"
+          }
         }
       }
     },
@@ -835,9 +828,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Create or update jobserver": {
-                "$ref": "./examples/PutFileServer.json"
-            }
+          "Create or update jobserver": {
+            "$ref": "./examples/PutFileServer.json"
+          }
         }
       },
       "patch": {
@@ -884,9 +877,9 @@
           }
         },
         "x-ms-examples": {
-            "Patch jobserver": {
-                "$ref": "./examples/PatchFileServer.json"
-            }
+          "Patch jobserver": {
+            "$ref": "./examples/PatchFileServer.json"
+          }
         }
       },
       "delete": {
@@ -928,9 +921,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Delete jobserver": {
-                "$ref": "./examples/DeleteFileServer.json"
-            }
+          "Delete jobserver": {
+            "$ref": "./examples/DeleteFileServer.json"
+          }
         }
       },
       "get": {
@@ -968,9 +961,9 @@
           }
         },
         "x-ms-examples": {
-            "Get jobserver": {
-                "$ref": "./examples/GetFileServer.json"
-            }
+          "Get jobserver": {
+            "$ref": "./examples/GetFileServer.json"
+          }
         }
       }
     },
@@ -989,7 +982,6 @@
             "$ref": "#/parameters/FileServerNameParameter"
           },
           {
-            "description": "Specifies the version of API used for this request.",
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
@@ -1012,9 +1004,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Suspend jobserver": {
-                "$ref": "./examples/SuspendFileServer.json"
-            }
+          "Suspend jobserver": {
+            "$ref": "./examples/SuspendFileServer.json"
+          }
         }
       }
     },
@@ -1033,7 +1025,6 @@
             "$ref": "#/parameters/FileServerNameParameter"
           },
           {
-            "description": "Specifies the version of API used for this request.",
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
@@ -1056,9 +1047,9 @@
         },
         "x-ms-long-running-operation": true,
         "x-ms-examples": {
-            "Resume jobserver": {
-                "$ref": "./examples/ResumeFileServer.json"
-            }
+          "Resume jobserver": {
+            "$ref": "./examples/ResumeFileServer.json"
+          }
         }
       }
     },
@@ -1080,11 +1071,9 @@
             "$ref": "#/parameters/MaxResultsParameter"
           },
           {
-            "description": "Specifies the version of API used for this request.",
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "description": "The subscriptionID for the Azure user.",
             "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
@@ -1106,9 +1095,9 @@
           "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-            "List jobservers": {
-                "$ref": "./examples/ListFileServer.json"
-            }
+          "List jobservers": {
+            "$ref": "./examples/ListFileServer.json"
+          }
         }
       }
     },
@@ -1133,11 +1122,9 @@
             "$ref": "#/parameters/MaxResultsParameter"
           },
           {
-            "description": "Specifies the version of API used for this request.",
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
-            "description": "The subscriptionID for the Azure user.",
             "$ref": "#/parameters/SubscriptionIdParameter"
           }
         ],
@@ -1156,12 +1143,12 @@
           }
         },
         "x-ms-pageable": {
-            "nextLinkName": "nextLink"
+          "nextLinkName": "nextLink"
         },
         "x-ms-examples": {
-            "List jobservers": {
-                "$ref": "./examples/ListFileServer.json"
-            }
+          "List jobservers": {
+            "$ref": "./examples/ListFileServer.json"
+          }
         }
       }
     }
@@ -1187,7 +1174,11 @@
           "$ref": "#/definitions/ResourceId"
         }
       },
-      "required": [ "vmSize", "sshConfiguration", "dataDisks" ],
+      "required": [
+        "vmSize",
+        "sshConfiguration",
+        "dataDisks"
+      ],
       "description": "The properties of a file server."
     },
     "FileServerUpdateParameters": {
@@ -1272,7 +1263,7 @@
           "x-ms-enum": {
             "name": "FileSystemType",
             "modelAsString": true
-            }          
+          }
         },
         "raidLevel": {
           "title": "The RAID level to apply to the disks.",
@@ -1289,7 +1280,7 @@
           "type": "string",
           "readOnly": true,
           "title": "None, ReadOnly, ReadWrite. Default value is None. This property is not patchable.",
-          "default" : "none",
+          "default": "none",
           "enum": [
             "none",
             "readOnly",
@@ -1300,7 +1291,7 @@
             "modelAsString": false
           }
         },
-        "numberOfDisks": {
+        "diskCount": {
           "type": "integer",
           "format": "int32",
           "readOnly": false,
@@ -1326,7 +1317,9 @@
         }
       },
       "required": [
-        "diskSizeInGB", "numberOfDisks", "storageAccountType"
+        "diskSizeInGB",
+        "diskCount",
+        "storageAccountType"
       ],
       "description": "Settings for the data disk which would be created for the file server."
     },
@@ -1346,7 +1339,11 @@
           "$ref": "#/definitions/KeyEncryptionKey"
         }
       },
-      "required": [ "enabled", "diskEncryptionSecret", "keyEncryptionKey" ],
+      "required": [
+        "enabled",
+        "diskEncryptionSecret",
+        "keyEncryptionKey"
+      ],
       "description": "Settings to enable Disk Encryption."
     },
     "DiskEncryptionSecret": {
@@ -1360,7 +1357,10 @@
           "title": "Key Vault Secret Url which would be used."
         }
       },
-      "required": [ "sourceVault", "secretUrl" ],
+      "required": [
+        "sourceVault",
+        "secretUrl"
+      ],
       "description": "Key Vault information for disk Encryption Secret."
     },
     "KeyEncryptionKey": {
@@ -1374,7 +1374,10 @@
           "title": "Key Vault Key Url which would be used as Key Encryption Key."
         }
       },
-      "required": [ "sourceVault", "keyUrl" ],
+      "required": [
+        "sourceVault",
+        "keyUrl"
+      ],
       "description": "Key Vault information for disk Key Encryption Key."
     },
     "MountSettings": {
@@ -1383,11 +1386,11 @@
           "type": "string",
           "title": "Path where the NFS is mounted on the Server."
         },
-        "fileServerPublicIp": {
+        "fileServerPublicIP": {
           "type": "string",
           "title": "Public IP which can be used to access the file Server VM."
         },
-        "fileServerInternalIp": {
+        "fileServerInternalIP": {
           "type": "string",
           "title": "Internal subnet IP which can be used to access the file Server from within the subnet."
         },
@@ -1408,7 +1411,7 @@
     },
     "SshConfiguration": {
       "properties": {
-        "publicIpsToAllow": {
+        "publicIPsToAllow": {
           "type": "array",
           "items": {
             "type": "string"
@@ -1421,7 +1424,9 @@
           "$ref": "#/definitions/UserAccountSettings"
         }
       },
-      "required": [ "userAccountSettings"],
+      "required": [
+        "userAccountSettings"
+      ],
       "description": "SSH configuration settings for the VM"
     },
     "FileServerCreateParameters": {
@@ -1502,18 +1507,18 @@
             "modelAsString": false
           }
         },
-        "status": {
+        "statuses": {
           "type": "array",
           "readOnly": true,
           "items": {
-            "$ref": "#/definitions/Status"
+            "$ref": "#/definitions/FileServerStatus"
           },
           "title": "Captures file server status."
         }
       },
       "description": "File server specific properties."
     },
-    "Status": {
+    "FileServerStatus": {
       "properties": {
         "code": {
           "type": "string",
@@ -1546,7 +1551,7 @@
           "title": "Detailed message about the status."
         }
       },
-      "description": "File server specific properties."
+      "description": "Status of the file server."
     },
     "FileServer": {
       "properties": {
@@ -1606,7 +1611,8 @@
         }
       },
       "required": [
-        "vmSize", "userAccountSettings"
+        "vmSize",
+        "userAccountSettings"
       ],
       "description": "The properties of a Batch AI Cluster."
     },
@@ -1623,7 +1629,7 @@
       "type": "string",
       "title": "Specifies when compute nodes may be removed from the cluster, if the cluster size is decreasing.",
       "description": "Possible values are: requeue - Terminate running jobs and requeue them. The jobs will run again. Remove compute nodes as soon as jobs have been terminated. terminate - Terminate running jobs. The jobs will not run again. Remove compute nodes as soon as jobs have been terminated. jobcompletion - Allow currently running jobs to complete. Schedule no new jobs while waiting. Remove compute nodes when all jobs have completed. The default value is requeue.",
-      "default" : "requeue",
+      "default": "requeue",
       "enum": [
         "requeue",
         "terminate",
@@ -1650,29 +1656,36 @@
     },
     "AutoScaleSettings": {
       "properties": {
-        "minimumNumberOfNodes": {
+        "minimumNodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Specifies the minimum number of compute nodes the cluster can have."
         },
-        "maximumNumberOfNodes": {
+        "maximumNodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Specifies the maximum number of compute nodes the cluster can have."
+        },
+        "initialNodeCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Specifies the number of compute nodes to allocate on cluster creation. Note that this value is used only during cluster creation.",
+          "default" : 0
         }
       },
       "required": [
-        "minimumNumberOfNodes", "maximumNumberOfNodes"
+        "minimumNodeCount",
+        "maximumNodeCount"
       ],
       "description": "Specifies the autoscale settings for the cluster."
     },
     "ManualScaleSettings": {
       "properties": {
-        "targetNumberOfNodes": {
+        "targetNodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "The desired number of compute nodes in the cluster.",
-          "default" : "0",
+          "default": 0,
           "description": "Default is 0. If autoScaleSettings are not specified, then the cluster starts with this target."
         },
         "nodeDeallocationOption": {
@@ -1682,7 +1695,9 @@
           "$ref": "#/definitions/DeallocationOption"
         }
       },
-      "required": [ "targetNumberOfNodes" ],
+      "required": [
+        "targetNodeCount"
+      ],
       "description": "Manual scale settings for the cluster."
     },
     "VirtualMachineConfiguration": {
@@ -1713,7 +1728,11 @@
           "title": "version of the image"
         }
       },
-      "required": [ "publisher", "offer", "sku" ],
+      "required": [
+        "publisher",
+        "offer",
+        "sku"
+      ],
       "description": "The image reference."
     },
     "NodeStateCounts": {
@@ -1739,7 +1758,12 @@
           "title": "Number of compute nodes which are unusable"
         }
       },
-      "required": [ "idleNodeCount", "runningNodeCount", "preparingNodeCount", "unusableNodeCount" ],
+      "required": [
+        "idleNodeCount",
+        "runningNodeCount",
+        "preparingNodeCount",
+        "unusableNodeCount"
+      ],
       "description": "Counts of various compute node states on the cluster."
     },
     "UserAccountSettings": {
@@ -1757,19 +1781,13 @@
           "title": "Admin user Password (linux and windows)."
         }
       },
-      "required": [ "adminUserName" ],
+      "required": [
+        "adminUserName"
+      ],
       "description": "Settings for user account of VMs."
     },
     "NodeSetup": {
       "properties": {
-        "containerSettings": {
-          "title": "Collection of container settings.",
-          "description": "Settings for the containers to be downloaded for the cluster",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ContainerSettings"
-          }
-        },
         "setupTask": {
           "title": "Specifies a setup task which can be used to customize the compute nodes of the cluster.",
           "$ref": "#/definitions/SetupTask"
@@ -1797,10 +1815,17 @@
         "runElevated": {
           "type": "boolean",
           "title": "Specifies whether to run the setup task in elevated mode. The default value is false.",
-          "default" : "false"
+          "default": false
+        },
+        "stdOutErrPathPrefix": {
+          "type": "string",
+          "description": "The path where the Batch AI service will upload stdout and stderror of setup task."
         }
       },
-      "required": [ "commandLine" ],
+      "required": [
+        "commandLine",
+        "stdOutErrPathPrefix"
+      ],
       "description": "Specifies a setup task which can be used to customize the compute nodes of the cluster."
     },
     "ClusterCreateParameters": {
@@ -1855,7 +1880,7 @@
           "type": "string",
           "title": "dedicated or low-Priority.",
           "description": "Default is dedicated.",
-          "default" : "dedicated",
+          "default": "dedicated",
           "enum": [
             "dedicated",
             "lowPriority"
@@ -1939,10 +1964,10 @@
           "description": "This element contains all the errors encountered by various compute nodes during node setup.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CloudError"
+            "$ref": "#/definitions/BatchAIError"
           }
         },
-        "currentNumberOfNodes": {
+        "currentNodeCount": {
           "type": "integer",
           "readOnly": true,
           "format": "int32",
@@ -1998,13 +2023,13 @@
           "format": "int32",
           "title": "Priority associated with the job.",
           "description": "Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0.",
-          "default": "0"
+          "default": 0
         },
         "cluster": {
           "title": "Specifies the Id of the cluster on which this job will run.",
           "$ref": "#/definitions/ResourceId"
         },
-        "numberOfNodes": {
+        "nodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of compute nodes to run the job on.",
@@ -2016,7 +2041,7 @@
           "$ref": "#/definitions/ContainerSettings"
         },
         "cntkSettings": {
-          "title": "Specifies the settings for CNTK job.",
+          "title": "Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job.",
           "$ref": "#/definitions/CNTKsettings"
         },
         "tensorFlowSettings": {
@@ -2027,6 +2052,10 @@
           "title": "Specifies the settings for Caffe job.",
           "$ref": "#/definitions/CaffeSettings"
         },
+        "caffe2Settings": {
+          "title": "Specifies the settings for Caffe2 job.",
+          "$ref": "#/definitions/Caffe2Settings"
+        },
         "chainerSettings": {
           "title": "Specifies the settings for Chainer job.",
           "$ref": "#/definitions/ChainerSettings"
@@ -2035,9 +2064,14 @@
           "title": "Specifies the settings for custom tool kit job.",
           "$ref": "#/definitions/CustomToolkitSettings"
         },
+        "jobPreparation": {
+          "title": "Specifies the actions to be performed before tool kit is launched.",
+          "description" : "The specified actions will run on all the nodes that are part of the job",
+          "$ref": "#/definitions/JobPreparation"
+        },
         "stdOutErrPathPrefix": {
           "type": "string",
-          "description": "The path where the Batch AI service will upload job specific capture of stdout and stderror as stdout.txt and stderr.txt"
+          "description": "The path where the Batch AI service will upload stdout and stderror of the job."
         },
         "inputDirectories": {
           "type": "array",
@@ -2056,7 +2090,7 @@
         "environmentVariables": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/EnvironmentVariables"
+            "$ref": "#/definitions/EnvironmentSetting"
           },
           "title": "Additional environment variables to set on the job.",
           "description": "Batch AI service sets the following environment variables for all jobs: AZ_LEARNING_INPUT_id, AZ_LEARNING_OUTPUT_id, AZ_LEARNING_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following additional environment variables are set by the Batch AI Service: AZ_LEARNING_PS_HOSTS, AZ_LEARNING_WORKER_HOSTS"
@@ -2068,21 +2102,23 @@
               "format": "duration",
               "title": "Max time the job can run.",
               "description": "Default Value = 1 week.",
-              "default" : "7.00:00:00"
+              "default": "7.00:00:00"
             },
             "maxTaskRetryCount": {
               "type": "integer",
               "format": "int32",
               "title": "Max number of times job can be retried.",
               "description": "Default Value = 0.",
-              "default" : "0"
+              "default": 0
             }
           },
           "description": "Constraints associated with the Job."
         }
       },
       "required": [
-        "cluster", "numberOfNodes", "stdOutErrPathPrefix"
+        "cluster",
+        "nodeCount",
+        "stdOutErrPathPrefix"
       ],
       "description": "The properties of a Batch AI job."
     },
@@ -2121,13 +2157,13 @@
           "format": "int32",
           "title": "Priority associated with the job.",
           "description": "Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0.",
-          "default" : "0"
+          "default": 0
         },
         "cluster": {
           "title": "Specifies the Id of the cluster on which this job will run.",
           "$ref": "#/definitions/ResourceId"
         },
-        "numberOfNodes": {
+        "nodeCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of compute nodes to run the job on.",
@@ -2140,11 +2176,11 @@
         },
         "toolType": {
           "title": "The toolkit type of this job.",
-          "description": "Possible values are: cntk, tensorflow, caffe, chainer, custom.",
+          "description": "Possible values are: cntk, tensorflow, caffe, caffe2, chainer, custom.",
           "$ref": "#/definitions/ToolType"
         },
         "cntkSettings": {
-          "title": "Specifies the settings for CNTK job.",
+          "title": "Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job.",
           "$ref": "#/definitions/CNTKsettings"
         },
         "tensorFlowSettings": {
@@ -2163,9 +2199,14 @@
           "title": "Specifies the settings for custom tool kit job.",
           "$ref": "#/definitions/CustomToolkitSettings"
         },
+        "jobPreparation": {
+          "title": "Specifies the actions to be performed before tool kit is launched.",
+          "description" : "The specified actions will run on all the nodes that are part of the job",
+          "$ref": "#/definitions/JobPreparation"
+        },
         "stdOutErrPathPrefix": {
           "type": "string",
-          "description": "The path where the Batch AI service will upload job specific capture of stdout and stderror as stdout.txt and stderr.txt"
+          "description": "The path where the Batch AI service will upload stdout and stderror of the job."
         },
         "inputDirectories": {
           "type": "array",
@@ -2184,7 +2225,7 @@
         "environmentVariables": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/EnvironmentVariables"
+            "$ref": "#/definitions/EnvironmentSetting"
           },
           "title": "Additional environment variables to be passed to the job.",
           "description": "Batch AI services sends the following environment variables for all jobs: AZ_LEARNING_INPUT_id, AZ_LEARNING_OUTPUT_id, AZ_LEARNING_NUM_GPUS_PER_NODE, For distributed TensorFlow jobs, following additional environment variables are set by the Batch AI Service: AZ_LEARNING_PS_HOSTS, AZ_LEARNING_WORKER_HOSTS"
@@ -2196,14 +2237,14 @@
               "format": "duration",
               "title": "Max time the job can run.",
               "description": "Default Value = 1 week.",
-              "default" : "7.00:00:00"
+              "default": "7.00:00:00"
             },
             "maxTaskRetryCount": {
               "type": "integer",
               "format": "int32",
               "title": "Max number of times job can be retried.",
               "description": "Default Value = 0.",
-              "default" : "0"
+              "default": 0
             }
           },
           "description": "Constraints associated with the Job."
@@ -2281,16 +2322,18 @@
               "title": "The exit code of the job.",
               "description": "This property is only returned if the job is in completed state."
             },
-            "failureInfo": {
-              "$ref": "#/definitions/CloudError",
-              "title": "Details of any error encountered by the service in starting the job.",
-              "description": "This property is not set if there was no error starting the job."
+            "errors": {
+              "title": "Contains details of various errors encountered by the service during job execution",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BatchAIError"
+              }
             },
             "retryCount": {
               "type": "integer",
               "format": "int32",
               "title": "The number of times the job has been retried.",
-              "description":  "The job is retried if it exits with a nonzero exit code, up to the specified MaxRetryCount."
+              "description": "The job is retried if it exits with a nonzero exit code, up to the specified MaxRetryCount."
             },
             "lastRetryTime": {
               "type": "string",
@@ -2299,7 +2342,9 @@
               "description": "This element is present only if the job was retried (i.e. retryCount is nonzero). If present, this is typically the same as startTime, but may be different if the job has been restarted for reasons other than retry."
             }
           },
-          "required": [ "startTime" ],
+          "required": [
+            "startTime"
+          ],
           "description": "Contains information about the execution of a job in the Azure Batch service."
         }
       },
@@ -2353,7 +2398,11 @@
         }
       },
       "description": "Contains remote login details to SSH/RDP to a compute node in cluster.",
-      "required": [ "nodeId", "ipAddress", "port" ]
+      "required": [
+        "nodeId",
+        "ipAddress",
+        "port"
+      ]
     },
     "RemoteLoginInformationListResult": {
       "properties": {
@@ -2400,13 +2449,16 @@
           "description": "This will be returned only if the model has been archived. During job run, this won't be returned and customers can use SSH tunneling to download. Users can use Get Remote Login Information API to get the IP address and port information of all the compute nodes running the job."
         },
         "properties": {
-            "x-ms-client-flatten": true,
-            "$ref": "#/definitions/FileProperties",
-            "description": "The properties associated with the file."
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/FileProperties",
+          "description": "The properties associated with the file."
         }
       },
       "description": "Properties of the file.",
-      "required": [ "name", "downloadUrl" ]
+      "required": [
+        "name",
+        "downloadUrl"
+      ]
     },
     "FileListResult": {
       "properties": {
@@ -2432,7 +2484,9 @@
           "description": "The ID of the resource"
         }
       },
-      "required": [ "id" ],
+      "required": [
+        "id"
+      ],
       "description": "A definition of a resource ID.",
       "x-ms-azure-resource": true
     },
@@ -2477,6 +2531,7 @@
         "cntk",
         "tensorflow",
         "caffe",
+        "caffe2",
         "chainer",
         "custom"
       ],
@@ -2509,7 +2564,9 @@
           "title": "The value of the environment variable."
         }
       },
-      "required": [ "name" ],
+      "required": [
+        "name"
+      ],
       "description": "An environment variable to be set on a job."
     },
     "LocalDataVolume": {
@@ -2524,7 +2581,10 @@
         }
       },
       "description": "Represents mapping of host directories to directories in the container.",
-      "required": [ "hostPath", "localPath"]
+      "required": [
+        "hostPath",
+        "localPath"
+      ]
     },
     "ImageSourceRegistry": {
       "properties": {
@@ -2532,13 +2592,9 @@
           "type": "string",
           "title": "URL for image repository."
         },
-        "images": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "List of images to downlooad from the repository.",
-          "description": "The name of the image in image repository."
+        "image": {
+          "type": "string",
+          "title": "The name of the image in image repository."
         },
         "credentials": {
           "title": "Information to access the private Docker repository.",
@@ -2546,7 +2602,9 @@
         }
       },
       "description": "Details of the container image such as name, URL and credentials.",
-      "required": [ "images" ]
+      "required": [
+        "image"
+      ]
     },
     "PrivateRegistryCredentials": {
       "properties": {
@@ -2566,25 +2624,21 @@
         }
       },
       "description": "Credentials to access a container image in a private repository.",
-      "required": [ "username"]
+      "required": [
+        "username"
+      ]
     },
     "ContainerSettings": {
       "properties": {
         "imageSourceRegistry": {
           "title": "Registry to download the container from.",
           "$ref": "#/definitions/ImageSourceRegistry"
-        },
-        "localDataVolumes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LocalDataVolume"
-          },
-          "title": "Data volumes to be mapped from Host to container.",
-          "description": "This is for power users and should be used only if the auto-mounts that the service provides are not enough. By default, the service mounts the following into the container: All mounted shares on the Cluster compute node (e.g. Azure File share, NFS etc), the shared directory created on the cluster compute node and Job level Temp directory. For more details on the various auto created directories on the Cluster compute node and environment variables please look at the Put Cluster API"
         }
       },
       "description": "Settings for the container to be downloaded.",
-      "required": [ "imageSourceRegistry"]
+      "required": [
+        "imageSourceRegistry"
+      ]
     },
     "InputDirectory": {
       "properties": {
@@ -2599,7 +2653,10 @@
         }
       },
       "description": "Input directory for the job.",
-      "required": [ "id", "path" ]
+      "required": [
+        "id",
+        "path"
+      ]
     },
     "OutputDirectory": {
       "properties": {
@@ -2622,7 +2679,7 @@
           "type": "string",
           "title": "An enumeration, which specifies the type of job output directory.",
           "description": "Default value is Custom. The possible values are Model, Logs, Summary, and Custom. Users can use multiple enums for a single directory. Eg. outPutType='Model,Logs, Summary'",
-          "default" : "custom",
+          "default": "custom",
           "enum": [
             "model",
             "logs",
@@ -2638,30 +2695,26 @@
           "type": "boolean",
           "title": "True to create new directory.",
           "description": "Default is true. If false, then the directory is not created and can be any directory path that the user specifies.",
-          "default" : "true"
+          "default": true
         }
       },
       "description": "Output directory for the job.",
-      "required": [ "id", "pathPrefix"]
-    },
-    "EnvironmentVariables": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/EnvironmentSetting"
-      },
-      "description": "A list of environment variables."
+      "required": [
+        "id",
+        "pathPrefix"
+      ]
     },
     "AzureStorageCredentialsInfo": {
       "properties": {
         "accountKey": {
           "type": "string",
-          "title": "Storage account key to login in Azure File.",
+          "title": "Storage account key.",
           "description": "One of accountKey or accountKeySecretUrl must be specified."
         },
         "accountKeySecretUrl": {
           "type": "string",
           "title": "Url of the storage account key stored as secret in a KeyVault.",
-          "description":  "Users can store their secrets in Azure KeyVault and pass it to the Batch AI Service to integrate with KeyVault. One of accountKey or accountKeySecretUrl must be specified."
+          "description": "Users can store their secrets in Azure KeyVault and pass it to the Batch AI Service to integrate with KeyVault. One of accountKey or accountKeySecretUrl must be specified."
         }
       },
       "description": "Credentials to access Azure File Share."
@@ -2689,17 +2742,49 @@
           "type": "string",
           "title": "Specifies the file Mode.",
           "description": "Default value is 0777. Valid only if OS is linux.",
-          "default" : "0777"
+          "default": "0777"
         },
         "directoryMode": {
           "type": "string",
           "title": "Specifies the directory Mode.",
           "description": "Default value is 0777. Valid only if OS is linux.",
-          "default" : "0777"
+          "default": "0777"
         }
       },
       "description": "Details of the Azure File Share to mount on the cluster.",
-      "required": [ "accountName", "azureFileUrl", "relativeMountPath" ]
+      "required": [
+        "accountName",
+        "azureFileUrl",
+        "credentialsInfo",
+        "relativeMountPath"
+      ]
+    },
+    "AzureBlobFileSystemReference": {
+      "properties": {
+        "accountName": {
+          "type": "string",
+          "title": "Name of the storage account."
+        },
+        "credentialsInfo": {
+          "title": "Information of the Azure Blob Storage account credentials.",
+          "$ref": "#/definitions/AzureStorageCredentialsInfo"
+        },
+        "relativeMountPath": {
+          "type": "string",
+          "title": "Specifies the relative path on the compute node where the Azure Blob file system will be mounted.",
+          "description": "Note that all blob file systems will be mounted under $AZ_LEARNING_MOUNT_ROOT location."
+        },
+        "mountOptions": {
+          "type": "string",
+          "title": "Specifies the various mount options that can be used to configure Blob file system."
+        }
+      },
+      "description": "Details of the Azure Blob Storage account to mount on the cluster.",
+      "required": [
+        "accountName",
+        "credentialsInfo",
+        "relativeMountPath"
+      ]
     },
     "FileServerReference": {
       "properties": {
@@ -2723,7 +2808,10 @@
         }
       },
       "description": "Details of the file server to mount on the cluster.",
-      "required": [ "fileServer", "relativeMountPath" ]
+      "required": [
+        "fileServer",
+        "relativeMountPath"
+      ]
     },
     "UnmanagedFileSystemReference": {
       "properties": {
@@ -2738,7 +2826,10 @@
         }
       },
       "description": "Details of the file system to mount on the compute cluster.",
-      "required": [ "mountCommand", "relativeMountPath" ]
+      "required": [
+        "mountCommand",
+        "relativeMountPath"
+      ]
     },
     "MountVolumes": {
       "properties": {
@@ -2748,21 +2839,29 @@
             "$ref": "#/definitions/AzureFileShareReference"
           },
           "title": "Azure File Share setup configuration.",
-          "description": "Azure File will be mounted in the container."
+          "description": "Azure File will be mounted to the cluster node."
+        },
+        "azureBlobFileSystems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AzureBlobFileSystemReference"
+          },
+          "title": "Azure Blob FileSystem setup configuration.",
+          "description": "Azure Blob file system will be mounted to the cluster node."
         },
         "fileServers": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FileServerReference"
           },
-          "title": "References to a list of file servers that are mounted in the container."
+          "title": "References to a list of file servers that are mounted to the cluster node."
         },
         "unmanagedFileSystems": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/UnmanagedFileSystemReference"
           },
-          "title": "References to a list of file servers that are mounted in the container."
+          "title": "References to a list of file servers that are mounted to the cluster node."
         }
       },
       "description": "Details of volumes to mount on the cluster."
@@ -2771,7 +2870,7 @@
       "properties": {
         "languageType": {
           "type": "string",
-          "title": "Specifies the language type to use for launching CNTK job.",
+          "title": "Specifies the language type to use for launching CNTK (aka Microsoft Cognitive Toolkit) job.",
           "description": "Valid values are 'BrainScript' or 'Python'."
         },
         "configFilePath": {
@@ -2784,38 +2883,73 @@
           "title": "The path and file name of the python script to execute the job.",
           "description": "This property can be specified only if the languageType is 'Python'."
         },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter.",
+          "description": "This property can be specified only if the languageType is 'Python'."
+        },
         "commandLineArgs": {
           "type": "string",
           "title": "Command line arguments that needs to be passed to the python script or CNTK.exe."
         },
-        "numberOfProcesses": {
+        "processCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfNodes property"
+          "description": "The default value for this property is equal to nodeCount property"
         }
       },
-      "description": "Specifies the settings for CNTK job."
+      "description": "Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job."
     },
     "CaffeSettings": {
       "properties": {
         "configFilePath": {
           "type": "string",
-          "title": "Specifies the path of the config file."
+          "title": "Specifies the path of the config file.",
+          "description": "This property cannot be specified if pythonScriptFilePath is specified."
+        },
+        "pythonScriptFilePath": {
+          "type": "string",
+          "title": "The path and file name of the python script to execute the job.",
+          "description": "This property cannot be specified if configFilePath is specified."
+        },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter.",
+          "description": "This property can be specified only if the pythonScriptFilePath is specified."
         },
         "commandLineArgs": {
           "type": "string",
           "title": "Command line arguments that needs to be passed to the Caffe job."
         },
-        "numberOfProcesses": {
+        "processCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfNodes property"
+          "description": "The default value for this property is equal to nodeCount property"
         }
       },
-      "description": "Specifies the settings for Caffe job.",
-      "required": [ "configFilePath" ]
+      "description": "Specifies the settings for Caffe job."
+    },
+    "Caffe2Settings": {
+      "properties": {
+        "pythonScriptFilePath": {
+          "type": "string",
+          "title": "The path and file name of the python script to execute the job."
+        },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter."
+        },
+        "commandLineArgs": {
+          "type": "string",
+          "title": "Command line arguments that needs to be passed to the python script"
+        }
+      },
+      "description": "Specifies the settings for Caffe2 job.",
+      "required": [
+        "pythonScriptFilePath"
+      ]
     },
     "ChainerSettings": {
       "properties": {
@@ -2823,19 +2957,25 @@
           "type": "string",
           "title": "The path and file name of the python script to execute the job."
         },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter."
+        },
         "commandLineArgs": {
           "type": "string",
           "title": "Command line arguments that needs to be passed to the python script"
         },
-        "numberOfProcesses": {
+        "processCount": {
           "type": "integer",
           "format": "int32",
           "title": "Number of processes parameter that is passed to MPI runtime.",
-          "description": "The default value for this property is equal to numberOfNodes property"
+          "description": "The default value for this property is equal to nodeCount property"
         }
       },
       "description": "Specifies the settings for Chainer job.",
-      "required": [ "pythonScriptFilePath" ]
+      "required": [
+        "pythonScriptFilePath"
+      ]
     },
     "CustomToolkitSettings": {
       "properties": {
@@ -2846,11 +2986,28 @@
       },
       "description": "Specifies the settings for a custom tool kit job."
     },
+    "JobPreparation": {
+      "properties": {
+        "commandLine": {
+          "type": "string",
+          "title": "The command line to execute.",
+          "description" : "If containerSettings is specified on the job, this commandLine will be executed in the same container as job. Otherwise it will be executed on the node."
+        }
+      },
+      "description": "Specifies the settings for job preparation.",
+      "required": [
+        "commandLine"
+      ]
+    },
     "TensorFlowSettings": {
       "properties": {
         "pythonScriptFilePath": {
           "type": "string",
           "title": "The path and file name of the python script to execute the job."
+        },
+        "pythonInterpreterPath": {
+          "type": "string",
+          "title": "The path to python interpreter."
         },
         "masterCommandLineArgs": {
           "type": "string",
@@ -2866,21 +3023,24 @@
           "title": "Specifies the command line arguments for the parameter server task.",
           "description": "This property is optional for single machine training."
         },
-        "numberOfWorkers": {
+        "workerCount": {
           "type": "integer",
           "format": "int32",
           "title": "The number of worker tasks.",
-          "description": "If specified, the value must be less than or equal to (numberOfNodes * numberOfGPUs per VM). If not specified, the default value is equal to numberOfNodes. This property can be specified only for distributed TensorFlow training"
+          "description": "If specified, the value must be less than or equal to (nodeCount * numberOfGPUs per VM). If not specified, the default value is equal to nodeCount. This property can be specified only for distributed TensorFlow training"
         },
-        "numberOfParameterServers": {
+        "parameterServerCount": {
           "type": "integer",
           "format": "int32",
           "title": "The number of parmeter server tasks.",
-          "description": "If specified, the value must be less than or equal to numberOfNodes. If not specified, the default value is equal to 1 for distributed TensorFlow training (This property is not applicable for single machine training). This property can be specified only for distributed TensorFlow training."
+          "description": "If specified, the value must be less than or equal to nodeCount. If not specified, the default value is equal to 1 for distributed TensorFlow training (This property is not applicable for single machine training). This property can be specified only for distributed TensorFlow training."
         }
       },
       "description": "Specifies the settings for TensorFlow job.",
-      "required": [ "pythonScriptFilePath", "masterCommandLineArgs"]
+      "required": [
+        "pythonScriptFilePath",
+        "masterCommandLineArgs"
+      ]
     },
     "CloudError": {
       "x-ms-external": true,
@@ -2917,9 +3077,29 @@
       },
       "description": "An error response from the Batch AI service."
     },
+    "BatchAIError": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "An identifier for the error. Codes are invariant and are intended to be consumed programmatically."
+        },
+        "message": {
+          "type": "string",
+          "description": "A message describing the error, intended to be suitable for display in a user interface."
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NameValuePair"
+          },
+          "description": "A list of additional details about the error."
+        }
+      },
+      "description": "An error response from the Batch AI service."
+    },
     "Operation": {
       "title": "A REST API operation",
-      "description" : "Details of a REST API operation",
+      "description": "Details of a REST API operation",
       "type": "object",
       "properties": {
         "name": {
@@ -2954,15 +3134,15 @@
           "type": "string"
         },
         "properties": {
-            "x-ms-client-flatten": true,
-            "title": "Properties of the operation.",
-            "type": "object"
+          "x-ms-client-flatten": true,
+          "title": "Properties of the operation.",
+          "type": "object"
         }
       }
     },
     "OperationListResult": {
-     "title": "Result of the request to list REST API operations. It contains a list of operations and a URL nextLink to get the next set of results.",
-     "description" : "Contains the list of all operations supported by BatchAI resource provider",
+      "title": "Result of the request to list REST API operations. It contains a list of operations and a URL nextLink to get the next set of results.",
+      "description": "Contains the list of all operations supported by BatchAI resource provider",
       "properties": {
         "value": {
           "type": "array",
@@ -2995,7 +3175,7 @@
       "type": "string",
       "pattern": "^[-\\w\\._]+$"
     },
-    "ClusterNameParameter" : {
+    "ClusterNameParameter": {
       "name": "clusterName",
       "in": "path",
       "required": true,
@@ -3004,9 +3184,9 @@
       "minLength": 1,
       "maxLength": 64,
       "x-ms-parameter-location": "method",
-      "description": "The name of the cluster within the specified resource group. Cluster names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long."      
+      "description": "The name of the cluster within the specified resource group. Cluster names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long."
     },
-    "JobNameParameter" : {
+    "JobNameParameter": {
       "name": "jobName",
       "in": "path",
       "required": true,
@@ -3017,7 +3197,7 @@
       "x-ms-parameter-location": "method",
       "description": "The name of the job within the specified resource group. Job names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long."
     },
-    "FileServerNameParameter" : {
+    "FileServerNameParameter": {
       "name": "fileServerName",
       "in": "path",
       "required": true,
@@ -3026,7 +3206,7 @@
       "minLength": 1,
       "maxLength": 64,
       "x-ms-parameter-location": "method",
-      "description": "The name of the file server within the specified resource group. File server names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long."     
+      "description": "The name of the file server within the specified resource group. File server names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long."
     },
     "ApiVersionParameter": {
       "name": "api-version",

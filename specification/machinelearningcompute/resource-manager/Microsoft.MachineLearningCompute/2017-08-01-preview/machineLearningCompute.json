@@ -587,6 +587,14 @@
           },
           "readOnly": true
         },
+        "provisioningErrors": {
+          "type": "array",
+          "description": "List of provisioning errors reported by the resource provider.",
+          "items": {
+            "$ref": "#/definitions/ErrorResponseWrapper"
+          },
+          "readOnly": true
+        },
         "clusterType": {
           "type": "string",
           "description": "The cluster type.",
@@ -703,8 +711,8 @@
         },
         "agentVmSize": {
           "type": "string",
-          "description": "The Azure VM size of the agent VM nodes. This cannot be changed once the cluster is created.",
-          "default": "Standard_D2_v2",
+          "description": "The Azure VM size of the agent VM nodes. This cannot be changed once the cluster is created. This list is non exhaustive; refer to https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes for the possible VM sizes.",
+          "default": "Standard_D3_v2",
           "enum": [
             "Standard_A0",
             "Standard_A1",
@@ -1092,11 +1100,16 @@
           "description": "Update status",
           "readOnly": true,
           "enum": [
-            "InProgress",
-            "Completed"
+            "Unknown",
+            "Updating",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled"
           ],
           "x-ms-enum": {
-            "name": "UpdateStatus",
+            "name": "OperationStatus",
             "modelAsString": true
           }
         },
