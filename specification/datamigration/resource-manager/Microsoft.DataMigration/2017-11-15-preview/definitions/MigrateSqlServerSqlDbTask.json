@@ -141,11 +141,6 @@
           },
           "readOnly": true
         },
-        "migrationValidationResult": {
-          "type": "object",
-          "description": "Migration Validation Results",
-          "$ref": "MigrationValidation.json#/definitions/MigrationValidationResult"
-        },
         "migrationReportResult": {
           "type": "object",
           "description": "Migration Report Result, provides unique url for downloading your migration report.",
@@ -398,6 +393,26 @@
       "allOf": [
         {
           "$ref": "TasksCommon.json#/definitions/DataItemMigrationSummaryResult"
+        }
+      ]
+    },
+    "MigrateSqlServerSqlDbTaskOutputValidationResult": {
+      "x-ms-discriminator-value": "MigrationValidationOutput",
+      "type": "object",
+      "$ref": "./MigrationValidation.json#/definitions/MigrationValidationResult",
+      "allOf": [
+        {
+          "$ref": "#/definitions/MigrateSqlServerSqlDbTaskOutput"
+        }
+      ]
+    },
+    "MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResult": {
+      "x-ms-discriminator-value": "MigrationDatabaseLevelValidationOutput",
+      "type": "object",
+      "$ref": "./MigrationValidation.json#/definitions/MigrationValidationDatabaseLevelResult",
+      "allOf": [
+        {
+          "$ref": "#/definitions/MigrateSqlServerSqlDbTaskOutput"
         }
       ]
     }
