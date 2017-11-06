@@ -3,6 +3,7 @@
         "subscriptionId": "00000000-1111-2222-3333-444444444444",
         "resourceGroupName": "securityalert-4799",
         "managedInstanceName": "securityalert-6440",
+        "securityAlertPolicyName": "Default",
         "api-version": "2017-03-01-preview",
         "parameters": {
             "properties": {
