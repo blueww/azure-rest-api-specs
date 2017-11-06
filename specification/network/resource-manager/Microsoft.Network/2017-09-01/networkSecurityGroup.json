@@ -3,7 +3,7 @@
   "info": {
     "title": "NetworkManagementClient",
     "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
-    "version": "2017-08-01"
+    "version": "2017-09-01"
   },
   "host": "management.azure.com",
   "schemes": [
@@ -597,6 +597,13 @@
           },
           "description": "The CIDR or source IP ranges."
         },
+        "sourceApplicationSecurityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "./applicationSecurityGroup.json#/definitions/ApplicationSecurityGroup"
+          },
+          "description": "The application security group specified as source."
+        },
         "destinationAddressPrefix": {
           "type": "string",
           "description": "The destination address prefix. CIDR or destination IP range. Asterix '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used."
@@ -607,6 +614,13 @@
             "type": "string"
           },
           "description": "The destination address prefixes. CIDR or destination IP ranges."
+        },
+        "destinationApplicationSecurityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "./applicationSecurityGroup.json#/definitions/ApplicationSecurityGroup"
+          },
+          "description": "The application security group specified as destination."
         },
         "sourcePortRanges": {
           "type": "array",

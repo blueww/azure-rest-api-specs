@@ -1,0 +1,37 @@
+{
+	"parameters": {
+        "api-version": "2017-10-10-privatepreview",
+        "subscriptionId": "subid"
+    },
+	"responses": {
+		"200": {
+			"body": {
+				"id": "/subscriptions/subid/providers/Microsoft.AlertManagement/alertsSummary/current",
+				"type": "Microsoft.AlertManagement/alertsSummary",
+				"name": "current",
+				"properties": {
+					"summary": {
+					  "sev0": 10,
+					  "sev1": 10,
+					  "sev2": 5,
+					  "sev3": 19,
+					  "sev4": 10
+					},
+					"details": [
+					  {
+						"resource": "computer123",
+						"sev0": 10,
+						"sev1": 12,
+						"sev2": 25,
+						"sev3": 30,
+						"sev4": 10
+					  }
+					],
+					"nextLink": "string"
+				}
+			}	
+		}	
+	}
+}
+
+

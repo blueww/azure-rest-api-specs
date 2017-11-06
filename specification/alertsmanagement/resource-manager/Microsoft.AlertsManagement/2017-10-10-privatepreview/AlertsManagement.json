@@ -1,0 +1,691 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2017-10-10-privatepreview",
+    "title": "Azure Alerts Management Client",
+    "description": "REST APIs for Azure Alerts Management Service."
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/providers/Microsoft.AlertManagement/operations": {
+      "get": {
+        "operationId": "Operations_List",
+        "description": "Lists all operations available Azure Alerts Management REST API operations.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/api-version"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Succesfully retrieved operations list.",
+            "schema": {
+              "$ref": "#/definitions/operationsList"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.AlertManagement/alerts": {
+      "get": {
+        "operationId": "Alerts_List",
+        "description": "List all the existing active alerts. Return list can be made selective by passing the parameters.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionId"
+          },
+          {
+            "$ref": "#/parameters/resourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/resourceName"
+          },
+          {
+            "$ref": "#/parameters/resourceType"
+          },
+          {
+            "$ref": "#/parameters/severity"
+          },
+          {
+            "$ref": "#/parameters/state"
+          },
+          {
+            "$ref": "#/parameters/monitorService"
+          },
+          {
+            "$ref": "#/parameters/timeRange"
+          },
+          {
+            "$ref": "#/parameters/api-version"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Succesfully listed alert objects.",
+            "schema": {
+              "$ref": "#/definitions/alertsList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/errorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "ListAlerts": {
+            "$ref": "./examples/Alerts_List.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.AlertManagement/alerts/{alertId}": {
+      "get": {
+        "operationId": "Alerts_GetById",
+        "summary": "Get a specific alert.",
+        "description": "Get information related to a specific alert",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionId"
+          },
+          {
+            "$ref": "#/parameters/alertId"
+          },
+          {
+            "$ref": "#/parameters/api-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Returns the alert with the specified ID.",
+            "schema": {
+              "$ref": "#/definitions/alert"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/errorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "GetById": {
+            "$ref": "./examples/Alerts_GetbyId.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.AlertManagement/alerts/{alertId}/resolve": {
+      "post": {
+        "operationId": "Alerts_Resolve",
+        "description": "Change the state of the alert from active to resolved.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionId"
+          },
+          {
+            "$ref": "#/parameters/alertId"
+          },
+          {
+            "$ref": "#/parameters/api-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Alert state updated.",
+            "schema": {
+              "$ref": "#/definitions/alert"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/errorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Resolve": {
+            "$ref": "./examples/Alerts_Resolve.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.AlertManagement/alertsSummary": {
+      "get": {
+        "operationId": "Alerts_GetSummary",
+        "description": "Summary of alerts with the count each severity.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionId"
+          },
+          {
+            "$ref": "#/parameters/resourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/timeRange"
+          },
+          {
+            "$ref": "#/parameters/api-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Alert state updated.",
+            "schema": {
+              "$ref": "#/definitions/alertsSummary"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/errorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Summary": {
+            "$ref": "./examples/Alerts_Summary.json"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "subscriptionId": {
+      "name": "subscriptionId",
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+      "type": "string",
+      "in": "path",
+      "required": true
+    },
+    "api-version": {
+      "name": "api-version",
+      "description": "Client API version",
+      "type": "string",
+      "in": "query",
+      "required": true,
+      "enum": [
+        "2017-10-10-privatepreview"
+      ]
+    },
+    "alertId": {
+      "name": "alertId",
+      "description": "Unique ID of an alert object.",
+      "type": "string",
+      "in": "path",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "resourceGroupName": {
+      "description": "filter by resource group name",
+      "name": "resourceGroupName",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "method"
+    },
+    "resourceName": {
+      "description": "filter by resource name",
+      "name": "resourceName",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "method"
+    },
+    "resourceType": {
+      "description": "filter by resource type",
+      "name": "resourceType",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "method"
+    },
+    "monitorService": {
+      "description": "filter by monitor service",
+      "name": "monitorService",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "method",
+      "enum": [
+        "Azure Monitor",
+        "Application Insights",
+        "Log Analytics",
+        "Solution",
+        "Activity Logs",
+        "Zabbix",
+        "SCOM"
+      ],
+      "x-ms-enum": {
+        "name": "MonitorService",
+        "modelAsString": true
+      }
+    },
+    "severity": {
+      "description": "filter by severity",
+      "name": "severity",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "method",
+      "enum": [
+        "Sev0",
+        "Sev1",
+        "Sev2",
+        "Sev3",
+        "Sev4"
+      ],
+      "x-ms-enum": {
+        "name": "Severity",
+        "modelAsString": true
+      }
+    },
+    "state": {
+      "description": "filter by state",
+      "name": "state",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "method",
+      "enum": [
+        "Resolved",
+        "Active"
+      ],
+      "x-ms-enum": {
+        "name": "State",
+        "modelAsString": true
+      }
+    },
+    "timeRange": {
+      "description": "filter by time range",
+      "name": "timeRange",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "method",
+      "enum": [
+        "1h",
+        "1d",
+        "7d",
+        "30d"
+      ],
+      "x-ms-enum": {
+        "name": "TimeRange",
+        "modelAsString": true
+      }
+    }
+  },
+  "definitions": {
+    "operation": {
+      "description": "Operation provided by provider",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the operation"
+        },
+        "display": {
+          "type": "object",
+          "description": "Properties of the operation",
+          "properties": {
+            "provider": {
+              "type": "string",
+              "description": "Provider name"
+            },
+            "resource": {
+              "type": "string",
+              "description": "Resource name"
+            },
+            "operation": {
+              "type": "string",
+              "description": "Operation name"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the operation"
+            }
+          }
+        }
+      }
+    },
+    "operationsList": {
+      "description": "Lists the operations available in the AlertManagement resource provider.",
+      "properties": {
+        "nextLink": {
+          "description": "URL to fetch the next set of alerts.",
+          "type": "string"
+        },
+        "value": {
+          "description": "Array of operations",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/operation"
+          }
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "errorResponse": {
+      "description": "An error response from the service.",
+      "x-ms-external": true,
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/errorResponseBody"
+        }
+      }
+    },
+    "errorResponseBody": {
+      "description": "Details of error response.",
+      "x-ms-external": true,
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Error code, intended to be consumed programmatically."
+        },
+        "message": {
+          "type": "string",
+          "description": "Description of the error, intended for display in user interface."
+        },
+        "target": {
+          "type": "string",
+          "description": "Target of the particular error, for example name of the property."
+        },
+        "details": {
+          "type": "array",
+          "description": "A list of additional details about the error.",
+          "items": {
+            "$ref": "#/definitions/errorResponseBody"
+          }
+        }
+      }
+    },
+    "alertsSummary": {
+      "description": "Summary of the alerts.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/alertsSummaryProperties"
+        }
+      }
+    },
+    "alertsSummaryProperties": {
+      "type": "object",
+      "description": "Summary of the alerts",
+      "properties": {
+        "summary": {
+          "type": "object",
+          "description": "Total number of alerts by severity",
+          "properties": {
+            "total": {
+              "type": "integer",
+              "description": "Total alerts including resolved and unresolved"
+            },
+            "sev0": {
+              "type": "integer",
+              "description": "Unresolved alerts count of severity sev0"
+            },
+            "sev1": {
+              "type": "integer",
+              "description": "Unresolved alerts count of severity sev1"
+            },
+            "sev2": {
+              "type": "integer",
+              "description": "Unresolved alerts count of severity sev2"
+            },
+            "sev3": {
+              "type": "integer",
+              "description": "Unresolved alerts count of severity sev3"
+            },
+            "sev4": {
+              "type": "integer",
+              "description": "Unresolved alerts count of severity sev4"
+            }
+          }
+        },
+        "details": {
+          "type": "array",
+          "description": "Summary of the unresolved alerts by severity per resource",
+          "items": {
+            "$ref": "#/definitions/unresolvedAlertsByResourceItem"
+          }
+        },
+        "nextLink": {
+          "description": "URL to fetch the next set of alerts.",
+          "type": "string"
+        }
+      }
+    },
+    "unresolvedAlertsByResourceItem": {
+      "type": "object",
+      "description": "Unresolved alerts summary of a resource",
+      "properties": {
+        "resource": {
+          "type": "string",
+          "description": "Name of the resource"
+        },
+        "sev0": {
+          "type": "integer",
+          "description": "Unresolved severity sev0 count"
+        },
+        "sev1": {
+          "type": "integer",
+          "description": "Unresolved severity sev1 count"
+        },
+        "sev2": {
+          "type": "integer",
+          "description": "Unresolved severity sev2 count"
+        },
+        "sev3": {
+          "type": "integer",
+          "description": "Unresolved severity sev3 count"
+        },
+        "sev4": {
+          "type": "integer",
+          "description": "Unresolved severity sev4 count"
+        }
+      }
+    },
+    "Resource": {
+      "x-ms-azure-resource": true,
+      "description": "An azure resource object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Azure resource Id"
+        },
+        "type": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Azure resource type"
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Azure resource name"
+        }
+      }
+    },
+    "alert": {
+      "description": "An alert created in alert management service.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/alertProperties"
+        }
+      }
+    },
+    "alertsList": {
+      "description": "List the alerts.",
+      "properties": {
+        "nextLink": {
+          "description": "URL to fetch the next set of alerts.",
+          "type": "string"
+        },
+        "value": {
+          "description": "List of alerts",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/alert"
+          }
+        }
+      }
+    },
+    "alertProperties": {
+      "type": "object",
+      "description": "An alert created in alert management service. Resource NOT tracked by ARM.",
+      "properties": {
+        "severity": {
+          "type": "string",
+          "description": "Severity of alert Sev1 being highest and Sev3 being lowest.",
+          "readOnly": true,
+          "enum": [
+            "Sev0",
+            "Sev1",
+            "Sev2",
+            "Sev3",
+            "Sev4"
+          ],
+          "x-ms-enum": {
+            "name": "Severity",
+            "modelAsString": true
+          }
+        },
+        "signalType": {
+          "type": "string",
+          "description": "Log based alert or metric based alert",
+          "readOnly": true,
+          "enum": [
+            "Metric",
+            "Log",
+            "Unknown"
+          ],
+          "x-ms-enum": {
+            "name": "SignalType",
+            "modelAsString": true
+          }
+        },
+        "state": {
+          "type": "string",
+          "description": "Alert state either active or resolved.",
+          "readOnly": true,
+          "enum": [
+            "Active",
+            "Resolved"
+          ],
+          "x-ms-enum": {
+            "name": "State",
+            "modelAsString": true
+          }
+        },
+        "targetResource": {
+          "type": "string",
+          "description": "Target ARM resource ID"
+        },
+        "monitorService": {
+          "type": "string",
+          "description": "Monitoring source of the alert object.",
+          "readOnly": true,
+          "enum": [
+            "Azure Monitor",
+            "Application Insights",
+            "Log Analytics",
+            "Solution",
+            "Activity Logs",
+            "Zabbix",
+            "SCOM"
+          ],
+          "x-ms-enum": {
+            "name": "MonitorService",
+            "modelAsString": true
+          }
+        },
+        "sourceCreatedId": {
+          "type": "string",
+          "description": "Unique Id created by monitoring source",
+          "readOnly": true
+        },
+        "rule": {
+          "type": "string",
+          "description": "ARM id of alert rule, if the alert is created by azure monitoring source else null.",
+          "readOnly": true
+        },
+        "duplicateAlertCount": {
+          "type": "integer",
+          "description": "Number of duplicate alerts.",
+          "readOnly": true
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation time(ISO-8601 format).",
+          "readOnly": true
+        },
+        "lastModifiedDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification time(ISO-8601 format).",
+          "readOnly": true
+        },
+        "lastModifiedUserName": {
+          "type": "string",
+          "description": "User who last modified the alert.",
+          "readOnly": true
+        },
+        "payload": {
+          "type": "object",
+          "description": "More detailed properties of alert where fields vary with monitoring source.",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

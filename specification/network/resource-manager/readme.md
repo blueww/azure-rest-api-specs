@@ -28,9 +28,8 @@ These are the global settings for the Network API.
 title: NetworkManagementClient
 description: Network Client
 openapi-type: arm
-tag: package-2017-08
+tag: package-2017-09
 ```
-
 
 ### Tag: package-2017-09
 
@@ -39,6 +38,7 @@ These settings apply only when `--tag=package-2017-09` is specified on the comma
 ``` yaml $(tag) == 'package-2017-09'
 input-file:
 - Microsoft.Network/2017-09-01/applicationGateway.json
+- Microsoft.Network/2017-09-01/applicationSecurityGroup.json
 - Microsoft.Network/2017-09-01/checkDnsAvailability.json
 - Microsoft.Network/2017-09-01/endpointService.json
 - Microsoft.Network/2017-09-01/expressRouteCircuit.json
@@ -54,7 +54,6 @@ input-file:
 - Microsoft.Network/2017-09-01/usage.json
 - Microsoft.Network/2017-09-01/virtualNetwork.json
 - Microsoft.Network/2017-09-01/virtualNetworkGateway.json
-- Microsoft.Network/2017-09-01/virtualWAN.json
 - Microsoft.Network/2017-09-01/vmssNetworkInterface.json
 - Microsoft.Network/2017-09-01/vmssPublicIpAddress.json
 ```

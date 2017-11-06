@@ -1,0 +1,72 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Azure Data Migration Service Resource Provider",
+    "version": "2017-04-15-privatepreview"
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {},
+  "definitions": {
+    "MigrateOracleSqlTaskProperties": {
+      "x-ms-discriminator-value": "Migrate.Oracle.Sql",
+      "type": "object",
+      "description": "Properties for task that migrates Oracle databases to Azure and SQL Server databases",
+      "properties": {
+        "input": {
+          "description": "Task input",
+          "$ref": "#/definitions/MigrateOracleSqlTaskInput"
+        },
+        "output": {
+          "description": "Task output. This is ignored if submitted.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MigrateOracleSqlTaskOutput"
+          },
+          "readOnly": true
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
+        }
+      ]
+    },
+    "MigrateOracleSqlTaskInput": {
+      "type": "object",
+      "description": "Input for task that migrates Oracle databases to Azure and SQL Server databases",
+      "allOf": [
+        {
+          "$ref": "./TasksCommon.json#/definitions/NonSqlMigrationTaskInput"
+        }
+      ],
+      "properties": {
+        "sourceConnectionInfo": {
+          "$ref": "./Common.json#/definitions/OracleConnectionInfo",
+          "description": "Information for connecting to Oracle source"
+        }
+      },
+      "required": [
+        "sourceConnectionInfo"
+      ]
+    },
+    "MigrateOracleSqlTaskOutput": {
+      "type": "object",
+      "description": "Output for task that migrates Oracle databases to Azure and SQL Server databases",
+      "allOf": [
+        {
+          "$ref": "./TasksCommon.json#/definitions/NonSqlMigrationTaskOutput"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+   "parameters":{
+      "serviceGroup":"serviceGroup01",
+      "rolloutId": "6CAB4BB8-C4A7-4632-B359-1536A0DDEE05",
+      "api-version":"2017-11-01-preview",
+      "retryAttempt": 0,
+      "$expand": true
+   },
+   "responses":{
+      "200":{
+         "headers":{
+         },
+         "body":{
+            "rolloutId": "6CAB4BB8-C4A7-4632-B359-1536A0DDEE05",
+            "rolloutName": "rolloutName01",
+            "status": "running",
+            "totalRetryAttempts": 0,
+            "rolloutDetails": {
+              "serviceGroup": "serviceGroup01",
+              "environment": "Prod",
+              "buildVersion": "1.0.0",
+              "caller": "userName01@yourorg.com",
+              "artifactSource": {
+                "type": "AzureStorage",
+                "serviceGroupRoot": "SomeServiceGroupRoot",
+                "rolloutSpecificationReference": "SomeRolloutSpec.json",
+                "location": "https://yourblobcontainerasuri"
+              }
+            },
+            "rolloutOperationInfo": {
+              "retryAttempt": 0,
+              "skipSucceededOnRetry": false,
+              "startTime": "2017-01-01T01:00:01Z",
+              "errorInfo": null
+            },
+            "resourceGroups": [
+              {
+                "name": "resourceGroup1",
+                "location": "region1",
+                "lastUpdatedTime": "2017-01-01T01:01:01Z",
+                "subscriptionId": "EB09640B-49FE-429C-8C04-1E265340A76E",
+                "resources": [
+                  {
+                    "name": "serviceResource01",
+                    "actions": [
+                      {
+                        "name": "Deploy",
+                        "status": "running",
+                        "actionOperationInfo": {
+                          "correlationId": "A2FADA90-0415-4177-BD85-00F5BCBD9E71",
+                          "startTime": "2017-01-01T01:00:01Z",
+                          "lastUpdatedTime": "2017-01-01T01:01:01Z",
+                          "errorInfo": ""
+                        },
+                        "resourceOperations": [
+                          {
+                            "resourceName": "resource01",
+                            "operationId": "933158162DBF8F12",
+                            "resourceType": "Microsoft.Compute/virtualMachines",
+                            "provisioningState": "running",
+                            "statusMessage": "",
+                            "statusCode": "200"
+                          }
+                        ],
+                        "messages": [
+                          {
+                            "timeStamp": "2017-01-01T01:00:10Z",
+                            "message": "Some message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "serviceResource02",
+                    "actions": [
+                      {
+                        "name": "Deploy",
+                        "status": "running",
+                        "actionOperationInfo": {
+                          "correlationId": "B2FADA90-0415-4177-BD85-00F5BCBD9E71",
+                          "startTime": "2017-01-01T01:20:01Z",
+                          "endTime": "2017-01-01T01:25:00Z",
+                          "lastUpdatedTime": "2017-01-01T01:21:01Z",
+                          "errorInfo": ""
+                        },
+                        "resourceOperations": [
+                          {
+                            "resourceName": "resource02",
+                            "operationId": "933158162DBF8F12",
+                            "resourceType": "Microsoft.Web/sites",
+                            "provisioningState": "succeeded",
+                            "statusMessage": "",
+                            "statusCode": "200"
+                          }
+                        ],
+                        "messages": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+         }
+      }
+   }
+}

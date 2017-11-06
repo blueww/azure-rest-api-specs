@@ -3,7 +3,7 @@
   "info": {
     "title": "NetworkManagementClient",
     "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
-    "version": "2017-08-01"
+    "version": "2017-09-01"
   },
   "host": "management.azure.com",
   "schemes": [
@@ -446,7 +446,7 @@
           "NetworkInterfaces"
         ],
         "operationId": "NetworkInterfaceLoadBalancers_List",
-        "description": "Get all load balancers in a network interface",
+        "description": "List all load balancers in a network interface.",
         "parameters": [
           {
             "name": "resourceGroupName",
@@ -549,6 +549,13 @@
         "publicIPAddress": {
           "$ref": "./publicIpAddress.json#/definitions/PublicIPAddress",
           "description": "Public IP address bound to the IP configuration."
+        },
+        "applicationSecurityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "./applicationSecurityGroup.json#/definitions/ApplicationSecurityGroup"
+          },
+          "description": "Application security groups in which the IP configuration is included."
         },
         "provisioningState": {
           "type": "string",

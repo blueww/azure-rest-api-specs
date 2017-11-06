@@ -5,7 +5,7 @@
     "description": "The Azure BatchAI Management API.",
     "version": "2017-09-01-preview",
     "x-ms-code-generation-settings": {
-      "name": "BatchAIClient"
+      "name": "BatchAIManagementClient"
     }
   },
   "host": "management.azure.com",
@@ -833,55 +833,6 @@
           }
         }
       },
-      "patch": {
-        "tags": [
-          "FileServer"
-        ],
-        "operationId": "FileServers_Update",
-        "description": "Update the properties of a given file server.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/FileServerNameParameter"
-          },
-          {
-            "name": "parameters",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FileServerUpdateParameters"
-            },
-            "description": "Additional parameters for cluster update."
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The operation was successful. The response contains the file server entity.",
-            "schema": {
-              "$ref": "#/definitions/FileServer"
-            }
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        },
-        "x-ms-examples": {
-          "Patch jobserver": {
-            "$ref": "./examples/PatchFileServer.json"
-          }
-        }
-      },
       "delete": {
         "tags": [
           "FileServer"
@@ -963,92 +914,6 @@
         "x-ms-examples": {
           "Get jobserver": {
             "$ref": "./examples/GetFileServer.json"
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/fileServers/{fileServerName}/suspend": {
-      "post": {
-        "tags": [
-          "FileServer"
-        ],
-        "operationId": "FileServers_Suspend",
-        "description": "Suspends the file server.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/FileServerNameParameter"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The operation was successful."
-          },
-          "202": {
-            "description": "The operation is accepted."
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Suspend jobserver": {
-            "$ref": "./examples/SuspendFileServer.json"
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/fileServers/{fileServerName}/start": {
-      "post": {
-        "tags": [
-          "FileServer"
-        ],
-        "operationId": "FileServers_Resume",
-        "description": "Starts a suspended file Server.",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/FileServerNameParameter"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The operation was successful."
-          },
-          "202": {
-            "description": "The operation is accepted."
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Resume jobserver": {
-            "$ref": "./examples/ResumeFileServer.json"
           }
         }
       }
@@ -1181,36 +1046,6 @@
       ],
       "description": "The properties of a file server."
     },
-    "FileServerUpdateParameters": {
-      "properties": {
-        "tags": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "The user specified tags associated with the file server."
-        },
-        "properties": {
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/FileServerUpdateProperties",
-          "description": "The properties of the file server."
-        }
-      },
-      "description": "Parameters supplied to the Update operation."
-    },
-    "FileServerUpdateProperties": {
-      "properties": {
-        "sshConfiguration": {
-          "title": "SSH settings for the file server.",
-          "$ref": "#/definitions/SshConfiguration"
-        },
-        "dataDisks": {
-          "title": "Settings for the data disk which would be created for the file server.",
-          "$ref": "#/definitions/DataDisks"
-        }
-      },
-      "description": "The properties of a file server."
-    },
     "FileServerListResult": {
       "properties": {
         "value": {
@@ -1309,11 +1144,6 @@
             "name": "StorageAccountType",
             "modelAsString": true
           }
-        },
-        "encryptionSettings": {
-          "readOnly": true,
-          "title": "Settings to enable Disk Encryption",
-          "$ref": "#/definitions/EncryptionSettings"
         }
       },
       "required": [
@@ -1323,30 +1153,7 @@
       ],
       "description": "Settings for the data disk which would be created for the file server."
     },
-    "EncryptionSettings": {
-      "properties": {
-        "enabled": {
-          "type": "boolean",
-          "title": "Set to true to enable disk encryption ."
-        },
-        "diskEncryptionSecret": {
-          "title": "Disk encryption settings for the file server.",
-          "$ref": "#/definitions/DiskEncryptionSecret"
-        },
-        "keyEncryptionKey": {
-          "title": "Key Vault information for disk Key Encryption Key.",
-          "description": "Note: Key encryption key is the asymmetric key (RSA 2048) that you can use to protect or wrap the secret.",
-          "$ref": "#/definitions/KeyEncryptionKey"
-        }
-      },
-      "required": [
-        "enabled",
-        "diskEncryptionSecret",
-        "keyEncryptionKey"
-      ],
-      "description": "Settings to enable Disk Encryption."
-    },
-    "DiskEncryptionSecret": {
+    "KeyVaultSecretReference": {
       "properties": {
         "sourceVault": {
           "title": "Fully qualified resource Id for the Key Vault.",
@@ -1354,16 +1161,16 @@
         },
         "secretUrl": {
           "type": "string",
-          "title": "Key Vault Secret Url which would be used."
+          "title": "The URL referencing a secret in a Key Vault."
         }
       },
       "required": [
         "sourceVault",
         "secretUrl"
       ],
-      "description": "Key Vault information for disk Encryption Secret."
+      "description": "Describes a reference to Key Vault Secret."
     },
-    "KeyEncryptionKey": {
+    "KeyVaultKeyReference": {
       "properties": {
         "sourceVault": {
           "title": "Fully qualified resource Id for the Key Vault.",
@@ -1371,14 +1178,14 @@
         },
         "keyUrl": {
           "type": "string",
-          "title": "Key Vault Key Url which would be used as Key Encryption Key."
+          "title": "The URL referencing a key in a Key Vault."
         }
       },
       "required": [
         "sourceVault",
         "keyUrl"
       ],
-      "description": "Key Vault information for disk Key Encryption Key."
+      "description": "Describes a reference to Key Vault Key."
     },
     "MountSettings": {
       "properties": {
@@ -1755,14 +1562,20 @@
         "unusableNodeCount": {
           "type": "integer",
           "format": "int32",
-          "title": "Number of compute nodes which are unusable"
+          "title": "Number of compute nodes which are unusable."
+        },
+        "leavingNodeCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number of compute nodes which are leaving the cluster."
         }
       },
       "required": [
         "idleNodeCount",
         "runningNodeCount",
         "preparingNodeCount",
-        "unusableNodeCount"
+        "unusableNodeCount",
+        "leavingNodeCount"
       ],
       "description": "Counts of various compute node states on the cluster."
     },
@@ -2103,13 +1916,6 @@
               "title": "Max time the job can run.",
               "description": "Default Value = 1 week.",
               "default": "7.00:00:00"
-            },
-            "maxTaskRetryCount": {
-              "type": "integer",
-              "format": "int32",
-              "title": "Max number of times job can be retried.",
-              "description": "Default Value = 0.",
-              "default": 0
             }
           },
           "description": "Constraints associated with the Job."
@@ -2238,13 +2044,6 @@
               "title": "Max time the job can run.",
               "description": "Default Value = 1 week.",
               "default": "7.00:00:00"
-            },
-            "maxTaskRetryCount": {
-              "type": "integer",
-              "format": "int32",
-              "title": "Max number of times job can be retried.",
-              "description": "Default Value = 0.",
-              "default": 0
             }
           },
           "description": "Constraints associated with the Job."
@@ -2328,18 +2127,6 @@
               "items": {
                 "$ref": "#/definitions/BatchAIError"
               }
-            },
-            "retryCount": {
-              "type": "integer",
-              "format": "int32",
-              "title": "The number of times the job has been retried.",
-              "description": "The job is retried if it exits with a nonzero exit code, up to the specified MaxRetryCount."
-            },
-            "lastRetryTime": {
-              "type": "string",
-              "format": "date-time",
-              "title": "The most recent time at which a retry of the job started running.",
-              "description": "This element is present only if the job was retried (i.e. retryCount is nonzero). If present, this is typically the same as startTime, but may be different if the job has been restarted for reasons other than retry."
             }
           },
           "required": [
@@ -2615,12 +2402,12 @@
         "password": {
           "type": "string",
           "title": "Password to login.",
-          "description": "One of password or passwordSecretUrl must be specified."
+          "description": "One of password or passwordSecretReference must be specified."
         },
-        "passwordSecretUrl": {
-          "type": "string",
-          "title": "Url of the password stored as secret in a KeyVault",
-          "description": "Users can store their secrets in Azure KeyVault and pass it to the Batch AI Service to integrate with KeyVault. One of password or passwordSecretUrl must be specified."
+        "passwordSecretReference": {
+          "title": "Specifies the location of the password, which is a Key Vault Secret.",
+          "description": "Users can store their secrets in Azure KeyVault and pass it to the Batch AI Service to integrate with KeyVault. One of password or passwordSecretReference must be specified.",
+          "$ref": "#/definitions/KeyVaultSecretReference"
         }
       },
       "description": "Credentials to access a container image in a private repository.",
@@ -2709,12 +2496,12 @@
         "accountKey": {
           "type": "string",
           "title": "Storage account key.",
-          "description": "One of accountKey or accountKeySecretUrl must be specified."
+          "description": "One of accountKey or accountKeySecretReference must be specified."
         },
-        "accountKeySecretUrl": {
-          "type": "string",
-          "title": "Url of the storage account key stored as secret in a KeyVault.",
-          "description": "Users can store their secrets in Azure KeyVault and pass it to the Batch AI Service to integrate with KeyVault. One of accountKey or accountKeySecretUrl must be specified."
+        "accountKeySecretReference": {
+          "title": "Specifies the location of the storage account key, which is a Key Vault Secret.",
+          "description": "Users can store their secrets in Azure KeyVault and pass it to the Batch AI Service to integrate with KeyVault. One of accountKey or accountKeySecretReference must be specified.",
+          "$ref": "#/definitions/KeyVaultSecretReference"
         }
       },
       "description": "Credentials to access Azure File Share."
@@ -2763,7 +2550,11 @@
       "properties": {
         "accountName": {
           "type": "string",
-          "title": "Name of the storage account."
+          "title": "Name of the Azure Blob Storage account."
+        },
+        "containerName": {
+          "type": "string",
+          "title": "Name of the Azure Blob Storage container to mount on the cluster."
         },
         "credentialsInfo": {
           "title": "Information of the Azure Blob Storage account credentials.",
@@ -2779,9 +2570,10 @@
           "title": "Specifies the various mount options that can be used to configure Blob file system."
         }
       },
-      "description": "Details of the Azure Blob Storage account to mount on the cluster.",
+      "description": "Details of the Azure Blob Storage container to mount on the cluster.",
       "required": [
         "accountName",
+        "containerName",
         "credentialsInfo",
         "relativeMountPath"
       ]

@@ -20,7 +20,7 @@
               "creationTime": "2017-08-28T10:22:55.9407275Z",
               "provisioningState": "Succeeded",
               "provisioningStateTransitionTime": "2017-08-28T10:22:55.9407275Z",
-              "allocationState": "Resizing",
+              "allocationState": "Steady",
               "allocationStateTransitionTime": "2017-08-28T10:22:55.9407275Z",
               "vmSize": "STANDARD_D4",
               "interNodeCommunication": "Enabled",
@@ -138,7 +138,13 @@
                 "targetDedicatedNodes": 6,
                 "targetLowPriorityNodes": 28,
                 "nodeDeallocationOption": "TaskCompletion",
-                "resizeTimeout": "PT8M"
+                "resizeTimeout": "PT8M",
+                "errors": [
+                  {
+                    "code": "AllocationTimedout",
+                    "message": "Desired number of dedicated nodes could not be allocated as the resize timeout was reached"
+                  }
+                ]
               }
             }
           }

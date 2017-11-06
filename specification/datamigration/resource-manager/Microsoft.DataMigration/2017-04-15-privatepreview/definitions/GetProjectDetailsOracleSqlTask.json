@@ -1,0 +1,77 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "title": "Azure Data Migration Service Resource Provider",
+    "version": "2017-04-15-privatepreview"
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {},
+  "definitions": {
+    "GetProjectDetailsOracleSqlTaskProperties": {
+      "x-ms-discriminator-value": "GetProjectDetails.Oracle.Sql",
+      "type": "object",
+      "description": "Properties for task that reads information from project artifacts for Oracle as source",
+      "properties": {
+        "input": {
+          "description": "Task input",
+          "$ref": "./TasksCommon.json#/definitions/GetProjectDetailsNonSqlTaskInput"
+        },
+        "output": {
+          "description": "Task output. This is ignored if submitted.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetProjectDetailsOracleSqlTaskOutput"
+          },
+          "readOnly": true
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
+        }
+      ]
+    },
+    "GetProjectDetailsOracleSqlTaskOutput": {
+      "type": "object",
+      "description": "Output for task that reads information from project artifacts for Oracle as source",
+      "properties": {
+        "migrationProjectMetadata": {
+          "description": "Metadata obtained from project",
+          "$ref": "#/definitions/OracleDataMigrationProjectMetadata",
+          "readOnly": true
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./Tasks.json#/definitions/TaskOutput"
+        }
+      ]
+    },
+    "OracleDataMigrationProjectMetadata": {
+      "type": "object",
+      "description": "Metadata for Oracle project artifacts",
+      "properties": {
+        "sourceSID": {
+          "type": "string",
+          "description": "Oracle server SID",
+          "readOnly": true
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./TasksCommon.json#/definitions/DataMigrationProjectMetadata"
+        }
+      ]
+    }
+  }
+}

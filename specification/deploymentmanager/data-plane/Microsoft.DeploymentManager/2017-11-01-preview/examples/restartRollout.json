@@ -1,0 +1,40 @@
+{
+   "parameters":{
+      "serviceGroup":"serviceGroup01",
+      "rolloutId": "6CAB4BB8-C4A7-4632-B359-1536A0DDEE05",
+      "skipSucceeded": true,
+      "api-version":"2017-11-01-preview"
+   },
+   "responses":{
+      "200":{
+         "headers":{
+            "location": "https://AdmEndpoint/api/serviceGroups/serviceGroup01/rollouts/6CAB4BB8-C4A7-4632-B359-1536A0DDEE05?retryAttempt=1",
+            "retryAfter": "60"
+         },
+         "body":{
+            "rolloutId": "6CAB4BB8-C4A7-4632-B359-1536A0DDEE05",
+            "rolloutName": "rolloutName01",
+            "status": "running",
+            "totalRetryAttempts": 1,
+            "rolloutDetails": {
+              "serviceGroup": "serviceGroup01",
+              "environment": "Test",
+              "buildVersion": "1.0.0",
+              "caller": "userName01@yourorg.com",
+              "artifactSource": {
+                "type": "AzureStorage",
+                "serviceGroupRoot": "SomeServiceGroupRoot",
+                "rolloutSpecificationReference": "SomeRolloutSpec.json",
+                "location": "https://yourblobcontainerasuri"
+              }
+            },
+            "rolloutOperationInfo": {
+              "retryAttempt": 1,
+              "skipSucceededOnRetry": true,
+              "startTime": "2017-01-01T01:00:01Z",
+              "errorInfo": null
+            }
+         }
+      }
+   }
+}
