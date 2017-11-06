@@ -4,13 +4,13 @@
     "resourceGroupName": "exampleResourceGroup",
     "factoryName": "exampleFactoryName",
     "integrationRuntimeName": "exampleManagedIntegrationRuntime",
-    "api-version": "2017-09-01-preview"
+    "api-version": "2018-02-01-preview"
   },
   "responses": {
     "202": {
       "headers": {
         "Date": "Wed, 13 Sep 2017 17:34:02 GMT",
-        "Location": "https://management.azure.com/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/integrationRuntimes/exampleManagedIntegrationRuntime/start/operationresults/786f4c2cfb894b05a139bce91b6b354c?api-version=2017-09-01-preview",
+        "Location": "https://management.azure.com/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/integrationRuntimes/exampleManagedIntegrationRuntime/start/operationresults/786f4c2cfb894b05a139bce91b6b354c?api-version=2018-02-01-preview",
         "Retry-After": "15",
         "x-ms-request-id": "9434ffa3-9fab-4c81-a132-96ad53343d60",
         "X-Content-Type-Options": "nosniff",

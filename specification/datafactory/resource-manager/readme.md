@@ -27,16 +27,16 @@ These are the global settings for the Data Factory V2 API.
 title: DataFactoryManagementClient
 description: The Azure Data Factory V2 management API provides a RESTful set of web services that interact with Azure Data Factory V2 services.
 openapi-type: arm
-tag: package-2017-09-preview
+tag: package-2018-02-preview
 ```
 
-### Tag: package-2017-09-preview
+### Tag: package-2018-02-preview
 
-These settings apply only when `--tag=package-2017-09-preview` is specified on the command line.
+These settings apply only when `--tag=package-2018-02-preview` is specified on the command line.
 
-``` yaml $(tag) == 'package-2017-09-preview'
+``` yaml $(tag) == 'package-2018-02-preview'
 input-file:
-- Microsoft.DataFactory/2017-09-01-preview/datafactory.json
+- Microsoft.DataFactory/2018-02-01-preview/datafactory.json
 ```
 
 ---

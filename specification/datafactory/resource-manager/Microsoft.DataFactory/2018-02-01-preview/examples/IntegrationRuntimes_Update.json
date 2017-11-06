@@ -11,7 +11,7 @@
         "description": "Update description"
       }
     },
-    "api-version": "2017-09-01-preview"
+    "api-version": "2018-02-01-preview"
   },
   "responses": {
     "200": {
