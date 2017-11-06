@@ -1040,7 +1040,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/checkNameAvailability": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/checkNameAvailability": {
       "post": {
         "summary": "Check name validity and availability",
         "description": "This method checks whether a proposed top-level resource name is valid and available.",
@@ -1057,6 +1057,9 @@
             "$ref": "#/parameters/subscriptionId"
           },
           {
+            "$ref": "#/parameters/location"
+          },
+          {
             "$ref": "#/parameters/apiVersion"
           },
           {
@@ -1068,6 +1071,48 @@
             "description": "Name checked",
             "schema": {
               "$ref": "./definitions/Common.json#/definitions/NameAvailabilityResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "./definitions/Common.json#/definitions/ApiError"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/usages": {
+      "get": {
+        "summary": "Get resource quotas and usage information",
+        "description": "This method returns region-specific quotas and resource usage information for the Data Migration Service.",
+        "tags": [
+          "Standard operation",
+          "GET"
+        ],
+        "operationId": "Usages_List",
+        "x-ms-examples": {
+          "Services_Usages": { "$ref": "./examples/Usages_List.json" }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionId"
+          },
+          {
+            "$ref": "#/parameters/location"
+          },
+          {
+            "$ref": "#/parameters/apiVersion"
+          }
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "responses": {
+          "200": {
+            "description": "Quotas returned",
+            "schema": {
+              "$ref": "./definitions/Common.json#/definitions/QuotaList"
             }
           },
           "default": {
@@ -1135,6 +1180,14 @@
     "groupName": {
       "name": "groupName",
       "description": "Name of the resource group",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "location": {
+      "name": "location",
+      "description": "The Azure region of the operation",
       "in": "path",
       "required": true,
       "type": "string",

@@ -88,6 +88,61 @@
         }
       }
     },
+    "Quota": {
+      "type": "object",
+      "description": "Describes a quota for or usage details about a resource",
+      "properties": {
+        "currentValue": {
+          "type": "number",
+          "format": "double",
+          "description": "The current value of the quota. If null or missing, the current value cannot be determined in the context of the request."
+        },
+        "id": {
+          "type": "string",
+          "description": "The resource ID of the quota object"
+        },
+        "limit": {
+          "type": "number",
+          "format": "double",
+          "description": "The maximum value of the quota. If null or missing, the quota has no maximum, in which case it merely tracks usage."
+        },
+        "name": {
+          "type": "object",
+          "description": "The name of the quota",
+          "properties": {
+            "localizedValue": {
+              "type": "string",
+              "description": "The localized name of the quota"
+            },
+            "value": {
+              "type": "string",
+              "description": "The unlocalized name (or ID) of the quota"
+            }
+          }
+        },
+        "unit": {
+          "type": "string",
+          "description": "The unit for the quota, such as Count, Bytes, BytesPerSecond, etc."
+        }
+      }
+    },
+    "QuotaList": {
+      "type": "object",
+      "description": "OData page of quota objects",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "List of quotas",
+          "items": {
+            "$ref": "#/definitions/Quota"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to load the next page of quotas, or null or missing if this is the last page"
+        }
+      }
+    },
     "ReportableException": {
       "type": "object",
       "description": "Exception object for all custom exceptions",
