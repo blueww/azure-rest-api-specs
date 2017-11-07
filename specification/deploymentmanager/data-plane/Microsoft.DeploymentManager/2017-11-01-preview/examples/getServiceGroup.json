@@ -10,8 +10,8 @@
          "body":{
             "ownerGroups": [
               {
-                "ownerGroupObjectId": "82F9FD4B-F998-4D7B-8A7B-7BF3577E5BD6",
-                "ownerGroupDisplayName": "ownerGroup01"
+                "ObjectId": "82F9FD4B-F998-4D7B-8A7B-7BF3577E5BD6",
+                "displayName": "ownerGroup01"
               }
             ]
          }
