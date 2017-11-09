@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "2017-11-01-preview",
-    "title": "SubscriptionDefinitionClient",
-    "description": "Subscription definition client provides an interface to create, modify and retrieve azure subscriptions programmatically."
+    "title": "SubscriptionDefinitionsClient",
+    "description": "Subscription definitions client provides an interface to create, modify and retrieve azure subscriptions programmatically."
   },
   "host": "management.azure.com",
   "schemes": [
@@ -19,7 +19,7 @@
     "/providers/Microsoft.Subscription/operations": {
       "get": {
         "tags": [
-          "SubscriptionDefinition"
+          "SubscriptionDefinitions"
         ],
         "description": "Lists all of the available Microsoft.Subscription API operations.",
         "operationId": "SubscriptionDefinitionsOperationMetadata_list",
@@ -55,10 +55,10 @@
     "/providers/Microsoft.Subscription/subscriptionDefinitions/{subscriptionDefinitionName}": {
       "put": {
         "tags": [
-          "SubscriptionDefinition"
+          "SubscriptionDefinitions"
         ],
         "description": "Create an Azure subscription definition.",
-        "operationId": "SubscriptionDefinition_Create",
+        "operationId": "SubscriptionDefinitions_Create",
         "x-ms-examples": {
           "createSubscriptionDefinition": {
             "$ref": "./examples/createSubscriptionDefinition.json"
@@ -116,10 +116,10 @@
       },
       "get": {
         "tags": [
-          "SubscriptionDefinition"
+          "SubscriptionDefinitions"
         ],
         "description": "Get an Azure subscription definition.",
-        "operationId": "SubscriptionDefinition_Get",
+        "operationId": "SubscriptionDefinitions_Get",
         "x-ms-examples": {
           "getSubscriptionDefinition": {
             "$ref": "./examples/getSubscriptionDefinition.json"
@@ -156,10 +156,10 @@
     "/providers/Microsoft.Subscription/subscriptionDefinitions": {
       "get": {
         "tags": [
-          "SubscriptionDefinition"
+          "SubscriptionDefinitions"
         ],
         "description": "List an Azure subscription definition by subscriptionId.",
-        "operationId": "SubscriptionDefinition_List",
+        "operationId": "SubscriptionDefinitions_List",
         "x-ms-examples": {
           "ListSubscriptionDefinition": {
             "$ref": "./examples/listSubscriptionDefinitions.json"
@@ -183,16 +183,19 @@
               "$ref": "#/definitions/ErrorResponse"
             }
           }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
         }
       }
     },
     "/providers/Microsoft.Subscription/subscriptionOperations/{operationId}": {
       "get": {
         "tags": [
-          "SubscriptionOperation"
+          "SubscriptionDefinitions"
         ],
         "description": "Retrieves the status of the subscription definition PUT operation. The URI of this API is returned in the Location field of the response header.",
-        "operationId": "SubscriptionDefinition_GetOperationStatus",
+        "operationId": "SubscriptionDefinitions_GetOperationStatus",
         "x-ms-examples": {
           "getSubscriptionDefinitionOperation": {
             "$ref": "./examples/getSubscriptionDefinitionOperation.json"
@@ -297,6 +300,10 @@
             "$ref": "#/definitions/SubscriptionDefinition"
           },
           "description": "An array of subscriptionDefinitions"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of operation list results if there are any."
         }
       },
       "description": "Subscription Definition List operation response."
