@@ -2,16 +2,18 @@
    "parameters":{
       "serviceGroup":"serviceGroup01",
       "api-version":"2017-11-01-preview",
-      "artifactSource": {
-        "version": "2017-11-01-preview",
-        "type": "AzureStorage",
-        "serviceGroupRoot": "SomeServiceGroupRoot",
-        "rolloutSpecificationReference": "SomeRolloutSpec.json",
-        "credential": {
-          "type": "AzureStorageSASUri",
-          "source": "Api",
-          "data": {
-            "value": "https://yourblobcontainerasuri"
+      "rolloutRequest":{
+        "artifactSource": {
+          "version": "2017-11-01-preview",
+          "type": "AzureStorage",
+          "serviceGroupRoot": "SomeServiceGroupRoot",
+          "rolloutSpecificationReference": "SomeRolloutSpec.json",
+          "credential": {
+            "type": "AzureStorageSASUri",
+            "source": "Api",
+            "data": {
+              "value": "https://yourblobcontainersasuri"
+            }
           }
         }
       }
@@ -36,7 +38,7 @@
                 "type": "AzureStorage",
                 "serviceGroupRoot": "SomeServiceGroupRoot",
                 "rolloutSpecificationReference": "SomeRolloutSpec.json",
-                "location": "https://yourblobcontainerasuri"
+                "location": "https://yourblobcontainersasuri"
               }
             },
             "rolloutOperationInfo": {

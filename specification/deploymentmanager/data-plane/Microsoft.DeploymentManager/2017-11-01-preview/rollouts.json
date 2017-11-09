@@ -10,7 +10,7 @@
         "https"
     ],
     "paths": {
-        "/api/serviceGroups/{serviceGroup}": {
+        "/serviceGroups/{serviceGroup}": {
             "put": {
                 "tags": [
                     "ServiceGroups"
@@ -29,12 +29,13 @@
                         "$ref": "#/parameters/ServiceGroupParameter" 
                     },
                     { 
-                        "name": "ownerGroups",
+                        "name": "serviceGroupRequest",
                         "in": "body", 
                         "required": true, 
                         "schema": { 
-                            "$ref": "#/definitions/OwnerGroups" 
-                        }
+                            "$ref": "#/definitions/ServiceGroup" 
+                        },
+                        "description": "ServiceGroup object."
                     },
                     { 
                         "$ref": "#/parameters/ApiVersionParameter" 
@@ -42,7 +43,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "A service group containing the result of the create request ",
+                        "description": "A service group containing the result of the create request.",
                         "schema": {
                             "$ref": "#/definitions/ServiceGroup"
                             }
@@ -102,7 +103,7 @@
                 }
             }
         },
-        "/api/serviceGroups/{serviceGroup}/rollouts/": {
+        "/serviceGroups/{serviceGroup}/rollouts/": {
             "post": {
                 "tags": [
                     "Rollouts"
@@ -122,13 +123,13 @@
                         "$ref": "#/parameters/ServiceGroupParameter" 
                     },
                     { 
-                        "name": "artifactSource", 
+                        "name": "rolloutRequest", 
                         "in": "body", 
                         "required": true, 
                         "schema": { 
-                            "$ref": "#/definitions/ArtifactSource" 
+                            "$ref": "#/definitions/RolloutRequest" 
                         }, 
-                        "description": "Source details of the artifacts that defines the rollout."
+                        "description": "Source rollout request object that defines the rollout."
                     },
                     { 
                         "$ref": "#/parameters/ApiVersionParameter" 
@@ -155,7 +156,7 @@
                 }
             }
         },
-        "/api/serviceGroups/{serviceGroup}/rollouts/{rolloutId}": {
+        "/serviceGroups/{serviceGroup}/rollouts/{rolloutId}": {
             "get": {
                 "tags": [
                     "Rollouts"
@@ -187,7 +188,12 @@
                         "name": "$expand",
                         "in": "query",
                         "required": false,
-                        "type": "boolean",
+                        "type": "string",
+                        "enum": [ "Details" ],
+                        "x-ms-enum": {
+                            "name": "ExpandOptions",
+                            "modelAsString": true
+                        },
                         "description": "Specify $expand=details to populate  full result of the rollout. If not specified, will contain only top-level information."
                     },
                     { 
@@ -214,7 +220,7 @@
                 }
             }
         },
-        "/api/serviceGroups/{serviceGroup}/rollouts/{rolloutId}/cancel": {
+        "/serviceGroups/{serviceGroup}/rollouts/{rolloutId}/cancel": {
             "post": {
                 "tags": [
                     "Rollouts"
@@ -260,7 +266,7 @@
                 }
             }
         },        
-        "/api/serviceGroups/{serviceGroup}/rollouts/{rolloutId}/restart": {
+        "/serviceGroups/{serviceGroup}/rollouts/{rolloutId}/restart": {
             "post": {
                 "tags": [
                     "Rollouts"
@@ -315,31 +321,35 @@
         }
     },
     "definitions": {
-        "OwnerGroups": {
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/OwnerGroup"
+        "ServiceGroup": {
+            "properties": {
+                "ownerGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OwnerGroup"
+                    }
+                }
             }
         },
         "OwnerGroup": {
             "properties": {
-                "ownerGroupObjectId": {
+                "objectId": {
                     "type": "string",
                     "description": "AAD object id of security group identity that can operate on the service group."
                 },
-                "ownerGroupDisplayName": {
+                "displayName": {
                     "type": "string",
                     "readOnly": true,
                     "description": "Display name of security group identity that can operate on the service group."
                 }
             }
         },
-        "ServiceGroup": {
+        "RolloutRequest": {
             "properties": {
-                "ownerGroups": {
-                    "$ref": "#/definitions/OwnerGroups"
+                "artifactSource":{
+                    "$ref": "#/definitions/ArtifactSource"
                 }
-            }
+            }                
         },
         "ArtifactSource": {
             "properties": {
@@ -696,9 +706,26 @@
                     "description": "Descriptive error information."
                 },
                 "details": {
-                    "readOnly": true,
-                    "$ref": "#/definitions/ErrorInfo",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
                     "description": "More detailed error information."
+                }
+            },
+            "description": "Detailed error information of action failure if any."
+        },
+        "Error": {
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "readOnly": true,
+                    "description": "Error code string."
+                },
+                "message": {
+                    "type": "string",
+                    "readOnly": true,                
+                    "description": "Descriptive error information."
                 }
             },
             "description": "Detailed error information of action failure if any."

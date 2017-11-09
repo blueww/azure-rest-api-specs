@@ -4,7 +4,7 @@
       "rolloutId": "6CAB4BB8-C4A7-4632-B359-1536A0DDEE05",
       "api-version":"2017-11-01-preview",
       "retryAttempt": 0,
-      "$expand": true
+      "$expand": "Details"
    },
    "responses":{
       "200":{
@@ -24,7 +24,7 @@
                 "type": "AzureStorage",
                 "serviceGroupRoot": "SomeServiceGroupRoot",
                 "rolloutSpecificationReference": "SomeRolloutSpec.json",
-                "location": "https://yourblobcontainerasuri"
+                "location": "https://yourblobcontainersasuri"
               }
             },
             "rolloutOperationInfo": {
@@ -93,8 +93,7 @@
                             "statusMessage": "",
                             "statusCode": "200"
                           }
-                        ],
-                        "messages": null
+                        ]
                       }
                     ]
                   }
