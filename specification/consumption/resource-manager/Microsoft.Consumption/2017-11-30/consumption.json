@@ -40,7 +40,7 @@
           "UsageDetails"
         ],
         "operationId": "UsageDetails_List",
-        "description": "Lists the usage details for a scope in reverse chronological order by billing period. Usage details are available via this API only for January 1, 2017 or later.",
+        "description": "Lists the usage details for a scope by billing period. Usage details are available via this API only for May 1, 2014 or later.",
         "externalDocs": {
           "url": "https://docs.microsoft.com/en-us/azure/billing/billing-enterprise-api"
         },
@@ -73,7 +73,7 @@
           },
           {
             "name": "$filter",
-            "description": "May be used to filter usageDetails by usageEnd (Utc time). The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'.",
+            "description": "May be used to filter usageDetails by usageEnd (Utc time), usageStart (Utc time), resourceGroup, instanceName or instanceId. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -93,13 +93,6 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 1000
-          },
-          {
-            "name": "$groupby",
-            "description": "May be used to group the data by meter, usage start, resource type, resource group, instance ID.",
-            "in": "query",
-            "required": false,
-            "type": "string"
           },
           {
             "$ref": "#/parameters/apiVersionParameter"
@@ -347,11 +340,8 @@
           "readOnly": true
         },
         "additionalProperties": {
-          "description": "The list of key/value pairs for the additional properties, in the format 'key':'value' where key = the field name, and value = the field value. By default this is not populated, unless it's specified in $expand.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
+          "description": "Additional details of this usage item. By default this is not populated, unless it's specified in $expand.",
+          "type": "string",
           "readOnly": true
         }
       }
