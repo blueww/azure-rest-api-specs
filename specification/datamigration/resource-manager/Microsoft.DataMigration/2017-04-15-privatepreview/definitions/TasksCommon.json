@@ -295,7 +295,8 @@
         "Failed",
         "Warning",
         "Completed",
-        "Skipped"
+        "Skipped",
+        "Stopped"
       ],
       "x-ms-enum": {
         "name": "MigrationState",
@@ -313,7 +314,7 @@
         "Configured",
         "Running",
         "Error",
-        "Cancelled",
+        "Stopped",
         "Completed",
         "CompletedWithWarnings"
       ],

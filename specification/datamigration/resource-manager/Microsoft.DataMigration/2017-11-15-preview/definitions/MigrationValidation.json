@@ -402,8 +402,9 @@
         "Initialized",
         "InProgress",
         "Completed",
-        "PartiallyCompleted",
-        "Failed"
+        "CompletedWithIssues",
+        "Failed",
+        "Stopped"
       ],
       "x-ms-enum": {
         "name": "ValidationStatus",
