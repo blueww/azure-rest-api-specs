@@ -49,14 +49,14 @@
           "type": "string",
           "description": "The state of the task. This is ignored if submitted.",
           "enum": [
-            "Canceled",
-            "Failed",
-            "FailedValidation",
-            "Faulted",
+            "Unknown",
             "Queued",
             "Running",
+            "Canceled",
             "Succeeded",
-            "Unknown"
+            "Failed",
+            "FailedInputValidation",
+            "Faulted"
           ],
           "x-ms-enum": {
             "name": "TaskState",

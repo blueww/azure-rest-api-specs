@@ -402,7 +402,8 @@
         "Initialized",
         "InProgress",
         "Completed",
-        "PartiallyCompleted",
+        "CompletedWithIssues",
+        "Stopped",
         "Failed"
       ],
       "x-ms-enum": {
