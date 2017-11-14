@@ -3,9 +3,11 @@
     "subscriptionId": "fc04246f-04c5-437e-ac5e-206a19e7193f",
     "api-version": "2017-04-15-privatepreview",
     "location": "eastus",
-    "requestedName": {
-      "name": "DmsSdkService",
-      "type": "services"
+    "parameters": {
+      "requestedName": {
+        "name": "DmsSdkService",
+        "type": "services"
+      }
     }
   },
   "responses": {
