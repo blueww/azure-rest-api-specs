@@ -3,7 +3,16 @@
     "subscriptionId": "fc04246f-04c5-437e-ac5e-206a19e7193f",
     "groupName": "DmsSdkRg",
     "serviceName": "DmsSdkService",
-    "api-version": "2017-04-15-privatepreview"
+    "api-version": "2017-04-15-privatepreview",
+    "parameters": {
+      "properties": {
+        "virtualSubnetId": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmsSdkTestNetwork/providers/Microsoft.Network/virtualNetworks/DmsSdkTestNetwork/subnets/default"
+      },
+      "sku": {
+        "name": "Basic_1vCore"
+      },
+      "location": "southcentralus"
+    }
   },
   "responses": {
     "200": {

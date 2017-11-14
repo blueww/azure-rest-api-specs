@@ -4,10 +4,30 @@
     "groupName": "DmsSdkRg",
     "serviceName": "DmsSdkService",
     "projectName": "DmsSdkProject",
-    "api-version": "2017-11-15-preview"
+    "api-version": "2017-11-15-preview",
+    "parameters": {
+      "location": "southcentralus",
+      "properties": {
+        "sourcePlatform": "SQL",
+        "targetPlatform": "SQLDB"
+      }
+    }
   },
   "responses": {
-    "200": {},
+    "200": {
+      "body": {
+        "properties": {
+          "sourcePlatform": "SQL",
+          "targetPlatform": "SQLDB",
+          "creationTime": "2017-11-03T02:14:54.2458282-07:00",
+          "provisioningState": "Succeeded"
+        },
+        "id": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmsSdkRg/providers/Microsoft.DataMigration/services/DmsSdkService/projects/DmsSdkProject",
+        "location": "southcentralus",
+        "name": "DmsSdkProject",
+        "type": "Microsoft.DataMigration/services/projects"
+      }
+    },
     "201": {
       "body": {
         "properties": {
@@ -16,7 +36,6 @@
           "creationTime": "2017-11-03T02:14:54.2458282-07:00",
           "provisioningState": "Succeeded"
         },
-        "etag": "RlB5GWc6H6vNQyqec+kgtb+Kr1Mlp8se56tuT4w99DY=",
         "id": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmsSdkRg/providers/Microsoft.DataMigration/services/DmsSdkService/projects/DmsSdkProject",
         "location": "southcentralus",
         "name": "DmsSdkProject",
