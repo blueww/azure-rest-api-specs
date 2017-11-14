@@ -17,30 +17,6 @@
   },
   "paths": {},
   "definitions": {
-    "GetProjectDetailsOracleSqlTaskProperties": {
-      "x-ms-discriminator-value": "GetProjectDetails.Oracle.Sql",
-      "type": "object",
-      "description": "Properties for task that reads information from project artifacts for Oracle as source",
-      "properties": {
-        "input": {
-          "description": "Task input",
-          "$ref": "./TasksCommon.json#/definitions/GetProjectDetailsNonSqlTaskInput"
-        },
-        "output": {
-          "description": "Task output. This is ignored if submitted.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GetProjectDetailsOracleSqlTaskOutput"
-          },
-          "readOnly": true
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
-        }
-      ]
-    },
     "GetProjectDetailsOracleSqlTaskOutput": {
       "type": "object",
       "description": "Output for task that reads information from project artifacts for Oracle as source",
@@ -53,7 +29,7 @@
       },
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "./TasksCommon.json#/definitions/TaskOutput"
         }
       ]
     },

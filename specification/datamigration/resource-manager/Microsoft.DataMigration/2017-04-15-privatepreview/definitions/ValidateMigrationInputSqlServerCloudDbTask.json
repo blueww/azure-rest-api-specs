@@ -17,30 +17,6 @@
   },
   "paths": {},
   "definitions": {
-    "ValidateMigrationInputSqlServerCloudDbTaskProperties": {
-      "x-ms-discriminator-value": "ValidateMigrationInput.SqlServer.CloudDb",
-      "type": "object",
-      "description": "Properties for task that validates migration input for SQL to Cloud DB migrations",
-      "properties": {
-        "input": {
-          "description": "Task input",
-          "$ref": "#/definitions/ValidateMigrationInputSqlServerCloudDbTaskInput"
-        },
-        "output": {
-          "description": "Task output. This is ignored if submitted.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ValidateMigrationInputSqlServerCloudDbTaskOutput"
-          },
-          "readOnly": true
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
-        }
-      ]
-    },
     "ValidateMigrationInputSqlServerCloudDbTaskInput": {
       "type": "object",
       "description": "Input for task that validates migration input for SQL to Cloud DB migrations",
@@ -76,7 +52,7 @@
       "description": "Output for task that validates migration input for SQL to Cloud DB migrations",
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "./TasksCommon.json#/definitions/TaskOutput"
         }
       ],
       "properties": {

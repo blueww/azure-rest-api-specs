@@ -17,30 +17,6 @@
   },
   "paths": {},
   "definitions": {
-    "ConnectToTargetSqlServerTaskProperties": {
-      "x-ms-discriminator-value": "ConnectToTarget.SqlServer",
-      "type": "object",
-      "description": "Properties for the task that validates connection to SQL Server and target server requirements",
-      "properties": {
-        "input": {
-          "description": "Task input",
-          "$ref": "#/definitions/ConnectToTargetSqlServerTaskInput"
-        },
-        "output": {
-          "description": "Task output. This is ignored if submitted.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ConnectToTargetSqlServerTaskOutput"
-          },
-          "readOnly": true
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
-        }
-      ]
-    },
     "ConnectToTargetSqlServerTaskInput": {
       "type": "object",
       "description": "Input for the task that validates connection to SQL Server and target server requirements",
@@ -89,7 +65,7 @@
       },
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "./TasksCommon.json#/definitions/TaskOutput"
         }
       ]
     }
