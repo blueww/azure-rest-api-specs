@@ -6,6 +6,51 @@
     "api-version": "2017-04-15-privatepreview"
   },
   "responses":{
-    "200":{}
+    "200": {
+      "value": [
+        {
+          "resourceType": "services",
+          "name": "Basic_1vCore",
+          "tier": "Basic",
+          "size": "1 vCore",
+          "locations": [ "East US" ],
+          "locationInfo": [
+            {
+              "location": "East US",
+              "zones": []
+            }
+          ],
+          "restrictions": []
+        },
+        {
+          "resourceType": "services",
+          "name": "Basic_2vCores",
+          "tier": "Basic",
+          "size": "2 vCores",
+          "locations": [ "East US" ],
+          "locationInfo": [
+            {
+              "location": "East US",
+              "zones": []
+            }
+          ],
+          "restrictions": []
+        },
+        {
+          "resourceType": "services",
+          "name": "GeneralPurpose_4vCores",
+          "tier": "General Purpose",
+          "size": "4 vCores",
+          "locations": [ "East US" ],
+          "locationInfo": [
+            {
+              "location": "East US",
+              "zones": []
+            }
+          ],
+          "restrictions": []
+        }
+      ]
+    }
   }
 }

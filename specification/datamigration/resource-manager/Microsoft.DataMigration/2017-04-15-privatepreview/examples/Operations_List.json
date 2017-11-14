@@ -1,11 +1,22 @@
 {
   "parameters": {
-    "subscriptionId": "fc04246f-04c5-437e-ac5e-206a19e7193f",
-    "groupName": "DmsSdkRg",
-    "serviceName": "DmsSdkService",
     "api-version": "2017-04-15-privatepreview"
   },
-  "responses":{
-    "200":{}
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "Microsoft.DataMigration/services/read",
+            "display": {
+              "provider": "Data Migration Service",
+              "resource": "Data Migration Service",
+              "operation": "Read",
+              "description": "Read information about services."
+            }
+          }
+        ]
+      }
+    }
   }
 }
