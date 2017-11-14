@@ -1,12 +1,21 @@
 {
-  "parameters":{
-    "subscriptionId":"subid",
-    "groupName":"rg1",
-    "api-version":"2017-04-15-privatepreview",
-    "resourceName":"dms1",
-    "location":"eastus"
+  "parameters": {
+    "subscriptionId": "fc04246f-04c5-437e-ac5e-206a19e7193f",
+    "groupName": "DmsSdkRg",
+    "serviceName": "DmsSdkService",
+    "api-version": "2017-04-15-privatepreview",
+    "parameters": {
+      "requestedName": {
+        "name": "Task1",
+        "type": "tasks"
+      }
+    }
   },
-  "responses":{
-    "200":{}
+  "responses": {
+    "200": {
+      "body": {
+        "nameAvailable": true
+      }
+    }
   }
 }
