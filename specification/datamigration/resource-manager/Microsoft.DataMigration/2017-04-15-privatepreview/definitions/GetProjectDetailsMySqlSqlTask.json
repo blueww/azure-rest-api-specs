@@ -17,30 +17,6 @@
   },
   "paths": {},
   "definitions": {
-    "GetProjectDetailsMySqlSqlTaskProperties": {
-      "x-ms-discriminator-value": "GetProjectDetails.MySql.Sql",
-      "type": "object",
-      "description": "Properties for task that reads information from project artifacts for MySQL as source",
-      "properties": {
-        "input": {
-          "description": "Task input",
-          "$ref": "./TasksCommon.json#/definitions/GetProjectDetailsNonSqlTaskInput"
-        },
-        "output": {
-          "description": "Task output. This is ignored if submitted.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GetProjectDetailsMySqlSqlTaskOutput"
-          },
-          "readOnly": true
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
-        }
-      ]
-    },
     "GetProjectDetailsMySqlSqlTaskOutput": {
       "type": "object",
       "description": "Output for task that reads information from project artifacts for MySQL as source",
@@ -53,7 +29,7 @@
       },
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "./TasksCommon.json#/definitions/TaskOutput"
         }
       ]
     },

@@ -17,30 +17,6 @@
   },
   "paths": {},
   "definitions": {
-    "ConnectToTargetCloudDbTaskProperties": {
-      "x-ms-discriminator-value": "ConnectToTarget.CloudDb",
-      "type": "object",
-      "description": "Properties for the task that validates connection to Cloud DB",
-      "properties": {
-        "input": {
-          "description": "Task input",
-          "$ref": "#/definitions/ConnectToTargetCloudDbTaskInput"
-        },
-        "output": {
-          "description": "Task output. This is ignored if submitted.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ConnectToTargetCloudDbTaskOutput"
-          },
-          "readOnly": true
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
-        }
-      ]
-    },
     "ConnectToTargetCloudDbTaskInput": {
       "type": "object",
       "description": "Input for the task that validates connection to Cloud DB",
@@ -79,7 +55,7 @@
       },
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "./TasksCommon.json#/definitions/TaskOutput"
         }
       ]
     }

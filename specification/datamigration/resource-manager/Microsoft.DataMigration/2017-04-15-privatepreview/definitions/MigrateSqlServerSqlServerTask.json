@@ -17,30 +17,6 @@
   },
   "paths": {},
   "definitions": {
-    "MigrateSqlServerSqlServerTaskProperties": {
-      "x-ms-discriminator-value": "Migrate.SqlServer.SqlServer",
-      "type": "object",
-      "description": "Properties for the task that migrates on-prem SQL Server databases to SQL on VM",
-      "properties": {
-        "input": {
-          "description": "Task input",
-          "$ref": "#/definitions/MigrateSqlServerSqlServerTaskInput"
-        },
-        "output": {
-          "description": "Task output. This is ignored if submitted.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MigrateSqlServerSqlServerTaskOutput"
-          },
-          "readOnly": true
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
-        }
-      ]
-    },
     "MigrateSqlServerSqlServerTaskInput": {
       "type": "object",
       "description": "Input for the task that migrates on-prem SQL Server databases to SQL on VM",
@@ -73,7 +49,7 @@
       },
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "./TasksCommon.json#/definitions/TaskOutput"
         }
       ],
       "required": [ "resultType" ],
