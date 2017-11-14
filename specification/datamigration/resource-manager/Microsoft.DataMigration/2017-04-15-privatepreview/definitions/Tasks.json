@@ -103,6 +103,21 @@
           "description": "URL to load the next page of tasks"
         }
       }
+    },
+    "MigrateSqlServerSqlDbTaskProperties": {
+      "type": "object",
+      "$ref": "./MigrateSqlServerSqlDbTask.json#/definitions/MigrateSqlServerSqlDbTaskProperties",
+      "description": "Properties object for the task that migrates on-prem SQL Server databases to Azure SQL Database"
+    },
+    "ConnectToTargetSqlDbTaskProperties": {
+      "type": "object",
+      "$ref": "./ConnectToTargetSqlDbTask.json#/definitions/ConnectToTargetSqlDbTaskProperties",
+      "description": "Properties object for the task that validates connection to SQL DB and target server requirements"
+    },
+    "ConnectToSourceSqlServerTaskProperties": {
+      "type": "object",
+      "$ref": "./ConnectToSourceSqlServerTask.json#/definitions/ConnectToSourceSqlServerTaskProperties",
+      "description": "Properties object for the task that validates connection to SQL Server and also validates source server requirements"
     }
   }
 }
