@@ -55,22 +55,68 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Migration validation result identifier"
+          "description": "Migration validation result identifier",
+          "readOnly": true
         },
         "migrationId": {
           "type": "string",
-          "description": "Migration Identifier"
+          "description": "Migration Identifier",
+          "readOnly": true
         },
-        "databaseLevelValidationResults": {
+        "summaryResults": {
           "type": "object",
-          "description": "Validation results for each database",
+          "description": "Validation summary results for each database",
           "additionalProperties": {
-            "$ref": "#/definitions/MigrationValidationDatabaseLevelResult"
+            "$ref": "#/definitions/MigrationValidationDatabaseSummaryResult"
           }
         },
         "status": {
           "$ref": "#/definitions/ValidationStatus",
           "description": "Current status of validation at the migration level. Status from the database validation result status will be aggregated here.",
+          "readOnly": true
+        }
+      }
+    },
+    "MigrationValidationDatabaseSummaryResult": {
+      "type": "object",
+      "description": "Migration Validation Database level summary result",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Result identifier",
+          "readOnly": true
+        },
+        "migrationId": {
+          "type": "string",
+          "description": "Migration Identifier",
+          "readOnly": true
+        },
+        "sourceDatabaseName": {
+          "type": "string",
+          "description": "Name of the source database",
+          "readOnly": true
+        },
+        "targetDatabaseName": {
+          "type": "string",
+          "description": "Name of the target database",
+          "readOnly": true
+        },
+
+        "startedOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Validation start time",
+          "readOnly": true
+        },
+        "endedOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Validation end time",
+          "readOnly": true
+        },
+        "status": {
+          "$ref": "#/definitions/ValidationStatus",
+          "description": "Current status of validation at the database level",
           "readOnly": true
         }
       }
@@ -81,19 +127,23 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Result identifier"
+          "description": "Result identifier",
+          "readOnly": true
         },
         "migrationId": {
           "type": "string",
-          "description": "Migration Identifier"
+          "description": "Migration Identifier",
+          "readOnly": true
         },
         "sourceDatabaseName": {
           "type": "string",
-          "description": "Name of the source database"
+          "description": "Name of the source database",
+          "readOnly": true
         },
         "targetDatabaseName": {
           "type": "string",
-          "description": "Name of the target database"
+          "description": "Name of the target database",
+          "readOnly": true
         },
         "startedOn": {
           "type": "string",
@@ -190,7 +240,7 @@
         },
         "objectType": {
           "type": "object",
-          "$ref": "TasksCommon.json#/definitions/DatabaseObjectType",
+          "$ref": "./TasksCommon.json#/definitions/DatabaseObjectType",
           "description": "Type of the object that has the difference. e.g (Table/View/StoredProcedure)"
         },
         "updateAction": {
@@ -352,7 +402,8 @@
         "Initialized",
         "InProgress",
         "Completed",
-        "PartiallyCompleted",
+        "CompletedWithIssues",
+        "Stopped",
         "Failed"
       ],
       "x-ms-enum": {

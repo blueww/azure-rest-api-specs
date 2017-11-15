@@ -17,30 +17,6 @@
   },
   "paths": {},
   "definitions": {
-    "MigrateSqlServerCloudDbTaskProperties": {
-      "x-ms-discriminator-value": "Migrate.SqlServer.CloudDb",
-      "type": "object",
-      "description": "Properties for task that migrates SQL Server databases to Cloud DB",
-      "properties": {
-        "input": {
-          "description": "Task input",
-          "$ref": "#/definitions/MigrateSqlServerCloudDbTaskInput"
-        },
-        "output": {
-          "description": "Task output. This is ignored if submitted.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MigrateSqlServerCloudDbTaskOutput"
-          },
-          "readOnly": true
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
-        }
-      ]
-    },
     "MigrateSqlServerCloudDbTaskInput": {
       "type": "object",
       "description": "Input for task that migrates SQL Server databases to Cloud DB",
@@ -82,7 +58,7 @@
       },
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "./TasksCommon.json#/definitions/TaskOutput"
         }
       ],
       "required": [ "resultType" ],

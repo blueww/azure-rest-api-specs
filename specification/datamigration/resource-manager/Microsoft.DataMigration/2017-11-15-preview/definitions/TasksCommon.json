@@ -17,6 +17,17 @@
   },
   "paths": {},
   "definitions": {
+    "TaskOutput": {
+      "type": "object",
+      "description": "Base class for all DMS task outputs",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Result identifier",
+          "readOnly": true
+        }
+      }
+    },
     "Database": {
       "type": "object",
       "description": "Information about a single database",
@@ -277,7 +288,8 @@
         "Failed",
         "Warning",
         "Completed",
-        "Skipped"
+        "Skipped",
+        "Stopped"
       ],
       "x-ms-enum": {
         "name": "MigrationState",
@@ -295,7 +307,7 @@
         "Configured",
         "Running",
         "Error",
-        "Cancelled",
+        "Stopped",
         "Completed",
         "CompletedWithWarnings"
       ],
@@ -308,10 +320,6 @@
       "type": "object",
       "description": "Base class for migration task input",
       "properties": {
-        "name": {
-          "type": "string",
-          "description": "Name of the migration"
-        },
         "sourceConnectionInfo": {
           "$ref": "./Common.json#/definitions/SqlConnectionInfo",
           "description": "Information for connecting to source"
@@ -322,7 +330,6 @@
         }
       },
       "required": [
-        "name",
         "sourceConnectionInfo",
         "targetConnectionInfo"
       ]
@@ -368,35 +375,6 @@
       "x-ms-enum": {
         "name": "ErrorType",
         "modelAsString": false
-      }
-    },
-    "MigrateSqlServerSqlServerDatabaseInput": {
-      "type": "object",
-      "description": "Database specific information for SQL to SQL migration task inputs",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the database"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the database"
-        },
-        "restoreDatabaseName": {
-          "type": "string",
-          "description": "Name of the database at destination"
-        },
-        "backupAndRestoreFolder": {
-          "type": "string",
-          "description": "The backup and restore folder"
-        },
-        "databaseFiles": {
-          "type": "array",
-          "description": "The list of database files",
-          "items": {
-            "$ref": "#/definitions/DatabaseFileInput"
-          }
-        }
       }
     },
     "DatabaseFileInput": {

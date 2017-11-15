@@ -1,12 +1,22 @@
 {
-  "parameters":{
-    "subscriptionId":"subid",
-    "groupName":"rg1",
-    "api-version":"2017-04-15-privatepreview",
-    "resourceName":"dms1",
-    "location":"eastus"
+  "parameters": {
+    "api-version": "2017-04-15-privatepreview"
   },
-  "responses":{
-    "200":{}
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "Microsoft.DataMigration/services/read",
+            "display": {
+              "provider": "Data Migration Service",
+              "resource": "Data Migration Service",
+              "operation": "Read",
+              "description": "Read information about services."
+            }
+          }
+        ]
+      }
+    }
   }
 }

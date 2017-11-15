@@ -17,30 +17,6 @@
   },
   "paths": {},
   "definitions": {
-    "ValidateMigrationInputSqlServerSqlServerTaskProperties": {
-      "x-ms-discriminator-value": "ValidateMigrationInput.SqlServer.SqlServer",
-      "type": "object",
-      "description": "Properties for task that validates migration input for SQL to SQL on VM migrations",
-      "properties": {
-        "input": {
-          "description": "Task input",
-          "$ref": "#/definitions/ValidateMigrationInputSqlServerSqlServerTaskInput"
-        },
-        "output": {
-          "description": "Task output. This is ignored if submitted.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ValidateMigrationInputSqlServerSqlServerTaskOutput"
-          },
-          "readOnly": true
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "./Tasks.json#/definitions/ProjectTaskProperties"
-        }
-      ]
-    },
     "ValidateMigrationInputSqlServerSqlServerTaskInput": {
       "type": "object",
       "description": "Input for task that validates migration input for SQL to SQL on VM migrations",
@@ -67,7 +43,7 @@
       "description": "Output for task that validates migration input for SQL to SQL on VM migrations",
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "./TasksCommon.json#/definitions/TaskOutput"
         }
       ],
       "properties": {

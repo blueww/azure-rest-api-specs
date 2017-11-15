@@ -17,6 +17,17 @@
   },
   "paths": {},
   "definitions": {
+    "TaskOutput": {
+      "type": "object",
+      "description": "Base class for all DMS task outputs",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Result identifier",
+          "readOnly": true
+        }
+      }
+    },
     "Database": {
       "type": "object",
       "description": "Information about a single database",
@@ -271,21 +282,21 @@
     "GetProjectDetailsNonSqlTaskInput": {
       "type": "object",
       "description": "Input for the task that reads configuration from project artifacts",
-       "properties": {
-          "projectName": {
-            "type": "string",
-            "description": "Name of the migration project"
-          },
-          "projectLocation": {
-            "type": "string",
-            "description": "A URL that points to the location to access project artifacts"
-          }
+      "properties": {
+        "projectName": {
+          "type": "string",
+          "description": "Name of the migration project"
         },
-        "required": [
-          "projectName",
-          "projectLocation"
-        ]
+        "projectLocation": {
+          "type": "string",
+          "description": "A URL that points to the location to access project artifacts"
+        }
       },
+      "required": [
+        "projectName",
+        "projectLocation"
+      ]
+    },
     "MigrationState": {
       "type": "string",
       "description": "Current state of migration",
@@ -295,7 +306,8 @@
         "Failed",
         "Warning",
         "Completed",
-        "Skipped"
+        "Skipped",
+        "Stopped"
       ],
       "x-ms-enum": {
         "name": "MigrationState",
@@ -313,7 +325,7 @@
         "Configured",
         "Running",
         "Error",
-        "Cancelled",
+        "Stopped",
         "Completed",
         "CompletedWithWarnings"
       ],
@@ -336,7 +348,6 @@
         }
       },
       "required": [
-        "name",
         "sourceConnectionInfo",
         "targetConnectionInfo"
       ]
@@ -360,38 +371,38 @@
     "NonSqlMigrationTaskInput": {
       "type": "object",
       "description": "Base class for non sql migration task input",
-     "properties": {
-      "targetConnectionInfo": {
-       "$ref": "./Common.json#/definitions/SqlConnectionInfo",
-       "description": "Information for connecting to target"
+      "properties": {
+        "targetConnectionInfo": {
+          "$ref": "./Common.json#/definitions/SqlConnectionInfo",
+          "description": "Information for connecting to target"
+        },
+        "targetDatabaseName": {
+          "type": "string",
+          "description": "Target database name"
+        },
+        "projectName": {
+          "type": "string",
+          "description": "Name of the migration project"
+        },
+        "projectLocation": {
+          "type": "string",
+          "description": "An URL that points to the drop location to access project artifacts"
+        },
+        "selectedTables": {
+          "type": "array",
+          "description": "Metadata of the tables selected for migration",
+          "items": {
+            "$ref": "#/definitions/NonSqlDataMigrationTable"
+          }
+        }
       },
-      "targetDatabaseName": {
-       "type": "string",
-       "description": "Target database name"
-      },
-      "projectName": {
-       "type": "string",
-       "description": "Name of the migration project"
-      },
-      "projectLocation": {
-       "type": "string",
-       "description": "An URL that points to the drop location to access project artifacts"
-      },
-      "selectedTables": {
-       "type": "array",
-       "description": "Metadata of the tables selected for migration",
-       "items": {
-        "$ref": "#/definitions/NonSqlDataMigrationTable"
-       }
-      }
-     },
-     "required": [
-      "targetConnectionInfo",
-      "targetDatabaseName",
-      "projectName",
-      "projectLocation",
-      "selectedTables"
-     ]
+      "required": [
+        "targetConnectionInfo",
+        "targetDatabaseName",
+        "projectName",
+        "projectLocation",
+        "selectedTables"
+      ]
     },
     "NonSqlDataMigrationTable": {
       "type": "object",
@@ -408,7 +419,7 @@
       "description": "Base class for non sql migration task output",
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "#/definitions/TaskOutput"
         }
       ],
       "properties": {
@@ -544,10 +555,6 @@
       "type": "object",
       "description": "Database specific information for SQL to SQL migration task inputs",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the database"
-        },
         "name": {
           "type": "string",
           "description": "Name of the database"
@@ -649,7 +656,7 @@
       "description": "Output for connect to Oracle, MySQL type source",
       "allOf": [
         {
-          "$ref": "./Tasks.json#/definitions/TaskOutput"
+          "$ref": "#/definitions/TaskOutput"
         }
       ],
       "properties": {

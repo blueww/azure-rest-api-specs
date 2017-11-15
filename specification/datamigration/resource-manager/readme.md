@@ -42,7 +42,6 @@ input-file:
 - Microsoft.DataMigration/2017-04-15-privatepreview/definitions/ConnectToSourceMySqlTask.json
 - Microsoft.DataMigration/2017-04-15-privatepreview/definitions/ConnectToSourceOracleTask.json
 - Microsoft.DataMigration/2017-04-15-privatepreview/definitions/ConnectToSourceSqlServerTask.json
-- Microsoft.DataMigration/2017-04-15-privatepreview/definitions/ConnectToTargetAnySqlTask.json
 - Microsoft.DataMigration/2017-04-15-privatepreview/definitions/ConnectToTargetCloudDbTask.json
 - Microsoft.DataMigration/2017-04-15-privatepreview/definitions/ConnectToTargetSqlDbTask.json
 - Microsoft.DataMigration/2017-04-15-privatepreview/definitions/ConnectToTargetSqlServerTask.json
