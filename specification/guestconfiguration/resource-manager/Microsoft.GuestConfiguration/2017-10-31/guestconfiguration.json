@@ -1,0 +1,349 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "version": "2017-10-31",
+  "title": "GuestConfiguration"
+ },
+ "host": "management.azure.com",
+ "schemes": [
+  "https"
+ ],
+ "security": [
+  {
+   "azure_auth": [
+    "user_impersonation"
+   ]
+  }
+ ],
+ "securityDefinitions": {
+  "azure_auth": {
+   "type": "oauth2",
+   "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+   "flow": "implicit",
+   "description": "Azure Active Directory OAuth2 Flow",
+   "scopes": {
+    "user_impersonation": "impersonate your user account"
+   }
+  }
+ },
+ "paths": {
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}": {
+   "put": {
+    "tags": [
+     "GuestConfigurationAssignments"
+    ],
+    "operationId": "GuestConfigurationAssignments_CreateOrUpdate",
+    "description": "Creates an associateion between a VM and guest configuration",
+    "parameters": [
+     {
+      "name": "guestConfigurationAssignmentName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "Name of the guest configuration assignment."
+     },
+     {
+      "name": "parameters",
+      "in": "body",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/GuestConfigurationAssignment"
+      },
+      "description": "Parameters supplied to the create or update guest configuration assignment."
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/VmNameParameter"
+     },	 
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Created",
+      "schema": {
+       "$ref": "#/definitions/GuestConfigurationAssignment"
+      }
+     },
+     "200": {
+      "description": "OK",
+      "schema": {
+       "$ref": "#/definitions/GuestConfigurationAssignment"
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    },
+    "x-ms-long-running-operation": true,
+    "produces": [
+     "application/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   },
+   "delete": {
+    "tags": [
+     "GuestConfigurationAssignments"
+    ],
+    "operationId": "GuestConfigurationAssignments_Delete",
+    "description": "Delete a guest configuration assignment",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "name": "guestConfigurationAssignmentName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "Name of the guest configuration assignment"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "$ref": "#/parameters/VmNameParameter"
+     },	 	 
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK"
+     },
+     "204": {
+      "description": "No Content"
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    },
+    "produces": [
+     "application/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   },
+   "get": {
+    "tags": [
+     "GuestConfigurationAssignments"
+    ],
+    "operationId": "GuestConfigurationAssignments_Get",
+    "description": "Get information about a guest configuration assignment",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "name": "guestConfigurationAssignmentName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The guest configuration assingment name."
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "$ref": "#/parameters/VmNameParameter"
+     },	 	 
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "schema": {
+       "$ref": "#/definitions/GuestConfigurationAssignment"
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    },
+    "produces": [
+     "application/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments": {
+   "get": {
+    "tags": [
+     "GuestConfigurationAssignments"
+    ],
+    "operationId": "GuestConfigurationAssignments_List",
+    "description": "List all guest configuration assignments for a virtual machine.",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupNameParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "$ref": "#/parameters/VmNameParameter"
+     },	 	 
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "schema": {
+        "$ref": "#/definitions/GuestConfigurationAssignmentList"
+      }
+     },
+     "default": {
+      "description": "Error response describing why the operation failed.",
+      "schema": {
+       "$ref": "#/definitions/ErrorResponse"
+      }
+     }
+    },
+    "produces": [
+     "application/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  }
+ },
+  "definitions": {
+    "GuestConfigurationAssignmentList": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GuestConfigurationAssignment"
+          },
+          "description": "Result of the list guest configuration assignment operation."
+        }
+      },
+      "description": "The response of the list guest configuration assignment operation."
+    },
+    "GuestConfigurationAssignment": {
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Id of the guest configuration assignment"
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Name of the guest configuration assignment."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Type of the guest configuration assignment."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/GuestConfigurationAssignmentProperties"
+        }
+      }
+    },
+    "GuestConfiguration": {
+      "properties": {
+        "kind": {
+          "type": "string",
+          "description": "Kind of the guest configuration. For example:DSC",
+          "enum": [ "DSC" ]
+        }
+      }
+    },
+    "GuestConfigurationAssignmentProperties": {
+      "properties": {
+        "guestConfiguration": {
+          "$ref": "#/definitions/GuestConfiguration",
+          "description": "The guest configuration to assign."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The provisioning state, which only appears in the response.",
+          "enum": [
+            "Succeeded"
+          ]
+        },
+        "complianceStatus": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A value indicating compliant status of the virtual machine for the assigned guest configuration.",
+          "enum": [
+            "Compliant",
+            "NotCompliant"
+          ]
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "Error message indicating why the operation failed.",
+          "type": "string"
+        }
+      },
+      "description": "Error response of an operation failure"
+    }
+  },
+ "parameters": {
+  "SubscriptionIdParameter": {
+   "name": "subscriptionId",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+  },
+  "ApiVersionParameter": {
+   "name": "api-version",
+   "in": "query",
+   "required": true,
+   "type": "string",
+   "description": "Client Api Version."
+  },
+  "VmNameParameter": {
+	  "name": "vmName",
+	  "in": "path",
+	  "required": true,
+	  "type": "string",
+	  "description": "The name of the virtual machine."
+  },  
+  "ResourceGroupNameParameter": {
+   "name": "resourceGroupName",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "pattern": "^[-\\w\\._]+$",
+   "description": "The resource group name.",
+   "x-ms-parameter-location": "method"
+  }
+ }
+}
