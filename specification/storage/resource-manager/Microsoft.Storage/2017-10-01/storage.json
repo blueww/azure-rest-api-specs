@@ -1498,6 +1498,19 @@
           "description": "Network rule set",
           "x-ms-client-name": "NetworkRuleSet",
           "$ref": "#/definitions/NetworkRuleSet"
+        },
+        "kind": {
+          "type": "string",
+          "description": "Optional. Indicates the type of storage account. Currently only StorageV2 value supported by server.",
+          "enum": [
+            "Storage",
+            "StorageV2",
+            "BlobStorage"
+          ],
+          "x-ms-enum": {
+            "name": "Kind",
+            "modelAsString": false
+          }
         }
       },
       "description": "The parameters used when updating a storage account."
