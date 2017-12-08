@@ -1523,6 +1523,19 @@
           "x-ms-client-flatten": true,
           "$ref": "#/definitions/StorageAccountPropertiesUpdateParameters",
           "description": "The parameters used when updating a storage account."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Optional. Indicates the type of storage account. Currently only StorageV2 value supported by server.",
+          "enum": [
+            "Storage",
+            "StorageV2",
+            "BlobStorage"
+          ],
+          "x-ms-enum": {
+            "name": "Kind",
+            "modelAsString": false
+          }
         }
       },
       "description": "The parameters that can be provided when updating the storage account properties."
