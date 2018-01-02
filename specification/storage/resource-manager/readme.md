@@ -37,6 +37,7 @@ These settings apply only when `--tag=package-2017-10` is specified on the comma
 ``` yaml $(tag) == 'package-2017-10'
 input-file:
 - Microsoft.Storage/stable/2017-10-01/storage.json
+- Microsoft.Storage/stable/2017-10-01/blob.json
 ```
 
 

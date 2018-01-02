@@ -1,0 +1,33 @@
+{
+  "parameters": {
+    "subscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
+    "resourceGroupName": "res4094",
+    "accountName": "sto7300",
+    "containerName": "container1266",
+    "api-version": "2017-10-01",
+    "monitor": "true",
+    "blobContainer": {
+      "properties": {
+        "publicAccess": "container",
+        "metadata": {
+          "metadata": "true"
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/res4094/providers/Microsoft.Storage/storageAccounts/sto7300/blobServices/default/containers/container1266",
+        "name": "container1266",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+        "properties": {
+          "metadata": {
+            "metadata": "true"
+          },
+          "publicAccess": "Container"
+        }
+      }
+    }
+  }
+}
