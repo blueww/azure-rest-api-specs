@@ -1,0 +1,1109 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "version": "2017-10-01",
+  "x-ms-code-generation-settings": {
+   "name": "StorageManagementClient"
+  },
+  "title": "StorageManagement",
+  "description": "The Azure Storage Management API."
+ },
+ "host": "management.azure.com",
+ "schemes": [
+  "https"
+ ],
+ "paths": {
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default": {
+   "put": {
+    "tags": [
+     "BlobService"
+    ],
+    "operationId": "BlobService_SetServiceProperties",
+    "description": "Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. ",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "name": "parameters",
+      "in": "body",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/BlobServiceProperties"
+      },
+      "description": "The properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules."
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- Sets The properties of a storage account’s Blob service successfully."
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   },
+   "get": {
+    "tags": [
+     "BlobService"
+    ],
+    "operationId": "BlobService_GetServiceProperties",
+    "description": "Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- returned the properties of a storage account’s Blob service.",
+      "schema": {
+       "$ref": "#/definitions/BlobServiceProperties"
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers": {
+   "get": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_List",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/ListContainerItems",
+       "description": "TODO"
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}": {
+   "put": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_Create",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "name": "blobContainer",
+      "in": "body",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/BlobContainer"
+      },
+      "description": "TODO"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO",
+      "schema": {
+       "$ref": "#/definitions/BlobContainer",
+       "description": "TODO"
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   },
+   "patch": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_Update",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "name": "blobContainer",
+      "in": "body",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/BlobContainer"
+      },
+      "description": "TODO"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/BlobContainer",
+       "description": "TODO"
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   },
+   "get": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_Get",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/BlobContainer"
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   },
+   "delete": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_Delete",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO."
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease": {
+   "post": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_Lease",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO."
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold": {
+   "post": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_SetLegalHold",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "name": "LegalHold",
+      "in": "body",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/LegalHold"
+      },
+      "description": "TODO"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/LegalHold"
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold": {
+   "post": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_ClearLegalHold",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "name": "LegalHold",
+      "in": "body",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/LegalHold"
+      },
+      "description": "TODO"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/LegalHold"
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default": {
+   "put": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_CreateOrUpdateImmutabilityPolicy",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "name": "parameters",
+      "in": "body",
+      "schema": {
+       "$ref": "#/definitions/ImmutabilityPolicy"
+      },
+      "description": "TODO"
+     },
+     {
+      "name": "If-Match",
+      "in": "header",
+      "required": false,
+      "type": "string",
+      "description": "The entity state (ETag) version of the immutability policy to update. A value of \"*\" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied."
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/ImmutabilityPolicy"
+      },
+      "headers": {
+       "ETag": {
+        "description": "The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.",
+        "type": "string"
+       }
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   },
+   "get": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_GetImmutabilityPolicy",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "name": "If-Match",
+      "in": "header",
+      "required": false,
+      "type": "string",
+      "description": "The entity state (ETag) version of the immutability policy to update. A value of \"*\" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied."
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/ImmutabilityPolicy"
+      },
+      "headers": {
+       "ETag": {
+        "description": "The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.",
+        "type": "string"
+       }
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   },
+   "delete": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_DeleteImmutabilityPolicy",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "name": "If-Match",
+      "in": "header",
+      "required": true,
+      "type": "string",
+      "description": "The entity state (ETag) version of the immutability policy to update. A value of \"*\" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied."
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/ImmutabilityPolicy"
+      },
+      "headers": {
+       "ETag": {
+        "description": "The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.",
+        "type": "string"
+       }
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock": {
+   "post": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_LockImmutabilityPolicy",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "name": "If-Match",
+      "in": "header",
+      "required": true,
+      "type": "string",
+      "description": "The entity state (ETag) version of the immutability policy to update. A value of \"*\" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied."
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/ImmutabilityPolicy"
+      },
+      "headers": {
+       "ETag": {
+        "description": "The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.",
+        "type": "string"
+       }
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  },
+  "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend": {
+   "post": {
+    "tags": [
+     "BlobContainers"
+    ],
+    "operationId": "BlobContainers_ExtendImmutabilityPolicy",
+    "description": "TODO",
+    "parameters": [
+     {
+      "$ref": "#/parameters/ResourceGroupName"
+     },
+     {
+      "$ref": "#/parameters/AccountName"
+     },
+     {
+      "$ref": "#/parameters/ContainerName"
+     },
+     {
+      "$ref": "#/parameters/ApiVersionParameter"
+     },
+     {
+      "$ref": "#/parameters/SubscriptionIdParameter"
+     },
+     {
+      "name": "parameters",
+      "in": "body",
+      "schema": {
+       "$ref": "#/definitions/ImmutabilityPolicy"
+      },
+      "description": "TODO"
+     },
+     {
+      "name": "If-Match",
+      "in": "header",
+      "required": true,
+      "type": "string",
+      "description": "The entity state (ETag) version of the immutability policy to update. A value of \"*\" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied."
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK -- TODO.",
+      "schema": {
+       "$ref": "#/definitions/ImmutabilityPolicy"
+      },
+      "headers": {
+       "ETag": {
+        "description": "The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.",
+        "type": "string"
+       }
+      }
+     }
+    },
+    "produces": [
+     "application/json",
+     "text/json"
+    ],
+    "consumes": [
+     "application/json"
+    ]
+   }
+  }
+ },
+ "definitions": {
+  "BlobServiceProperties": {
+   "properties": {
+    "properties": {
+     "properties": {
+      "Cors": {
+       "$ref": "#/definitions/CorsRule",
+       "description": "Specifies a CORS rule for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service."
+      },
+      "DefaultServiceVersion": {
+       "type": "string",
+       "description": "DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions."
+      }
+     },
+     "x-ms-client-flatten": true,
+     "x-ms-client-name": "BlobServiceProperties",
+     "description": "The properties of a storage account’s Blob service."
+    }
+   },
+   "allOf": [
+    {
+     "$ref": "#/definitions/BlobResource"
+    }
+   ],
+   "description": "The properties of a storage account’s Blob service."
+  },
+  "CorsRule": {
+   "properties": {
+    "allowedOrigins": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or \"*\" to allow all domains"
+    },
+    "allowedMethods": {
+     "type": "string",
+     "enum": [
+      "DELETE",
+      "GET",
+      "HEAD",
+      "MERGE",
+      "POST",
+      "OPTIONS",
+      "PUT"
+     ],
+     "x-ms-enum": {
+      "name": "HTTPMethod",
+      "modelAsString": false
+     },
+     "description": "Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin."
+    },
+    "maxAgeInSeconds": {
+     "type": "integer",
+     "description": "Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response."
+    },
+    "exposedHeaders": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Required if CorsRule element is present. A list of response headers to expose to CORS clients."
+    },
+    "allowedHeaders": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request."
+    }
+   },
+   "description": "Specifies a CORS rule for the Blob service."
+  },
+  "ContainerProperties": {
+   "properties": {
+    "publicAccess": {
+     "type": "string",
+     "enum": [
+      "container",
+      "blob",
+      "none"
+     ],
+     "x-ms-enum": {
+      "name": "PublicAccess",
+      "modelAsString": false
+     },
+     "description": "TODO"
+    },
+    "lastModifiedTime": {
+     "type": "string",
+     "format": "date-time",
+     "readOnly": true
+    },
+    "leaseStatus": {
+     "type": "string",
+     "readOnly": true,
+     "enum": [
+      "locked",
+      "unlocked"
+     ],
+     "x-ms-enum": {
+      "name": "LeaseStatus",
+      "modelAsString": false
+     },
+     "description": "TODO"
+    },
+    "leaseState": {
+     "type": "string",
+     "readOnly": true,
+     "enum": [
+      "available",
+      "leased",
+      "expired",
+      "breaking",
+      "broken"
+     ],
+     "x-ms-enum": {
+      "name": "LeaseState",
+      "modelAsString": false
+     },
+     "description": "TODO"
+    },
+    "leaseDuration": {
+     "type": "string",
+     "readOnly": true,
+     "enum": [
+      "infinite",
+      "fixed"
+     ],
+     "x-ms-enum": {
+      "name": "LeaseDuration",
+      "modelAsString": false
+     },
+     "description": "TODO"
+    },
+    "metadata": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "string"
+     },
+     "description": "TODO"
+    },
+    "immutabilityPolicy": {
+     "readOnly": true,
+     "$ref": "#/definitions/ImmutabilityPolicyProperties",
+     "x-ms-client-name": "ImmutabilityPolicy",
+     "description": "TODO"
+    },
+    "legalHold": {
+     "readOnly": true,
+     "$ref": "#/definitions/LegalHold",
+     "description": "TODO"
+    }
+   },
+   "description": "TODO"
+  },
+  "BlobContainer": {
+   "properties": {
+    "properties": {
+     "$ref": "#/definitions/ContainerProperties",
+     "x-ms-client-flatten": true,
+     "x-ms-client-name": "ContainerProperties",
+     "description": "TODO"
+    }
+   },
+   "allOf": [
+    {
+     "$ref": "#/definitions/BlobResourceWithEtag"
+    }
+   ],
+   "description": "TODO"
+  },
+  "ImmutabilityPolicyProperty": {
+   "properties": {
+    "ImmutabilityPeriodSinceCreationInDays": {
+     "type": "integer",
+     "description": "TODO"
+    },
+    "State": {
+     "type": "string",
+     "readOnly": true,
+     "enum": [
+      "Locked",
+      "Unlocked"
+     ],
+     "x-ms-enum": {
+      "name": "ImmutabilityPolicyState",
+      "modelAsString": false
+     },
+     "description": "TODO"
+    }
+   },
+   "required": [
+    "ImmutabilityPeriodSinceCreationInDays"
+   ],
+   "description": "TODO"
+  },
+  "ImmutabilityPolicyProperties": {
+   "properties": {
+    "properties": {
+     "$ref": "#/definitions/ImmutabilityPolicyProperty",
+     "x-ms-client-flatten": true
+    }
+   },
+   "description": "TODO"
+  },
+  "ImmutabilityPolicy": {
+   "properties": {
+    "properties": {
+     "$ref": "#/definitions/ImmutabilityPolicyProperty",
+     "x-ms-client-flatten": true
+    }
+   },
+   "allOf": [
+    {
+     "$ref": "#/definitions/BlobResourceWithEtag"
+    }
+   ],
+   "required": [
+    "properties"
+   ],
+   "description": "TODO"
+  },
+  "LegalHold": {
+   "properties": {
+    "HasLegalHold": {
+     "type": "boolean",
+     "readOnly": true,
+     "description": "TODO"
+    },
+    "Tags": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "TODO"
+    }
+   },
+   "description": "TODO"
+  },
+  "ListContainerItem": {
+   "properties": {
+    "properties": {
+     "$ref": "#/definitions/ContainerProperties",
+     "x-ms-client-flatten": true
+    }
+   },
+   "allOf": [
+    {
+     "$ref": "#/definitions/BlobResourceWithEtag"
+    }
+   ],
+   "description": "TODO"
+  },
+  "ListContainerItems": {
+   "properties": {
+    "value": {
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/ListContainerItem"
+     },
+     "description": "TODO"
+    }
+   },
+   "description": "TODO"
+  },
+  "BlobResource": {
+   "properties": {
+    "id": {
+     "readOnly": true,
+     "type": "string",
+     "description": "Resource Id"
+    },
+    "name": {
+     "readOnly": true,
+     "type": "string",
+     "description": "Resource name"
+    },
+    "type": {
+     "readOnly": true,
+     "type": "string",
+     "description": "Resource type"
+    }
+   },
+   "x-ms-azure-resource": true,
+   "description": "Describes a storage resource."
+  },
+  "BlobResourceWithEtag": {
+   "properties": {
+    "id": {
+     "readOnly": true,
+     "type": "string",
+     "description": "Resource Id"
+    },
+    "name": {
+     "readOnly": true,
+     "type": "string",
+     "description": "Resource name"
+    },
+    "type": {
+     "readOnly": true,
+     "type": "string",
+     "description": "Resource type"
+    },
+    "etag": {
+     "type": "string",
+     "readOnly": true
+    }
+   },
+   "x-ms-azure-resource": true,
+   "description": "Describes a storage resource."
+  }
+ },
+ "parameters": {
+  "SubscriptionIdParameter": {
+   "name": "subscriptionId",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+  },
+  "ApiVersionParameter": {
+   "name": "api-version",
+   "in": "query",
+   "required": true,
+   "type": "string",
+   "description": "Client Api Version."
+  },
+  "ResourceGroupName": {
+   "name": "resourceGroupName",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "The name of the resource group within the user's subscription. The name is case insensitive.",
+   "pattern": "^[-\\w\\._\\(\\)]+$",
+   "minLength": 1,
+   "maxLength": 90,
+   "x-ms-parameter-location": "method"
+  },
+  "AccountName": {
+   "name": "accountName",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.",
+   "maxLength": 24,
+   "minLength": 3,
+   "x-ms-parameter-location": "method"
+  },
+  "ContainerName": {
+   "name": "containerName",
+   "in": "path",
+   "required": true,
+   "type": "string",
+   "description": "The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.",
+   "maxLength": 63,
+   "minLength": 3,
+   "x-ms-parameter-location": "method"
+  }
+ },
+ "securityDefinitions": {
+  "azure_auth": {
+   "type": "oauth2",
+   "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+   "flow": "implicit",
+   "description": "Azure Active Directory OAuth2 Flow",
+   "scopes": {
+    "user_impersonation": "impersonate your user account"
+   }
+  }
+ },
+ "security": [
+  {
+   "azure_auth": [
+    "user_impersonation"
+   ]
+  }
+ ]
+}
