@@ -12,6 +12,12 @@
  "schemes": [
   "https"
  ],
+ "consumes": [
+   "application/json"
+ ],
+ "produces": [
+   "application/json"
+ ],
  "paths": {
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default": {
    "put": {
@@ -47,14 +53,7 @@
      "200": {
       "description": "OK -- Sets The properties of a storage account’s Blob service successfully."
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    },
    "get": {
     "tags": [
@@ -83,14 +82,7 @@
        "$ref": "#/definitions/BlobServiceProperties"
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   },
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers": {
@@ -99,7 +91,10 @@
      "BlobContainers"
     ],
     "operationId": "BlobContainers_List",
-    "description": "TODO",
+    "x-ms-examples": {
+      "ListContainers": { "$ref": "./examples/BlobContainersList.json" }
+    },
+    "description": "Lists all containers and does not support a prefix like data plane. Also SRP today does not return continuation token.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -116,20 +111,12 @@
     ],
     "responses": {
      "200": {
-      "description": "OK -- TODO.",
+      "description": "OK -- List Container operation completed successfully.",
       "schema": {
-       "$ref": "#/definitions/ListContainerItems",
-       "description": "TODO"
+       "$ref": "#/definitions/ListContainerItems"
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   },
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}": {
@@ -138,7 +125,10 @@
      "BlobContainers"
     ],
     "operationId": "BlobContainers_Create",
-    "description": "TODO",
+    "x-ms-examples": {
+      "PutContainers": { "$ref": "./examples/BlobContainersPut.json" }
+    },
+    "description": "Creates a new container under the specified account as described by request body. The container resource includes metadata and properties for that container. It does not include a list of the blobs contained by the container. ",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -156,7 +146,7 @@
       "schema": {
        "$ref": "#/definitions/BlobContainer"
       },
-      "description": "TODO"
+      "description": "Properties of the blob container to create."
      },
      {
       "$ref": "#/parameters/ApiVersionParameter"
@@ -167,27 +157,22 @@
     ],
     "responses": {
      "200": {
-      "description": "OK -- TODO",
+      "description": "OK -- Create Container operation completed successfully.",
       "schema": {
-       "$ref": "#/definitions/BlobContainer",
-       "description": "TODO"
+       "$ref": "#/definitions/BlobContainer"
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    },
    "patch": {
     "tags": [
      "BlobContainers"
     ],
     "operationId": "BlobContainers_Update",
-    "description": "TODO",
+    "x-ms-examples": {
+      "PatchContainers": { "$ref": "./examples/BlobContainersPatch.json" }
+    },
+    "description": "Updates container properties as specified in request body. Properties not mentioned in the request will be unchanged. Update fails if the specified container doesn't already exist. ",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -205,7 +190,7 @@
       "schema": {
        "$ref": "#/definitions/BlobContainer"
       },
-      "description": "TODO"
+      "description": "Properties to update for the blob container."
      },
      {
       "$ref": "#/parameters/ApiVersionParameter"
@@ -216,27 +201,20 @@
     ],
     "responses": {
      "200": {
-      "description": "OK -- TODO.",
+      "description": "OK -- Update Container operation completed successfully.",
       "schema": {
        "$ref": "#/definitions/BlobContainer",
-       "description": "TODO"
+       "description": "Properties of the updated blob container."
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    },
    "get": {
     "tags": [
      "BlobContainers"
     ],
     "operationId": "BlobContainers_Get",
-    "description": "TODO",
+    "description": "Gets properties of a specified container. ",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -256,26 +234,19 @@
     ],
     "responses": {
      "200": {
-      "description": "OK -- TODO.",
+      "description": "OK -- Get Container operation completed successfully.",
       "schema": {
        "$ref": "#/definitions/BlobContainer"
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    },
    "delete": {
     "tags": [
      "BlobContainers"
     ],
     "operationId": "BlobContainers_Delete",
-    "description": "TODO",
+    "description": "Deletes specified container under its account.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -295,16 +266,9 @@
     ],
     "responses": {
      "200": {
-      "description": "OK -- TODO."
+      "description": "OK -- Delete Container operation completed successfully."
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   },
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease": {
@@ -313,7 +277,7 @@
      "BlobContainers"
     ],
     "operationId": "BlobContainers_Lease",
-    "description": "TODO",
+    "description": "Establishes and manages a lock on a container for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -333,16 +297,9 @@
     ],
     "responses": {
      "200": {
-      "description": "OK -- TODO."
+      "description": "OK -- Lease Container operation completed successfully."
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   },
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold": {
@@ -351,7 +308,7 @@
      "BlobContainers"
     ],
     "operationId": "BlobContainers_SetLegalHold",
-    "description": "TODO",
+    "description": "Sets legal hold tags. Setting the same tag results in an idempotent operation. SetLegalHold follows an append pattern and does not clear out the existing tags that are not specified in the request.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -374,25 +331,17 @@
       "required": true,
       "schema": {
        "$ref": "#/definitions/LegalHold"
-      },
-      "description": "TODO"
+      }
      }
     ],
     "responses": {
      "200": {
-      "description": "OK -- TODO.",
+      "description": "OK -- Sets legal hold tags for Container completed successfully.",
       "schema": {
        "$ref": "#/definitions/LegalHold"
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   },
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold": {
@@ -401,7 +350,7 @@
      "BlobContainers"
     ],
     "operationId": "BlobContainers_ClearLegalHold",
-    "description": "TODO",
+    "description": "Clears legal hold tags. Clearing the same or non-existent tag results in an idempotent operation. ClearLegalHold clears out only the specified tags in the request.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -435,14 +384,7 @@
        "$ref": "#/definitions/LegalHold"
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   },
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default": {
@@ -451,7 +393,7 @@
      "BlobContainers"
     ],
     "operationId": "BlobContainers_CreateOrUpdateImmutabilityPolicy",
-    "description": "TODO",
+    "description": "Creates or updates an unlocked immutability policy. ETag in If-Match is honored if given but not required for this operation.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -497,21 +439,14 @@
        }
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    },
    "get": {
     "tags": [
      "BlobContainers"
     ],
     "operationId": "BlobContainers_GetImmutabilityPolicy",
-    "description": "TODO",
+    "description": "Gets the existing immutability policy along with the corresponding ETag in response headers and body.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -549,21 +484,14 @@
        }
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    },
    "delete": {
     "tags": [
      "BlobContainers"
     ],
     "operationId": "BlobContainers_DeleteImmutabilityPolicy",
-    "description": "TODO",
+    "description": "Aborts an unlocked immutability policy. The response of delete has ImmutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is required for this operation. Deleting a locked immutability policy is not allowed, only way is to delete the container after deleting all blobs inside the container.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -601,14 +529,7 @@
        }
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   },
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock": {
@@ -617,7 +538,7 @@
      "BlobContainers"
     ],
     "operationId": "BlobContainers_LockImmutabilityPolicy",
-    "description": "TODO",
+    "description": "Sets the ImmutabilityPolicy to Locked state. The only action allowed on a Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is required for this operation.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -655,14 +576,7 @@
        }
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   },
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend": {
@@ -671,7 +585,7 @@
      "BlobContainers"
     ],
     "operationId": "BlobContainers_ExtendImmutabilityPolicy",
-    "description": "TODO",
+    "description": "Extends the ImmutabilityPeriodSinceCreationInDays of a locked immutabilityPolicy. The only action allowed on a Locked policy will be this action. ETag in If-Match is required for this operation.",
     "parameters": [
      {
       "$ref": "#/parameters/ResourceGroupName"
@@ -717,14 +631,7 @@
        }
       }
      }
-    },
-    "produces": [
-     "application/json",
-     "text/json"
-    ],
-    "consumes": [
-     "application/json"
-    ]
+    }
    }
   }
  },
@@ -898,15 +805,15 @@
      "$ref": "#/definitions/BlobResourceWithEtag"
     }
    ],
-   "description": "TODO"
+   "description": "Properties of the blob container."
   },
   "ImmutabilityPolicyProperty": {
    "properties": {
-    "ImmutabilityPeriodSinceCreationInDays": {
+    "immutabilityPeriodSinceCreationInDays": {
      "type": "integer",
      "description": "TODO"
     },
-    "State": {
+    "state": {
      "type": "string",
      "readOnly": true,
      "enum": [
@@ -917,13 +824,13 @@
       "name": "ImmutabilityPolicyState",
       "modelAsString": false
      },
-     "description": "TODO"
+     "description": "The proeprties of an ImmutabilityPolicy of a blob container."
     }
    },
    "required": [
     "ImmutabilityPeriodSinceCreationInDays"
    ],
-   "description": "TODO"
+   "description": "ImmutabilityPolicy"
   },
   "ImmutabilityPolicyProperties": {
    "properties": {
@@ -949,24 +856,24 @@
    "required": [
     "properties"
    ],
-   "description": "TODO"
+   "description": "The ImmutabilityPolicy property of a blob container."
   },
   "LegalHold": {
    "properties": {
-    "HasLegalHold": {
+    "hasLegalHold": {
      "type": "boolean",
      "readOnly": true,
-     "description": "TODO"
+     "description": "The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account."
     },
-    "Tags": {
+    "tags": {
      "type": "array",
      "items": {
       "type": "string"
      },
-     "description": "TODO"
+     "description": "Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP."
     }
    },
-   "description": "TODO"
+   "description": "The LegalHold property of a blob container."
   },
   "ListContainerItem": {
    "properties": {

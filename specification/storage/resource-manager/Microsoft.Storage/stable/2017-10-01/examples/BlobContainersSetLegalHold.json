@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "subscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
+    "resourceGroupName": "res4188",
+    "accountName": "sto9694",
+    "containerName": "container7172",
+    "api-version": "2017-10-01",
+    "monitor": "true",
+    "LegalHold": {
+      "Tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "HasLegalHold": true,
+        "Tags": [
+          "tag1",
+          "tag2",
+          "tag3"
+        ]
+      }
+    }
+  }
+}

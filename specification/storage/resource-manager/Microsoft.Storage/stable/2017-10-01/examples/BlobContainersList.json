@@ -1,0 +1,41 @@
+{
+  "parameters": {
+    "subscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
+    "resourceGroupName": "res4094",
+    "accountName": "sto7300",
+    "api-version": "2017-10-01",
+    "monitor": "true"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/res4094/providers/Microsoft.Storage/storageAccounts/sto7300/blobServices/default/containers/container1266",
+            "name": "container1266",
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "etag": "\"0x8D551AEF59F0F7D\"",
+            "properties": {
+              "publicAccess": "Container",
+              "leaseStatus": "Unlocked",
+              "leaseState": "Available",
+              "lastModifiedTime": "Tue, 02 Jan 2018 07:03:42 GMT"
+            }
+          },
+          {
+            "id": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/res4094/providers/Microsoft.Storage/storageAccounts/sto7300/blobServices/default/containers/container4703",
+            "name": "container4703",
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "etag": "\"0x8D551AEF5FF8082\"",
+            "properties": {
+              "leaseStatus": "Locked",
+              "leaseState": "Leased",
+              "leaseDuration": "Fixed",
+              "lastModifiedTime": "Tue, 02 Jan 2018 07:03:43 GMT"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

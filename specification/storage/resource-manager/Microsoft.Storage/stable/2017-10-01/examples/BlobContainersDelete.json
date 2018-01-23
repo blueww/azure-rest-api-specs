@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "subscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
+    "resourceGroupName": "res9139",
+    "accountName": "sto5939",
+    "containerName": "container4372",
+    "api-version": "2017-10-01",
+    "monitor": "true"
+  },
+  "responses": {
+    "200": {
+      "body": ""
+    }
+  }
+}

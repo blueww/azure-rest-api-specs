@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "subscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
+    "resourceGroupName": "res803",
+    "accountName": "sto1244",
+    "containerName": "container4200",
+    "api-version": "2017-10-01",
+    "monitor": "true"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/res803/providers/Microsoft.Storage/storageAccounts/sto1244/blobServices/default/containers/container4200/immutabilityPolicies/default",
+        "name": "default",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies",
+        "etag": "\"8d551aec02eaea3\"",
+        "properties": {
+          "ImmutabilityPeriodSinceCreationInDays": 0,
+          "State": "Unlocked"
+        }
+      }
+    }
+  }
+}
