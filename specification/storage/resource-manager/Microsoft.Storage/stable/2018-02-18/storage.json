@@ -477,6 +477,40 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages": {
+      "get": {
+        "tags": [
+          "LocationUsage"
+        ],
+        "operationId": "LocationUsage_List",
+        "description": "Gets the current usage count and the limit for the resources of the location under the subscription.",
+        "x-ms-examples": {
+          "UsageList": { "$ref": "./examples/UsageList.json"}
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          }          
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- current usage acount and limit retrieved and returned successfully.",
+            "schema": {
+              "$ref": "#/definitions/UsageListResult"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas": {
       "post": {
         "tags": [
@@ -827,7 +861,8 @@
             "Standard_GRS",
             "Standard_RAGRS",
             "Standard_ZRS",
-            "Premium_LRS"
+            "Premium_LRS",
+            "Premium_ZRS"
           ],
           "x-ms-enum": {
             "name": "SkuName",
@@ -859,7 +894,9 @@
           "enum": [
             "Storage",
             "StorageV2",
-            "BlobStorage"
+            "BlobStorage",
+            "FileStorage",
+            "BlockBlobStorage"
           ],
           "x-ms-enum": {
             "name": "Kind",
@@ -1145,6 +1182,12 @@
           "default": false,
           "x-ms-client-name": "EnableHttpsTrafficOnly",
           "description": "Allows https traffic only to storage service if sets to true."
+        },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration if sets to true."
         }
       },
       "description": "The parameters used to create the storage account."
@@ -1190,7 +1233,9 @@
           "enum": [
             "Storage",
             "StorageV2",
-            "BlobStorage"
+            "BlobStorage",
+            "FileStorage",
+            "BlockBlobStorage"
           ],
           "x-ms-enum": {
             "name": "Kind",
@@ -1358,6 +1403,12 @@
           "x-ms-client-name": "NetworkRuleSet",
           "description": "Network rule set",
           "readOnly": true
+        },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration if sets to true."
         }
       },
       "description": "Properties of the storage account."
@@ -1376,7 +1427,9 @@
           "enum": [
             "Storage",
             "StorageV2",
-            "BlobStorage"
+            "BlobStorage",
+            "FileStorage",
+            "BlockBlobStorage"
           ],
           "x-ms-enum": {
             "name": "Kind",
@@ -1498,6 +1551,12 @@
           "description": "Network rule set",
           "x-ms-client-name": "NetworkRuleSet",
           "$ref": "#/definitions/NetworkRuleSet"
+        },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration if sets to true."
         }
       },
       "description": "The parameters used when updating a storage account."
@@ -1530,7 +1589,9 @@
           "enum": [
             "Storage",
             "StorageV2",
-            "BlobStorage"
+            "BlobStorage",
+            "FileStorage",
+            "BlockBlobStorage"
           ],
           "x-ms-enum": {
             "name": "Kind",
@@ -1891,6 +1952,13 @@
       "required": true,
       "type": "string",
       "description": "Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+    },
+    "LocationParameter": {
+      "name": "location",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The location of the Azure Storage resource."
     },
     "ApiVersionParameter": {
       "name": "api-version",
