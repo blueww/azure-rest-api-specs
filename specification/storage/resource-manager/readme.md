@@ -26,7 +26,17 @@ These are the global settings for the Storage API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2017-10
+tag: package-2018-02
+```
+
+
+### Tag: package-2018-02
+
+These settings apply only when `--tag=package-2018-02` is specified on the command line.
+
+``` yaml $(tag) == 'package-2018-02'
+input-file:
+- Microsoft.Storage/stable/2018-02-01/storage.json
 ```
 
 
