@@ -486,7 +486,45 @@
         ],
         "responses": {
           "200": {
-            "description": "OK -- current usage acount and limit retrieved and returned successfully.",
+            "description": "OK -- current usage count and limit retrieved and returned successfully.",
+            "schema": {
+              "$ref": "#/definitions/UsageListResult"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages": {
+      "get": {
+        "tags": [
+          "LocationUsage"
+        ],
+        "operationId": "Usage_ListByLocation",
+        "description": "Gets the current usage count and the limit for the resources of the location under the subscription.",
+        "x-ms-examples": {
+          "UsageList": { "$ref": "./examples/StorageAccountListLocationUsage.json"}
+        },
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The location of the Azure Storage resource."
+          }         
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- current usage count and limit retrieved and returned successfully.",
             "schema": {
               "$ref": "#/definitions/UsageListResult"
             }
@@ -1170,6 +1208,18 @@
           "default": false,
           "x-ms-client-name": "EnableHttpsTrafficOnly",
           "description": "Allows https traffic only to storage service if sets to true."
+        },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration if sets to true."
+        },
+        "isHnsEnabled": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "IsHnsEnabled",
+          "description": "Account HierarchicalNamespace enabled if sets to true."
         }
       },
       "description": "The parameters used to create the storage account."
@@ -1271,9 +1321,19 @@
           "readOnly": true,
           "type": "string",
           "description": "Gets the file endpoint."
+        },
+        "dfs": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Gets the dfs endpoint."
+        },
+        "web": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Gets the web endpoint."
         }
       },
-      "description": "The URIs that are used to perform a retrieval of a public blob, queue, or table object."
+      "description": "The URIs that are used to perform a retrieval of a public blob, queue, file, table, dfs or web object."
     },
     "StorageAccountProperties": {
       "properties": {
@@ -1383,6 +1443,18 @@
           "x-ms-client-name": "NetworkRuleSet",
           "description": "Network rule set",
           "readOnly": true
+        },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration if sets to true."
+        },
+        "isHnsEnabled": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "IsHnsEnabled",
+          "description": "Account HierarchicalNamespace enabled if sets to true."
         }
       },
       "description": "Properties of the storage account."
@@ -1523,6 +1595,12 @@
           "description": "Network rule set",
           "x-ms-client-name": "NetworkRuleSet",
           "$ref": "#/definitions/NetworkRuleSet"
+        },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration if sets to true."
         }
       },
       "description": "The parameters used when updating a storage account."

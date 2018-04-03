@@ -1,48 +1,64 @@
 {
   "parameters": {
     "subscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
-    "resourceGroupName": "res9407",
-    "accountName": "sto8596",
+    "resourceGroupName": "res7790",
+    "accountName": "sto2614",
     "api-version": "2018-02-01",
     "monitor": "true"
   },
   "responses": {
     "200": {
       "body": {
-        "id": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/res9407/providers/Microsoft.Storage/storageAccounts/sto8596",
-        "kind": "Storage",
-        "location": "eastus2(stage)",
-        "name": "sto8596",
-        "properties": {
-          "creationTime": "2017-06-01T02:42:41.7633306Z",
-          "networkAcls": {
-            "bypass": "AzureServices",
-            "defaultAction": "Allow",
-            "ipRules": [],
-            "virtualNetworkRules": []
-          },
-          "primaryEndpoints": {
-            "blob": "https://sto8596.blob.core.windows.net/",
-            "file": "https://sto8596.file.core.windows.net/",
-            "queue": "https://sto8596.queue.core.windows.net/",
-            "table": "https://sto8596.table.core.windows.net/"
-          },
-          "primaryLocation": "eastus2(stage)",
-          "provisioningState": "Succeeded",
-          "secondaryLocation": "northcentralus(stage)",
-          "statusOfPrimary": "available",
-          "statusOfSecondary": "available",
-          "supportsHttpsTrafficOnly": false
-        },
         "sku": {
           "name": "Standard_GRS",
           "tier": "Standard"
         },
+        "kind": "StorageV2",
+        "id": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/res7790/providers/Microsoft.Storage/storageAccounts/sto2614",
+        "name": "sto2614",
+        "type": "Microsoft.Storage/storageAccounts",
+        "location": "eastus2(stage)",
         "tags": {
           "key1": "value1",
           "key2": "value2"
         },
-        "type": "Microsoft.Storage/storageAccounts"
+        "properties": {
+          "azureFilesAadIntegration": true,
+          "networkAcls": {
+            "bypass": "AzureServices",
+            "virtualNetworkRules": [],
+            "ipRules": [],
+            "defaultAction": "Allow"
+          },
+          "supportsHttpsTrafficOnly": true,
+          "encryption": {
+            "services": {
+              "file": {
+                "enabled": true,
+                "lastEnabledTime": "2018-04-28T03:30:45.8826777Z"
+              },
+              "blob": {
+                "enabled": true,
+                "lastEnabledTime": "2018-04-28T03:30:45.8826777Z"
+              }
+            },
+            "keySource": "Microsoft.Storage"
+          },
+          "accessTier": "Hot",
+          "provisioningState": "Succeeded",
+          "creationTime": "2018-04-28T03:30:45.8201562Z",
+          "primaryEndpoints": {
+            "web": "https://sto2614.z1.web.core.windows.net/",
+            "blob": "https://sto2614.blob.core.windows.net/",
+            "queue": "https://sto2614.queue.core.windows.net/",
+            "table": "https://sto2614.table.core.windows.net/",
+            "file": "https://sto2614.file.core.windows.net/"
+          },
+          "primaryLocation": "eastus2(stage)",
+          "statusOfPrimary": "available",
+          "secondaryLocation": "northcentralus(stage)",
+          "statusOfSecondary": "available"
+        }
       }
     }
   }
