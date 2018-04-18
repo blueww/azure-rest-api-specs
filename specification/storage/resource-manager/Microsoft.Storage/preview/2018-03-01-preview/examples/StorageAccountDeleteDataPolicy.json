@@ -1,0 +1,14 @@
+{
+  "parameters": {
+    "subscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
+    "resourceGroupName": "res3444",
+    "accountName": "sto9589",
+    "api-version": "2018-03-01-preview",
+    "monitor": "true"
+  },
+  "responses": {
+    "200": {
+      "body": ""
+    }
+  }
+}

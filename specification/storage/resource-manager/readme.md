@@ -35,8 +35,8 @@ These settings apply only when `--tag=package-2018-03` is specified on the comma
 
 ``` yaml $(tag) == 'package-2018-03'
 input-file:
-- Microsoft.Storage/stable/2018-03-01-preview/storage.json
-- Microsoft.Storage/stable/2018-03-01-preview/blob.json
+- Microsoft.Storage/preview/2018-03-01-preview/storage.json
+- Microsoft.Storage/preview/2018-03-01-preview/blob.json
 
 directive:
   - suppress: R3018

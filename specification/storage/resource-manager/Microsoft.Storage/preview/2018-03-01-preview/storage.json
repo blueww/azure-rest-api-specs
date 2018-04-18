@@ -645,11 +645,11 @@
         "operationId": "StorageAccounts_GetDataPolicies",
         "description": "Gets the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
-          "StorageAccountGetDataPolicies": { "$ref": "./examples/StorageAccountRegenerateKey.json" }
+          "StorageAccountGetDataPolicies": { "$ref": "./examples/StorageAccountGetDataPolicy.json" }
         },
         "parameters": [
           {
-            "$ref": "#/parameters/ResourceGroupName"
+            "$ref": "../../../../../common/Parameters.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "accountName",
@@ -683,11 +683,11 @@
         "operationId": "StorageAccounts_CreateOrUpdateDataPolicies",
         "description": "Sets the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
-          "StorageAccountSetDataPolicies": { "$ref": "./examples/StorageAccountRegenerateKey.json" }
+          "StorageAccountSetDataPolicies": { "$ref": "./examples/StorageAccountSetDataPolicy.json" }
         },
         "parameters": [
           {
-            "$ref": "#/parameters/ResourceGroupName"
+            "$ref": "../../../../../common/Parameters.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "accountName",
@@ -730,11 +730,11 @@
         "operationId": "StorageAccounts_DeleteDataPolicies",
         "description": "Deletes the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
-          "StorageAccountDeleteDataPolicies": { "$ref": "./examples/StorageAccountRegenerateKey.json" }
+          "StorageAccountDeleteDataPolicies": { "$ref": "./examples/StorageAccountDeleteDataPolicy.json" }
         },
         "parameters": [
           {
-            "$ref": "#/parameters/ResourceGroupName"
+            "$ref": "../../../../../common/Parameters.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "accountName",
@@ -2126,17 +2126,18 @@
     },
     "StorageAccountDataPoliciesRulesProperty": {
       "properties": {
-        "rules": {
-          "type": "string",
-          "description": "The Storage Account DataPolicies Rules, in JSON format."
-        },
         "lastModifiedTime": {
           "readOnly": true,
           "type": "string",
           "format": "date-time",
           "description": "Returns the date and time the DataPolicies was last modified."
         }
-      },
+      },      
+      "allOf": [
+        {
+          "$ref": "#/definitions/DataPoliciesRules"
+        }
+      ],
       "description": "The Storage Account Data Policies properties."
     },
     "DataPoliciesRulesSetParameter": {
@@ -2152,7 +2153,7 @@
     "DataPoliciesRules": {
       "properties": {
           "rules": {
-            "type": "string",
+            "type": "object",
             "description": "The Storage Account DataPolicies Rules, in JSON format. //TODO: Link of the sample rules."
           }
       },
