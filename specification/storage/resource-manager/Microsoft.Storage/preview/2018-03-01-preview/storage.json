@@ -637,15 +637,15 @@
         }
       }
     },    
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataPolicies/default": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/default": {
       "get": {
         "tags": [
-          "DataPolicies"
+          "ManagementPolicies"
         ],
-        "operationId": "StorageAccounts_GetDataPolicies",
+        "operationId": "StorageAccounts_GetManagementPolicies",
         "description": "Gets the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
-          "StorageAccountGetDataPolicies": { "$ref": "./examples/StorageAccountGetDataPolicy.json" }
+          "StorageAccountGetManagementPolicies": { "$ref": "./examples/StorageAccountGetManagementPolicy.json" }
         },
         "parameters": [
           {
@@ -669,21 +669,21 @@
         ],
         "responses": {
           "200": {
-            "description": "OK -- Get data policies successfully.",
+            "description": "OK -- Get management policies successfully.",
             "schema": {
-              "$ref": "#/definitions/StorageAccountDataPolicies"
+              "$ref": "#/definitions/StorageAccountManagementPolicies"
             }
           }
         }
       },
       "put": {
         "tags": [
-          "DataPolicies"
+          "ManagementPolicies"
         ],
-        "operationId": "StorageAccounts_CreateOrUpdateDataPolicies",
+        "operationId": "StorageAccounts_CreateOrUpdateManagementPolicies",
         "description": "Sets the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
-          "StorageAccountSetDataPolicies": { "$ref": "./examples/StorageAccountSetDataPolicy.json" }
+          "StorageAccountSetManagementPolicies": { "$ref": "./examples/StorageAccountSetManagementPolicy.json" }
         },
         "parameters": [
           {
@@ -709,28 +709,28 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/DataPoliciesRulesSetParameter"
+              "$ref": "#/definitions/ManagementPoliciesRulesSetParameter"
             },
             "description": "The data policy rules to set to a storage account."
           }
         ],
         "responses": {
           "200": {
-            "description": "OK -- Get data policies successfully.",
+            "description": "OK -- Get management policies successfully.",
             "schema": {
-              "$ref": "#/definitions/StorageAccountDataPolicies"
+              "$ref": "#/definitions/StorageAccountManagementPolicies"
             }
           }
         }
       },
       "delete": {
         "tags": [
-          "DataPolicies"
+          "ManagementPolicies"
         ],
-        "operationId": "StorageAccounts_DeleteDataPolicies",
+        "operationId": "StorageAccounts_DeleteManagementPolicies",
         "description": "Deletes the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
-          "StorageAccountDeleteDataPolicies": { "$ref": "./examples/StorageAccountDeleteDataPolicy.json" }
+          "StorageAccountDeleteManagementPolicies": { "$ref": "./examples/StorageAccountDeleteManagementPolicy.json" }
         },
         "parameters": [
           {
@@ -754,7 +754,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK -- Delete data policies successfully."
+            "description": "OK -- Delete management policies successfully."
+          },   
+          "204": {
+            "description": "No Content -- The management policies not exist."
           }
         }
       }
@@ -2108,10 +2111,10 @@
       },
       "description": "The List service SAS credentials operation response."
     },
-    "StorageAccountDataPolicies": {
+    "StorageAccountManagementPolicies": {
       "properties": {
         "properties": {
-          "$ref": "#/definitions/StorageAccountDataPoliciesRulesProperty",
+          "$ref": "#/definitions/StorageAccountManagementPoliciesRulesProperty",
           "x-ms-client-flatten": true,
           "readOnly": true,
           "description": "Returns the Storage Account Data Policies Rules."
@@ -2122,42 +2125,42 @@
           "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
         }
       ],
-      "description": "The Get Storage Account DataPolicies operation response."
+      "description": "The Get Storage Account ManagementPolicies operation response."
     },
-    "StorageAccountDataPoliciesRulesProperty": {
+    "StorageAccountManagementPoliciesRulesProperty": {
       "properties": {
         "lastModifiedTime": {
           "readOnly": true,
           "type": "string",
           "format": "date-time",
-          "description": "Returns the date and time the DataPolicies was last modified."
+          "description": "Returns the date and time the ManagementPolicies was last modified."
         }
       },      
       "allOf": [
         {
-          "$ref": "#/definitions/DataPoliciesRules"
+          "$ref": "#/definitions/ManagementPoliciesRules"
         }
       ],
       "description": "The Storage Account Data Policies properties."
     },
-    "DataPoliciesRulesSetParameter": {
+    "ManagementPoliciesRulesSetParameter": {
       "properties": {
         "properties": {
-          "$ref": "#/definitions/DataPoliciesRules",
+          "$ref": "#/definitions/ManagementPoliciesRules",
           "x-ms-client-flatten": true,
-          "description": "The Storage Account DataPolicies Rules, in JSON format. //TODO: Link of the sample rules."
+          "description": "The Storage Account ManagementPolicies Rules, in JSON format. //TODO: Link of the sample rules."
         }
       },
-      "description": "The Storage Account DataPolicies Rules, in JSON format. //TODO: Link of the sample rules."
+      "description": "The Storage Account ManagementPolicies Rules, in JSON format. //TODO: Link of the sample rules."
     },
-    "DataPoliciesRules": {
+    "ManagementPoliciesRules": {
       "properties": {
-          "rules": {
+          "policy": {
             "type": "object",
-            "description": "The Storage Account DataPolicies Rules, in JSON format. //TODO: Link of the sample rules."
+            "description": "The Storage Account ManagementPolicies Rules, in JSON format. //TODO: Link of the sample rules."
           }
       },
-      "description": "The Storage Account DataPolicies Rules, in JSON format. //TODO: Link of the sample rules."
+      "description": "The Storage Account ManagementPolicies Rules, in JSON format. //TODO: Link of the sample rules."
     }
   },
   "securityDefinitions": {
