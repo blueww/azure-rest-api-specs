@@ -13,7 +13,7 @@
         "name": "DefaultDataPolicyRule",
         "type": "Microsoft.Storage/storageAccounts/dataPolicies",
         "properties": {
-          "rules": {
+          "policy": {
             "policy": {
               "rules": [
                 {

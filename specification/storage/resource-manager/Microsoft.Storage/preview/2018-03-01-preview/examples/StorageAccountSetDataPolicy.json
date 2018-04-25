@@ -7,7 +7,7 @@
     "monitor": "true",
     "properties": {
       "properties": {
-        "rules": {
+        "policy": {
           "policy": {
             "rules": [
               {
