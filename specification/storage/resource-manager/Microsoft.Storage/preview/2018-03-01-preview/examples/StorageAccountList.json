@@ -21,6 +21,7 @@
             "tags": {},
             "properties": {
               "isHnsEnabled": true,
+              "azureFilesAadIntegration": true,
               "networkAcls": {
                 "bypass": "AzureServices",
                 "virtualNetworkRules": [],
