@@ -1271,6 +1271,12 @@
             "modelAsString": false
           }
         },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration for SMB if sets to true."
+        },
         "supportsHttpsTrafficOnly": {
           "type": "boolean",
           "default": false,
@@ -1494,6 +1500,12 @@
             "modelAsString": false
           }
         },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration for SMB if sets to true."
+        },
         "supportsHttpsTrafficOnly": {
           "type": "boolean",
           "default": false,
@@ -1640,6 +1652,12 @@
             "name": "AccessTier",
             "modelAsString": false
           }
+        },
+        "azureFilesAadIntegration": {
+          "type": "boolean",
+          "default": false,
+          "x-ms-client-name": "EnableAzureFilesAadIntegration",
+          "description": "Enables Azure Files AAD Integration for SMB if sets to true."
         },
         "supportsHttpsTrafficOnly": {
           "type": "boolean",
