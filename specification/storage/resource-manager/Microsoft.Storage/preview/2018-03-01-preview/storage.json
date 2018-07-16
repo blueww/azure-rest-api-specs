@@ -1277,7 +1277,6 @@
         },
         "azureFilesAadIntegration": {
           "type": "boolean",
-          "default": false,
           "x-ms-client-name": "EnableAzureFilesAadIntegration",
           "description": "Enables Azure Files AAD Integration for SMB if sets to true."
         },
@@ -1659,7 +1658,6 @@
         },
         "azureFilesAadIntegration": {
           "type": "boolean",
-          "default": false,
           "x-ms-client-name": "EnableAzureFilesAadIntegration",
           "description": "Enables Azure Files AAD Integration for SMB if sets to true."
         },
