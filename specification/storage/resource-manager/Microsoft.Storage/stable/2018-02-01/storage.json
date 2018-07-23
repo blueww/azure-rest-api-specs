@@ -886,7 +886,8 @@
             "Standard_GRS",
             "Standard_RAGRS",
             "Standard_ZRS",
-            "Premium_LRS"
+            "Premium_LRS",
+            "Premium_ZRS"
           ],
           "x-ms-enum": {
             "name": "SkuName",
@@ -918,7 +919,9 @@
           "enum": [
             "Storage",
             "StorageV2",
-            "BlobStorage"
+            "BlobStorage",
+            "FileStorage",
+            "BlockBlobStorage"
           ],
           "x-ms-enum": {
             "name": "Kind",
@@ -1259,7 +1262,9 @@
           "enum": [
             "Storage",
             "StorageV2",
-            "BlobStorage"
+            "BlobStorage",
+            "FileStorage",
+            "BlockBlobStorage"
           ],
           "x-ms-enum": {
             "name": "Kind",
@@ -1461,7 +1466,9 @@
           "enum": [
             "Storage",
             "StorageV2",
-            "BlobStorage"
+            "BlobStorage",
+            "FileStorage",
+            "BlockBlobStorage"
           ],
           "x-ms-enum": {
             "name": "Kind",
@@ -1615,7 +1622,9 @@
           "enum": [
             "Storage",
             "StorageV2",
-            "BlobStorage"
+            "BlobStorage",
+            "FileStorage",
+            "BlockBlobStorage"
           ],
           "x-ms-enum": {
             "name": "Kind",
