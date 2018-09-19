@@ -1013,7 +1013,8 @@
             },
             "defaultServiceVersion": {
               "type": "string",
-              "description": "DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions."
+              "format": "date",
+              "description": "DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. You must use version 2011-08-18 or later. For more information on applicable versions, see https://docs.microsoft.com/en-us/rest/api/storageservices/versioning-for-the-azure-storage-services."
             },
             "deleteRetentionPolicy": {
               "$ref": "#/definitions/DeleteRetentionPolicy",
