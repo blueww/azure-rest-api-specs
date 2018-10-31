@@ -36,7 +36,11 @@
           "secondaryLocation": "northcentralus(stage)",
           "statusOfPrimary": "available",
           "statusOfSecondary": "available",
-          "supportsHttpsTrafficOnly": false
+          "supportsHttpsTrafficOnly": false,
+          "geoReplicationStats": {
+            "status": "Live",
+            "lastSyncTime": "2017-05-24T13:25:33Z"
+          }
         },
         "sku": {
           "name": "Standard_GRS",

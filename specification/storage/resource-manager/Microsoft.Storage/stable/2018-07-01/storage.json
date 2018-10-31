@@ -226,6 +226,20 @@
           },
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "description": "Get the expend Storage account properties, e.g. geoReplicationStats.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "geoReplicationStats"
+            ],
+            "x-ms-enum": {
+              "name": "StorageAccountExpand",
+              "modelAsString": false
+            }
           }
         ],
         "responses": {
@@ -596,42 +610,6 @@
         "x-ms-long-running-operation": true,
         "x-ms-long-running-operation-options": {
           "final-state-via": "location"
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/lastSyncTime": {      
-      "get": {
-        "tags": [
-          "StorageAccounts"
-        ],
-        "operationId": "StorageAccounts_GetLastSyncTime",
-        "description": "Retrieve last sync time for his or her RA-GRS and GRS accounts.",
-        "x-ms-examples": {
-          "StorageAccountGetProperties": {
-            "$ref": "./examples/StorageAccountGetLastSyncTime.json"
-          }
-        },
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceGroupName"
-          },
-          {
-            "$ref": "#/parameters/StorageAccountName"
-          },
-          {
-            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK -- last sync time retrieved successfully for the storage account.",
-            "schema": {
-              "$ref": "#/definitions/GetLastSyncTimeResult"
-            }
-          }
         }
       }
     }
@@ -1462,6 +1440,11 @@
           "x-ms-client-name": "FailoverInProgress ",
           "description": "If the failover is in progress, the value will be true, otherwise, it will be null.",
           "readOnly": true
+        },
+        "geoReplicationStats": {
+          "$ref": "#/definitions/GeoReplicationStats",
+          "readOnly": true,
+          "description": "The last sync time for a RA-GRS and GRS accounts."
         }
       },
       "description": "Properties of the storage account."
@@ -1962,8 +1945,8 @@
       },
       "description": "The List service SAS credentials operation response."
     },
-    "GetLastSyncTimeResult": {
-      "properties": {        
+    "GeoReplicationStats": {
+      "properties": {
         "status": {
           "readOnly": true,
           "type": "string",
@@ -1977,7 +1960,7 @@
             "name": "ReplicationStatus",
             "modelAsString": true
           }
-        },           
+        },
         "lastSyncTime": {
           "readOnly": true,
           "type": "string",
@@ -1985,7 +1968,7 @@
           "description": "All primary writes preceding this value are guaranteed to be replicated to secondary. Primary writes after this point in time may or may not be replicated. It is the minimum last sync time of the account’s Blob/Table/Queue/File endpoints. The value may be account’s creation time if LastSyncTime is not available. This can happen if the replication status is bootstrap or unavailable. "
         }
       },
-      "description": "The response from the get last synctime operation."
+      "description": "The last sync time for a RA-GRS and GRS accounts."
     }
   },
   "parameters": {
