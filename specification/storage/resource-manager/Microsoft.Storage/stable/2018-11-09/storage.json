@@ -615,7 +615,7 @@
         "tags": [
           "ManagementPolicies"
         ],
-        "operationId": "StorageAccounts_GetManagementPolicies",
+        "operationId": "ManagementPolicies_Get",
         "description": "Gets the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
           "StorageAccountGetManagementPolicies": { "$ref": "./examples/StorageAccountGetManagementPolicy.json" }
@@ -650,7 +650,7 @@
         "tags": [
           "ManagementPolicies"
         ],
-        "operationId": "StorageAccounts_CreateOrUpdateManagementPolicies",
+        "operationId": "ManagementPolicies_CreateOrUpdate",
         "description": "Sets the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
           "StorageAccountSetManagementPolicies": { "$ref": "./examples/StorageAccountSetManagementPolicy.json" }
@@ -694,7 +694,7 @@
         "tags": [
           "ManagementPolicies"
         ],
-        "operationId": "StorageAccounts_DeleteManagementPolicies",
+        "operationId": "ManagementPolicies_Delete",
         "description": "Deletes the data policy rules associated with the specified storage account.",
         "x-ms-examples": {
           "StorageAccountDeleteManagementPolicies": { "$ref": "./examples/StorageAccountDeleteManagementPolicy.json" }
@@ -1056,7 +1056,7 @@
           "type": "string",
           "description": "Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source."
         },
-        "useSubDomain": {
+        "useSubDomainName": {
           "type": "boolean",
           "description": "Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates."
         }
