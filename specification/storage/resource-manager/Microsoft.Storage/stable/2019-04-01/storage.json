@@ -984,7 +984,7 @@
           ],
           "x-ms-enum": {
             "name": "SkuName",
-            "modelAsString": false
+            "modelAsString": true
           }
         },
         "tier": {
@@ -1018,7 +1018,7 @@
           ],
           "x-ms-enum": {
             "name": "Kind",
-            "modelAsString": false
+            "modelAsString": true
           }
         },
         "locations": {
@@ -1364,7 +1364,7 @@
           ],
           "x-ms-enum": {
             "name": "Kind",
-            "modelAsString": false
+            "modelAsString": true
           }
         },
         "location": {
@@ -1613,7 +1613,7 @@
           ],
           "x-ms-enum": {
             "name": "Kind",
-            "modelAsString": false
+            "modelAsString": true
           }
         },
         "identity": {
@@ -1773,7 +1773,7 @@
           ],
           "x-ms-enum": {
             "name": "Kind",
-            "modelAsString": false
+            "modelAsString": true
           }
         }
       },
