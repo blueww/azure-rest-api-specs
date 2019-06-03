@@ -1381,6 +1381,11 @@
           "type": "boolean",
           "x-ms-client-name": "IsHnsEnabled",
           "description": "Account HierarchicalNamespace enabled if sets to true."
+        },
+        "isLargeFileSharesEnabled": {
+          "type": "boolean",
+          "x-ms-client-name": "IsLargeFileSharesEnabled",
+          "description": "Enable large file shares if sets to true. It cannot be disabled once it is enabled."
         }
       },
       "description": "The parameters used to create the storage account."
@@ -1656,6 +1661,11 @@
           "x-ms-client-name": "FailoverInProgress",
           "description": "If the failover is in progress, the value will be true, otherwise, it will be null.",
           "readOnly": true
+        },
+        "isLargeFileSharesEnabled": {
+          "type": "boolean",
+          "x-ms-client-name": "IsLargeFileSharesEnabled",
+          "description": "Enable large file shares if sets to true. It cannot be disabled once it is enabled."
         }
       },
       "description": "Properties of the storage account."
@@ -1801,6 +1811,11 @@
           "description": "Network rule set",
           "x-ms-client-name": "NetworkRuleSet",
           "$ref": "#/definitions/NetworkRuleSet"
+        },
+        "isLargeFileSharesEnabled": {
+          "type": "boolean",
+          "x-ms-client-name": "IsLargeFileSharesEnabled",
+          "description": "Enable large file shares if sets to true. It cannot be disabled once it is enabled."
         }
       },
       "description": "The parameters used when updating a storage account."
