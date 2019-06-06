@@ -1382,9 +1382,16 @@
           "x-ms-client-name": "IsHnsEnabled",
           "description": "Account HierarchicalNamespace enabled if sets to true."
         },
-        "isLargeFileSharesEnabled": {
-          "type": "boolean",
-          "x-ms-client-name": "IsLargeFileSharesEnabled",
+        "largeFileSharesState": {
+          "type": "string",
+          "enum": [
+            "Enabled",
+            "Disabled"
+          ],
+          "x-ms-enum": {
+            "name": "LargeFileSharesState",
+            "modelAsString": true
+          },
           "description": "Enable large file shares if sets to true. It cannot be disabled once it is enabled."
         }
       },
@@ -1662,9 +1669,16 @@
           "description": "If the failover is in progress, the value will be true, otherwise, it will be null.",
           "readOnly": true
         },
-        "isLargeFileSharesEnabled": {
-          "type": "boolean",
-          "x-ms-client-name": "IsLargeFileSharesEnabled",
+        "largeFileSharesState": {
+          "type": "string",
+          "enum": [
+            "Enabled",
+            "Disabled"
+          ],
+          "x-ms-enum": {
+            "name": "LargeFileSharesState",
+            "modelAsString": true
+          },
           "description": "Enable large file shares if sets to true. It cannot be disabled once it is enabled."
         }
       },
@@ -1812,9 +1826,16 @@
           "x-ms-client-name": "NetworkRuleSet",
           "$ref": "#/definitions/NetworkRuleSet"
         },
-        "isLargeFileSharesEnabled": {
-          "type": "boolean",
-          "x-ms-client-name": "IsLargeFileSharesEnabled",
+        "largeFileSharesState": {
+          "type": "string",
+          "enum": [
+            "Enabled",
+            "Disabled"
+          ],
+          "x-ms-enum": {
+            "name": "LargeFileSharesState",
+            "modelAsString": true
+          },
           "description": "Enable large file shares if sets to true. It cannot be disabled once it is enabled."
         }
       },
