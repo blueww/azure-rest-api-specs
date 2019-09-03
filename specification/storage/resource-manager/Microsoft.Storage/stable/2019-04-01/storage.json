@@ -367,7 +367,7 @@
           "StorageAccounts"
         ],
         "operationId": "StorageAccounts_ListKeys",
-        "description": "Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.",
+        "description": "Lists the access keys and Kerberos keys (if active directory enabled) for the specified storage account.",
         "x-ms-examples": {
           "StorageAccountListKeys": {
             "$ref": "./examples/StorageAccountListKeys.json"
@@ -387,13 +387,13 @@
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "name": "$expand",
-            "in": "query",
+            "name": "listKey",
+            "in": "body",
             "required": false,
-            "type": "string",
-            "enum": [
-              "kerb"
-            ],
+            "schema": {
+              "$ref": "#/definitions/StorageAccountListKeyParameters"
+            },
+            "description": "Specifies type of the key which should be listed -- access or kerb. The default is access."
             "x-ms-enum": {
               "name": "ListKeyExpand"
             },
@@ -1849,6 +1849,18 @@
         "keyName"
       ],
       "description": "The parameters used to regenerate the storage account key."
+    },
+    "StorageAccountListKeyParameters": {
+      "properties": {
+        "keyType": {
+          "type": "string",
+          "description": "The type of storage keys that want to be listed, possible values are access, kerb."
+        }
+      },
+      "required": [
+        "keyType"
+      ],
+      "description": "The parameters used to list the storage account key."
     },
     "StorageAccountPropertiesUpdateParameters": {
       "properties": {
