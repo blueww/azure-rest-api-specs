@@ -4,7 +4,10 @@
     "resourceGroupName": "res418",
     "accountName": "sto2220",
     "api-version": "2019-04-01",
-    "monitor": "true"
+    "monitor": "true",
+    "listKey": {
+      "keyType": "access"
+    }
   },
   "responses": {
     "200": {
