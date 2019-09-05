@@ -1337,18 +1337,60 @@
           "description": "Indicates the directory service used.",
           "enum": [
             "None",
-            "AADDS"
+            "AADDS",
+            "AD"
           ],
           "x-ms-enum": {
             "name": "DirectoryServiceOptions",
             "modelAsString": true
           }
+        },
+        "activeDirectoryProperties": {
+          "$ref": "#/definitions/ActiveDirectoryProperties",
+          "description": "Required if choose AD."
         }
       },
       "required": [
         "directoryServiceOptions"
       ],
       "description": "Settings for Azure Files identity based authentication."
+    },
+    "ActiveDirectoryProperties": {
+      "properties": {
+        "domainName": {
+          "type": "string",
+          "description": "Specifies the primary domain that the AD DNS server is authoritative for."
+        },
+        "netBiosDomainName": {
+          "type": "string",
+          "description": "Specifies the NetBIOS domain name."
+        },
+        "forestName": {
+          "type": "string",
+          "description": "Specifies the Active Directory forest to get."
+        },
+        "domainGuid": {
+          "type": "string",
+          "description": "Specifies the domain GUID."
+        },
+        "domainSid": {
+          "type": "string",
+          "description": "Specifies the security identifier (SID)."
+        },
+        "azureStorageSid": {
+          "type": "string",
+          "description": "Specifies the security identifier (SID) for Azure Storage."
+        }
+      },
+      "required": [
+        "domainName",
+        "netBiosDomainName",
+        "forestName",
+        "domainGuid",
+        "domainSid",
+        "azureStorageSid"
+      ],
+      "description": "Settings properties for Active Directory (AD)."
     },
     "StorageAccountPropertiesCreateParameters": {
       "properties": {
