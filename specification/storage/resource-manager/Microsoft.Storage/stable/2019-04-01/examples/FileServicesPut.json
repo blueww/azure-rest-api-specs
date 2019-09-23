@@ -68,6 +68,10 @@
               ]
             }
           ]
+        },
+        "shareDeleteRetentionPolicy": {
+          "enabled": true,
+          "days": 14
         }
       }
     }
@@ -139,6 +143,10 @@
                 ]
               }
             ]
+          },
+          "shareDeleteRetentionPolicy": {
+            "enabled": true,
+            "days": 14
           }
         }
       }

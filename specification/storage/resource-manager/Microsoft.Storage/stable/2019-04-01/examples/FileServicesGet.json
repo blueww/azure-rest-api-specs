@@ -74,6 +74,10 @@
                 ]
               }
             ]
+          },
+          "shareDeleteRetentionPolicy": {
+            "enabled": true,
+            "days": 14
           }
         }
       }

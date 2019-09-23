@@ -93,7 +93,7 @@
             "schema": {
               "$ref": "#/definitions/FileServiceProperties"
             },
-            "description": "The properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules."
+            "description": "The properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules and share delete detention policy."
           }
         ],
         "responses": {
@@ -121,7 +121,7 @@
             "$ref": "./examples/FileServicesGet.json"
           }
         },
-        "description": "Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.",
+        "description": "Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules and share delete detention policy.",
         "parameters": [
           {
             "$ref": "./storage.json#/parameters/ResourceGroupName"
@@ -438,6 +438,10 @@
             "cors": {
               "$ref": "../../../../../storage/resource-manager/Microsoft.Storage/stable/2019-04-01/blob.json#/definitions/CorsRules",
               "description": "Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service."
+            },
+            "shareDeleteRetentionPolicy": {
+              "$ref": "#/definitions/DeleteRetentionPolicy",
+              "description": "Policy to enable share soft delete."
             }
           },
           "x-ms-client-flatten": true,
@@ -451,6 +455,18 @@
         }
       ],
       "description": "The properties of File services in storage account."
+    },
+    "DeleteRetentionPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "days": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "description": "Delet retention policy for File shares."
     },
     "FileShare": {
       "properties": {
