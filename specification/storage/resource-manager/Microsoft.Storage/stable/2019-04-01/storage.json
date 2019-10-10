@@ -398,10 +398,6 @@
               "name": "ListKeyExpand"
             },
             "description": "Specifies type of the key to be listed. Possible value is kerb."
-            "x-ms-enum": {
-              "name": "ListKeyExpand"
-            },
-            "description": "Specifies type of the key to be listed. Possible value is kerb."
           }
         ],
         "responses": {
@@ -440,7 +436,7 @@
             "schema": {
               "$ref": "#/definitions/StorageAccountRegenerateKeyParameters"
             },
-            "description": "Specifies name of the key which should be regenerated -- key1 or key2."
+            "description": "Specifies name of the key which should be regenerated -- key1, key2, kerb1, kerb2."
           },
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
@@ -1846,7 +1842,7 @@
       "properties": {
         "keyName": {
           "type": "string",
-          "description": "The name of storage keys that want to be regenerated, possible values are key1, key2, kerb."
+          "description": "The name of storage keys that want to be regenerated, possible values are key1, key2, kerb1, kerb2."
         }
       },
       "required": [
