@@ -2531,7 +2531,7 @@
             "Deleting"
           ],
           "x-ms-enum": {
-            "name": "ProvisioningState",
+            "name": "ProvisioningState2",
             "modelAsString": true
           }
         },
