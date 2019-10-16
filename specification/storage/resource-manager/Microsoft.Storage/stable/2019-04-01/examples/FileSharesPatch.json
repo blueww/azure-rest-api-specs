@@ -10,7 +10,9 @@
       "properties": {
         "metadata": {
           "type": "image"
-        }
+        },
+        "enabledProtocols": "NFS",
+        "rootSquash": "RootSquash"
       }
     }
   },
@@ -23,7 +25,9 @@
         "properties": {
           "metadata": {
             "type": "image"
-          }
+          },
+          "enabledProtocols": "NFS",
+          "rootSquash": "RootSquash"
         }
       }
     }
