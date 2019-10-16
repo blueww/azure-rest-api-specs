@@ -534,6 +534,19 @@
               "modelAsString": true
             },
             "description": "Protocols for file shares"
+          },
+          "rootSquash": {
+            "type": "string",
+            "enum": [
+              "NoRootSquash",
+              "RootSquash",
+              "AllSquash"
+            ],
+            "x-ms-enum": {
+              "name": "RootSquash",
+              "modelAsString": true
+            },
+            "description": "Only for NFS shares. This property is invalid for SMB shares."
         }
       },
       "description": "The properties of the file share."
