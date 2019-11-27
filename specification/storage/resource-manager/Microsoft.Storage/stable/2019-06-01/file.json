@@ -508,6 +508,7 @@
       "description": "Response schema. Contains list of shares returned, and if paging is requested or required, a URL to next page of shares."
     },
     "FileShareProperties": {
+      "x-ms-client-flatten": true,
       "properties": {
         "lastModifiedTime": {
           "type": "string",
