@@ -1,0 +1,37 @@
+{
+  "parameters": {
+    "subscriptionId": "11111111-2222-3333-4444-555555555555",
+    "resourceGroupName": "examples-rg",
+    "dataMoverName": "example-dataMoverName",
+    "projectName": "example-projectName",
+    "jobDefinitionName": "example-jobDefinitionName",
+    "api-version": "2021-08-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/jobRun1",
+            "name": "examples-jobRunName1",
+            "type": "Microsoft.DataMover/dataMovers/projects/jobDefinitions/jobRuns",
+            "properties": {}
+          },
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/jobRun2",
+            "name": "examples-jobRunName2",
+            "type": "Microsoft.DataMover/dataMovers/projects/jobDefinitions/jobRuns",
+            "properties": {}
+          },
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/jobRun3",
+            "name": "examples-jobRunName3",
+            "type": "Microsoft.DataMover/dataMovers/projects/jobDefinitions/jobRuns",
+            "properties": {}
+          }
+        ],
+        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/dataMovers/projects/jobDefinitions/jobRuns?$skiptoken={token}"
+      }
+    }
+  }
+}

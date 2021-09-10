@@ -1,0 +1,21 @@
+{
+  "parameters": {
+    "api-version": "2021-08-01",
+    "subscriptionId": "11111111-2222-3333-4444-555555555555",
+    "resourceGroupName": "examples-rg",
+    "dataMoverName": "examples-dataMoverName",
+    "jobDefinitionName": "examples-jobDefinitionName",
+    "jobRunName": "examples-jobRunName"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName/jobRuns/examples-jobRunName",
+        "name": "examples-jobRunName",
+        "type": "Microsoft.DataMover/dataMovers/jobDefinitions/jobRuns",
+        "properties": {
+        }
+      }
+    }
+  }
+}

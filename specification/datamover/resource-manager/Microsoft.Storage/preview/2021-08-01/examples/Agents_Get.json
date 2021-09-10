@@ -1,0 +1,28 @@
+{
+  "parameters": {
+    "api-version": "2021-08-01",
+    "subscriptionId": "11111111-2222-3333-4444-555555555555",
+    "resourceGroupName": "examples-rg",
+    "dataMoverName": "examples-dataMoverName",
+    "agentName": "examples-agentName"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/agents/examples-agentName",
+        "name": "examples-agentName",
+        "type": "Microsoft.DataMover/dataMovers/agents",
+        "systemData": {
+          "createdBy": "string",
+          "createdByType": "User",
+          "createdAt": "2020-02-01T01:01:01.1075056Z",
+          "lastModifiedBy": "string",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
+        },
+        "properties": {
+        }
+      }
+    }
+  }
+}

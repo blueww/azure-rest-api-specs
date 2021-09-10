@@ -1,0 +1,35 @@
+{
+  "parameters": {
+    "api-version": "2021-10-01-privatepreview",
+    "subscriptionId": "11111111-2222-3333-4444-555555555555",
+    "resourceGroupName": "examples-rg",
+    "dataMoverName": "examples-dataMoverName"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/endpoints/examples-endpointName1",
+            "name": "examples-endpointName1",
+            "type": "Microsoft.DataMover/dataMovers/endpoints",
+            "properties": {}
+          },
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/endpoints/examples-endpointName2",
+            "name": "examples-endpointName2",
+            "type": "Microsoft.DataMover/dataMovers/endpoints",
+            "properties": {}
+          },
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/endpoints/examples-endpointName3",
+            "name": "examples-endpointName3",
+            "type": "Microsoft.DataMover/dataMovers/endpoints",
+            "properties": {}
+          }
+        ],
+        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/dataMovers/example-dataMoverName/endpoints?$skiptoken={token}"
+      }
+    }
+  }
+}
