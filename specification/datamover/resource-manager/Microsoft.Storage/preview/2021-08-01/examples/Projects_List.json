@@ -1,0 +1,35 @@
+{
+  "parameters": {
+    "subscriptionId": "11111111-2222-3333-4444-555555555555",
+    "resourceGroupName": "examples-rg",
+    "dataMoverName": "example-dataMoverName",
+    "api-version": "2021-08-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projects/examples-projectName1",
+            "name": "examples-projectName1",
+            "type": "Microsoft.DataMover/dataMovers/projects",
+            "properties": {}
+          },
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projects/examples-projectName2",
+            "name": "examples-projectName2",
+            "type": "Microsoft.DataMover/projects",
+            "properties": {}
+          },
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projects/examples-projectName2",
+            "name": "examples-projectName3",
+            "type": "Microsoft.DataMover/projects",
+            "properties": {}
+          }
+        ],
+        "nextLink": "https://management.azure.com/providers/Microsoft.Storage/dataMovers/projects?$skiptoken={token}"
+      }
+    }
+  }
+}

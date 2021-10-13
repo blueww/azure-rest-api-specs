@@ -1,0 +1,43 @@
+{
+  "parameters": {
+    "subscriptionId": "11111111-2222-3333-4444-555555555555",
+    "resourceGroupName": "examples-rg",
+    "dataMoverName": "example-dataMoverName",
+    "api-version": "2021-08-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName1",
+            "name": "examples-jobDefinitionName1",
+            "type": "Microsoft.DataMover/dataMovers/jobDefinitions",
+            "properties": {}
+          },
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName2",
+            "name": "examples-jobDefinitionName2",
+            "type": "Microsoft.DataMover/dataMovers/jobDefinitions",
+            "systemData": {
+              "createdBy": "string",
+              "createdByType": "User",
+              "createdAt": "2020-02-01T01:01:01.1075056Z",
+              "lastModifiedBy": "string",
+              "lastModifiedByType": "User",
+              "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
+            },
+            "properties": {}
+          },
+          {
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName2",
+            "name": "examples-jobDefinitionName3",
+            "type": "Microsoft.DataMover/dataMovers/jobDefinitions",
+            "properties": {}
+          }
+        ],
+        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/dataMovers/jobDefinitions?$skiptoken={token}"
+      }
+    }
+  }
+}

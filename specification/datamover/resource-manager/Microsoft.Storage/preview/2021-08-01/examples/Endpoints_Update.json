@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "api-version": "2021-10-01-privatepreview",
+    "subscriptionId": "11111111-2222-3333-4444-555555555555",
+    "resourceGroupName": "examples-rg",
+    "dataMoverName": "examples-dataMoverName",
+    "endpointName": "examples-endpointName",
+    "body": {
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/Microsoft.DataMover/dataMovers/examples-dataMoverName/endpoints/examples-endpointName",
+        "name": "examples-endpointName",
+        "type": "Microsoft.DataMover/dataMovers/endpoints",
+        "properties": {
+        }
+      }
+    }
+  }
+}

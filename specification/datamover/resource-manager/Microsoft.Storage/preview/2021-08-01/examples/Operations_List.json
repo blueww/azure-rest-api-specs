@@ -1,0 +1,44 @@
+{
+  "parameters": {
+    "api-version": "2021-10-01-privatepreview"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "Microsoft.DataMover/dataMovers/read",
+            "isDataAction": false,
+            "display": {
+              "provider": "Microsoft DataMover",
+              "resource": "DataMovers",
+              "operation": "Get or List DataMover resource(s).",
+              "description": "Gets or Lists existing DataMover resource(s)."
+            }
+          },
+          {
+            "name": "Microsoft.DataMover/dataMovers/write",
+            "isDataAction": false,
+            "display": {
+              "provider": "Microsoft DataMover",
+              "resource": "DataMovers",
+              "operation": "Create or Update DataMover resource.",
+              "description": "Creates or Updates DataMover resource."
+            }
+          },
+          {
+            "name": "Microsoft.DataMover/dataMovers/delete",
+            "isDataAction": false,
+            "display": {
+              "provider": "Microsoft DataMover",
+              "resource": "DataMovers",
+              "operation": "Delete DataMover resource.",
+              "description": "Deletes DataMover resource."
+            }
+          }
+        ],
+        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/operations?$skiptoken={token}"
+      }
+    }
+  }
+}
