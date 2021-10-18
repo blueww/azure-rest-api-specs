@@ -5,7 +5,7 @@
     "resourceGroupName": "examples-rg",
     "dataMoverName": "examples-dataMoverName",
     "projectName": "examples-projectName",
-    "body": {
+    "project": {
       "properties": {
         "description": "Example Project Description"
       }
@@ -13,6 +13,16 @@
   },
   "responses": {
     "200": {
+      "body": {
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/agents/examples-projectName",
+        "name": "examples-projectName",
+        "type": "Microsoft.Storage/dataMovers/projects",
+        "properties": {
+          "description": "Example Project Description"
+        }
+      }
+    },
+    "201": {
       "body": {
         "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/agents/examples-projectName",
         "name": "examples-projectName",

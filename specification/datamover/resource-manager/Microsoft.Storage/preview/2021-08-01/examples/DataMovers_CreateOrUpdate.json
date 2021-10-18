@@ -40,6 +40,30 @@
           "agentStorageAccountId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/providers/Microsoft.Storage/storageAccounts/examples-agentStorageAccountName"
         }
       }
+    },
+    "201": {
+      "body": {
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName",
+        "name": "examples-dataMoverName",
+        "type": "Microsoft.Storage/dataMovers",
+        "location": "eastus2",
+        "tags": {
+          "key1": "value1",
+          "key2": "value2"
+        },
+        "systemData": {
+          "createdBy": "string",
+          "createdByType": "User",
+          "createdAt": "2020-02-01T01:01:01.1075056Z",
+          "lastModifiedBy": "string",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
+        },
+        "properties": {
+          "description": "Example Data Mover Description",
+          "agentStorageAccountId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/providers/Microsoft.Storage/storageAccounts/examples-agentStorageAccountName"
+        }
+      }
     }
   }
 }

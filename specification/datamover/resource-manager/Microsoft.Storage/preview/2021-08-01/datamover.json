@@ -75,11 +75,11 @@
         "tags": [
           "DataMovers"
         ],
-        "operationId": "DataMovers_List",
+        "operationId": "DataMovers_ListBySubscription",
         "description": "Lists all data movers in a resource group.",
         "x-ms-examples": {
-          "DataMovers_List": {
-            "$ref": "./examples/DataMovers_List.json"
+          "DataMovers_ListBySubscription": {
+            "$ref": "./examples/DataMovers_ListBySubscription.json"
           }
         },
         "parameters": [
@@ -1531,6 +1531,8 @@
       }
     },
     "DataMoverUpdateParameters": {
+      "description": "The data mover resource.",
+      "type": "object",
       "properties": {
         "properties": {
           "x-ms-client-flatten": true,
@@ -1622,6 +1624,8 @@
       }
     },
     "EndpointBaseUpdateParameters": {
+      "description": "The endpoint resource.",
+      "type": "object",
       "properties": {
         "properties": {
           "$ref": "#/definitions/EndpointBaseUpdateProperties"
@@ -2021,42 +2025,48 @@
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of the agent resource."
+      "description": "The name of the agent resource.",
+      "x-ms-parameter-location": "method"
     },
     "DataMoverNameParameter": {
       "name": "dataMoverName",
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of the data mover resource."
+      "description": "The name of the data mover resource.",
+      "x-ms-parameter-location": "method"
     },
     "EndpointNameParameter": {
       "name": "endpointName",
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of the endpoint resource."
+      "description": "The name of the endpoint resource.",
+      "x-ms-parameter-location": "method"
     },
     "JobDefinitionNameParameter": {
       "name": "jobDefinitionName",
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of the job definition resource."
+      "description": "The name of the job definition resource.",
+      "x-ms-parameter-location": "method"
     },
     "JobRunNameParameter": {
       "name": "jobRunName",
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of the job run."
+      "description": "The name of the job run.",
+      "x-ms-parameter-location": "method"
     },
     "ProjectNameParameter": {
       "name": "projectName",
       "in": "path",
       "required": true,
       "type": "string",
-      "description": "The name of the project resource."
+      "description": "The name of the project resource.",
+      "x-ms-parameter-location": "method"
     }
   }
 }

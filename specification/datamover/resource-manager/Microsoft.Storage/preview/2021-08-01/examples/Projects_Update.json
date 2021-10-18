@@ -4,7 +4,7 @@
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
     "resourceGroupName": "examples-rg",
     "dataMoverName": "examples-dataMoverName",
-    "agentName": "examples-projectName",
+    "projectName": "examples-projectName",
     "project": {
       "properties": {
         "description": "Example Project Description"
