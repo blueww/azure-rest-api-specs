@@ -9,9 +9,9 @@
       "body": {
         "value": [
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverResourceName1",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverResourceName1",
             "name": "examples-dataMoverResourceName1",
-            "type": "Microsoft.DataMover/dataMovers",
+            "type": "Microsoft.Storage/dataMovers",
             "location": "eastus2",
             "tags": {
               "key1": "value1",
@@ -25,12 +25,15 @@
               "lastModifiedByType": "User",
               "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
             },
-            "properties": {}
+            "properties": {
+              "description": "Example Data Mover 1 Description",
+              "agentStorageAccountId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/providers/Microsoft.Storage/storageAccounts/examples-agentStorageAccountName1"
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverResourceName2",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverResourceName2",
             "name": "examples-dataMoverResourceName2",
-            "type": "Microsoft.DataMover/dataMovers",
+            "type": "Microsoft.Storage/dataMovers",
             "location": "eastus2",
             "tags": {
               "key1": "value1",
@@ -44,12 +47,15 @@
               "lastModifiedByType": "User",
               "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
             },
-            "properties": {}
+            "properties": {
+              "description": "Example Data Mover 2 Description",
+              "agentStorageAccountId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/providers/Microsoft.Storage/storageAccounts/examples-agentStorageAccountName2"
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverResourceName3",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverResourceName3",
             "name": "examples-dataMoverResourceName3",
-            "type": "Microsoft.DataMover/dataMovers",
+            "type": "Microsoft.Storage/dataMovers",
             "location": "eastus2",
             "tags": {
               "key1": "value1",
@@ -63,10 +69,13 @@
               "lastModifiedByType": "User",
               "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
             },
-            "properties": {}
+            "properties": {
+              "description": "Example Data Mover 3 Description",
+              "agentStorageAccountId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/providers/Microsoft.Storage/storageAccounts/examples-agentStorageAccountName3"
+            }
           }
         ],
-        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/dataMovers?$skiptoken={token}"
+        "nextLink": "https://management.azure.com/providers/Microsoft.Storage/dataMovers?$skiptoken={token}"
       }
     }
   }

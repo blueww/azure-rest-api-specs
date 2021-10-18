@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "api-version": "2021-10-01-privatepreview",
+    "api-version": "2021-08-01",
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
     "resourceGroupName": "examples-rg",
     "dataMoverName": "examples-dataMoverName",
@@ -9,10 +9,14 @@
   "responses": {
     "200": {
       "body": {
-        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/endpoints/examples-endpointName",
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-endpointName",
         "name": "examples-endpointName",
-        "type": "Microsoft.DataMover/dataMovers/endpointName",
+        "type": "Microsoft.Storage/dataMovers/endpoints",
         "properties": {
+          "endpointType": "AzureStorageBlobContainer",
+          "storageAccountResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examples-storageAccountName/",
+          "blobContainerName": "examples-blobContainerName",
+          "description": "Example Storage Container Endpoint Description"
         }
       }
     }

@@ -2,7 +2,7 @@
   "parameters": {
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
     "resourceGroupName": "examples-rg",
-    "dataMoverName": "example-dataMoverName",
+    "dataMoverName": "examples-dataMoverName",
     "api-version": "2021-08-01"
   },
   "responses": {
@@ -10,9 +10,9 @@
       "body": {
         "value": [
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/agents/examples-agentName1",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/agents/examples-agentName1",
             "name": "examples-agentName1",
-            "type": "Microsoft.DataMover/dataMovers/agents",
+            "type": "Microsoft.Storage/dataMovers/agents",
             "systemData": {
               "createdBy": "string",
               "createdByType": "User",
@@ -21,12 +21,17 @@
               "lastModifiedByType": "User",
               "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
             },
-            "properties": {}
+            "properties": {
+              "arcResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName1",
+              "description": "Example Agent 1 Description",
+              "agentVersion": "1.0.0",
+              "agentStatus": "Provisioning"
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/agents/examples-agentName2",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/agents/examples-agentName2",
             "name": "examples-agentName2",
-            "type": "Microsoft.DataMover/dataMovers",
+            "type": "Microsoft.Storage/dataMovers/agents",
             "systemData": {
               "createdBy": "string",
               "createdByType": "User",
@@ -35,12 +40,17 @@
               "lastModifiedByType": "User",
               "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
             },
-            "properties": {}
+            "properties": {
+              "arcResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName2",
+              "description": "Example Agent 2 Description",
+              "agentVersion": "1.0.0",
+              "agentStatus": "Provisioning"
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/agents/examples-agentName2",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/agents/examples-agentName3",
             "name": "examples-agentName3",
-            "type": "Microsoft.DataMover/dataMovers",
+            "type": "Microsoft.Storage/dataMovers/agents",
             "systemData": {
               "createdBy": "string",
               "createdByType": "User",
@@ -49,10 +59,15 @@
               "lastModifiedByType": "User",
               "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
             },
-            "properties": {}
+            "properties": {
+              "arcResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName3",
+              "description": "Example Agent 3 Description",
+              "agentVersion": "1.0.0",
+              "agentStatus": "Provisioning"
+            }
           }
         ],
-        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/dataMovers?$skiptoken={token}"
+        "nextLink": "https://management.azure.com/providers/Microsoft.Storage/dataMovers?$skiptoken={token}"
       }
     }
   }

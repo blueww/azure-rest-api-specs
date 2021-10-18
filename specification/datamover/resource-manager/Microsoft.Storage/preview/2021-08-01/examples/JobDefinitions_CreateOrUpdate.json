@@ -6,18 +6,27 @@
     "dataMoverName": "examples-dataMoverName",
     "projectName": "examples-projectName",
     "jobDefinitionName": "examples-jobDefinitionName",
-    "body": {
+    "jobDefinition": {
       "properties": {
+        "description": "Example Job Definition Description",
+        "source": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-sourceEndpointName",
+        "sourceSubpath": "/",
+        "target": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-targetEndpointName"
       }
     }
   },
   "responses": {
     "200": {
       "body": {
-        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/Microsoft.DataMover/dataMovers/examples-dataMoverName/projects/examples-projectName/jobDefinitions/examples-jobDefinitionName",
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/projects/examples-projectName/jobDefinitions/examples-jobDefinitionName",
         "name": "examples-jobDefinitionName",
-        "type": "Microsoft.DataMover/dataMovers/projectName/jobDefinitionName",
+        "type": "Microsoft.Storage/dataMovers/projectName/jobDefinitionName",
         "properties": {
+          "description": "Example Job Definition Description",
+          "source": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-sourceEndpointName",
+          "sourceSubpath": "/",
+          "target": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-targetEndpointName",
+          "latestJobRun": null
         }
       }
     }

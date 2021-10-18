@@ -1,13 +1,13 @@
 {
   "parameters": {
-    "api-version": "2021-10-01-privatepreview"
+    "api-version": "2021-08-01"
   },
   "responses": {
     "200": {
       "body": {
         "value": [
           {
-            "name": "Microsoft.DataMover/dataMovers/read",
+            "name": "Microsoft.Storage/dataMovers/read",
             "isDataAction": false,
             "display": {
               "provider": "Microsoft DataMover",
@@ -17,7 +17,7 @@
             }
           },
           {
-            "name": "Microsoft.DataMover/dataMovers/write",
+            "name": "Microsoft.Storage/dataMovers/write",
             "isDataAction": false,
             "display": {
               "provider": "Microsoft DataMover",
@@ -27,7 +27,7 @@
             }
           },
           {
-            "name": "Microsoft.DataMover/dataMovers/delete",
+            "name": "Microsoft.Storage/dataMovers/delete",
             "isDataAction": false,
             "display": {
               "provider": "Microsoft DataMover",
@@ -37,7 +37,7 @@
             }
           }
         ],
-        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/operations?$skiptoken={token}"
+        "nextLink": "https://management.azure.com/providers/Microsoft.Storage/operations?$skiptoken={token}"
       }
     }
   }

@@ -2,7 +2,8 @@
   "parameters": {
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
     "resourceGroupName": "examples-rg",
-    "dataMoverName": "example-dataMoverName",
+    "dataMoverName": "examples-dataMoverName",
+    "projectName": "examples-projectName",
     "api-version": "2021-08-01"
   },
   "responses": {
@@ -10,15 +11,21 @@
       "body": {
         "value": [
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName1",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName1",
             "name": "examples-jobDefinitionName1",
-            "type": "Microsoft.DataMover/dataMovers/jobDefinitions",
-            "properties": {}
+            "type": "Microsoft.Storage/dataMovers/jobDefinitions",
+            "properties": {
+              "description": "Example Job Definition 1 Description",
+              "source": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-sourceEndpointName1",
+              "sourceSubpath": "/",
+              "target": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-targetEndpointName1",
+              "latestJobRun": null
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName2",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName2",
             "name": "examples-jobDefinitionName2",
-            "type": "Microsoft.DataMover/dataMovers/jobDefinitions",
+            "type": "Microsoft.Storage/dataMovers/jobDefinitions",
             "systemData": {
               "createdBy": "string",
               "createdByType": "User",
@@ -27,16 +34,28 @@
               "lastModifiedByType": "User",
               "lastModifiedAt": "2020-02-01T01:01:01.1075056Z"
             },
-            "properties": {}
+            "properties": {
+              "description": "Example Job Definition 2 Description",
+              "source": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-sourceEndpointName2",
+              "sourceSubpath": "/",
+              "target": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-targetEndpointName2",
+              "latestJobRun": null
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName2",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName3",
             "name": "examples-jobDefinitionName3",
-            "type": "Microsoft.DataMover/dataMovers/jobDefinitions",
-            "properties": {}
+            "type": "Microsoft.Storage/dataMovers/jobDefinitions",
+            "properties": {
+              "description": "Example Job Definition 3 Description",
+              "source": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-sourceEndpointName3",
+              "sourceSubpath": "/",
+              "target": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-targetEndpointName3",
+              "latestJobRun": null
+            }
           }
         ],
-        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/dataMovers/jobDefinitions?$skiptoken={token}"
+        "nextLink": "https://management.azure.com/providers/Microsoft.Storage/dataMovers/jobDefinitions?$skiptoken={token}"
       }
     }
   }

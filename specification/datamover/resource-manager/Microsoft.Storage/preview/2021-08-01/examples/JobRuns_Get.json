@@ -4,16 +4,21 @@
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
     "resourceGroupName": "examples-rg",
     "dataMoverName": "examples-dataMoverName",
+    "projectName": "examples-projectName",
     "jobDefinitionName": "examples-jobDefinitionName",
     "jobRunName": "examples-jobRunName"
   },
   "responses": {
     "200": {
       "body": {
-        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName/jobRuns/examples-jobRunName",
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/jobDefinitions/examples-jobDefinitionName/jobRuns/examples-jobRunName",
         "name": "examples-jobRunName",
-        "type": "Microsoft.DataMover/dataMovers/jobDefinitions/jobRuns",
+        "type": "Microsoft.Storage/dataMovers/jobDefinitions/jobRuns",
         "properties": {
+          "startTime": "2020-02-01T01:01:01.1075056Z",
+          "endTime": null,
+          "lastUpdatedTime": "2020-02-01T01:31:01.1075056Z",
+          "percentProgress": 50
         }
       }
     }

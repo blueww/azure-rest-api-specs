@@ -2,9 +2,9 @@
   "parameters": {
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
     "resourceGroupName": "examples-rg",
-    "dataMoverName": "example-dataMoverName",
-    "projectName": "example-projectName",
-    "jobDefinitionName": "example-jobDefinitionName",
+    "dataMoverName": "examples-dataMoverName",
+    "projectName": "examples-projectName",
+    "jobDefinitionName": "examples-jobDefinitionName",
     "api-version": "2021-08-01"
   },
   "responses": {
@@ -12,25 +12,40 @@
       "body": {
         "value": [
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/jobRun1",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/examples-jobRunName1",
             "name": "examples-jobRunName1",
-            "type": "Microsoft.DataMover/dataMovers/projects/jobDefinitions/jobRuns",
-            "properties": {}
+            "type": "Microsoft.Storage/dataMovers/projects/jobDefinitions/jobRuns",
+            "properties": {
+              "startTime": "2020-02-01T01:01:01.1075056Z",
+              "endTime": null,
+              "lastUpdatedTime": "2020-02-01T01:31:01.1075056Z",
+              "percentProgress": 50
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/jobRun2",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/examples-jobRunName2",
             "name": "examples-jobRunName2",
-            "type": "Microsoft.DataMover/dataMovers/projects/jobDefinitions/jobRuns",
-            "properties": {}
+            "type": "Microsoft.Storage/dataMovers/projects/jobDefinitions/jobRuns",
+            "properties": {
+              "startTime": "2020-02-01T01:01:01.1075056Z",
+              "endTime": null,
+              "lastUpdatedTime": "2020-02-01T01:31:01.1075056Z",
+              "percentProgress": 50
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/jobRun3",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/projectName/examples-projectName/jobDefinitions/examples-jobDefinitionName1/jobRuns/examples-jobRunName2",
             "name": "examples-jobRunName3",
-            "type": "Microsoft.DataMover/dataMovers/projects/jobDefinitions/jobRuns",
-            "properties": {}
+            "type": "Microsoft.Storage/dataMovers/projects/jobDefinitions/jobRuns",
+            "properties": {
+              "startTime": "2020-02-01T01:01:01.1075056Z",
+              "endTime": null,
+              "lastUpdatedTime": "2020-02-01T01:31:01.1075056Z",
+              "percentProgress": 50
+            }
           }
         ],
-        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/dataMovers/projects/jobDefinitions/jobRuns?$skiptoken={token}"
+        "nextLink": "https://management.azure.com/providers/Microsoft.Storage/dataMovers/projects/jobDefinitions/jobRuns?$skiptoken={token}"
       }
     }
   }

@@ -4,19 +4,21 @@
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
     "resourceGroupName": "examples-rg",
     "dataMoverName": "examples-dataMoverName",
-    "agentName": "examples-projectName",
+    "projectName": "examples-projectName",
     "body": {
       "properties": {
+        "description": "Example Project Description"
       }
     }
   },
   "responses": {
     "200": {
       "body": {
-        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/Microsoft.DataMover/dataMovers/examples-dataMoverName/agents/examples-projectName",
+        "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/agents/examples-projectName",
         "name": "examples-projectName",
-        "type": "Microsoft.DataMover/dataMovers/projectName",
+        "type": "Microsoft.Storage/dataMovers/projects",
         "properties": {
+          "description": "Example Project Description"
         }
       }
     }

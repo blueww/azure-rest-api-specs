@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "api-version": "2021-10-01-privatepreview",
+    "api-version": "2021-08-01",
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
     "resourceGroupName": "examples-rg",
     "dataMoverName": "examples-dataMoverName"
@@ -10,25 +10,40 @@
       "body": {
         "value": [
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/endpoints/examples-endpointName1",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-endpointName1",
             "name": "examples-endpointName1",
-            "type": "Microsoft.DataMover/dataMovers/endpoints",
-            "properties": {}
+            "type": "Microsoft.Storage/dataMovers/endpoints",
+            "properties": {
+              "endpointType": "AzureStorageBlobContainer",
+              "storageAccountResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examples-storageAccountName/",
+              "blobContainerName": "examples-blobContainerName1",
+              "description": "Example Storage Container Endpoint 1 Description"
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/endpoints/examples-endpointName2",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-endpointName2",
             "name": "examples-endpointName2",
-            "type": "Microsoft.DataMover/dataMovers/endpoints",
-            "properties": {}
+            "type": "Microsoft.Storage/dataMovers/endpoints",
+            "properties": {
+              "endpointType": "NfsMountEndpointProperties",
+              "host": "0.0.0.0",
+              "nfsVersion": "NFSv4_2",
+              "description": "Example Storage Container Endpoint 2 Description"
+            }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.DataMover/dataMovers/examples-dataMoverName/endpoints/examples-endpointName3",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints/examples-endpointName3",
             "name": "examples-endpointName3",
-            "type": "Microsoft.DataMover/dataMovers/endpoints",
-            "properties": {}
+            "type": "Microsoft.Storage/dataMovers/endpoints",
+            "properties": {
+              "endpointType": "AzureStorageBlobContainer",
+              "storageAccountResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examples-storageAccountName/",
+              "blobContainerName": "examples-blobContainerName3",
+              "description": "Example Storage Container Endpoint 3 Description"
+            }
           }
         ],
-        "nextLink": "https://management.azure.com/providers/Microsoft.DataMover/dataMovers/example-dataMoverName/endpoints?$skiptoken={token}"
+        "nextLink": "https://management.azure.com/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/endpoints?$skiptoken={token}"
       }
     }
   }
