@@ -8,6 +8,7 @@
     "jobDefinitionName": "examples-jobDefinitionName"
   },
   "responses": {
+    "200": {},
     "204": {}
   }
 }

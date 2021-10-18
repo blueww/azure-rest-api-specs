@@ -188,13 +188,13 @@
         ],
         "responses": {
           "200": {
-            "description": "The data mover resource.",
+            "description": "Updated Data Mover resource.",
             "schema": {
               "$ref": "#/definitions/DataMover"
             }
           },
           "201": {
-            "description": "The data mover resource.",
+            "description": "Created Data Mover resource.",
             "schema": {
               "$ref": "#/definitions/DataMover"
             }
@@ -423,13 +423,13 @@
         ],
         "responses": {
           "200": {
-            "description": "The agent resource.",
+            "description": "Updated Agent resource.",
             "schema": {
               "$ref": "#/definitions/Agent"
             }
           },
           "201": {
-            "description": "The agent resource.",
+            "description": "Created Agent resource.",
             "schema": {
               "$ref": "#/definitions/Agent"
             }
@@ -664,13 +664,13 @@
         ],
         "responses": {
           "200": {
-            "description": "The endpoint resource.",
+            "description": "Updated Endpoint resource.",
             "schema": {
               "$ref": "#/definitions/Endpoint"
             }
           },
           "201": {
-            "description": "The endpoint resource.",
+            "description": "Created Endpoint resource.",
             "schema": {
               "$ref": "#/definitions/Endpoint"
             }
@@ -905,13 +905,13 @@
         ],
         "responses": {
           "200": {
-            "description": "The project resource.",
+            "description": "Updated Project resource.",
             "schema": {
               "$ref": "#/definitions/Project"
             }
           },
           "201": {
-            "description": "The project resource.",
+            "description": "Created Project resource.",
             "schema": {
               "$ref": "#/definitions/Project"
             }
@@ -1155,13 +1155,13 @@
         ],
         "responses": {
           "200": {
-            "description": "The job definition resource.",
+            "description": "Updated Job Definition resource.",
             "schema": {
               "$ref": "#/definitions/JobDefinition"
             }
           },
           "201": {
-            "description": "The job definition resource.",
+            "description": "Created Job Definition resource.",
             "schema": {
               "$ref": "#/definitions/JobDefinition"
             }
@@ -1205,7 +1205,7 @@
             "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
           },
           {
-            "name": "endpoint",
+            "name": "jobDefinition",
             "in": "body",
             "required": true,
             "schema": {
@@ -1989,7 +1989,12 @@
           "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
           "description": "Resource system metadata."
         }
-      }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/ProxyResource"
+        }
+      ]
     },
     "ProjectList": {
       "description": "List of project resources.",

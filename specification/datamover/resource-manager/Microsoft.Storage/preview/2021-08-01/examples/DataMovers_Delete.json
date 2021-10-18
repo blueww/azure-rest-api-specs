@@ -6,6 +6,7 @@
     "dataMoverName": "examples-dataMoverName"
   },
   "responses": {
+    "200": {},
     "204": {}
   }
 }
