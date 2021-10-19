@@ -75,11 +75,11 @@
         "tags": [
           "DataMovers"
         ],
-        "operationId": "DataMovers_ListBySubscription",
+        "operationId": "DataMovers_List",
         "description": "Lists all data movers in a resource group.",
         "x-ms-examples": {
-          "DataMovers_ListBySubscription": {
-            "$ref": "./examples/DataMovers_ListBySubscription.json"
+          "DataMovers_List": {
+            "$ref": "./examples/DataMovers_List.json"
           }
         },
         "parameters": [
@@ -952,7 +952,7 @@
             "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
           },
           {
-            "name": "endpoint",
+            "name": "project",
             "in": "body",
             "required": true,
             "schema": {
