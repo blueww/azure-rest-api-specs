@@ -70,6 +70,45 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/dataMovers": {
+      "get": {
+        "tags": [
+          "DataMovers"
+        ],
+        "operationId": "DataMovers_ListBySubscription",
+        "description": "Lists all data movers in a resource group.",
+        "x-ms-examples": {
+          "DataMovers_List": {
+            "$ref": "./examples/DataMovers_ListBySubscription.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of data movers.",
+            "schema": {
+              "$ref": "#/definitions/DataMoverList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/dataMovers": {
       "get": {
         "tags": [

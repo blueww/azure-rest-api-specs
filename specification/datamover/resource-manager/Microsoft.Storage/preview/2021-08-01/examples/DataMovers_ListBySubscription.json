@@ -1,7 +1,6 @@
 {
   "parameters": {
     "subscriptionId": "11111111-2222-3333-4444-555555555555",
-    "resourceGroupName": "examples-rg",
     "api-version": "2021-08-01"
   },
   "responses": {
@@ -31,7 +30,7 @@
             }
           },
           {
-            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverResourceName2",
+            "id": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg2/providers/Microsoft.Storage/dataMovers/examples-dataMoverResourceName2",
             "name": "examples-dataMoverResourceName2",
             "type": "Microsoft.Storage/dataMovers",
             "location": "eastus2",
@@ -49,7 +48,7 @@
             },
             "properties": {
               "description": "Example Data Mover 2 Description",
-              "agentStorageAccountId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examples-agentStorageAccountName2"
+              "agentStorageAccountId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg2/providers/Microsoft.Storage/storageAccounts/examples-agentStorageAccountName2"
             }
           },
           {
