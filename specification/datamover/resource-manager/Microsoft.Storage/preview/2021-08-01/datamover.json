@@ -1314,6 +1314,120 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/dataMovers/{dataMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/startJob": {
+      "post": {
+        "tags": [
+          "JobDefinitions"
+        ],
+        "operationId": "JobDefinitions_StartJob",
+        "description": "Requests an agent to start a new instance of this job definition, generating a new job run resource.",
+        "x-ms-examples": {
+          "JobDefinitions_CreateOrUpdate": {
+            "$ref": "./examples/JobDefinitions_StartJob.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/DataMoverNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ProjectNameParameter"
+          },
+          {
+            "$ref": "#/parameters/JobDefinitionNameParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "jobDefinition",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/JobDefinition"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The newly generated job run resource.",
+            "schema": {
+              "$ref": "#/definitions/JobRun"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/dataMovers/{dataMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob": {
+      "post": {
+        "tags": [
+          "JobDefinitions"
+        ],
+        "operationId": "JobDefinitions_StopJob",
+        "description": "Requests the agent of any active instance of this job definition to stop.",
+        "x-ms-examples": {
+          "JobDefinitions_CreateOrUpdate": {
+            "$ref": "./examples/JobDefinitions_StopJob.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/DataMoverNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ProjectNameParameter"
+          },
+          {
+            "$ref": "#/parameters/JobDefinitionNameParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "jobDefinition",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/JobDefinition"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The active job run that was requested to be stopped.",
+            "schema": {
+              "$ref": "#/definitions/JobRun"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/dataMovers/{dataMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob": {
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/dataMovers/{dataMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns": {
       "get": {
         "tags": [
@@ -1438,6 +1552,14 @@
             "create"
           ]
         },
+        "guid": {
+          "type": "string",
+          "description": "A GUID for this agent.",
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
+        },
         "agentStatus": {
           "description": "The agent status.",
           "enum": [
@@ -1460,7 +1582,8 @@
         }
       },
       "required": [
-        "arcResourceId"
+        "arcResourceId",
+        "guid"
       ]
     },
     "Agent": {
@@ -1742,10 +1865,7 @@
           "description": "The NFS protocol version.",
           "enum": [
             "NFSv3",
-            "NFSv4",
-            "NFSv4_0",
-            "NFSv4_1",
-            "NFSv4_2"
+            "NFSv4"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -1754,19 +1874,14 @@
           }
         },
         "remoteExport": {
-          "description": "The directory being exported from the server. If not provided, uses root ('/').",
+          "description": "The directory being exported from the server.",
           "type": "string"
-        },
-        "port": {
-          "description": "The port to use. If not provided or zero (0), uses the default port for the protocol version.",
-          "type": "number",
-          "minimum": 0,
-          "maximum": 65353
         }
       },
       "required": [
         "host",
-        "nfsVersion"
+        "nfsVersion",
+        "remoteExport"
       ],
       "allOf": [
         {
@@ -1786,10 +1901,7 @@
           "description": "The NFS protocol version.",
           "enum": [
             "NFSv3",
-            "NFSv4",
-            "NFSv4_0",
-            "NFSv4_1",
-            "NFSv4_2"
+            "NFSv4"
           ],
           "type": "string",
           "x-ms-enum": {
@@ -1798,14 +1910,8 @@
           }
         },
         "remoteExport": {
-          "description": "The directory being exported from the server. If not provided, uses root ('/').",
+          "description": "The directory being exported from the server.",
           "type": "string"
-        },
-        "port": {
-          "description": "The port to use. If not provided or zero (0), uses the default port for the protocol version.",
-          "type": "number",
-          "minimum": 0,
-          "maximum": 65353
         }
       },
       "allOf": [
@@ -1911,6 +2017,15 @@
           "type": "string",
           "description": "Request URL that can be used to query next page of containers. Returned when total number of requested containers exceed maximum page size.",
           "readOnly": true
+        }
+      }
+    },
+    "StartJobParameters": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "type": "string",
+          "description": "The fully qualified resource ID of the agent that should perform this job."
         }
       }
     },

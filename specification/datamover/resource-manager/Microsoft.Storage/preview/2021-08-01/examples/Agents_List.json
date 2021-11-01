@@ -25,7 +25,8 @@
               "arcResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName1",
               "description": "Example Agent 1 Description",
               "agentVersion": "1.0.0",
-              "agentStatus": "Provisioning"
+              "agentStatus": "Provisioning",
+              "guid": "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
             }
           },
           {
@@ -44,7 +45,8 @@
               "arcResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName2",
               "description": "Example Agent 2 Description",
               "agentVersion": "1.0.0",
-              "agentStatus": "Provisioning"
+              "agentStatus": "Provisioning",
+              "guid": "147a1f84-7bbf-4e99-9a6a-a1735a91dfd5"
             }
           },
           {
@@ -63,7 +65,8 @@
               "arcResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName3",
               "description": "Example Agent 3 Description",
               "agentVersion": "1.0.0",
-              "agentStatus": "Provisioning"
+              "agentStatus": "Provisioning",
+              "guid": "648a7958-f99e-4268-b20e-94c96558dc0d"
             }
           }
         ],

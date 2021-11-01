@@ -27,8 +27,9 @@
             "properties": {
               "endpointType": "NfsMount",
               "host": "0.0.0.0",
-              "nfsVersion": "NFSv4_2",
-              "description": "Example Storage Container Endpoint 2 Description"
+              "nfsVersion": "NFSv4",
+              "description": "Example Storage Container Endpoint 2 Description",
+              "remoteExport": "/"
             }
           },
           {
