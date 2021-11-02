@@ -2041,13 +2041,13 @@
           "readOnly": true,
           "type": "string",
           "format": "date-time",
-          "description": "Start time of the run."
+          "description": "Start time of the run. Null if no agent reported that the job has started."
         },
         "endTime": {
           "readOnly": true,
           "type": "string",
           "format": "date-time",
-          "description": "End time of the run."
+          "description": "End time of the run. Null if job has not ended."
         },
         "lastUpdatedTime": {
           "type": "string",
