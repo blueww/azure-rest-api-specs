@@ -1322,7 +1322,7 @@
         "operationId": "JobDefinitions_StartJob",
         "description": "Requests an agent to start a new instance of this job definition, generating a new job run resource.",
         "x-ms-examples": {
-          "JobDefinitions_CreateOrUpdate": {
+          "JobDefinitions_StartJob": {
             "$ref": "./examples/JobDefinitions_StartJob.json"
           }
         },
@@ -1346,11 +1346,12 @@
             "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
           },
           {
-            "name": "jobDefinition",
+            "name": "agentId",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/JobDefinition"
+              "type": "string",
+              "description": "The fully qualified resource ID of the agent that should perform this job."
             }
           }
         ],
@@ -1378,7 +1379,7 @@
         "operationId": "JobDefinitions_StopJob",
         "description": "Requests the agent of any active instance of this job definition to stop.",
         "x-ms-examples": {
-          "JobDefinitions_CreateOrUpdate": {
+          "JobDefinitions_StopJob": {
             "$ref": "./examples/JobDefinitions_StopJob.json"
           }
         },
@@ -1400,14 +1401,6 @@
           },
           {
             "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
-          },
-          {
-            "name": "jobDefinition",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/JobDefinition"
-            }
           }
         ],
         "responses": {
@@ -1425,8 +1418,6 @@
           }
         }
       }
-    },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/dataMovers/{dataMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob": {
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/dataMovers/{dataMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns": {
       "get": {
@@ -2017,15 +2008,6 @@
           "type": "string",
           "description": "Request URL that can be used to query next page of containers. Returned when total number of requested containers exceed maximum page size.",
           "readOnly": true
-        }
-      }
-    },
-    "StartJobParameters": {
-      "type": "object",
-      "properties": {
-        "agentId": {
-          "type": "string",
-          "description": "The fully qualified resource ID of the agent that should perform this job."
         }
       }
     },

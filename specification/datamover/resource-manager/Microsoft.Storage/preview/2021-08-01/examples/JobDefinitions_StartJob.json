@@ -5,7 +5,8 @@
     "resourceGroupName": "examples-rg",
     "dataMoverName": "examples-dataMoverName",
     "projectName": "examples-projectName",
-    "jobDefinitionName": "examples-jobDefinitionName"
+    "jobDefinitionName": "examples-jobDefinitionName",
+    "agentId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.Storage/dataMovers/examples-dataMoverName/agents/examples-agentName"
   },
   "responses": {
     "200": {
