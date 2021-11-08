@@ -2026,10 +2026,6 @@
         "target": {
           "type": "string",
           "description": "Target of the given error entry."
-        },
-        "innerError": {
-          "$ref": "#/definitions/JobRunError",
-          "description": "Inner error details of the given entry."
         }
       }
     },
