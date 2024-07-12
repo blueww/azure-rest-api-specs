@@ -161,6 +161,48 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usage": {
+      "get": {
+        "tags": [
+          "FileService"
+        ],
+        "operationId": "FileServices_GetServiceUsage",
+        "x-ms-examples": {
+          "GetFileServiceUsage": {
+            "$ref": "./examples/FileServicesGetUsage.json"
+          }
+        },
+        "description": "Gets the usage of file services in storage account including account limits, file share limits and constants used in recommendations and bursting formula.",
+        "parameters": [
+          {
+            "$ref": "./storage.json#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "./storage.json#/parameters/StorageAccountName"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK -- returned the usage of a storage account’s File service.",
+            "schema": {
+              "$ref": "#/definitions/FileServicesUsage"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      }
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares": {
       "get": {
         "tags": [
@@ -179,6 +221,9 @@
           },
           "ListSharesPaidBursting": {
             "$ref": "./examples/FileSharesList_PaidBursting.json"
+          },
+          "ListSharesProvisionedV2": {
+            "$ref": "./examples/FileSharesList_ProvisionedV2.json"
           }
         },
         "description": "Lists all shares.",
@@ -252,6 +297,9 @@
           },
           "PutShares with Paid Bursting": {
             "$ref": "./examples/FileSharesPut_PaidBursting.json"
+          },
+          "PutSharesProvisionedV2": {
+            "$ref": "./examples/FileSharesPut_ProvisionedV2.json"
           }
         },
         "description": "Creates a new share under the specified account as described by request body. The share resource includes metadata and properties for that share. It does not include a list of the files contained by the share. ",
@@ -323,6 +371,9 @@
           },
           "UpdateSharePaidBursting": {
             "$ref": "./examples/FileSharesPatch_PaidBursting.json"
+          },
+          "UpdateShareProvisionedV2": {
+            "$ref": "./examples/FileSharesPatch_ProvisionedV2.json"
           }
         },
         "description": "Updates share properties as specified in request body. Properties not mentioned in the request will not be changed. Update fails if the specified share does not already exist. ",
@@ -382,6 +433,9 @@
           },
           "GetSharePaidBursting": {
             "$ref": "./examples/FileSharesGet_PaidBursting.json"
+          },
+          "GetShareProvisionedV2": {
+            "$ref": "./examples/FileSharesGet_ProvisionedV2.json"
           }
         },
         "description": "Gets properties of a specified share.",
@@ -699,6 +753,208 @@
       },
       "description": "Multichannel setting. Applies to Premium FileStorage only."
     },
+    "FileServicesUsage": {
+      "properties": {
+        "FileServiceUsage": {
+          "$ref": "#/definitions/FileServiceUsage"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "description": "The usage of file services in storage account."
+    },
+    "FileServiceUsage": {
+      "readOnly": true,
+      "properties": {
+        "AccountLimits": {
+          "$ref": "#/definitions/AccountLimits"
+        },
+        "FileShareLimits": {
+          "$ref": "#/definitions/FileShareLimits"
+        },
+        "FileShareRecommendations": {
+          "$ref": "#/definitions/FileShareRecommendations"
+        },
+        "BurstingConstants": {
+          "$ref": "#/definitions/BurstingConstants"
+        },
+        "AccountUsage": {
+          "$ref": "#/definitions/AccountUsage"
+        }
+      },
+      "description": "File service usage in storage account including account limits, file share limits and constants used in recommendations and bursting formula."
+    },
+    "AccountLimits": {
+      "readOnly": true,
+      "properties": {
+        "MaxFileShares": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The maximum number of file shares limit for the storage account."
+        },
+        "MaxProvisionedStorageGiB": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The maximum provisioned storage quota limit in gibibytes for the storage account."
+        },
+        "MaxProvisionedIOPS": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The maximum provisioned IOPS limit for the storage account."
+        },
+        "MaxProvisionedBandwidthMiBPerSec": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The maximum provisioned bandwidth limit in mebibytes per second for the storage account."
+        }
+      },
+      "description": "Maximum provisioned storage, IOPS, bandwidth and number of file shares limits for the storage account."
+    },
+    "FileShareLimits": {
+      "readOnly": true,
+      "properties": {
+        "MinProvisionedStorageGiB": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The minimum provisioned storage quota limit in gibibytes for a file share in the storage account."
+        },
+        "MaxProvisionedStorageGiB": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The maximum provisioned storage quota limit in gibibytes for a file share in the storage account."
+        },
+        "MinProvisionedIOPS": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The minimum provisioned IOPS limit for a file share in the storage account."
+        },
+        "MaxProvisionedIOPS": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The maximum provisioned IOPS limit for a file share in the storage account."
+        },
+        "MinProvisionedBandwidthMiBPerSec": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The minimum provisioned bandwidth limit in mebibytes per second for a file share in the storage account."
+        },
+        "MaxProvisionedBandwidthMiBPerSec": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The maximum provisioned bandwidth limit in mebibytes per second for a file share in the storage account."
+        }
+      },
+      "description": "Minimum and maximum provisioned storage, IOPS and bandwidth limits for a file share in the storage account."
+    },
+    "FileShareRecommendations": {
+      "readOnly": true,
+      "properties": {
+        "BaseIOPS": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The base IOPS in the file share provisioned IOPS recommendation formula."
+        },
+        "IOScalar": {
+          "type": "number",
+          "format": "double",
+          "readOnly": true,
+          "description": "The scalar for IO in the file share provisioned IOPS recommendation formula."
+        },
+        "BaseBandwidthMiBPerSec": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The base bandwidth in the file share provisioned bandwidth recommendation formula."
+        },
+        "BandwidthScalar": {
+          "type": "number",
+          "format": "double",
+          "readOnly": true,
+          "description": "The scalar for bandwidth in the file share provisioned bandwidth recommendation formula."
+        }
+      },
+      "description": "Constants used for calculating recommended provisioned IOPS and bandwidth for a file share in the storage account."
+    },
+    "BurstingConstants": {
+      "readOnly": true,
+      "properties": {
+        "BurstFloorIOPS": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The guaranteed floor of burst IOPS for small file shares."
+        },
+        "BurstIOScalar": {
+          "type": "number",
+          "format": "double",
+          "readOnly": true,
+          "description": "The scalar against provisioned IOPS in the file share included burst IOPS formula."
+        },
+        "BurstTimeframeSeconds": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The time frame for bursting in seconds in the file share maximum burst credits for IOPS formula."
+        }
+      },
+      "description": "Constants used for calculating included burst IOPS and maximum burst credits for IOPS for a file share in the storage account."
+    },
+    "AccountUsage": {
+      "readOnly": true,
+      "properties": {
+        "LiveShares": {
+          "$ref": "#/definitions/AccountUsageElements"
+        },
+        "SoftDeletedShares": {
+          "$ref": "#/definitions/AccountUsageElements"
+        }
+      },
+      "description": "Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares and soft-deleted shares in the account."
+    },
+    "AccountUsageElements": {
+      "readOnly": true,
+      "properties": {
+        "FileShareCount": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true,
+          "description": "The total number of file shares."
+        },
+        "ProvisionedStorageGiB": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true,
+          "description": "The total provisioned storage quota in gibibytes."
+        },
+        "ProvisionedIOPS": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true,
+          "description": "The total provisioned IOPS."
+        },
+        "ProvisionedBandwidthMiBPerSec": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true,
+          "description": "The total provisioned bandwidth in mebibytes per second."
+        }
+      },
+      "description": "Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares or soft-deleted shares in the account."
+    },
     "FileShare": {
       "properties": {
         "properties": {
@@ -782,9 +1038,46 @@
         },
         "shareQuota": {
           "type": "integer",
-          "minimum": 1,
-          "maximum": 102400,
-          "description": "The maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400."
+          "format": "int32",
+          "description": "The provisioned size of the share, in gibibytes."
+        },
+        "provisionedIops": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The provisioned IOPS of the share."
+        },
+        "provisionedBandwidthMibps": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The provisioned bandwidth of the share, in mebibytes per second."
+        },
+        "includedBurstIops": {
+          "type": "integer",
+          "readOnly": true,
+          "description": "The calculated burst IOPS of the share."
+        },
+        "maxBurstCreditsForIops": {
+          "type": "integer",
+          "readOnly": true,
+          "description": "The calculated maximum burst credits for the share."
+        },
+        "nextAllowedQuotaDowngradeTime": {
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true,
+          "description": "Returns the next allowed provisioned storage size downgrade time for the share."
+        },
+        "nextAllowedProvisionedIopsDowngradeTime": {
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true,
+          "description": "Returns the next allowed provisioned IOPS downgrade time for the share."
+        },
+        "nextAllowedProvisionedBandwidthDowngradeTime": {
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true,
+          "description": "Returns the next allowed provisioned bandwidth downgrade time for the share."
         },
         "enabledProtocols": {
           "type": "string",
