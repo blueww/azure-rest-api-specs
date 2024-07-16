@@ -161,7 +161,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usage": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}/usage": {
       "get": {
         "tags": [
           "FileService"
@@ -185,6 +185,9 @@
           },
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/FileServicesName"
           }
         ],
         "responses": {
@@ -754,9 +757,10 @@
       "description": "Multichannel setting. Applies to Premium FileStorage only."
     },
     "FileServicesUsage": {
+      "type": "object",
       "properties": {
-        "FileServiceUsage": {
-          "$ref": "#/definitions/FileServiceUsage"
+        "properties": {
+          "$ref": "#/definitions/FileServicesUsageProperties"
         }
       },
       "allOf": [
@@ -766,7 +770,8 @@
       ],
       "description": "The usage of file services in storage account."
     },
-    "FileServiceUsage": {
+    "FileServicesUsageProperties": {
+      "type": "object",
       "readOnly": true,
       "properties": {
         "AccountLimits": {
@@ -788,6 +793,7 @@
       "description": "File service usage in storage account including account limits, file share limits and constants used in recommendations and bursting formula."
     },
     "AccountLimits": {
+      "type": "object",
       "readOnly": true,
       "properties": {
         "MaxFileShares": {
@@ -818,6 +824,7 @@
       "description": "Maximum provisioned storage, IOPS, bandwidth and number of file shares limits for the storage account."
     },
     "FileShareLimits": {
+      "type": "object",
       "readOnly": true,
       "properties": {
         "MinProvisionedStorageGiB": {
@@ -860,6 +867,7 @@
       "description": "Minimum and maximum provisioned storage, IOPS and bandwidth limits for a file share in the storage account."
     },
     "FileShareRecommendations": {
+      "type": "object",
       "readOnly": true,
       "properties": {
         "BaseIOPS": {
@@ -890,6 +898,7 @@
       "description": "Constants used for calculating recommended provisioned IOPS and bandwidth for a file share in the storage account."
     },
     "BurstingConstants": {
+      "type": "object",
       "readOnly": true,
       "properties": {
         "BurstFloorIOPS": {
@@ -914,6 +923,7 @@
       "description": "Constants used for calculating included burst IOPS and maximum burst credits for IOPS for a file share in the storage account."
     },
     "AccountUsage": {
+      "type": "object",
       "readOnly": true,
       "properties": {
         "LiveShares": {
@@ -926,6 +936,7 @@
       "description": "Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares and soft-deleted shares in the account."
     },
     "AccountUsageElements": {
+      "type": "object",
       "readOnly": true,
       "properties": {
         "FileShareCount": {
@@ -1053,11 +1064,13 @@
         },
         "includedBurstIops": {
           "type": "integer",
+          "format": "int32",
           "readOnly": true,
           "description": "The calculated burst IOPS of the share."
         },
         "maxBurstCreditsForIops": {
           "type": "integer",
+          "format": "int64",
           "readOnly": true,
           "description": "The calculated maximum burst credits for the share."
         },

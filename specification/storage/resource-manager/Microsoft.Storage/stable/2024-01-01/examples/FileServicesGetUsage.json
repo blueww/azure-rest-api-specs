@@ -1,18 +1,19 @@
 {
   "parameters": {
-    "subscriptionId": "{subscription-id}",
+    "subscriptionId": "00000000-1111-2222-3333-444444444444",
     "resourceGroupName": "res4410",
     "accountName": "sto8607",
+    "FileServicesName": "default",
     "api-version": "2024-01-01",
     "monitor": "true"
   },
   "responses": {
     "200": {
       "body": {
-        "id": "/subscriptions/{subscription-id}/resourceGroups/res4410/providers/Microsoft.Storage/storageAccounts/sto8607/fileServices/default",
+        "id": "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/res4410/providers/Microsoft.Storage/storageAccounts/sto8607/fileServices/default",
         "name": "default",
         "type": "Microsoft.Storage/storageAccounts/fileServices",
-        "FileServiceUsage": {
+        "properties": {
           "AccountLimits": {
             "MaxFileShares": 50,
             "MaxProvisionedStorageGiB": 262144,
