@@ -203,6 +203,9 @@
               "$ref": "./common.json#/definitions/CloudError"
             }
           }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
         }
       }
     },
@@ -805,19 +808,21 @@
       "description": "Multichannel setting. Applies to Premium FileStorage only."
     },
     "FileServiceUsages": {
+      "type": "object",
+      "readOnly": true,
       "properties": {
         "value": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FileServiceUsage"
-          },
-          "description": "List of file service usages returned.",
-          "readOnly": true
+          }
         }
-      }
+      },
+      "description": "List of file service usages returned."
     },
     "FileServiceUsage": {
       "type": "object",
+      "readOnly": true,
       "properties": {
         "properties": {
           "$ref": "#/definitions/FileServiceUsageProperties"
@@ -868,7 +873,7 @@
           "readOnly": true,
           "description": "The maximum provisioned storage quota limit in gibibytes for the storage account."
         },
-        "maxProvisionedIOPS": {
+        "maxProvisionedIops": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
@@ -899,13 +904,13 @@
           "readOnly": true,
           "description": "The maximum provisioned storage quota limit in gibibytes for a file share in the storage account."
         },
-        "minProvisionedIOPS": {
+        "minProvisionedIops": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The minimum provisioned IOPS limit for a file share in the storage account."
         },
-        "maxProvisionedIOPS": {
+        "maxProvisionedIops": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
@@ -930,7 +935,7 @@
       "type": "object",
       "readOnly": true,
       "properties": {
-        "baseIOPS": {
+        "baseIops": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
@@ -961,7 +966,7 @@
       "type": "object",
       "readOnly": true,
       "properties": {
-        "burstFloorIOPS": {
+        "burstFloorIops": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
@@ -1011,7 +1016,7 @@
           "readOnly": true,
           "description": "The total provisioned storage quota in gibibytes."
         },
-        "provisionedIOPS": {
+        "provisionedIops": {
           "type": "integer",
           "format": "int64",
           "readOnly": true,
