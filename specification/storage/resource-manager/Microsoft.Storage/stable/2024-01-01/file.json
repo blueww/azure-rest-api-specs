@@ -188,6 +188,13 @@
           },
           {
             "$ref": "#/parameters/FileServicesName"
+          },
+          {
+            "name": "$maxpagesize",
+            "in": "query",
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional, specifies the maximum number of file service usages to be included in the list response."
           }
         ],
         "responses": {
@@ -205,7 +212,7 @@
           }
         },
         "x-ms-pageable": {
-          "nextLinkName": null
+          "nextLinkName": "nextLink"
         }
       }
     },
@@ -809,16 +816,22 @@
     },
     "FileServiceUsages": {
       "type": "object",
-      "readOnly": true,
       "properties": {
         "value": {
           "type": "array",
+          "readOnly": true,
           "items": {
             "$ref": "#/definitions/FileServiceUsage"
-          }
+          },
+          "description": "List of file service usages returned."
+        },
+        "nextLink": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Request URL that can be used to query next page of file service usages. Returned when total number of requested file service usages exceed maximum page size."
         }
       },
-      "description": "List of file service usages returned."
+      "description": "List file service usages schema."
     },
     "FileServiceUsage": {
       "type": "object",
