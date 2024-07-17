@@ -58,7 +58,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{fileServicesName}": {
       "put": {
         "tags": [
           "FileService"
@@ -161,18 +161,18 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}/usage": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{fileServicesName}/usages": {
       "get": {
         "tags": [
           "FileService"
         ],
-        "operationId": "FileServices_GetServiceUsage",
+        "operationId": "FileServices_ListServiceUsages",
         "x-ms-examples": {
-          "GetFileServiceUsage": {
-            "$ref": "./examples/FileServicesGetUsage.json"
+          "ListFileServiceUsages": {
+            "$ref": "./examples/FileServicesListUsages.json"
           }
         },
-        "description": "Gets the usage of file services in storage account including account limits, file share limits and constants used in recommendations and bursting formula.",
+        "description": "Gets the usages of file service in storage account.",
         "parameters": [
           {
             "$ref": "./storage.json#/parameters/ResourceGroupName"
@@ -192,9 +192,57 @@
         ],
         "responses": {
           "200": {
+            "description": "OK -- returned the usages of a storage account’s File service.",
+            "schema": {
+              "$ref": "#/definitions/FileServiceUsages"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{fileServicesName}/usages/{fileServiceUsagesName}": {
+      "get": {
+        "tags": [
+          "FileService"
+        ],
+        "operationId": "FileServices_GetServiceUsage",
+        "x-ms-examples": {
+          "GetFileServiceUsage": {
+            "$ref": "./examples/FileServicesGetUsage.json"
+          }
+        },
+        "description": "Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.",
+        "parameters": [
+          {
+            "$ref": "./storage.json#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "./storage.json#/parameters/StorageAccountName"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/FileServicesName"
+          },
+          {
+            "$ref": "#/parameters/FileServiceUsagesName"
+          }
+        ],
+        "responses": {
+          "200": {
             "description": "OK -- returned the usage of a storage account’s File service.",
             "schema": {
-              "$ref": "#/definitions/FileServicesUsage"
+              "$ref": "#/definitions/FileServiceUsage"
             }
           },
           "default": {
@@ -756,11 +804,23 @@
       },
       "description": "Multichannel setting. Applies to Premium FileStorage only."
     },
-    "FileServicesUsage": {
+    "FileServiceUsages": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FileServiceUsage"
+          },
+          "description": "List of file service usages returned.",
+          "readOnly": true
+        }
+      }
+    },
+    "FileServiceUsage": {
       "type": "object",
       "properties": {
         "properties": {
-          "$ref": "#/definitions/FileServicesUsageProperties"
+          "$ref": "#/definitions/FileServiceUsageProperties"
         }
       },
       "allOf": [
@@ -768,25 +828,25 @@
           "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
         }
       ],
-      "description": "The usage of file services in storage account."
+      "description": "The usage of file service in storage account."
     },
-    "FileServicesUsageProperties": {
+    "FileServiceUsageProperties": {
       "type": "object",
       "readOnly": true,
       "properties": {
-        "AccountLimits": {
+        "accountLimits": {
           "$ref": "#/definitions/AccountLimits"
         },
-        "FileShareLimits": {
+        "fileShareLimits": {
           "$ref": "#/definitions/FileShareLimits"
         },
-        "FileShareRecommendations": {
+        "fileShareRecommendations": {
           "$ref": "#/definitions/FileShareRecommendations"
         },
-        "BurstingConstants": {
+        "burstingConstants": {
           "$ref": "#/definitions/BurstingConstants"
         },
-        "AccountUsage": {
+        "accountUsage": {
           "$ref": "#/definitions/AccountUsage"
         }
       },
@@ -796,25 +856,25 @@
       "type": "object",
       "readOnly": true,
       "properties": {
-        "MaxFileShares": {
+        "maxFileShares": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The maximum number of file shares limit for the storage account."
         },
-        "MaxProvisionedStorageGiB": {
+        "maxProvisionedStorageGiB": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The maximum provisioned storage quota limit in gibibytes for the storage account."
         },
-        "MaxProvisionedIOPS": {
+        "maxProvisionedIOPS": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The maximum provisioned IOPS limit for the storage account."
         },
-        "MaxProvisionedBandwidthMiBPerSec": {
+        "maxProvisionedBandwidthMiBPerSec": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
@@ -827,37 +887,37 @@
       "type": "object",
       "readOnly": true,
       "properties": {
-        "MinProvisionedStorageGiB": {
+        "minProvisionedStorageGiB": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The minimum provisioned storage quota limit in gibibytes for a file share in the storage account."
         },
-        "MaxProvisionedStorageGiB": {
+        "maxProvisionedStorageGiB": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The maximum provisioned storage quota limit in gibibytes for a file share in the storage account."
         },
-        "MinProvisionedIOPS": {
+        "minProvisionedIOPS": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The minimum provisioned IOPS limit for a file share in the storage account."
         },
-        "MaxProvisionedIOPS": {
+        "maxProvisionedIOPS": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The maximum provisioned IOPS limit for a file share in the storage account."
         },
-        "MinProvisionedBandwidthMiBPerSec": {
+        "minProvisionedBandwidthMiBPerSec": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The minimum provisioned bandwidth limit in mebibytes per second for a file share in the storage account."
         },
-        "MaxProvisionedBandwidthMiBPerSec": {
+        "maxProvisionedBandwidthMiBPerSec": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
@@ -870,25 +930,25 @@
       "type": "object",
       "readOnly": true,
       "properties": {
-        "BaseIOPS": {
+        "baseIOPS": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The base IOPS in the file share provisioned IOPS recommendation formula."
         },
-        "IOScalar": {
+        "ioScalar": {
           "type": "number",
           "format": "double",
           "readOnly": true,
           "description": "The scalar for IO in the file share provisioned IOPS recommendation formula."
         },
-        "BaseBandwidthMiBPerSec": {
+        "baseBandwidthMiBPerSec": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The base bandwidth in the file share provisioned bandwidth recommendation formula."
         },
-        "BandwidthScalar": {
+        "bandwidthScalar": {
           "type": "number",
           "format": "double",
           "readOnly": true,
@@ -901,19 +961,19 @@
       "type": "object",
       "readOnly": true,
       "properties": {
-        "BurstFloorIOPS": {
+        "burstFloorIOPS": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
           "description": "The guaranteed floor of burst IOPS for small file shares."
         },
-        "BurstIOScalar": {
+        "burstIOScalar": {
           "type": "number",
           "format": "double",
           "readOnly": true,
           "description": "The scalar against provisioned IOPS in the file share included burst IOPS formula."
         },
-        "BurstTimeframeSeconds": {
+        "burstTimeframeSeconds": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
@@ -926,10 +986,10 @@
       "type": "object",
       "readOnly": true,
       "properties": {
-        "LiveShares": {
+        "liveShares": {
           "$ref": "#/definitions/AccountUsageElements"
         },
-        "SoftDeletedShares": {
+        "softDeletedShares": {
           "$ref": "#/definitions/AccountUsageElements"
         }
       },
@@ -939,25 +999,25 @@
       "type": "object",
       "readOnly": true,
       "properties": {
-        "FileShareCount": {
+        "fileShareCount": {
           "type": "integer",
           "format": "int64",
           "readOnly": true,
           "description": "The total number of file shares."
         },
-        "ProvisionedStorageGiB": {
+        "provisionedStorageGiB": {
           "type": "integer",
           "format": "int64",
           "readOnly": true,
           "description": "The total provisioned storage quota in gibibytes."
         },
-        "ProvisionedIOPS": {
+        "provisionedIOPS": {
           "type": "integer",
           "format": "int64",
           "readOnly": true,
           "description": "The total provisioned IOPS."
         },
-        "ProvisionedBandwidthMiBPerSec": {
+        "provisionedBandwidthMiBPerSec": {
           "type": "integer",
           "format": "int64",
           "readOnly": true,
@@ -1055,12 +1115,12 @@
         "provisionedIops": {
           "type": "integer",
           "format": "int32",
-          "description": "The provisioned IOPS of the share."
+          "description": "The provisioned IOPS of the share. This property can be specified only for file shares created under Files Provisioned v2 account type."
         },
         "provisionedBandwidthMibps": {
           "type": "integer",
           "format": "int32",
-          "description": "The provisioned bandwidth of the share, in mebibytes per second."
+          "description": "The provisioned bandwidth of the share, in mebibytes per second. This property can be specified only for file shares created under Files Provisioned v2 account type."
         },
         "includedBurstIops": {
           "type": "integer",
@@ -1230,17 +1290,17 @@
         },
         "paidBurstingEnabled": {
           "type": "boolean",
-          "description": "Indicates whether paid bursting is enabled for the share."
+          "description": "Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type."
         },
         "paidBurstingMaxIops": {
           "type": "integer",
           "format": "int32",
-          "description": "The maximum paid bursting IOPS for the share."
+          "description": "The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type."
         },
         "paidBurstingMaxBandwidthMibps": {
           "type": "integer",
           "format": "int32",
-          "description": "The maximum paid bursting bandwidth for the share, in mebibytes per second."
+          "description": "The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type."
         }
       },
       "description": "The properties of the file share."
@@ -1332,16 +1392,33 @@
   },
   "parameters": {
     "FileServicesName": {
-      "name": "FileServicesName",
+      "name": "fileServicesName",
       "in": "path",
       "required": true,
       "type": "string",
       "description": "The name of the file Service within the specified storage account. File Service Name must be \"default\"",
+      "pattern": "^[a-z][a-z0-9]*$",
       "enum": [
         "default"
       ],
       "x-ms-enum": {
-        "name": "FileServicesName",
+        "name": "fileServicesName",
+        "modelAsString": false
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "FileServiceUsagesName": {
+      "name": "fileServiceUsagesName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the file service usage. File Service Usage Name must be \"default\"",
+      "pattern": "^[a-z][a-z0-9]*$",
+      "enum": [
+        "default"
+      ],
+      "x-ms-enum": {
+        "name": "fileServiceUsagesName",
         "modelAsString": false
       },
       "x-ms-parameter-location": "method"

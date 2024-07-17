@@ -3,54 +3,55 @@
     "subscriptionId": "00000000-1111-2222-3333-444444444444",
     "resourceGroupName": "res4410",
     "accountName": "sto8607",
-    "FileServicesName": "default",
+    "fileServicesName": "default",
+    "fileServiceUsagesName": "default",
     "api-version": "2024-01-01",
     "monitor": "true"
   },
   "responses": {
     "200": {
       "body": {
-        "id": "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/res4410/providers/Microsoft.Storage/storageAccounts/sto8607/fileServices/default",
+        "id": "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/res4410/providers/Microsoft.Storage/storageAccounts/sto8607/fileServices/default/usages/default",
         "name": "default",
-        "type": "Microsoft.Storage/storageAccounts/fileServices",
+        "type": "Microsoft.Storage/storageAccounts/fileServices/usages",
         "properties": {
-          "AccountLimits": {
-            "MaxFileShares": 50,
-            "MaxProvisionedStorageGiB": 262144,
-            "MaxProvisionedIOPS": 102400,
-            "MaxProvisionedBandwidthMiBPerSec": 10340
+          "accountLimits": {
+            "maxFileShares": 50,
+            "maxProvisionedStorageGiB": 262144,
+            "maxProvisionedIOPS": 102400,
+            "maxProvisionedBandwidthMiBPerSec": 10340
           },
-          "FileShareLimits": {
-            "MinProvisionedStorageGiB": 32,
-            "MaxProvisionedStorageGiB": 262144,
-            "MinProvisionedIOPS": 3000,
-            "MaxProvisionedIOPS": 102400,
-            "MinProvisionedBandwidthMiBPerSec": 125,
-            "MaxProvisionedBandwidthMiBPerSec": 10340
+          "fileShareLimits": {
+            "minProvisionedStorageGiB": 32,
+            "maxProvisionedStorageGiB": 262144,
+            "minProvisionedIOPS": 3000,
+            "maxProvisionedIOPS": 102400,
+            "minProvisionedBandwidthMiBPerSec": 125,
+            "maxProvisionedBandwidthMiBPerSec": 10340
           },
-          "FileShareRecommendations": {
-            "BaseIOPS": 3000,
-            "IOScalar": 1,
-            "BaseBandwidthMiBPerSec": 125,
-            "BandwidthScalar": 0.1
+          "fileShareRecommendations": {
+            "baseIOPS": 3000,
+            "ioScalar": 1,
+            "baseBandwidthMiBPerSec": 125,
+            "bandwidthScalar": 0.1
           },
-          "BurstingConstants": {
-            "BurstFloorIOPS": 10000,
-            "BurstIOScalar": 3,
-            "BurstTimeframeSeconds": 3600
+          "burstingConstants": {
+            "burstFloorIOPS": 10000,
+            "burstIOScalar": 3,
+            "burstTimeframeSeconds": 3600
           },
-          "AccountUsage": {
-            "LiveShares": {
-              "FileShareCount": 2,
-              "ProvisionedStorageGiB": 64,
-              "ProvisionedIOPS": 6064,
-              "ProvisionedBandwidthMiBPerSec": 258
+          "accountUsage": {
+            "liveShares": {
+              "fileShareCount": 2,
+              "provisionedStorageGiB": 64,
+              "provisionedIOPS": 6064,
+              "provisionedBandwidthMiBPerSec": 258
             },
-            "SoftDeletedShares": {
-              "FileShareCount": 1,
-              "ProvisionedStorageGiB": 100,
-              "ProvisionedIOPS": 3000,
-              "ProvisionedBandwidthMiBPerSec": 125
+            "softDeletedShares": {
+              "fileShareCount": 1,
+              "provisionedStorageGiB": 100,
+              "provisionedIOPS": 3000,
+              "provisionedBandwidthMiBPerSec": 125
             }
           }
         }
