@@ -54,13 +54,13 @@ directive:
 
   - where:
     - $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{fileServicesName}"].put
-	suppress: PutResponseCodes
-	reason: This is an existing FileServices_SetServiceProperties API, 201 Created response code cannot be added now.
+    suppress: PutResponseCodes
+    reason: This is an existing FileServices_SetServiceProperties API, 201 Created response code cannot be added now.
 
   - where:
     - $.definitions["FileServiceUsages"]
-	suppress: BodyTopLevelProperties
-	reason: This is definition for response for FileServices_ListServiceUsages API. It matches with other List API response definition format in the file.
+    suppress: BodyTopLevelProperties
+    reason: This is definition for response for FileServices_ListServiceUsages API. It matches with other List API response definition format in the file.
 ```
 
 ### Tag: package-2023-05
