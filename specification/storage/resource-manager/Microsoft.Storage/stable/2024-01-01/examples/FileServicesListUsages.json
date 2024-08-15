@@ -19,25 +19,25 @@
               "accountLimits": {
                 "maxFileShares": 50,
                 "maxProvisionedStorageGiB": 262144,
-                "maxProvisionedIOPS": 102400,
+                "maxProvisionedIops": 102400,
                 "maxProvisionedBandwidthMiBPerSec": 10340
               },
               "fileShareLimits": {
                 "minProvisionedStorageGiB": 32,
                 "maxProvisionedStorageGiB": 262144,
-                "minProvisionedIOPS": 3000,
-                "maxProvisionedIOPS": 102400,
+                "minProvisionedIops": 3000,
+                "maxProvisionedIops": 102400,
                 "minProvisionedBandwidthMiBPerSec": 125,
                 "maxProvisionedBandwidthMiBPerSec": 10340
               },
               "fileShareRecommendations": {
-                "baseIOPS": 3000,
+                "baseIops": 3000,
                 "ioScalar": 1,
                 "baseBandwidthMiBPerSec": 125,
                 "bandwidthScalar": 0.1
               },
               "burstingConstants": {
-                "burstFloorIOPS": 10000,
+                "burstFloorIops": 10000,
                 "burstIOScalar": 3,
                 "burstTimeframeSeconds": 3600
               },
@@ -45,13 +45,13 @@
                 "liveShares": {
                   "fileShareCount": 2,
                   "provisionedStorageGiB": 64,
-                  "provisionedIOPS": 6064,
+                  "provisionedIops": 6064,
                   "provisionedBandwidthMiBPerSec": 258
                 },
                 "softDeletedShares": {
                   "fileShareCount": 1,
                   "provisionedStorageGiB": 100,
-                  "provisionedIOPS": 3000,
+                  "provisionedIops": 3000,
                   "provisionedBandwidthMiBPerSec": 125
                 }
               }

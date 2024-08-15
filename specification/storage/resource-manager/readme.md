@@ -44,6 +44,23 @@ input-file:
   - Microsoft.Storage/stable/2024-01-01/table.json
   - Microsoft.Storage/stable/2024-01-01/networkSecurityPerimeter.json
   - Microsoft.Storage/stable/2024-01-01/storageTaskAssignments.json
+
+directive:
+  - where:
+    - $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}"].put
+    suppress: PutResponseCodes
+    reason: This is an existing RP which has the same pattern, 202 response code for async PUT, in stable API version
+    approved-by: "@ramoka178"
+
+  - where:
+    - $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{fileServicesName}"].put
+	suppress: PutResponseCodes
+	reason: This is an existing FileServices_SetServiceProperties API, 201 Created response code cannot be added now.
+
+  - where:
+    - $.definitions["FileServiceUsages"]
+	suppress: BodyTopLevelProperties
+	reason: This is definition for response for FileServices_ListServiceUsages API. It matches with other List API response definition format in the file.
 ```
 
 ### Tag: package-2023-05
