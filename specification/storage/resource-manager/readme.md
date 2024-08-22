@@ -61,6 +61,11 @@ directive:
     - $.definitions["FileServiceUsages"]
     suppress: BodyTopLevelProperties
     reason: This is definition for response for FileServices_ListServiceUsages API. It matches with other List API response definition format in the file.
+
+  - where:
+    - $.definitions["FileServiceUsageProperties"]
+    suppress: DefinitionsPropertiesNamesCamelCase
+    reason: The FileServiceUsageProperties schema has properties with "IOPS" in their name. The names need to match feature spec and server code, so cannot be changed per camel case rule in swagger.
 ```
 
 ### Tag: package-2023-05
