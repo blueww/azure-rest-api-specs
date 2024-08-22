@@ -17,10 +17,10 @@
         "properties": {
           "lastModifiedTime": "2019-05-26T05:06:14Z",
           "shareQuota": 100,
-          "provisionedIops": 5000,
-          "provisionedBandwidthMibps": 200,
-          "includedBurstIops": 15000,
-          "maxBurstCreditsForIops": 36000000,
+          "provisionedIops": "5000",
+          "provisionedBandwidthMibps": "200",
+          "includedBurstIops": "15000",
+          "maxBurstCreditsForIops": "36000000",
           "nextAllowedQuotaDowngradeTime": "2024-07-12T16:29:22Z",
           "nextAllowedProvisionedIopsDowngradeTime": "2024-07-12T16:29:22Z",
           "nextAllowedProvisionedBandwidthDowngradeTime": "2024-07-12T16:29:22Z"
