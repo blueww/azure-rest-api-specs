@@ -1281,19 +1281,25 @@
           "readOnly": true,
           "description": "Creation time of share snapshot returned in the response of list shares with expand param \"snapshots\"."
         },
-        "paidBurstingEnabled": {
-          "type": "boolean",
-          "description": "Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type."
-        },
-        "paidBurstingMaxIops": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type."
-        },
-        "paidBurstingMaxBandwidthMibps": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type."
+        "fileSharePaidBursting": {
+          "type": "object",
+          "properties": {
+            "paidBurstingEnabled": {
+              "type": "boolean",
+              "description": "Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type."
+            },
+            "paidBurstingMaxIops": {
+              "type": "integer",
+              "format": "int32",
+              "description": "The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type."
+            },
+            "paidBurstingMaxBandwidthMibps": {
+              "type": "integer",
+              "format": "int32",
+              "description": "The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type."
+            }
+          },
+          "description": "File Share Paid Bursting properties"
         }
       },
       "description": "The properties of the file share."

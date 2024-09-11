@@ -8,9 +8,11 @@
     "monitor": "true",
     "fileShare": {
       "properties": {
-        "paidBurstingEnabled": true,
-        "paidBurstingMaxIops": 102400,
-        "paidBurstingMaxBandwidthMibps": 10340
+        "fileSharePaidBursting": {
+          "paidBurstingEnabled": true,
+          "paidBurstingMaxIops": 102400,
+          "paidBurstingMaxBandwidthMibps": 10340
+        }
       }
     }
   },
@@ -21,9 +23,11 @@
         "name": "share6185",
         "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
         "properties": {
-          "paidBurstingEnabled": true,
-          "paidBurstingMaxIops": 102400,
-          "paidBurstingMaxBandwidthMibps": 10340
+          "fileSharePaidBursting": {
+            "paidBurstingEnabled": true,
+            "paidBurstingMaxIops": 102400,
+            "paidBurstingMaxBandwidthMibps": 10340
+          }
         }
       }
     }

@@ -18,9 +18,11 @@
             "properties": {
               "lastModifiedTime": "2019-05-14T08:20:47Z",
               "shareQuota": 1024,
-              "paidBurstingEnabled": true,
-              "paidBurstingMaxIops": 102400,
-              "paidBurstingMaxBandwidthMibps": 10340
+              "fileSharePaidBursting": {
+                "paidBurstingEnabled": true,
+                "paidBurstingMaxIops": 102400,
+                "paidBurstingMaxBandwidthMibps": 10340
+              }
             }
           },
           {
@@ -31,9 +33,11 @@
             "properties": {
               "lastModifiedTime": "2019-05-14T08:20:47Z",
               "shareQuota": 1024,
-              "paidBurstingEnabled": true,
-              "paidBurstingMaxIops": 102400,
-              "paidBurstingMaxBandwidthMibps": 10340
+              "fileSharePaidBursting": {
+                "paidBurstingEnabled": true,
+                "paidBurstingMaxIops": 102400,
+                "paidBurstingMaxBandwidthMibps": 10340
+              }
             }
           }
         ],
