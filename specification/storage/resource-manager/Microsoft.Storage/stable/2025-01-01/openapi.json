@@ -7669,6 +7669,7 @@
       }
     },
     "CloudError": {
+      "x-ms-external": true,
       "type": "object",
       "description": "An error response from the Storage service.",
       "properties": {
@@ -7679,6 +7680,7 @@
       }
     },
     "CloudErrorBody": {
+      "x-ms-external": true,
       "type": "object",
       "description": "An error response from the Storage service.",
       "properties": {
