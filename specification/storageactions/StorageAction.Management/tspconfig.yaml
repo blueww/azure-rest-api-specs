@@ -45,6 +45,64 @@ options:
     generate-fakes: true
     head-as-boolean: true
     inject-spans: true
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    package-dir: "StorageAction/StorageAction.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 1.0.0
+    prefix: 'Az'
+    subject-prefix: 'StorageAction'
+    service-name: StorageAction
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: '(Get-AzContext).Subscription.Id'
+      - where:
+          variant: ^(Create|Update|Preview)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true        
+      - where:
+          verb: Set
+        remove: true  
+      # Rename commands
+      - where:
+          subject: StorageTask
+        set:
+          subject: Task
+      - where:
+          verb: Invoke
+          subject: PreviewStorageTaskAction
+        set:
+          subject: TaskPreviewAction
+      - where:
+          subject: StorageTaskAssignment
+        set:
+          subject: TaskAssignment
+      - where:
+          subject: StorageTasksReport
+        set:
+          subject: TasksReport
+      # Add model
+      - model-cmdlet:
+        - model-name: StorageTaskOperation
+          cmdlet-name: New-AzStorageActionTaskOperationObject
+        - model-name: StorageTaskPreviewBlobProperties
+          cmdlet-name: New-AzStorageActionTaskPreviewBlobPropertiesObject
+        - model-name: StorageTaskPreviewKeyValueProperties
+          cmdlet-name: New-AzStorageActionTaskPreviewKeyValuePropertiesObject
 linter:
   extends:
     - "@azure-tools/typespec-azure-rulesets/resource-manager"
